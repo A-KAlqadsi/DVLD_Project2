@@ -16,5 +16,10 @@ namespace DVLD_View
         {
             InitializeComponent();
         }
+
+        private void frmTest_Load(object sender, EventArgs e)
+        {
+            ctrlUserPersonCard1.LoadUserInfo(1);
+        }
     }
 }

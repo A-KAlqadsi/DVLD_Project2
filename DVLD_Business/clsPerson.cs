@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace DVLD_Business
         public string FirstName, SecondName, ThirdName, LastName;
         public DateTime DateOfBirth;
         public string  Address, Phone, Email;
-        public char Gender;
+        public short Gender;
         public int NationalityCountryID;
         public string ImagePath;
 
@@ -31,7 +32,7 @@ namespace DVLD_Business
             ThirdName = string.Empty;
             LastName = string.Empty;
             DateOfBirth = DateTime.Now;
-            Gender = 'N';
+            Gender = 0;
             Address = string.Empty;
             Phone = string.Empty;
             Email = string.Empty;
@@ -42,7 +43,7 @@ namespace DVLD_Business
         }
 
         private clsPerson(int personID,string nationalNo,string firstName,string secondName,
-            string thirdName,string lastName,DateTime dateOfBirth,char gender ,string address,
+            string thirdName,string lastName,DateTime dateOfBirth,short gender ,string address,
             string phone,string email,int nationalityCountryID,string imagePath)
         {
             PersonID=personID;
@@ -80,7 +81,7 @@ namespace DVLD_Business
         {
             string nationalNo = "", firstName = "", secondName = "", thirdName ="", lastName = "";
             DateTime dateOfBirth = DateTime.Now;
-            char gender = 'N';
+            short gender = 0;
             string address = "", phone = "", email = "",imagePath ="";
             int nationalityCountryID = -1;
             
@@ -101,7 +102,7 @@ namespace DVLD_Business
             int personID = -1;
             string firstName = "", secondName = "", thirdName = "", lastName = "";
             DateTime dateOfBirth = DateTime.Now;
-            char gender = 'N';
+            short gender =0;
             string address = "", phone = "", email = "", imagePath = "";
             int nationalityCountryID = -1;
 
@@ -158,6 +159,10 @@ namespace DVLD_Business
             return false;
         }
 
+        public string FullName()
+        {
+            return FirstName + " " + SecondName + " " + ThirdName + " " + LastName;
+        }
 
     }
 }

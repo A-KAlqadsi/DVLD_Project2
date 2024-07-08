@@ -29,20 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlPersonCardWithFilter));
-            this.ctrlPersonCard1 = new DVLD_View.ctrlPersonCard();
             this.label1 = new System.Windows.Forms.Label();
             this.cbPersonFilters = new System.Windows.Forms.ComboBox();
-            this.btnFind = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnAddNew = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.ctrlPersonCard1 = new DVLD_View.ctrlPersonCard();
             this.SuspendLayout();
-            // 
-            // ctrlPersonCard1
-            // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(3, 59);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(808, 245);
-            this.ctrlPersonCard1.TabIndex = 0;
             // 
             // label1
             // 
@@ -62,17 +55,6 @@
             this.cbPersonFilters.Name = "cbPersonFilters";
             this.cbPersonFilters.Size = new System.Drawing.Size(181, 33);
             this.cbPersonFilters.TabIndex = 2;
-            // 
-            // btnFind
-            // 
-            this.btnFind.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFind.BackgroundImage")));
-            this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.Location = new System.Drawing.Point(463, 8);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(49, 41);
-            this.btnFind.TabIndex = 3;
-            this.btnFind.UseVisualStyleBackColor = true;
             // 
             // txtSearch
             // 
@@ -94,30 +76,47 @@
             this.btnAddNew.TabIndex = 5;
             this.btnAddNew.UseVisualStyleBackColor = true;
             // 
+            // btnFind
+            // 
+            this.btnFind.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFind.BackgroundImage")));
+            this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFind.Location = new System.Drawing.Point(463, 8);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(49, 41);
+            this.btnFind.TabIndex = 3;
+            this.btnFind.UseVisualStyleBackColor = true;
+            // 
+            // ctrlPersonCard1
+            // 
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(3, 57);
+            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(910, 249);
+            this.ctrlPersonCard1.TabIndex = 6;
+            // 
             // ctrlPersonCardWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ctrlPersonCard1);
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.cbPersonFilters);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ctrlPersonCard1);
             this.Name = "ctrlPersonCardWithFilter";
-            this.Size = new System.Drawing.Size(813, 307);
+            this.Size = new System.Drawing.Size(913, 303);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private ctrlPersonCard ctrlPersonCard1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbPersonFilters;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnAddNew;
+        private ctrlPersonCard ctrlPersonCard1;
     }
 }

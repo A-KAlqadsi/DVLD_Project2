@@ -28,23 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlPersonCard1 = new DVLD_View.ctrlPersonCard();
             this.gbLoginInformation = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblUserID = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.lblIsActive = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblUserID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ctrlPersonCard1 = new DVLD_View.ctrlPersonCard();
             this.gbLoginInformation.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ctrlPersonCard1
-            // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(3, 3);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(808, 245);
-            this.ctrlPersonCard1.TabIndex = 0;
             // 
             // gbLoginInformation
             // 
@@ -57,29 +50,29 @@
             this.gbLoginInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbLoginInformation.Location = new System.Drawing.Point(3, 249);
             this.gbLoginInformation.Name = "gbLoginInformation";
-            this.gbLoginInformation.Size = new System.Drawing.Size(729, 83);
+            this.gbLoginInformation.Size = new System.Drawing.Size(840, 83);
             this.gbLoginInformation.TabIndex = 1;
             this.gbLoginInformation.TabStop = false;
             this.gbLoginInformation.Text = "Login Information";
             // 
-            // label1
+            // lblIsActive
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(156, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "User ID:";
+            this.lblIsActive.AutoSize = true;
+            this.lblIsActive.Location = new System.Drawing.Point(740, 37);
+            this.lblIsActive.Name = "lblIsActive";
+            this.lblIsActive.Size = new System.Drawing.Size(56, 25);
+            this.lblIsActive.TabIndex = 7;
+            this.lblIsActive.Text = "????";
             // 
-            // lblUserID
+            // label6
             // 
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.Location = new System.Drawing.Point(247, 37);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(56, 25);
-            this.lblUserID.TabIndex = 3;
-            this.lblUserID.Text = "????";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(637, 37);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 25);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Is Active:";
             // 
             // lblUsername
             // 
@@ -100,33 +93,40 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Username:";
             // 
-            // lblIsActive
+            // lblUserID
             // 
-            this.lblIsActive.AutoSize = true;
-            this.lblIsActive.Location = new System.Drawing.Point(665, 37);
-            this.lblIsActive.Name = "lblIsActive";
-            this.lblIsActive.Size = new System.Drawing.Size(56, 25);
-            this.lblIsActive.TabIndex = 7;
-            this.lblIsActive.Text = "????";
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Location = new System.Drawing.Point(247, 37);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(56, 25);
+            this.lblUserID.TabIndex = 3;
+            this.lblUserID.Text = "????";
             // 
-            // label6
+            // label1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(562, 37);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 25);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Is Active:";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(156, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "User ID:";
+            // 
+            // ctrlPersonCard1
+            // 
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(3, 4);
+            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(910, 249);
+            this.ctrlPersonCard1.TabIndex = 2;
             // 
             // ctrlUserPersonCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.gbLoginInformation);
             this.Controls.Add(this.ctrlPersonCard1);
+            this.Controls.Add(this.gbLoginInformation);
             this.Name = "ctrlUserPersonCard";
-            this.Size = new System.Drawing.Size(812, 334);
+            this.Size = new System.Drawing.Size(914, 334);
             this.gbLoginInformation.ResumeLayout(false);
             this.gbLoginInformation.PerformLayout();
             this.ResumeLayout(false);
@@ -134,8 +134,6 @@
         }
 
         #endregion
-
-        private ctrlPersonCard ctrlPersonCard1;
         private System.Windows.Forms.GroupBox gbLoginInformation;
         private System.Windows.Forms.Label lblIsActive;
         private System.Windows.Forms.Label label6;
@@ -143,5 +141,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblUserID;
         private System.Windows.Forms.Label label1;
+        private ctrlPersonCard ctrlPersonCard1;
     }
 }

@@ -8,7 +8,7 @@ namespace DVLD_DataAccess
     {
         public static bool GetPersonById(int personID,ref string nationalNo , ref string firstName
             ,ref string secondName ,ref string thirdName ,ref string lastName,
-            ref DateTime DateOfBirth ,ref char gender , ref string address, ref string phone ,ref string email,
+            ref DateTime DateOfBirth ,ref short gender , ref string address, ref string phone ,ref string email,
             ref int nationalityCountryID ,ref string imagePath)
         {
             bool isFound = false;
@@ -33,7 +33,7 @@ namespace DVLD_DataAccess
                     thirdName = (reader["ThirdName"] == DBNull.Value)? "":reader["ThirdName"].ToString();
                     lastName = reader["LastName"].ToString();
                     DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
-                    gender = (Convert.ToInt32(reader["Gendor"]) == 0) ? 'M' : 'F';
+                    gender = Convert.ToInt16(reader["Gender"]);
                     address = reader["Address"].ToString();
                     phone = reader["Phone"].ToString();
                     email = (reader["Email"] == DBNull.Value) ? "" : reader["Email"].ToString();
@@ -57,7 +57,7 @@ namespace DVLD_DataAccess
 
         public static bool GetPersonByNationalNo(string nationalNo, ref int personID, ref string firstName
                     , ref string secondName, ref string thirdName, ref string lastName,
-                    ref DateTime DateOfBirth, ref char gender, ref string address, ref string phone, ref string email,
+                    ref DateTime DateOfBirth, ref short gender, ref string address, ref string phone, ref string email,
                     ref int nationalityCountryID, ref string imagePath)
         {
             bool isFound = false;
@@ -82,7 +82,7 @@ namespace DVLD_DataAccess
                     thirdName = (reader["ThirdName"] == DBNull.Value) ? "" : reader["ThirdName"].ToString();
                     lastName = reader["LastName"].ToString();
                     DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
-                    gender = (Convert.ToInt32(reader["Gendor"]) == 0) ? 'M' : 'F';
+                    gender = Convert.ToInt16(reader["Gender"]);
                     address = reader["Address"].ToString();
                     phone = reader["Phone"].ToString();
                     email = (reader["Email"] == DBNull.Value) ? "" : reader["Email"].ToString();
@@ -107,14 +107,14 @@ namespace DVLD_DataAccess
 
         public static int AddNewPerson(string nationalNo, string firstName
             ,  string secondName,  string thirdName,  string lastName,
-             DateTime DateOfBirth,  char gender,  string address,  string phone, string email,
+             DateTime DateOfBirth,  short gender,  string address,  string phone, string email,
              int nationalityCountryID,  string imagePath)
         {
             int personID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO People(NationalNo,FirstName,SecondName,ThirdName,LastName,DateOfBirth," +
-                "Gendor,Address,Phone,Email,NationalityCountryID,ImagePath) " +
+                "Gender,Address,Phone,Email,NationalityCountryID,ImagePath) " +
                 "VALUES(@NationalNo,@FirstName,@SecondName,@ThirdName,@LastName,@DateOfBirth,@Gender,@Address," +
                 "@Phone,@Email,@NationalityCountryID,@ImagePath ); " +
                 "SELECT SCOPE_IDENTITY(); ";
@@ -172,7 +172,7 @@ namespace DVLD_DataAccess
 
         public static bool UpdatePerson(int personID, string nationalNo, string firstName
             , string secondName, string thirdName, string lastName,
-             DateTime DateOfBirth, char gender, string address, string phone, string email,
+             DateTime DateOfBirth, short gender, string address, string phone, string email,
              int nationalityCountryID, string imagePath)
         {
             int rowsAffected = 0;
@@ -180,7 +180,7 @@ namespace DVLD_DataAccess
 
             string query = "Update People " +
                 "SET NationalNo=@NationalNo, FirstName=@FirstName, SecondName=@SecondName, ThirdName=@ThirdName," +
-                "LastName=@LastName, DateOfBirth=@DateOfBirth, Gendor=@Gender, Address=@Address," +
+                "LastName=@LastName, DateOfBirth=@DateOfBirth, Gender=@Gender, Address=@Address," +
                 "Phone=@Phone, Email=@Email, NationalityCountryID=@NationalityCountryID, ImagePath=@ImagePath " +
                 "WHERE PersonID=@PersonID; ";
 
