@@ -1,0 +1,106 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DVLD_DataAccess;
+
+namespace DVLD_Business
+{
+    public class clsLicenseClass
+    {
+        private enum enMode { AddNew = 1, Update = 2 };
+        enMode _Mode = enMode.AddNew;
+
+        public int ClassID;
+        public string ClassName;
+        public string Description;
+        public short MinimumAllowedAge;
+        public short ValidityLength;
+        public float ClassFees;
+
+        public clsLicenseClass()
+        {
+            ClassID = -1;
+            ClassName= string.Empty;
+            Description= string.Empty;
+            MinimumAllowedAge = 0;
+            ValidityLength = 0;
+            ClassFees = 0;
+            _Mode= enMode.AddNew;
+        }
+
+        private clsLicenseClass(int classID,string className,string description,
+            short minimumAllowedAge,short validityLength,float classFees)
+        {
+            ClassID= classID;
+            ClassName= className;
+            Description= description;
+            MinimumAllowedAge = minimumAllowedAge;
+            ValidityLength = validityLength;
+            ClassFees = classFees;
+            _Mode = enMode.Update;
+        }
+
+        private bool _AddNewClass()
+        {
+            int classID = clsLicenseClassData.AddNewLicenseClass(ClassName, Description, MinimumAllowedAge, ValidityLength, ClassFees);
+            return classID != -1;
+        }
+
+        private bool _UpdateClass()
+        {
+            return clsLicenseClassData.UpdateLicenseClass(ClassID,ClassName, Description, MinimumAllowedAge, ValidityLength, ClassFees);
+        }
+
+        public static clsLicenseClass Find(int classID)
+        {
+            string className="",description="";
+            short minimumAllowedAge = 0;
+            short validityLength = 0;
+            float classFees = 0;
+            if (clsLicenseClassData.GetLicenseClassByID(classID, ref className, ref description,
+                ref minimumAllowedAge, ref validityLength, ref classFees))
+                return new clsLicenseClass(classID, className, description, minimumAllowedAge, validityLength, classFees);
+            else 
+                return null;
+
+        }
+
+        public static DataTable GetAll()
+        {
+            return clsLicenseClassData.GetAllLicenseClasses();
+        }
+
+        public static bool Delete(int classID)
+        {
+            return clsLicenseClassData.DeleteLicenseClass(classID);
+        }
+
+        public static bool IsLicenseClassExist(int classID)
+        {
+            return clsLicenseClassData.IsLicenseClassExist(classID);
+        }
+
+        public bool Save()
+        {
+            switch (_Mode)
+            {
+                case enMode.AddNew:
+                    {
+                        _Mode = enMode.Update;
+                        if (_AddNewClass())
+                            return true;
+                        else
+                            return false;
+                    }
+                case enMode.Update:
+                    return _UpdateClass();
+            }
+            return false;
+        }
+
+
+    }
+}
