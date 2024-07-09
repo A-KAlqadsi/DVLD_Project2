@@ -73,7 +73,11 @@ namespace DVLD_View
 
         private void tsmiShowDetails_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("show person details will be here");
+            //MessageBox.Show("show person details will be here");
+            int personID =(int)dgvListPeople.CurrentRow.Cells[0].Value;
+            frmPersonDetails personDetails = new frmPersonDetails(personID);
+            personDetails.ShowDialog();
+            personDetails.StartPosition = FormStartPosition.CenterParent;
         }
 
         private void tsmiAddNewPerson_Click(object sender, EventArgs e)
@@ -111,10 +115,7 @@ namespace DVLD_View
             MessageBox.Show("add new person will be here");
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
 
         //Filter part
         private void cbFilterPeople_SelectedIndexChanged(object sender, EventArgs e)
@@ -257,9 +258,14 @@ namespace DVLD_View
             _DataView.RowFilter = $"Email LIKE '{email}%'";
             _RefreshPeople(_DataView);
         }
-        
+
         // end filter part
-    
-    
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
     }
 }
