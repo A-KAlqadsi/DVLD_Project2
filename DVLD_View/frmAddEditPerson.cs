@@ -20,7 +20,7 @@ namespace DVLD_View
         private int _PersonID;
         private clsPerson _Person;
         private bool _IsEmpty = false;
-
+        private string _NationalNo;
         public frmAddEditPerson(int personID)
         {
             InitializeComponent();
@@ -70,6 +70,7 @@ namespace DVLD_View
             txtSecondName.Text = _Person.SecondName;
             txtThirdName.Text = _Person.ThirdName;
             txtLastName.Text = _Person.LastName;
+            _NationalNo = _Person.NationalNo;
             txtNationalNo.Text = _Person.NationalNo;
             txtPhone.Text = _Person.Phone;
             txtEmail.Text = _Person.Email;
@@ -115,7 +116,7 @@ namespace DVLD_View
                 return;
             }
 
-            if (clsPerson.IsPersonExist(txtNationalNo.Text))
+            if (clsPerson.IsPersonExist(txtNationalNo.Text) && txtNationalNo.Text != _NationalNo)
             {
                 epInputValidating.SetError(txtNationalNo, "National No already exist!");
                 return;
@@ -148,6 +149,7 @@ namespace DVLD_View
             lblMode.Text = $"Edit Person";
             this.Text = "Edit Person";
             _PersonID = _Person.PersonID;
+            _NationalNo = _Person.NationalNo;
             lblPersonID.Text = _Person.PersonID.ToString();
             _Mode = enMode.Update;
 

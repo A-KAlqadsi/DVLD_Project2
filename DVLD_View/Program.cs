@@ -18,7 +18,8 @@ namespace DVLD_View
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmTest());
             //Application.Run(new frmListPeople());
-            Application.Run(new frmAddEditPerson(1026));
+            //Application.Run(new frmMain());
+           Application.Run(new frmLoginScreen());
         }
     }
 }

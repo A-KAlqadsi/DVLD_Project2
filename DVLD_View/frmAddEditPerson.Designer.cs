@@ -610,7 +610,7 @@
             this.Controls.Add(this.lblMode);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddEditPerson";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add/Edit Person";
             this.Load += new System.EventHandler(this.frmAddEditPerson_Load);
             this.panel1.ResumeLayout(false);

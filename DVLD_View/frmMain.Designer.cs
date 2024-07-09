@@ -54,6 +54,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiSignOut = new System.Windows.Forms.ToolStripMenuItem();
             this.pbDVLDLogo = new System.Windows.Forms.PictureBox();
+            this.lblLoginUser = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDVLDLogo)).BeginInit();
             this.SuspendLayout();
@@ -215,6 +216,7 @@
             this.tsmiPeople.Name = "tsmiPeople";
             this.tsmiPeople.Size = new System.Drawing.Size(157, 76);
             this.tsmiPeople.Text = "People";
+            this.tsmiPeople.Click += new System.EventHandler(this.tsmiPeople_Click);
             // 
             // tsmiDrivers
             // 
@@ -288,11 +290,22 @@
             this.pbDVLDLogo.TabIndex = 4;
             this.pbDVLDLogo.TabStop = false;
             // 
+            // lblLoginUser
+            // 
+            this.lblLoginUser.AutoSize = true;
+            this.lblLoginUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoginUser.Location = new System.Drawing.Point(1141, 90);
+            this.lblLoginUser.Name = "lblLoginUser";
+            this.lblLoginUser.Size = new System.Drawing.Size(167, 25);
+            this.lblLoginUser.TabIndex = 6;
+            this.lblLoginUser.Text = "Login Username=";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1308, 525);
+            this.Controls.Add(this.lblLoginUser);
             this.Controls.Add(this.pbDVLDLogo);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
@@ -304,6 +317,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDVLDLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -334,6 +348,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem tsmiSignOut;
         private System.Windows.Forms.PictureBox pbDVLDLogo;
+        private System.Windows.Forms.Label lblLoginUser;
     }
 }
 

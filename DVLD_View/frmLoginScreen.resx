@@ -121,7 +121,7 @@
   <data name="pbDVLDLogo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAApwAAAKeCAYAAAAIg8uuAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsPAAALDwGS+QOlAAAAB3RJ
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsOAAALDgFAvuFBAAAAB3RJ
         TUUH5QIbDAkiej2gpgAA/3NJREFUeF7s3Xd4HNdhqP2PktziOL5xyn188yTPvbZjWY1iLyB675W9906x
         U6LELvYqiUUUKfbeC0gUgiAAovfee68LbMeivt/ZkePEydpxLJIS5fPH7wF4sDszWBDYd2dnzvx/gCRJ
         kiRJkiQ9NxYHJUmSJEmSJOlZsTgoSZIkSZIkSc+KxUFJkiRJkiRJelYsDkqSJEmSJEnSs2JxUJIkSZIk
@@ -9145,4 +9145,7 @@
         0X0VuciBLsJ5S8oRPnIgR3ivaESEyAEikv4/2BBCdPjyzy+SZW84q8wHpdgZxQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="epLoginValidate.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

@@ -82,20 +82,40 @@ namespace DVLD_View
 
         private void tsmiAddNewPerson_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("add new person will be here");
-
+            //MessageBox.Show("add new person will be here");
+            frmAddEditPerson addEditPerson = new frmAddEditPerson(-1);
+            addEditPerson.ShowDialog();
+            _ResetFilter();
         }
 
         private void tsmiEdit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("edit person will be here");
+            //MessageBox.Show("edit person will be here");
+            int iD = (int)dgvListPeople.CurrentRow.Cells[0].Value;
+            frmAddEditPerson addEdit = new frmAddEditPerson(iD);
+            addEdit.ShowDialog();
+            _ResetFilter();
+
 
         }
 
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Delete person will be here");
-
+            //MessageBox.Show("Delete person will be here");
+            int iD = (int)dgvListPeople.CurrentRow.Cells[0].Value;
+            
+            if(MessageBox.Show($"Are you sure you want to delete Person with ID=[{iD}]","Confirm Delete",MessageBoxButtons.OKCancel,MessageBoxIcon.Information)== DialogResult.OK)
+            {
+                if (clsPerson.Delete(iD))
+                {
+                    MessageBox.Show($"Delete person with ID = [{iD}] success!", "Delete Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _LoadAllPeople();
+                }
+                else
+                {
+                    MessageBox.Show($"Delete person with ID = [{iD}] fail!", "Delete Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void tsmiSendEmail_Click(object sender, EventArgs e)
@@ -112,7 +132,9 @@ namespace DVLD_View
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("add new person will be here");
+            //MessageBox.Show("add new person will be here");
+            frmAddEditPerson addEditPerson = new frmAddEditPerson(-1);
+            addEditPerson.ShowDialog();
         }
 
         
