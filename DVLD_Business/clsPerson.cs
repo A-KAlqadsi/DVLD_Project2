@@ -14,7 +14,7 @@ namespace DVLD_Business
     {
         private enum enMode { AddNew=1,Update=2};
         enMode _Mode= enMode.AddNew;
-        public int PersonID { get; }
+        public int PersonID { get; set; }
         public string NationalNo;
         public string FirstName, SecondName, ThirdName, LastName;
         public DateTime DateOfBirth;
@@ -64,10 +64,10 @@ namespace DVLD_Business
 
         private bool _AddNewPerson()
         {
-            int personID = clsPersonData.AddNewPerson(NationalNo, FirstName, SecondName, 
+            PersonID = clsPersonData.AddNewPerson(NationalNo, FirstName, SecondName, 
                 ThirdName, LastName, DateOfBirth, Gender, Address,
                 Phone, Email, NationalityCountryID, ImagePath);
-            return personID != -1;
+            return PersonID != -1;
         }
 
         private bool _UpdatePerson()

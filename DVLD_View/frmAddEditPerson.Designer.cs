@@ -30,8 +30,29 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditPerson));
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMode = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.llRemoveImage = new System.Windows.Forms.LinkLabel();
+            this.llSetImage = new System.Windows.Forms.LinkLabel();
+            this.pbFemale = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.rbFemale = new System.Windows.Forms.RadioButton();
+            this.cbCountries = new System.Windows.Forms.ComboBox();
+            this.rbMale = new System.Windows.Forms.RadioButton();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtNationalNo = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtThirdName = new System.Windows.Forms.TextBox();
+            this.txtSecondName = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
             this.pbCountry = new System.Windows.Forms.PictureBox();
             this.pbPhone = new System.Windows.Forms.PictureBox();
             this.pbDateOfBirth = new System.Windows.Forms.PictureBox();
@@ -51,29 +72,10 @@
             this.pbName = new System.Windows.Forms.PictureBox();
             this.lblPersonID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.txtSecondName = new System.Windows.Forms.TextBox();
-            this.txtThirdName = new System.Windows.Forms.TextBox();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.txtNationalNo = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.rbMale = new System.Windows.Forms.RadioButton();
-            this.cbCountries = new System.Windows.Forms.ComboBox();
-            this.rbFemale = new System.Windows.Forms.RadioButton();
-            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.pbFemale = new System.Windows.Forms.PictureBox();
-            this.llSetImage = new System.Windows.Forms.LinkLabel();
-            this.llRemoveImage = new System.Windows.Forms.LinkLabel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.epInputValidating = new System.Windows.Forms.ErrorProvider(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFemale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCountry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDateOfBirth)).BeginInit();
@@ -83,20 +85,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFemale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epInputValidating)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblMode
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(417, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 36);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Add New Person";
+            this.lblMode.AutoSize = true;
+            this.lblMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblMode.Location = new System.Drawing.Point(417, 4);
+            this.lblMode.Name = "lblMode";
+            this.lblMode.Size = new System.Drawing.Size(241, 36);
+            this.lblMode.TabIndex = 3;
+            this.lblMode.Text = "Add New Person";
             // 
             // panel1
             // 
@@ -115,7 +116,7 @@
             this.panel1.Controls.Add(this.rbMale);
             this.panel1.Controls.Add(this.txtPhone);
             this.panel1.Controls.Add(this.txtAddress);
-            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.txtNationalNo);
             this.panel1.Controls.Add(this.txtLastName);
             this.panel1.Controls.Add(this.txtThirdName);
@@ -142,7 +143,230 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1046, 379);
             this.panel1.TabIndex = 4;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.White;
+            this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(672, 318);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(138, 49);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.White;
+            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(519, 318);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(138, 49);
+            this.btnClose.TabIndex = 15;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // llRemoveImage
+            // 
+            this.llRemoveImage.AutoSize = true;
+            this.llRemoveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llRemoveImage.Location = new System.Drawing.Point(883, 301);
+            this.llRemoveImage.Name = "llRemoveImage";
+            this.llRemoveImage.Size = new System.Drawing.Size(120, 20);
+            this.llRemoveImage.TabIndex = 13;
+            this.llRemoveImage.TabStop = true;
+            this.llRemoveImage.Text = "Remove Image";
+            this.llRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llRemoveImage_LinkClicked);
+            // 
+            // llSetImage
+            // 
+            this.llSetImage.AutoSize = true;
+            this.llSetImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llSetImage.Location = new System.Drawing.Point(883, 271);
+            this.llSetImage.Name = "llSetImage";
+            this.llSetImage.Size = new System.Drawing.Size(84, 20);
+            this.llSetImage.TabIndex = 12;
+            this.llSetImage.TabStop = true;
+            this.llSetImage.Text = "Set Image";
+            this.llSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llSetImage_LinkClicked);
+            // 
+            // pbFemale
+            // 
+            this.pbFemale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbFemale.Image = global::DVLD_View.Properties.Resources.Woman_32;
+            this.pbFemale.Location = new System.Drawing.Point(272, 130);
+            this.pbFemale.Margin = new System.Windows.Forms.Padding(2);
+            this.pbFemale.Name = "pbFemale";
+            this.pbFemale.Size = new System.Drawing.Size(39, 30);
+            this.pbFemale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFemale.TabIndex = 63;
+            this.pbFemale.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(911, 9);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(49, 25);
+            this.label10.TabIndex = 60;
+            this.label10.Text = "Last";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(691, 9);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 25);
+            this.label8.TabIndex = 59;
+            this.label8.Text = "Third";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(463, 9);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 25);
+            this.label6.TabIndex = 58;
+            this.label6.Text = "Second";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(263, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 25);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "First";
+            // 
+            // dtpDateOfBirth
+            // 
+            this.dtpDateOfBirth.CustomFormat = "";
+            this.dtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(629, 89);
+            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
+            this.dtpDateOfBirth.Size = new System.Drawing.Size(181, 30);
+            this.dtpDateOfBirth.TabIndex = 5;
+            this.dtpDateOfBirth.Value = new System.DateTime(2024, 7, 9, 0, 0, 0, 0);
+            // 
+            // rbFemale
+            // 
+            this.rbFemale.AutoSize = true;
+            this.rbFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbFemale.Location = new System.Drawing.Point(314, 131);
+            this.rbFemale.Name = "rbFemale";
+            this.rbFemale.Size = new System.Drawing.Size(98, 29);
+            this.rbFemale.TabIndex = 7;
+            this.rbFemale.Tag = "1";
+            this.rbFemale.Text = "Female";
+            this.rbFemale.UseVisualStyleBackColor = true;
+            // 
+            // cbCountries
+            // 
+            this.cbCountries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCountries.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCountries.FormattingEnabled = true;
+            this.cbCountries.Location = new System.Drawing.Point(629, 184);
+            this.cbCountries.Name = "cbCountries";
+            this.cbCountries.Size = new System.Drawing.Size(181, 33);
+            this.cbCountries.Sorted = true;
+            this.cbCountries.TabIndex = 10;
+            // 
+            // rbMale
+            // 
+            this.rbMale.AutoSize = true;
+            this.rbMale.Checked = true;
+            this.rbMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMale.Location = new System.Drawing.Point(198, 131);
+            this.rbMale.Name = "rbMale";
+            this.rbMale.Size = new System.Drawing.Size(76, 29);
+            this.rbMale.TabIndex = 6;
+            this.rbMale.TabStop = true;
+            this.rbMale.Tag = "0";
+            this.rbMale.Text = "Male";
+            this.rbMale.UseVisualStyleBackColor = true;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhone.Location = new System.Drawing.Point(629, 134);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(181, 30);
+            this.txtPhone.TabIndex = 8;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.Location = new System.Drawing.Point(197, 235);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(613, 77);
+            this.txtAddress.TabIndex = 11;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(197, 179);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(181, 30);
+            this.txtEmail.TabIndex = 9;
+            // 
+            // txtNationalNo
+            // 
+            this.txtNationalNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNationalNo.Location = new System.Drawing.Point(197, 89);
+            this.txtNationalNo.Name = "txtNationalNo";
+            this.txtNationalNo.Size = new System.Drawing.Size(181, 30);
+            this.txtNationalNo.TabIndex = 4;
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastName.Location = new System.Drawing.Point(845, 37);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(181, 30);
+            this.txtLastName.TabIndex = 3;
+            // 
+            // txtThirdName
+            // 
+            this.txtThirdName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtThirdName.Location = new System.Drawing.Point(629, 37);
+            this.txtThirdName.Name = "txtThirdName";
+            this.txtThirdName.Size = new System.Drawing.Size(181, 30);
+            this.txtThirdName.TabIndex = 2;
+            // 
+            // txtSecondName
+            // 
+            this.txtSecondName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSecondName.Location = new System.Drawing.Point(413, 37);
+            this.txtSecondName.Name = "txtSecondName";
+            this.txtSecondName.Size = new System.Drawing.Size(181, 30);
+            this.txtSecondName.TabIndex = 1;
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFirstName.Location = new System.Drawing.Point(197, 37);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(181, 30);
+            this.txtFirstName.TabIndex = 0;
             // 
             // pbCountry
             // 
@@ -364,239 +588,13 @@
             this.label2.TabIndex = 30;
             this.label2.Text = "Person ID :";
             // 
-            // txtFirstName
-            // 
-            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstName.Location = new System.Drawing.Point(197, 37);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(181, 30);
-            this.txtFirstName.TabIndex = 0;
-            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstName_Validating);
-            // 
-            // txtSecondName
-            // 
-            this.txtSecondName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSecondName.Location = new System.Drawing.Point(413, 37);
-            this.txtSecondName.Name = "txtSecondName";
-            this.txtSecondName.Size = new System.Drawing.Size(181, 30);
-            this.txtSecondName.TabIndex = 1;
-            this.txtSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.txtSecondName_Validating);
-            // 
-            // txtThirdName
-            // 
-            this.txtThirdName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtThirdName.Location = new System.Drawing.Point(629, 37);
-            this.txtThirdName.Name = "txtThirdName";
-            this.txtThirdName.Size = new System.Drawing.Size(181, 30);
-            this.txtThirdName.TabIndex = 2;
-            this.txtThirdName.Validating += new System.ComponentModel.CancelEventHandler(this.txtThirdName_Validating);
-            // 
-            // txtLastName
-            // 
-            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(845, 37);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(181, 30);
-            this.txtLastName.TabIndex = 3;
-            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
-            // 
-            // txtNationalNo
-            // 
-            this.txtNationalNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNationalNo.Location = new System.Drawing.Point(197, 89);
-            this.txtNationalNo.Name = "txtNationalNo";
-            this.txtNationalNo.Size = new System.Drawing.Size(181, 30);
-            this.txtNationalNo.TabIndex = 4;
-            this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtNationalNo_Validating);
-            // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(197, 179);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(181, 30);
-            this.textBox6.TabIndex = 9;
-            this.textBox6.Validating += new System.ComponentModel.CancelEventHandler(this.textBox6_Validating);
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(197, 235);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(613, 77);
-            this.txtAddress.TabIndex = 11;
-            this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtAddress_Validating);
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(629, 134);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(181, 30);
-            this.txtPhone.TabIndex = 8;
-            this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhone_Validating);
-            // 
-            // rbMale
-            // 
-            this.rbMale.AutoSize = true;
-            this.rbMale.Checked = true;
-            this.rbMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMale.Location = new System.Drawing.Point(198, 131);
-            this.rbMale.Name = "rbMale";
-            this.rbMale.Size = new System.Drawing.Size(76, 29);
-            this.rbMale.TabIndex = 6;
-            this.rbMale.TabStop = true;
-            this.rbMale.Tag = "0";
-            this.rbMale.Text = "Male";
-            this.rbMale.UseVisualStyleBackColor = true;
-            // 
-            // cbCountries
-            // 
-            this.cbCountries.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCountries.FormattingEnabled = true;
-            this.cbCountries.Location = new System.Drawing.Point(629, 184);
-            this.cbCountries.Name = "cbCountries";
-            this.cbCountries.Size = new System.Drawing.Size(181, 33);
-            this.cbCountries.TabIndex = 10;
-            // 
-            // rbFemale
-            // 
-            this.rbFemale.AutoSize = true;
-            this.rbFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbFemale.Location = new System.Drawing.Point(314, 131);
-            this.rbFemale.Name = "rbFemale";
-            this.rbFemale.Size = new System.Drawing.Size(98, 29);
-            this.rbFemale.TabIndex = 7;
-            this.rbFemale.Tag = "1";
-            this.rbFemale.Text = "Female";
-            this.rbFemale.UseVisualStyleBackColor = true;
-            // 
-            // dtpDateOfBirth
-            // 
-            this.dtpDateOfBirth.CustomFormat = "";
-            this.dtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(629, 89);
-            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
-            this.dtpDateOfBirth.Size = new System.Drawing.Size(181, 30);
-            this.dtpDateOfBirth.TabIndex = 5;
-            this.dtpDateOfBirth.Value = new System.DateTime(2024, 7, 9, 0, 0, 0, 0);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(263, 9);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 25);
-            this.label4.TabIndex = 57;
-            this.label4.Text = "First";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(463, 9);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 25);
-            this.label6.TabIndex = 58;
-            this.label6.Text = "Second";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(691, 9);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 25);
-            this.label8.TabIndex = 59;
-            this.label8.Text = "Third";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(911, 9);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 25);
-            this.label10.TabIndex = 60;
-            this.label10.Text = "Last";
-            // 
-            // pbFemale
-            // 
-            this.pbFemale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbFemale.Image = global::DVLD_View.Properties.Resources.Woman_32;
-            this.pbFemale.Location = new System.Drawing.Point(272, 130);
-            this.pbFemale.Margin = new System.Windows.Forms.Padding(2);
-            this.pbFemale.Name = "pbFemale";
-            this.pbFemale.Size = new System.Drawing.Size(39, 30);
-            this.pbFemale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFemale.TabIndex = 63;
-            this.pbFemale.TabStop = false;
-            // 
-            // llSetImage
-            // 
-            this.llSetImage.AutoSize = true;
-            this.llSetImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llSetImage.Location = new System.Drawing.Point(883, 271);
-            this.llSetImage.Name = "llSetImage";
-            this.llSetImage.Size = new System.Drawing.Size(84, 20);
-            this.llSetImage.TabIndex = 12;
-            this.llSetImage.TabStop = true;
-            this.llSetImage.Text = "Set Image";
-            this.llSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llSetImage_LinkClicked);
-            // 
-            // llRemoveImage
-            // 
-            this.llRemoveImage.AutoSize = true;
-            this.llRemoveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llRemoveImage.Location = new System.Drawing.Point(883, 301);
-            this.llRemoveImage.Name = "llRemoveImage";
-            this.llRemoveImage.Size = new System.Drawing.Size(120, 20);
-            this.llRemoveImage.TabIndex = 13;
-            this.llRemoveImage.TabStop = true;
-            this.llRemoveImage.Text = "Remove Image";
-            this.llRemoveImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llRemoveImage_LinkClicked);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.White;
-            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(519, 318);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 49);
-            this.btnClose.TabIndex = 15;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.White;
-            this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(672, 318);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(138, 49);
-            this.btnSave.TabIndex = 14;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // epInputValidating
             // 
             this.epInputValidating.ContainerControl = this;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // frmAddEditPerson
             // 
@@ -609,13 +607,15 @@
             this.Controls.Add(this.lblPersonID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblMode);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddEditPerson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add/Edit Person";
+            this.Load += new System.EventHandler(this.frmAddEditPerson_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFemale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCountry)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDateOfBirth)).EndInit();
@@ -625,7 +625,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFemale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epInputValidating)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -634,7 +633,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMode;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pbCountry;
         private System.Windows.Forms.PictureBox pbPhone;
@@ -659,7 +658,7 @@
         private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtNationalNo;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtThirdName;
@@ -677,5 +676,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ErrorProvider epInputValidating;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
