@@ -64,6 +64,12 @@
     <Compile Include="Controls\ctrlUserPersonCard.Designer.cs">
       <DependentUpon>ctrlUserPersonCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddEditPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddEditPerson.Designer.cs">
+      <DependentUpon>frmAddEditPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmListPeople.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ctrlUserPersonCard.resx">
       <DependentUpon>ctrlUserPersonCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddEditPerson.resx">
+      <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListPeople.resx">
       <DependentUpon>frmListPeople.cs</DependentUpon>
