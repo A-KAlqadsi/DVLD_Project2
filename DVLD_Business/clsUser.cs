@@ -12,8 +12,8 @@ namespace DVLD_Business
         enum enMode { AddNew= 1,Update = 2 }
         enMode _Mode ;
 
-        public int UserID { get; }
-        public int PersonID { get; }
+        public int UserID { get; set; }
+        public int PersonID { get; set; }
         public string Username;
         public string Password;
         public bool IsActive;
@@ -40,8 +40,8 @@ namespace DVLD_Business
 
         private bool _AddNewUser()
         {
-            int userID = clsUserData.AddNewUser(PersonID,Username,Password,IsActive);
-            return userID != -1;
+            this.UserID= clsUserData.AddNewUser(PersonID,Username,Password,IsActive);
+            return this.UserID != -1;
         }
 
         private bool _UpdateUser()
@@ -111,6 +111,11 @@ namespace DVLD_Business
             return clsUserData.IsUsernameAndPasswordTrue(userName,password);
         }
         
+        public static bool IsPersonUserExist(int personID)
+        {
+            return clsUserData.IsPersonUserExist(personID);
+        }
+
         public bool Save()
         {
             switch(_Mode)

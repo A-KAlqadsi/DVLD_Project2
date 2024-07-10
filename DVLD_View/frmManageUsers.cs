@@ -90,14 +90,26 @@ namespace DVLD_View
 
         private void tsmiAddNewUser_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Add new user will be here");
-
+            //MessageBox.Show("Add new user will be here");
+            frmAddEditUser addEdit = new frmAddEditUser(-1);
+            addEdit.ShowDialog();
+            _ResetFilter();
+        }
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Add new user will be here");
+            frmAddEditUser addEdit = new frmAddEditUser(-1);
+            addEdit.ShowDialog();
+            _ResetFilter();
         }
 
         private void tsmiEdit_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Edit user will be here");
-
+            //MessageBox.Show("Edit user will be here");
+            int userID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
+            frmAddEditUser addEdit = new frmAddEditUser(userID);
+            addEdit.ShowDialog();
+            _ResetFilter();              
         }
 
         private void tsmiDelete_Click(object sender, EventArgs e)
@@ -122,11 +134,7 @@ namespace DVLD_View
 
         }
 
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Add new user will be here");
-
-        }
+       
 
         private void cbFilterUsers_SelectedIndexChanged(object sender, EventArgs e)
         {

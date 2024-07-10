@@ -15,6 +15,7 @@ namespace DVLD_View
     public partial class ctrlPersonCardWithFilter : UserControl
     {
         private int _PersonID;
+        public int PersonID = -1;
         private clsPerson _Person;
 
         public ctrlPersonCardWithFilter()
@@ -52,7 +53,11 @@ namespace DVLD_View
                     {
                        _Person = clsPerson.Find(_PersonID);
                         if (_Person != null)
+                        {
+                            PersonID = _Person.PersonID;
                             ctrlPersonCard1.LoadPersonInfo(_Person.PersonID);
+
+                        }
                         else
                             MessageBox.Show($"Person with ID = [{_PersonID}] is not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -61,7 +66,10 @@ namespace DVLD_View
                     {
                         _Person = clsPerson.Find(txtSearch.Text);
                         if (_Person != null)
+                        {
+                            PersonID = _Person.PersonID;
                             ctrlPersonCard1.LoadPersonInfo(_Person.PersonID);
+                        }
                         else
                             MessageBox.Show($"Person with National No = [{txtSearch.Text}] is not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

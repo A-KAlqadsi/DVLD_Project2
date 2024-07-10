@@ -336,5 +336,35 @@ namespace DVLD_DataAccess
             return isActive;
         }
 
+        public static bool IsPersonUserExist(int personID)
+        {
+            bool isExist = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP(1) Found=1 From Users WHERE PersonID=@PersonID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@PersonID", personID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int found))
+                    isExist = true;
+
+            }
+            catch (Exception ex)
+            {
+                isExist = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isExist;
+        }
+
+
     }
 }

@@ -16,10 +16,11 @@ namespace DVLD_View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAddEditUser());
-            //Application.Run(new frmManageUsers());
+            //Application.Run(new frmAddEditUser(1));
+            Application.Run(new frmManageUsers());
             //Application.Run(new frmMain());
-           //Application.Run(new frmLoginScreen());
+            //Application.Run(new frmLoginScreen());
+            //Application.Run(new frmFindPerson());
         }
     }
 }
