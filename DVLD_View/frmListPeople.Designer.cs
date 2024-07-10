@@ -43,8 +43,14 @@
             this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiShowDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiSendEmail = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPhoneCall = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.cbFilterPeople = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,12 +61,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.pbManagePeople = new System.Windows.Forms.PictureBox();
-            this.tsmiShowDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAddNewPerson = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSendEmail = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPhoneCall = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListPeople)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).BeginInit();
@@ -197,15 +197,69 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(204, 244);
             // 
+            // tsmiShowDetails
+            // 
+            this.tsmiShowDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmiShowDetails.Image")));
+            this.tsmiShowDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiShowDetails.Name = "tsmiShowDetails";
+            this.tsmiShowDetails.Size = new System.Drawing.Size(203, 38);
+            this.tsmiShowDetails.Text = "Show Details";
+            this.tsmiShowDetails.Click += new System.EventHandler(this.tsmiShowDetails_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(200, 6);
             // 
+            // tsmiAddNewPerson
+            // 
+            this.tsmiAddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmiAddNewPerson.Image")));
+            this.tsmiAddNewPerson.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiAddNewPerson.Name = "tsmiAddNewPerson";
+            this.tsmiAddNewPerson.Size = new System.Drawing.Size(203, 38);
+            this.tsmiAddNewPerson.Text = "Add New Person";
+            this.tsmiAddNewPerson.Click += new System.EventHandler(this.tsmiAddNewPerson_Click);
+            // 
+            // tsmiEdit
+            // 
+            this.tsmiEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsmiEdit.Image")));
+            this.tsmiEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiEdit.Name = "tsmiEdit";
+            this.tsmiEdit.Size = new System.Drawing.Size(203, 38);
+            this.tsmiEdit.Text = "Edit";
+            this.tsmiEdit.Click += new System.EventHandler(this.tsmiEdit_Click);
+            // 
+            // tsmiDelete
+            // 
+            this.tsmiDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsmiDelete.Image")));
+            this.tsmiDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiDelete.Name = "tsmiDelete";
+            this.tsmiDelete.Size = new System.Drawing.Size(203, 38);
+            this.tsmiDelete.Text = "Delete";
+            this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
+            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(200, 6);
+            // 
+            // tsmiSendEmail
+            // 
+            this.tsmiSendEmail.Image = ((System.Drawing.Image)(resources.GetObject("tsmiSendEmail.Image")));
+            this.tsmiSendEmail.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiSendEmail.Name = "tsmiSendEmail";
+            this.tsmiSendEmail.Size = new System.Drawing.Size(203, 38);
+            this.tsmiSendEmail.Text = "Send Email";
+            this.tsmiSendEmail.Click += new System.EventHandler(this.tsmiSendEmail_Click);
+            // 
+            // tsmiPhoneCall
+            // 
+            this.tsmiPhoneCall.Image = ((System.Drawing.Image)(resources.GetObject("tsmiPhoneCall.Image")));
+            this.tsmiPhoneCall.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiPhoneCall.Name = "tsmiPhoneCall";
+            this.tsmiPhoneCall.Size = new System.Drawing.Size(203, 38);
+            this.tsmiPhoneCall.Text = "Phone Call";
+            this.tsmiPhoneCall.Click += new System.EventHandler(this.tsmiPhoneCall_Click);
             // 
             // label1
             // 
@@ -336,60 +390,6 @@
             this.pbManagePeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbManagePeople.TabIndex = 1;
             this.pbManagePeople.TabStop = false;
-            // 
-            // tsmiShowDetails
-            // 
-            this.tsmiShowDetails.Image = ((System.Drawing.Image)(resources.GetObject("tsmiShowDetails.Image")));
-            this.tsmiShowDetails.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiShowDetails.Name = "tsmiShowDetails";
-            this.tsmiShowDetails.Size = new System.Drawing.Size(203, 38);
-            this.tsmiShowDetails.Text = "Show Details";
-            this.tsmiShowDetails.Click += new System.EventHandler(this.tsmiShowDetails_Click);
-            // 
-            // tsmiAddNewPerson
-            // 
-            this.tsmiAddNewPerson.Image = ((System.Drawing.Image)(resources.GetObject("tsmiAddNewPerson.Image")));
-            this.tsmiAddNewPerson.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiAddNewPerson.Name = "tsmiAddNewPerson";
-            this.tsmiAddNewPerson.Size = new System.Drawing.Size(203, 38);
-            this.tsmiAddNewPerson.Text = "Add New Person";
-            this.tsmiAddNewPerson.Click += new System.EventHandler(this.tsmiAddNewPerson_Click);
-            // 
-            // tsmiEdit
-            // 
-            this.tsmiEdit.Image = ((System.Drawing.Image)(resources.GetObject("tsmiEdit.Image")));
-            this.tsmiEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiEdit.Name = "tsmiEdit";
-            this.tsmiEdit.Size = new System.Drawing.Size(203, 38);
-            this.tsmiEdit.Text = "Edit";
-            this.tsmiEdit.Click += new System.EventHandler(this.tsmiEdit_Click);
-            // 
-            // tsmiDelete
-            // 
-            this.tsmiDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsmiDelete.Image")));
-            this.tsmiDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiDelete.Name = "tsmiDelete";
-            this.tsmiDelete.Size = new System.Drawing.Size(203, 38);
-            this.tsmiDelete.Text = "Delete";
-            this.tsmiDelete.Click += new System.EventHandler(this.tsmiDelete_Click);
-            // 
-            // tsmiSendEmail
-            // 
-            this.tsmiSendEmail.Image = ((System.Drawing.Image)(resources.GetObject("tsmiSendEmail.Image")));
-            this.tsmiSendEmail.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiSendEmail.Name = "tsmiSendEmail";
-            this.tsmiSendEmail.Size = new System.Drawing.Size(203, 38);
-            this.tsmiSendEmail.Text = "Send Email";
-            this.tsmiSendEmail.Click += new System.EventHandler(this.tsmiSendEmail_Click);
-            // 
-            // tsmiPhoneCall
-            // 
-            this.tsmiPhoneCall.Image = ((System.Drawing.Image)(resources.GetObject("tsmiPhoneCall.Image")));
-            this.tsmiPhoneCall.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiPhoneCall.Name = "tsmiPhoneCall";
-            this.tsmiPhoneCall.Size = new System.Drawing.Size(203, 38);
-            this.tsmiPhoneCall.Text = "Phone Call";
-            this.tsmiPhoneCall.Click += new System.EventHandler(this.tsmiPhoneCall_Click);
             // 
             // frmListPeople
             // 

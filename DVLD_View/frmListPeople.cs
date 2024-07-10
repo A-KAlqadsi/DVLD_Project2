@@ -186,9 +186,7 @@ namespace DVLD_View
                     {
                         if (txtFilter.Text == "")
                         {
-                            _DataTable = clsPerson.GetAll();                        
-                            _DataView = _DataTable.DefaultView;
-                            _RefreshPeople(_DataView);
+                            _LoadAllPeople();
                             return;
                         }
 
@@ -228,7 +226,7 @@ namespace DVLD_View
         {
             _DataView.RowFilter = $"Gender = {gender}";
             _RefreshPeople(_DataView);
-            _DataView = _DataTable.DefaultView;
+            
         }
 
         private void _FilterByPersonID(int personID)
