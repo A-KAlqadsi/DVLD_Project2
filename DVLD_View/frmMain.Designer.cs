@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lblLoginUser = new System.Windows.Forms.Label();
+            this.pbDVLDLogo = new System.Windows.Forms.PictureBox();
             this.tsmiApplications = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiListApplications = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,8 +55,6 @@
             this.tsmiChangePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiSignOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbDVLDLogo = new System.Windows.Forms.PictureBox();
-            this.lblLoginUser = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDVLDLogo)).BeginInit();
             this.SuspendLayout();
@@ -76,6 +76,27 @@
             this.menuStrip1.Size = new System.Drawing.Size(1308, 80);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lblLoginUser
+            // 
+            this.lblLoginUser.AutoSize = true;
+            this.lblLoginUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoginUser.Location = new System.Drawing.Point(1141, 90);
+            this.lblLoginUser.Name = "lblLoginUser";
+            this.lblLoginUser.Size = new System.Drawing.Size(167, 25);
+            this.lblLoginUser.TabIndex = 6;
+            this.lblLoginUser.Text = "Login Username=";
+            // 
+            // pbDVLDLogo
+            // 
+            this.pbDVLDLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pbDVLDLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbDVLDLogo.Image")));
+            this.pbDVLDLogo.Location = new System.Drawing.Point(406, 170);
+            this.pbDVLDLogo.Name = "pbDVLDLogo";
+            this.pbDVLDLogo.Size = new System.Drawing.Size(596, 286);
+            this.pbDVLDLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbDVLDLogo.TabIndex = 4;
+            this.pbDVLDLogo.TabStop = false;
             // 
             // tsmiApplications
             // 
@@ -208,6 +229,7 @@
             this.tsmiManageApplicationTypes.Name = "tsmiManageApplicationTypes";
             this.tsmiManageApplicationTypes.Size = new System.Drawing.Size(405, 70);
             this.tsmiManageApplicationTypes.Text = "Manage Application Types";
+            this.tsmiManageApplicationTypes.Click += new System.EventHandler(this.tsmiManageApplicationTypes_Click);
             // 
             // tsmiPeople
             // 
@@ -281,27 +303,6 @@
             this.tsmiSignOut.Name = "tsmiSignOut";
             this.tsmiSignOut.Size = new System.Drawing.Size(275, 45);
             this.tsmiSignOut.Text = "Sign Out";
-            // 
-            // pbDVLDLogo
-            // 
-            this.pbDVLDLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pbDVLDLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbDVLDLogo.Image")));
-            this.pbDVLDLogo.Location = new System.Drawing.Point(406, 170);
-            this.pbDVLDLogo.Name = "pbDVLDLogo";
-            this.pbDVLDLogo.Size = new System.Drawing.Size(596, 286);
-            this.pbDVLDLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbDVLDLogo.TabIndex = 4;
-            this.pbDVLDLogo.TabStop = false;
-            // 
-            // lblLoginUser
-            // 
-            this.lblLoginUser.AutoSize = true;
-            this.lblLoginUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoginUser.Location = new System.Drawing.Point(1141, 90);
-            this.lblLoginUser.Name = "lblLoginUser";
-            this.lblLoginUser.Size = new System.Drawing.Size(167, 25);
-            this.lblLoginUser.TabIndex = 6;
-            this.lblLoginUser.Text = "Login Username=";
             // 
             // frmMain
             // 

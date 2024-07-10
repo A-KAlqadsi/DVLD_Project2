@@ -95,8 +95,6 @@ namespace DVLD_View
             frmAddEditPerson addEdit = new frmAddEditPerson(iD);
             addEdit.ShowDialog();
             _ResetFilter();
-
-
         }
 
         private void tsmiDelete_Click(object sender, EventArgs e)

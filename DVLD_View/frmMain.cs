@@ -58,5 +58,11 @@ namespace DVLD_View
             frmChangePassword changePassword =new frmChangePassword(userID);
             changePassword.ShowDialog();
         }
+
+        private void tsmiManageApplicationTypes_Click(object sender, EventArgs e)
+        {
+            frmManageApplicationTypes appTypes = new frmManageApplicationTypes();
+            appTypes.ShowDialog();
+        }
     }
 }
