@@ -75,8 +75,17 @@ namespace DVLD_View
 
         private void tsmiShowDetails_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Show user details will be here");
+            //MessageBox.Show("Show user details will be here");
+            int iD =(int)dgvListUsers.CurrentRow.Cells[0].Value;
+            frmUserDetails user = new frmUserDetails(iD);
+            user.ShowDialog();
+        }
 
+        private void dgvListUsers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int iD = (int)dgvListUsers.CurrentRow.Cells[0].Value;
+            frmUserDetails user = new frmUserDetails(iD);
+            user.ShowDialog();
         }
 
         private void tsmiAddNewUser_Click(object sender, EventArgs e)
