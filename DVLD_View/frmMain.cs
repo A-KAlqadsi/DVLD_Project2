@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD_Business;
 
 namespace DVLD_View
 {
@@ -35,6 +36,27 @@ namespace DVLD_View
         {
             frmListPeople managePeople = new frmListPeople();
             managePeople.ShowDialog();
+        }
+
+        private void tsmiUsers_Click(object sender, EventArgs e)
+        {
+            frmManageUsers manageUsers = new frmManageUsers();
+            manageUsers.ShowDialog();
+        }
+
+        private void tsmiCurrentUserInfo_Click(object sender, EventArgs e)
+        {
+            int userID = clsUser.Find(_Username).UserID;
+
+            frmUserDetails userDetails  = new frmUserDetails(userID);
+            userDetails.ShowDialog();
+        }
+
+        private void tsmiChangePassword_Click(object sender, EventArgs e)
+        {
+            int userID =clsUser.Find(_Username).UserID;
+            frmChangePassword changePassword =new frmChangePassword(userID);
+            changePassword.ShowDialog();
         }
     }
 }

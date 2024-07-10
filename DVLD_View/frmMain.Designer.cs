@@ -233,6 +233,7 @@
             this.tsmiUsers.Name = "tsmiUsers";
             this.tsmiUsers.Size = new System.Drawing.Size(145, 76);
             this.tsmiUsers.Text = "Users";
+            this.tsmiUsers.Click += new System.EventHandler(this.tsmiUsers_Click);
             // 
             // tsmiAccountSettings
             // 
@@ -255,6 +256,7 @@
             this.tsmiCurrentUserInfo.Name = "tsmiCurrentUserInfo";
             this.tsmiCurrentUserInfo.Size = new System.Drawing.Size(275, 45);
             this.tsmiCurrentUserInfo.Text = "Current User Info";
+            this.tsmiCurrentUserInfo.Click += new System.EventHandler(this.tsmiCurrentUserInfo_Click);
             // 
             // tsmiChangePassword
             // 
@@ -264,6 +266,7 @@
             this.tsmiChangePassword.Name = "tsmiChangePassword";
             this.tsmiChangePassword.Size = new System.Drawing.Size(275, 45);
             this.tsmiChangePassword.Text = "Change Password";
+            this.tsmiChangePassword.Click += new System.EventHandler(this.tsmiChangePassword_Click);
             // 
             // toolStripMenuItem3
             // 

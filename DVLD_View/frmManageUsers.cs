@@ -119,7 +119,10 @@ namespace DVLD_View
         }
         private void tsmiChangePassword_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Change user password will be here");
+            //MessageBox.Show("Change user password will be here");
+            int userID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
+            frmChangePassword changePassword = new frmChangePassword(userID);
+            changePassword.ShowDialog();
         }
 
         private void tsmiSendEmail_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,13 @@ namespace DVLD_View
         {
             InitializeComponent();
             _UserID = userID;
+        }
+
+        public frmUserDetails(string userName)
+        {
+            InitializeComponent();
+
+            _UserID = clsUser.Find(userName).UserID;
         }
 
         private void frmUserDetails_Load(object sender, EventArgs e)
