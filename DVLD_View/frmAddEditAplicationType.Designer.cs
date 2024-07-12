@@ -50,12 +50,12 @@
             // lblMode
             // 
             this.lblMode.AutoSize = true;
-            this.lblMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblMode.Location = new System.Drawing.Point(154, 27);
             this.lblMode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMode.Name = "lblMode";
-            this.lblMode.Size = new System.Drawing.Size(365, 36);
+            this.lblMode.Size = new System.Drawing.Size(342, 36);
             this.lblMode.TabIndex = 5;
             this.lblMode.Text = "Update Application Type";
             // 
