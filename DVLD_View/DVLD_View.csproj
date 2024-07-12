@@ -70,6 +70,12 @@
     <Compile Include="ctrlApplicationCard.Designer.cs">
       <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlDriverInternationalLicenseCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlDriverInternationalLicenseCard.Designer.cs">
+      <DependentUpon>ctrlDriverInternationalLicenseCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlDriverLicenseCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlApplicationCard.resx">
       <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlDriverInternationalLicenseCard.resx">
+      <DependentUpon>ctrlDriverInternationalLicenseCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlDriverLicenseCard.resx">
       <DependentUpon>ctrlDriverLicenseCard.cs</DependentUpon>
