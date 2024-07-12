@@ -57,6 +57,7 @@
             this.pbGender = new System.Windows.Forms.PictureBox();
             this.pbName = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.llEditPerson = new System.Windows.Forms.LinkLabel();
             this.gbPersonInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCountry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhone)).BeginInit();
@@ -71,6 +72,7 @@
             // 
             // gbPersonInfo
             // 
+            this.gbPersonInfo.Controls.Add(this.llEditPerson);
             this.gbPersonInfo.Controls.Add(this.pbCountry);
             this.gbPersonInfo.Controls.Add(this.pbPhone);
             this.gbPersonInfo.Controls.Add(this.pbDateOfBirth);
@@ -406,6 +408,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Person ID :";
             // 
+            // llEditPerson
+            // 
+            this.llEditPerson.AutoSize = true;
+            this.llEditPerson.Location = new System.Drawing.Point(762, 39);
+            this.llEditPerson.Name = "llEditPerson";
+            this.llEditPerson.Size = new System.Drawing.Size(112, 25);
+            this.llEditPerson.TabIndex = 19;
+            this.llEditPerson.TabStop = true;
+            this.llEditPerson.Text = "Edit Person";
+            this.llEditPerson.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditPerson_LinkClicked);
+            // 
             // ctrlPersonCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -458,5 +471,6 @@
         private System.Windows.Forms.PictureBox pbGender;
         private System.Windows.Forms.PictureBox pbName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel llEditPerson;
     }
 }

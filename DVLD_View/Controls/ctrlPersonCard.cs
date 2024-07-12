@@ -33,6 +33,7 @@ namespace DVLD_View
 
         public void LoadPersonInfo(int personID)
         {
+            
             _Person = clsPerson.Find(personID);
             if (_Person == null)
             {
@@ -40,7 +41,10 @@ namespace DVLD_View
                 MessageBox.Show("No Person with PersonID = " + personID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
+            {
+                _PersonID = personID;
                 _FillPersonInfo();
+            }
 
 
         }
@@ -54,7 +58,10 @@ namespace DVLD_View
                 MessageBox.Show("No Person with PersonID = " + nationalNo, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
+            {
+                _PersonID = _Person.PersonID;
                 _FillPersonInfo();
+            }
 
 
         }
@@ -111,6 +118,10 @@ namespace DVLD_View
 
         }
 
-
+        private void llEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAddEditPerson addEditPerson = new frmAddEditPerson(_PersonID);
+            addEditPerson.ShowDialog();
+        }
     }
 }
