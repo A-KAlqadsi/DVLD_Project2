@@ -21,7 +21,7 @@ namespace DVLD_View
 
         private void _RefreshTestTypes()
         {
-            dgvListApplicationTypes.Rows.Clear();
+            dgvListTestTypes.Rows.Clear();
             int counter = 0;
             DataTable dt = clsTestType.GetAll();
 
@@ -29,7 +29,7 @@ namespace DVLD_View
                 counter = dt.Rows.Count;
             foreach (DataRow row in dt.Rows)
             {
-                dgvListApplicationTypes.Rows.Add(row["TestTypeID"], row["TestTypeTitle"], row["TestTypeDescription"], row["TestTypeFees"]);
+                dgvListTestTypes.Rows.Add(row["TestTypeID"], row["TestTypeTitle"], row["TestTypeDescription"], row["TestTypeFees"]);
             }
 
             lblRecordsCount.Text = counter.ToString();
@@ -43,6 +43,14 @@ namespace DVLD_View
 
         private void frmManageTestTypes_Load(object sender, EventArgs e)
         {
+            _RefreshTestTypes();
+        }
+
+        private void tsmiEditApplicationTypeInfo_Click(object sender, EventArgs e)
+        {
+            int iD = (int)dgvListTestTypes.CurrentRow.Cells[0].Value;
+            frmAddEditTestType testType = new frmAddEditTestType(iD);
+            testType.ShowDialog();
             _RefreshTestTypes();
         }
     }

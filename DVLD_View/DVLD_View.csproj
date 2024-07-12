@@ -100,6 +100,12 @@
     <Compile Include="frmAddEditPerson.Designer.cs">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddEditTestType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddEditTestType.Designer.cs">
+      <DependentUpon>frmAddEditTestType.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddEditUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddEditTestType.resx">
+      <DependentUpon>frmAddEditTestType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddEditUser.resx">
       <DependentUpon>frmAddEditUser.cs</DependentUpon>
