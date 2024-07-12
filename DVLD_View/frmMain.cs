@@ -64,5 +64,10 @@ namespace DVLD_View
             frmManageApplicationTypes appTypes = new frmManageApplicationTypes();
             appTypes.ShowDialog();
         }
+
+        private void tsmiSignOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
