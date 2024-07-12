@@ -21,6 +21,7 @@ namespace DVLD_View
 
         private void _RefreshApplicationTypes()
         {
+            dgvListApplicationTypes.Rows.Clear();
             DataTable dt = clsApplicationType.GetAll();
             int counter = dt.Rows.Count;
             foreach (DataRow dr in dt.Rows)
@@ -38,6 +39,14 @@ namespace DVLD_View
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tsmiEditApplicationTypeInfo_Click(object sender, EventArgs e)
+        {
+            int id = (int)dgvListApplicationTypes.CurrentRow.Cells[0].Value;
+            frmAddEditAplicationType addEdit = new frmAddEditAplicationType(id);
+            addEdit.ShowDialog();
+            _RefreshApplicationTypes();
         }
     }
 }
