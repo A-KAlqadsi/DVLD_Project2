@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlUserPersonCard1 = new DVLD_View.ctrlUserPersonCard();
+            this.ctrlApplicationCard1 = new DVLD_View.ctrlApplicationCard();
             this.SuspendLayout();
             // 
-            // ctrlUserPersonCard1
+            // ctrlApplicationCard1
             // 
-            this.ctrlUserPersonCard1.Location = new System.Drawing.Point(110, 45);
-            this.ctrlUserPersonCard1.Name = "ctrlUserPersonCard1";
-            this.ctrlUserPersonCard1.Size = new System.Drawing.Size(914, 334);
-            this.ctrlUserPersonCard1.TabIndex = 0;
+            this.ctrlApplicationCard1.BackColor = System.Drawing.Color.White;
+            this.ctrlApplicationCard1.Location = new System.Drawing.Point(117, 43);
+            this.ctrlApplicationCard1.Name = "ctrlApplicationCard1";
+            this.ctrlApplicationCard1.Size = new System.Drawing.Size(1037, 450);
+            this.ctrlApplicationCard1.TabIndex = 0;
             // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1441, 574);
-            this.Controls.Add(this.ctrlUserPersonCard1);
+            this.Controls.Add(this.ctrlApplicationCard1);
             this.Name = "frmTest";
             this.Text = "frmTest";
             this.Load += new System.EventHandler(this.frmTest_Load);
@@ -53,6 +54,6 @@
 
         #endregion
 
-        private ctrlUserPersonCard ctrlUserPersonCard1;
+        private ctrlApplicationCard ctrlApplicationCard1;
     }
 }

@@ -64,6 +64,24 @@
     <Compile Include="Controls\ctrlUserPersonCard.Designer.cs">
       <DependentUpon>ctrlUserPersonCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlApplicationCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlApplicationCard.Designer.cs">
+      <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrlDriverLicenseCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlDriverLicenseCard.Designer.cs">
+      <DependentUpon>ctrlDriverLicenseCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrlDriverLicenseCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlDriverLicenseCardWithFilter.Designer.cs">
+      <DependentUpon>ctrlDriverLicenseCardWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddEditPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +164,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ctrlUserPersonCard.resx">
       <DependentUpon>ctrlUserPersonCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlApplicationCard.resx">
+      <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlDriverLicenseCard.resx">
+      <DependentUpon>ctrlDriverLicenseCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlDriverLicenseCardWithFilter.resx">
+      <DependentUpon>ctrlDriverLicenseCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>

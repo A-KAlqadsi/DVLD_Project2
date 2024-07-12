@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace DVLD_View
 {
-    public partial class frmTest : Form
+    public partial class ctrlDriverLicenseCard : UserControl
     {
-        public frmTest()
+        public ctrlDriverLicenseCard()
         {
             InitializeComponent();
-        }
-
-        private void frmTest_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

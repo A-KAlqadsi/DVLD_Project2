@@ -30,10 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlPersonCard));
             this.gbPersonInfo = new System.Windows.Forms.GroupBox();
-            this.pbCountry = new System.Windows.Forms.PictureBox();
-            this.pbPhone = new System.Windows.Forms.PictureBox();
-            this.pbDateOfBirth = new System.Windows.Forms.PictureBox();
-            this.pbNationalNo = new System.Windows.Forms.PictureBox();
+            this.llEditPerson = new System.Windows.Forms.LinkLabel();
             this.lblCountry = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.lblPhone = new System.Windows.Forms.Label();
@@ -51,13 +48,16 @@
             this.lblName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblPersonID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pbCountry = new System.Windows.Forms.PictureBox();
+            this.pbPhone = new System.Windows.Forms.PictureBox();
+            this.pbDateOfBirth = new System.Windows.Forms.PictureBox();
+            this.pbNationalNo = new System.Windows.Forms.PictureBox();
             this.pbPersonalImage = new System.Windows.Forms.PictureBox();
             this.pbAddress = new System.Windows.Forms.PictureBox();
             this.pbEmail = new System.Windows.Forms.PictureBox();
             this.pbGender = new System.Windows.Forms.PictureBox();
             this.pbName = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.llEditPerson = new System.Windows.Forms.LinkLabel();
             this.gbPersonInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCountry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhone)).BeginInit();
@@ -72,6 +72,7 @@
             // 
             // gbPersonInfo
             // 
+            this.gbPersonInfo.BackColor = System.Drawing.Color.White;
             this.gbPersonInfo.Controls.Add(this.llEditPerson);
             this.gbPersonInfo.Controls.Add(this.pbCountry);
             this.gbPersonInfo.Controls.Add(this.pbPhone);
@@ -108,53 +109,16 @@
             this.gbPersonInfo.TabStop = false;
             this.gbPersonInfo.Text = "Person Information";
             // 
-            // pbCountry
+            // llEditPerson
             // 
-            this.pbCountry.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbCountry.Image = ((System.Drawing.Image)(resources.GetObject("pbCountry.Image")));
-            this.pbCountry.Location = new System.Drawing.Point(540, 164);
-            this.pbCountry.Margin = new System.Windows.Forms.Padding(2);
-            this.pbCountry.Name = "pbCountry";
-            this.pbCountry.Size = new System.Drawing.Size(39, 30);
-            this.pbCountry.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCountry.TabIndex = 1;
-            this.pbCountry.TabStop = false;
-            // 
-            // pbPhone
-            // 
-            this.pbPhone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbPhone.Image = ((System.Drawing.Image)(resources.GetObject("pbPhone.Image")));
-            this.pbPhone.Location = new System.Drawing.Point(540, 132);
-            this.pbPhone.Margin = new System.Windows.Forms.Padding(2);
-            this.pbPhone.Name = "pbPhone";
-            this.pbPhone.Size = new System.Drawing.Size(39, 30);
-            this.pbPhone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPhone.TabIndex = 1;
-            this.pbPhone.TabStop = false;
-            // 
-            // pbDateOfBirth
-            // 
-            this.pbDateOfBirth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbDateOfBirth.Image = ((System.Drawing.Image)(resources.GetObject("pbDateOfBirth.Image")));
-            this.pbDateOfBirth.Location = new System.Drawing.Point(540, 100);
-            this.pbDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
-            this.pbDateOfBirth.Name = "pbDateOfBirth";
-            this.pbDateOfBirth.Size = new System.Drawing.Size(39, 30);
-            this.pbDateOfBirth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbDateOfBirth.TabIndex = 1;
-            this.pbDateOfBirth.TabStop = false;
-            // 
-            // pbNationalNo
-            // 
-            this.pbNationalNo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbNationalNo.Image = ((System.Drawing.Image)(resources.GetObject("pbNationalNo.Image")));
-            this.pbNationalNo.Location = new System.Drawing.Point(144, 94);
-            this.pbNationalNo.Margin = new System.Windows.Forms.Padding(2);
-            this.pbNationalNo.Name = "pbNationalNo";
-            this.pbNationalNo.Size = new System.Drawing.Size(39, 30);
-            this.pbNationalNo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbNationalNo.TabIndex = 1;
-            this.pbNationalNo.TabStop = false;
+            this.llEditPerson.AutoSize = true;
+            this.llEditPerson.Location = new System.Drawing.Point(762, 39);
+            this.llEditPerson.Name = "llEditPerson";
+            this.llEditPerson.Size = new System.Drawing.Size(112, 25);
+            this.llEditPerson.TabIndex = 19;
+            this.llEditPerson.TabStop = true;
+            this.llEditPerson.Text = "Edit Person";
+            this.llEditPerson.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditPerson_LinkClicked);
             // 
             // lblCountry
             // 
@@ -335,6 +299,65 @@
             this.lblPersonID.TabIndex = 2;
             this.lblPersonID.Text = "[????]";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(120, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Person ID :";
+            // 
+            // pbCountry
+            // 
+            this.pbCountry.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbCountry.Image = ((System.Drawing.Image)(resources.GetObject("pbCountry.Image")));
+            this.pbCountry.Location = new System.Drawing.Point(540, 164);
+            this.pbCountry.Margin = new System.Windows.Forms.Padding(2);
+            this.pbCountry.Name = "pbCountry";
+            this.pbCountry.Size = new System.Drawing.Size(39, 30);
+            this.pbCountry.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCountry.TabIndex = 1;
+            this.pbCountry.TabStop = false;
+            // 
+            // pbPhone
+            // 
+            this.pbPhone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbPhone.Image = ((System.Drawing.Image)(resources.GetObject("pbPhone.Image")));
+            this.pbPhone.Location = new System.Drawing.Point(540, 132);
+            this.pbPhone.Margin = new System.Windows.Forms.Padding(2);
+            this.pbPhone.Name = "pbPhone";
+            this.pbPhone.Size = new System.Drawing.Size(39, 30);
+            this.pbPhone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPhone.TabIndex = 1;
+            this.pbPhone.TabStop = false;
+            // 
+            // pbDateOfBirth
+            // 
+            this.pbDateOfBirth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbDateOfBirth.Image = ((System.Drawing.Image)(resources.GetObject("pbDateOfBirth.Image")));
+            this.pbDateOfBirth.Location = new System.Drawing.Point(540, 100);
+            this.pbDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
+            this.pbDateOfBirth.Name = "pbDateOfBirth";
+            this.pbDateOfBirth.Size = new System.Drawing.Size(39, 30);
+            this.pbDateOfBirth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbDateOfBirth.TabIndex = 1;
+            this.pbDateOfBirth.TabStop = false;
+            // 
+            // pbNationalNo
+            // 
+            this.pbNationalNo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbNationalNo.Image = ((System.Drawing.Image)(resources.GetObject("pbNationalNo.Image")));
+            this.pbNationalNo.Location = new System.Drawing.Point(144, 94);
+            this.pbNationalNo.Margin = new System.Windows.Forms.Padding(2);
+            this.pbNationalNo.Name = "pbNationalNo";
+            this.pbNationalNo.Size = new System.Drawing.Size(39, 30);
+            this.pbNationalNo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbNationalNo.TabIndex = 1;
+            this.pbNationalNo.TabStop = false;
+            // 
             // pbPersonalImage
             // 
             this.pbPersonalImage.BackColor = System.Drawing.SystemColors.Control;
@@ -396,28 +419,6 @@
             this.pbName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbName.TabIndex = 1;
             this.pbName.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Person ID :";
-            // 
-            // llEditPerson
-            // 
-            this.llEditPerson.AutoSize = true;
-            this.llEditPerson.Location = new System.Drawing.Point(762, 39);
-            this.llEditPerson.Name = "llEditPerson";
-            this.llEditPerson.Size = new System.Drawing.Size(112, 25);
-            this.llEditPerson.TabIndex = 19;
-            this.llEditPerson.TabStop = true;
-            this.llEditPerson.Text = "Edit Person";
-            this.llEditPerson.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditPerson_LinkClicked);
             // 
             // ctrlPersonCard
             // 
