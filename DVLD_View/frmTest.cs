@@ -21,5 +21,19 @@ namespace DVLD_View
         {
             
         }
+
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                errorProvider1.SetError(textBox1, "this is required!");
+            }
+            else
+                errorProvider1.SetError(textBox1, "");
+            
+            
+
+        }
     }
 }

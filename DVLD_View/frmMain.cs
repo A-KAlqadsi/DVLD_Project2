@@ -69,5 +69,11 @@ namespace DVLD_View
         {
             this.Close();
         }
+
+        private void tsmiManageTestTypes_Click(object sender, EventArgs e)
+        {
+            frmManageTestTypes manageTestTypes = new frmManageTestTypes();
+            manageTestTypes.ShowDialog();
+        }
     }
 }

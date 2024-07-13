@@ -91,7 +91,7 @@
             this.dgvListPeople.ReadOnly = true;
             this.dgvListPeople.RowHeadersWidth = 51;
             this.dgvListPeople.RowTemplate.Height = 24;
-            this.dgvListPeople.Size = new System.Drawing.Size(1502, 290);
+            this.dgvListPeople.Size = new System.Drawing.Size(1502, 296);
             this.dgvListPeople.TabIndex = 0;
             // 
             // colPersonID
@@ -359,9 +359,9 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1378, 512);
+            this.btnClose.Location = new System.Drawing.Point(1378, 513);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 49);
+            this.btnClose.Size = new System.Drawing.Size(138, 43);
             this.btnClose.TabIndex = 11;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -373,9 +373,9 @@
             this.btnAddNew.BackgroundImage = global::DVLD_View.Properties.Resources.Add_Person_40;
             this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Location = new System.Drawing.Point(1463, 171);
+            this.btnAddNew.Location = new System.Drawing.Point(1424, 146);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(50, 34);
+            this.btnAddNew.Size = new System.Drawing.Size(89, 59);
             this.btnAddNew.TabIndex = 4;
             this.btnAddNew.UseVisualStyleBackColor = false;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);

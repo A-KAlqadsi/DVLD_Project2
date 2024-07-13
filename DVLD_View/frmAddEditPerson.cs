@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_Business;
@@ -21,6 +22,7 @@ namespace DVLD_View
         private clsPerson _Person;
         private bool _IsEmpty = false;
         private string _NationalNo;
+        private string _ImageLocation = "";
         public frmAddEditPerson(int personID)
         {
             InitializeComponent();
@@ -38,13 +40,13 @@ namespace DVLD_View
             {
                 cbCountries.Items.Add(dr["CountryName"]);
             }
-            
         }
         
         private void _LoadData()
         {
+            dtpDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
             _LoadCountriesToComboBox();
-            cbCountries.SelectedIndex = 0;
+            cbCountries.SelectedItem = "Yemen";
 
             if (_Mode == enMode.AddNew)
             {
@@ -111,7 +113,7 @@ namespace DVLD_View
 
             if (_IsTxtEmpty())
             {
-                MessageBox.Show("Save failed");
+                MessageBox.Show($"Can't Save, mouse hover on{Environment.NewLine}the red icon(s) for Info", "Save Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _IsEmpty = false;
                 return;
             }
@@ -119,8 +121,20 @@ namespace DVLD_View
             if (clsPerson.IsPersonExist(txtNationalNo.Text) && txtNationalNo.Text != _NationalNo)
             {
                 epInputValidating.SetError(txtNationalNo, "National No already exist!");
+                MessageBox.Show($"Can't Save, mouse hover on{Environment.NewLine}the red icon(s) for Info", "Save Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            if(txtEmail.Text.Trim() != "")
+            {
+                if(!_IsValideEmail(txtEmail.Text.Trim()))
+                {
+                    MessageBox.Show($"Can't Save, mouse hover on{Environment.NewLine}the red icon(s) for Info", "Save Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+
 
             _Person.NationalNo = txtNationalNo.Text;
             _Person.FirstName= txtFirstName.Text;
@@ -185,7 +199,7 @@ namespace DVLD_View
                 _IsEmpty = true;
                 epInputValidating.SetError(txtPhone, "Phone is required!");
             }
-
+            
             if (txtAddress.Text.Trim() == "")
             {
                 _IsEmpty = true;
@@ -231,6 +245,105 @@ namespace DVLD_View
 
             }
         }
+
+        private void txtNationalNo_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtNationalNo.Text.Trim() == "")
+            {
+                epInputValidating.SetError(txtNationalNo, "National No is required!");
+                return;
+            }
+            else
+            {
+                if (clsPerson.IsPersonExist(txtNationalNo.Text) && txtNationalNo.Text != _NationalNo)
+                    epInputValidating.SetError(txtNationalNo, "National No already exists!");
+                else
+                    epInputValidating.SetError(txtNationalNo, "");
+            }         
+        }
+
+        private void txtFirstName_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtFirstName.Text.Trim() == "")
+                epInputValidating.SetError(txtFirstName, "First name is required!");
+            else
+                epInputValidating.SetError(txtFirstName, "");
+        }
+
+        private void txtSecondName_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtSecondName.Text.Trim() == "")
+                epInputValidating.SetError(txtSecondName, "Second name is required!");
+            else
+                epInputValidating.SetError(txtSecondName, "");
+            
+        }
+
+        private void txtLastName_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtLastName.Text.Trim() == "")
+                epInputValidating.SetError(txtLastName, "Last name is required!");
+            else
+                epInputValidating.SetError(txtLastName, "");
+
+        }
+
+        private void txtPhone_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtPhone.Text.Trim() == "")
+                epInputValidating.SetError(txtPhone, "Phone is required!");
+            else
+                epInputValidating.SetError(txtPhone, "");
+
+        }
+
+        private bool IsValidEmailPattern(string email)
+        {
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, emailPattern);
+        }
+
+        private bool _IsValideEmail(string email)
+        {
+            if (!IsValidEmailPattern(email))
+            {
+                epInputValidating.SetError(txtEmail, "Email pattern (example@gmail.com) is not right!");
+                return false;
+            }
+            else
+                epInputValidating.SetError(txtEmail, "");
+            return true;
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if(txtEmail.Text.Trim() != "")
+            {
+                _IsValideEmail(txtEmail.Text.Trim());
+            }
+        }
+
+        private void txtAddress_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtAddress.Text.Trim() == "")
+                epInputValidating.SetError(txtAddress, "Address is required!");
+            else
+                epInputValidating.SetError(txtAddress, "");
+        }
+
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            if(_ImageLocation == "")
+                pbPersonalImage.Image = Image.FromFile(@"C:\Users\Abdulkarim\source\Abu-Hadhoud\19 DVLD\DVLD_View\Icons\Male 512.png");
+        }
+
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            if(_ImageLocation == "")
+                pbPersonalImage.Image = Image.FromFile(@"C:\Users\Abdulkarim\source\Abu-Hadhoud\19 DVLD\DVLD_View\Icons\Female 512.png");
+
+        }
+
 
     }
 }

@@ -35,6 +35,7 @@ namespace DVLD_Business
             TestTypeTitle= title;
             TestTypeDescription= description;
             TestTypeFees= fees;
+            _Mode = enMode.Update;
         }
 
         private bool _AddNew()

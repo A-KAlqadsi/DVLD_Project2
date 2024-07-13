@@ -41,9 +41,16 @@
             this.tsmiDamagedDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReleaseDetainedDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRetakeTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiManageApplications = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLocalDrivingLicenseApps = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiInternationalLicenseApps = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDetainLicenses = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiManageDetainedLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDetainLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiReleaseDetainLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiManageApplicationTypes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiManageTestTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPeople = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUsers = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,13 +61,6 @@
             this.tsmiSignOut = new System.Windows.Forms.ToolStripMenuItem();
             this.lblLoginUser = new System.Windows.Forms.Label();
             this.pbDVLDLogo = new System.Windows.Forms.PictureBox();
-            this.tsmiManageApplications = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLocalDrivingLicenseApps = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiInternationalLicenseApps = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiManageDetainedLicense = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDetainLicense = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiReleaseDetainLicense = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiManageTestTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDVLDLogo)).BeginInit();
             this.SuspendLayout();
@@ -187,6 +187,33 @@
             this.tsmiRetakeTest.Size = new System.Drawing.Size(436, 38);
             this.tsmiRetakeTest.Text = "Retake Test";
             // 
+            // tsmiManageApplications
+            // 
+            this.tsmiManageApplications.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiLocalDrivingLicenseApps,
+            this.tsmiInternationalLicenseApps});
+            this.tsmiManageApplications.Image = ((System.Drawing.Image)(resources.GetObject("tsmiManageApplications.Image")));
+            this.tsmiManageApplications.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiManageApplications.Name = "tsmiManageApplications";
+            this.tsmiManageApplications.Size = new System.Drawing.Size(406, 70);
+            this.tsmiManageApplications.Text = "Manage Applications";
+            // 
+            // tsmiLocalDrivingLicenseApps
+            // 
+            this.tsmiLocalDrivingLicenseApps.Image = ((System.Drawing.Image)(resources.GetObject("tsmiLocalDrivingLicenseApps.Image")));
+            this.tsmiLocalDrivingLicenseApps.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiLocalDrivingLicenseApps.Name = "tsmiLocalDrivingLicenseApps";
+            this.tsmiLocalDrivingLicenseApps.Size = new System.Drawing.Size(449, 38);
+            this.tsmiLocalDrivingLicenseApps.Text = "Local Driving License Applications";
+            // 
+            // tsmiInternationalLicenseApps
+            // 
+            this.tsmiInternationalLicenseApps.Image = ((System.Drawing.Image)(resources.GetObject("tsmiInternationalLicenseApps.Image")));
+            this.tsmiInternationalLicenseApps.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiInternationalLicenseApps.Name = "tsmiInternationalLicenseApps";
+            this.tsmiInternationalLicenseApps.Size = new System.Drawing.Size(449, 38);
+            this.tsmiInternationalLicenseApps.Text = "International License Applications";
+            // 
             // tsmiDetainLicenses
             // 
             this.tsmiDetainLicenses.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -198,6 +225,30 @@
             this.tsmiDetainLicenses.Name = "tsmiDetainLicenses";
             this.tsmiDetainLicenses.Size = new System.Drawing.Size(406, 70);
             this.tsmiDetainLicenses.Text = "Detain Licenses";
+            // 
+            // tsmiManageDetainedLicense
+            // 
+            this.tsmiManageDetainedLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiManageDetainedLicense.Image")));
+            this.tsmiManageDetainedLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiManageDetainedLicense.Name = "tsmiManageDetainedLicense";
+            this.tsmiManageDetainedLicense.Size = new System.Drawing.Size(372, 38);
+            this.tsmiManageDetainedLicense.Text = "Manage Detained Licenses";
+            // 
+            // tsmiDetainLicense
+            // 
+            this.tsmiDetainLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiDetainLicense.Image")));
+            this.tsmiDetainLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiDetainLicense.Name = "tsmiDetainLicense";
+            this.tsmiDetainLicense.Size = new System.Drawing.Size(372, 38);
+            this.tsmiDetainLicense.Text = "Detain License";
+            // 
+            // tsmiReleaseDetainLicense
+            // 
+            this.tsmiReleaseDetainLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiReleaseDetainLicense.Image")));
+            this.tsmiReleaseDetainLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiReleaseDetainLicense.Name = "tsmiReleaseDetainLicense";
+            this.tsmiReleaseDetainLicense.Size = new System.Drawing.Size(372, 38);
+            this.tsmiReleaseDetainLicense.Text = "Release Detained License";
             // 
             // toolStripMenuItem2
             // 
@@ -212,6 +263,15 @@
             this.tsmiManageApplicationTypes.Size = new System.Drawing.Size(406, 70);
             this.tsmiManageApplicationTypes.Text = "Manage Application Types";
             this.tsmiManageApplicationTypes.Click += new System.EventHandler(this.tsmiManageApplicationTypes_Click);
+            // 
+            // tsmiManageTestTypes
+            // 
+            this.tsmiManageTestTypes.Image = ((System.Drawing.Image)(resources.GetObject("tsmiManageTestTypes.Image")));
+            this.tsmiManageTestTypes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiManageTestTypes.Name = "tsmiManageTestTypes";
+            this.tsmiManageTestTypes.Size = new System.Drawing.Size(406, 70);
+            this.tsmiManageTestTypes.Text = "Manage Test Types";
+            this.tsmiManageTestTypes.Click += new System.EventHandler(this.tsmiManageTestTypes_Click);
             // 
             // tsmiPeople
             // 
@@ -307,65 +367,6 @@
             this.pbDVLDLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbDVLDLogo.TabIndex = 4;
             this.pbDVLDLogo.TabStop = false;
-            // 
-            // tsmiManageApplications
-            // 
-            this.tsmiManageApplications.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiLocalDrivingLicenseApps,
-            this.tsmiInternationalLicenseApps});
-            this.tsmiManageApplications.Image = ((System.Drawing.Image)(resources.GetObject("tsmiManageApplications.Image")));
-            this.tsmiManageApplications.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiManageApplications.Name = "tsmiManageApplications";
-            this.tsmiManageApplications.Size = new System.Drawing.Size(406, 70);
-            this.tsmiManageApplications.Text = "Manage Applications";
-            // 
-            // tsmiLocalDrivingLicenseApps
-            // 
-            this.tsmiLocalDrivingLicenseApps.Image = ((System.Drawing.Image)(resources.GetObject("tsmiLocalDrivingLicenseApps.Image")));
-            this.tsmiLocalDrivingLicenseApps.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiLocalDrivingLicenseApps.Name = "tsmiLocalDrivingLicenseApps";
-            this.tsmiLocalDrivingLicenseApps.Size = new System.Drawing.Size(449, 38);
-            this.tsmiLocalDrivingLicenseApps.Text = "Local Driving License Applications";
-            // 
-            // tsmiInternationalLicenseApps
-            // 
-            this.tsmiInternationalLicenseApps.Image = ((System.Drawing.Image)(resources.GetObject("tsmiInternationalLicenseApps.Image")));
-            this.tsmiInternationalLicenseApps.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiInternationalLicenseApps.Name = "tsmiInternationalLicenseApps";
-            this.tsmiInternationalLicenseApps.Size = new System.Drawing.Size(449, 38);
-            this.tsmiInternationalLicenseApps.Text = "International License Applications";
-            // 
-            // tsmiManageDetainedLicense
-            // 
-            this.tsmiManageDetainedLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiManageDetainedLicense.Image")));
-            this.tsmiManageDetainedLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiManageDetainedLicense.Name = "tsmiManageDetainedLicense";
-            this.tsmiManageDetainedLicense.Size = new System.Drawing.Size(372, 38);
-            this.tsmiManageDetainedLicense.Text = "Manage Detained Licenses";
-            // 
-            // tsmiDetainLicense
-            // 
-            this.tsmiDetainLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiDetainLicense.Image")));
-            this.tsmiDetainLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiDetainLicense.Name = "tsmiDetainLicense";
-            this.tsmiDetainLicense.Size = new System.Drawing.Size(372, 38);
-            this.tsmiDetainLicense.Text = "Detain License";
-            // 
-            // tsmiReleaseDetainLicense
-            // 
-            this.tsmiReleaseDetainLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiReleaseDetainLicense.Image")));
-            this.tsmiReleaseDetainLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiReleaseDetainLicense.Name = "tsmiReleaseDetainLicense";
-            this.tsmiReleaseDetainLicense.Size = new System.Drawing.Size(372, 38);
-            this.tsmiReleaseDetainLicense.Text = "Release Detained License";
-            // 
-            // tsmiManageTestTypes
-            // 
-            this.tsmiManageTestTypes.Image = ((System.Drawing.Image)(resources.GetObject("tsmiManageTestTypes.Image")));
-            this.tsmiManageTestTypes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiManageTestTypes.Name = "tsmiManageTestTypes";
-            this.tsmiManageTestTypes.Size = new System.Drawing.Size(406, 70);
-            this.tsmiManageTestTypes.Text = "Manage Test Types";
             // 
             // frmMain
             // 

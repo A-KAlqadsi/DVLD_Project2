@@ -51,7 +51,10 @@ namespace DVLD_View
         private  void _LoadAllPeople()
         {
             _DataTable = clsPerson.GetAll();
+             
             _DataView = _DataTable.DefaultView;
+            _DataView.Sort = "PersonID DESC"; // sorting inside the dataview
+            
             _RefreshPeople(_DataView);
         }
 
@@ -85,7 +88,7 @@ namespace DVLD_View
             //MessageBox.Show("add new person will be here");
             frmAddEditPerson addEditPerson = new frmAddEditPerson(-1);
             addEditPerson.ShowDialog();
-            _ResetFilter();
+            _LoadAllPeople();
         }
 
         private void tsmiEdit_Click(object sender, EventArgs e)
@@ -94,7 +97,7 @@ namespace DVLD_View
             int iD = (int)dgvListPeople.CurrentRow.Cells[0].Value;
             frmAddEditPerson addEdit = new frmAddEditPerson(iD);
             addEdit.ShowDialog();
-            _ResetFilter();
+            _LoadAllPeople();
         }
 
         private void tsmiDelete_Click(object sender, EventArgs e)
@@ -133,9 +136,8 @@ namespace DVLD_View
             //MessageBox.Show("add new person will be here");
             frmAddEditPerson addEditPerson = new frmAddEditPerson(-1);
             addEditPerson.ShowDialog();
+            _LoadAllPeople();
         }
-
-        
 
         //Filter part
         private void cbFilterPeople_SelectedIndexChanged(object sender, EventArgs e)

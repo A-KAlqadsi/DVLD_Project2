@@ -87,7 +87,7 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "Update TestTypes " +
-                "SET TestTypeTitle=@TestTypeTitle, TestFees=@AppFees, TestTypeDescription=@TestTypeDescription " +
+                "SET TestTypeTitle=@TestTypeTitle, TestTypeFees=@TestTypeFees, TestTypeDescription=@TestTypeDescription " +
                 "WHERE TestTypeID=@TestTypeID; ";
 
             SqlCommand command = new SqlCommand(query, connection);

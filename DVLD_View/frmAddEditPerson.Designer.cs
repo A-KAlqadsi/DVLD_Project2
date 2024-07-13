@@ -32,8 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditPerson));
             this.lblMode = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.llRemoveImage = new System.Windows.Forms.LinkLabel();
             this.llSetImage = new System.Windows.Forms.LinkLabel();
+            this.pbFemale = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,6 +53,10 @@
             this.txtThirdName = new System.Windows.Forms.TextBox();
             this.txtSecondName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.pbCountry = new System.Windows.Forms.PictureBox();
+            this.pbPhone = new System.Windows.Forms.PictureBox();
+            this.pbDateOfBirth = new System.Windows.Forms.PictureBox();
+            this.pbNationalNo = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -58,24 +65,16 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblPersonID = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.epInputValidating = new System.Windows.Forms.ErrorProvider(this.components);
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.pbFemale = new System.Windows.Forms.PictureBox();
-            this.pbCountry = new System.Windows.Forms.PictureBox();
-            this.pbPhone = new System.Windows.Forms.PictureBox();
-            this.pbDateOfBirth = new System.Windows.Forms.PictureBox();
-            this.pbNationalNo = new System.Windows.Forms.PictureBox();
             this.pbPersonalImage = new System.Windows.Forms.PictureBox();
             this.pbAddress = new System.Windows.Forms.PictureBox();
             this.pbEmail = new System.Windows.Forms.PictureBox();
             this.pbMale = new System.Windows.Forms.PictureBox();
             this.pbName = new System.Windows.Forms.PictureBox();
+            this.lblPersonID = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.epInputValidating = new System.Windows.Forms.ErrorProvider(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epInputValidating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFemale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCountry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhone)).BeginInit();
@@ -86,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epInputValidating)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMode
@@ -105,6 +105,7 @@
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.llRemoveImage);
             this.panel1.Controls.Add(this.llSetImage);
+            this.panel1.Controls.Add(this.txtPhone);
             this.panel1.Controls.Add(this.pbFemale);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label8);
@@ -114,7 +115,6 @@
             this.panel1.Controls.Add(this.rbFemale);
             this.panel1.Controls.Add(this.cbCountries);
             this.panel1.Controls.Add(this.rbMale);
-            this.panel1.Controls.Add(this.txtPhone);
             this.panel1.Controls.Add(this.txtAddress);
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.txtNationalNo);
@@ -141,8 +141,39 @@
             this.panel1.Controls.Add(this.pbName);
             this.panel1.Location = new System.Drawing.Point(15, 103);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1046, 379);
+            this.panel1.Size = new System.Drawing.Size(1051, 379);
             this.panel1.TabIndex = 4;
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.White;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(672, 318);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(138, 39);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.White;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(524, 318);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(138, 39);
+            this.btnClose.TabIndex = 15;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // llRemoveImage
             // 
@@ -167,6 +198,18 @@
             this.llSetImage.TabStop = true;
             this.llSetImage.Text = "Set Image";
             this.llSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llSetImage_LinkClicked);
+            // 
+            // pbFemale
+            // 
+            this.pbFemale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbFemale.Image = global::DVLD_View.Properties.Resources.Woman_32;
+            this.pbFemale.Location = new System.Drawing.Point(272, 130);
+            this.pbFemale.Margin = new System.Windows.Forms.Padding(2);
+            this.pbFemale.Name = "pbFemale";
+            this.pbFemale.Size = new System.Drawing.Size(39, 30);
+            this.pbFemale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFemale.TabIndex = 63;
+            this.pbFemale.TabStop = false;
             // 
             // label10
             // 
@@ -234,6 +277,7 @@
             this.rbFemale.Tag = "1";
             this.rbFemale.Text = "Female";
             this.rbFemale.UseVisualStyleBackColor = true;
+            this.rbFemale.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
             // 
             // cbCountries
             // 
@@ -259,14 +303,16 @@
             this.rbMale.Tag = "0";
             this.rbMale.Text = "Male";
             this.rbMale.UseVisualStyleBackColor = true;
+            this.rbMale.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
             // 
             // txtPhone
             // 
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(629, 134);
+            this.txtPhone.Location = new System.Drawing.Point(629, 133);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(181, 30);
             this.txtPhone.TabIndex = 8;
+            this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhone_Validating);
             // 
             // txtAddress
             // 
@@ -276,6 +322,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(613, 77);
             this.txtAddress.TabIndex = 11;
+            this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtAddress_Validating);
             // 
             // txtEmail
             // 
@@ -284,6 +331,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(181, 30);
             this.txtEmail.TabIndex = 9;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // txtNationalNo
             // 
@@ -292,6 +340,7 @@
             this.txtNationalNo.Name = "txtNationalNo";
             this.txtNationalNo.Size = new System.Drawing.Size(181, 30);
             this.txtNationalNo.TabIndex = 4;
+            this.txtNationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtNationalNo_Validating);
             // 
             // txtLastName
             // 
@@ -300,6 +349,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(181, 30);
             this.txtLastName.TabIndex = 3;
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
             // 
             // txtThirdName
             // 
@@ -316,6 +366,7 @@
             this.txtSecondName.Name = "txtSecondName";
             this.txtSecondName.Size = new System.Drawing.Size(181, 30);
             this.txtSecondName.TabIndex = 1;
+            this.txtSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.txtSecondName_Validating);
             // 
             // txtFirstName
             // 
@@ -324,6 +375,55 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(181, 30);
             this.txtFirstName.TabIndex = 0;
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstName_Validating);
+            // 
+            // pbCountry
+            // 
+            this.pbCountry.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbCountry.Image = ((System.Drawing.Image)(resources.GetObject("pbCountry.Image")));
+            this.pbCountry.Location = new System.Drawing.Point(585, 185);
+            this.pbCountry.Margin = new System.Windows.Forms.Padding(2);
+            this.pbCountry.Name = "pbCountry";
+            this.pbCountry.Size = new System.Drawing.Size(39, 30);
+            this.pbCountry.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCountry.TabIndex = 25;
+            this.pbCountry.TabStop = false;
+            // 
+            // pbPhone
+            // 
+            this.pbPhone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbPhone.Image = ((System.Drawing.Image)(resources.GetObject("pbPhone.Image")));
+            this.pbPhone.Location = new System.Drawing.Point(585, 133);
+            this.pbPhone.Margin = new System.Windows.Forms.Padding(2);
+            this.pbPhone.Name = "pbPhone";
+            this.pbPhone.Size = new System.Drawing.Size(39, 30);
+            this.pbPhone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPhone.TabIndex = 26;
+            this.pbPhone.TabStop = false;
+            // 
+            // pbDateOfBirth
+            // 
+            this.pbDateOfBirth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbDateOfBirth.Image = ((System.Drawing.Image)(resources.GetObject("pbDateOfBirth.Image")));
+            this.pbDateOfBirth.Location = new System.Drawing.Point(585, 89);
+            this.pbDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
+            this.pbDateOfBirth.Name = "pbDateOfBirth";
+            this.pbDateOfBirth.Size = new System.Drawing.Size(39, 30);
+            this.pbDateOfBirth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbDateOfBirth.TabIndex = 27;
+            this.pbDateOfBirth.TabStop = false;
+            // 
+            // pbNationalNo
+            // 
+            this.pbNationalNo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbNationalNo.Image = ((System.Drawing.Image)(resources.GetObject("pbNationalNo.Image")));
+            this.pbNationalNo.Location = new System.Drawing.Point(153, 89);
+            this.pbNationalNo.Margin = new System.Windows.Forms.Padding(2);
+            this.pbNationalNo.Name = "pbNationalNo";
+            this.pbNationalNo.Size = new System.Drawing.Size(39, 30);
+            this.pbNationalNo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbNationalNo.TabIndex = 28;
+            this.pbNationalNo.TabStop = false;
             // 
             // label17
             // 
@@ -413,127 +513,6 @@
             this.label3.TabIndex = 30;
             this.label3.Text = "Name:";
             // 
-            // lblPersonID
-            // 
-            this.lblPersonID.AutoSize = true;
-            this.lblPersonID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonID.Location = new System.Drawing.Point(189, 61);
-            this.lblPersonID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPersonID.Name = "lblPersonID";
-            this.lblPersonID.Size = new System.Drawing.Size(49, 25);
-            this.lblPersonID.TabIndex = 31;
-            this.lblPersonID.Text = "N/A";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 61);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 25);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "Person ID :";
-            // 
-            // epInputValidating
-            // 
-            this.epInputValidating.ContainerControl = this;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.White;
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(672, 318);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(138, 39);
-            this.btnSave.TabIndex = 14;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.White;
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(524, 318);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 39);
-            this.btnClose.TabIndex = 15;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // pbFemale
-            // 
-            this.pbFemale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbFemale.Image = global::DVLD_View.Properties.Resources.Woman_32;
-            this.pbFemale.Location = new System.Drawing.Point(272, 130);
-            this.pbFemale.Margin = new System.Windows.Forms.Padding(2);
-            this.pbFemale.Name = "pbFemale";
-            this.pbFemale.Size = new System.Drawing.Size(39, 30);
-            this.pbFemale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFemale.TabIndex = 63;
-            this.pbFemale.TabStop = false;
-            // 
-            // pbCountry
-            // 
-            this.pbCountry.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbCountry.Image = ((System.Drawing.Image)(resources.GetObject("pbCountry.Image")));
-            this.pbCountry.Location = new System.Drawing.Point(585, 185);
-            this.pbCountry.Margin = new System.Windows.Forms.Padding(2);
-            this.pbCountry.Name = "pbCountry";
-            this.pbCountry.Size = new System.Drawing.Size(39, 30);
-            this.pbCountry.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCountry.TabIndex = 25;
-            this.pbCountry.TabStop = false;
-            // 
-            // pbPhone
-            // 
-            this.pbPhone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbPhone.Image = ((System.Drawing.Image)(resources.GetObject("pbPhone.Image")));
-            this.pbPhone.Location = new System.Drawing.Point(585, 134);
-            this.pbPhone.Margin = new System.Windows.Forms.Padding(2);
-            this.pbPhone.Name = "pbPhone";
-            this.pbPhone.Size = new System.Drawing.Size(39, 30);
-            this.pbPhone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPhone.TabIndex = 26;
-            this.pbPhone.TabStop = false;
-            // 
-            // pbDateOfBirth
-            // 
-            this.pbDateOfBirth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbDateOfBirth.Image = ((System.Drawing.Image)(resources.GetObject("pbDateOfBirth.Image")));
-            this.pbDateOfBirth.Location = new System.Drawing.Point(585, 89);
-            this.pbDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
-            this.pbDateOfBirth.Name = "pbDateOfBirth";
-            this.pbDateOfBirth.Size = new System.Drawing.Size(39, 30);
-            this.pbDateOfBirth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbDateOfBirth.TabIndex = 27;
-            this.pbDateOfBirth.TabStop = false;
-            // 
-            // pbNationalNo
-            // 
-            this.pbNationalNo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbNationalNo.Image = ((System.Drawing.Image)(resources.GetObject("pbNationalNo.Image")));
-            this.pbNationalNo.Location = new System.Drawing.Point(153, 89);
-            this.pbNationalNo.Margin = new System.Windows.Forms.Padding(2);
-            this.pbNationalNo.Name = "pbNationalNo";
-            this.pbNationalNo.Size = new System.Drawing.Size(39, 30);
-            this.pbNationalNo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbNationalNo.TabIndex = 28;
-            this.pbNationalNo.TabStop = false;
-            // 
             // pbPersonalImage
             // 
             this.pbPersonalImage.BackColor = System.Drawing.SystemColors.Control;
@@ -596,6 +575,36 @@
             this.pbName.TabIndex = 24;
             this.pbName.TabStop = false;
             // 
+            // lblPersonID
+            // 
+            this.lblPersonID.AutoSize = true;
+            this.lblPersonID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPersonID.Location = new System.Drawing.Point(189, 61);
+            this.lblPersonID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPersonID.Name = "lblPersonID";
+            this.lblPersonID.Size = new System.Drawing.Size(49, 25);
+            this.lblPersonID.TabIndex = 31;
+            this.lblPersonID.Text = "N/A";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(21, 61);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 25);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Person ID :";
+            // 
+            // epInputValidating
+            // 
+            this.epInputValidating.ContainerControl = this;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmAddEditPerson
             // 
             this.AcceptButton = this.btnSave;
@@ -603,7 +612,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(1070, 519);
+            this.ClientSize = new System.Drawing.Size(1074, 519);
             this.Controls.Add(this.lblPersonID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
@@ -615,7 +624,6 @@
             this.Load += new System.EventHandler(this.frmAddEditPerson_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.epInputValidating)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFemale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCountry)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhone)).EndInit();
@@ -626,6 +634,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epInputValidating)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
