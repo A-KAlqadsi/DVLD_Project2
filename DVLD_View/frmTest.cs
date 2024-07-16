@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace DVLD_View
@@ -34,6 +35,12 @@ namespace DVLD_View
             
             
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string location = "C:\\DVLD-People-Images\\7902477d-3f0e-41ab-bc22-1103a2eb4232.jpg";
+            File.Delete(location);
         }
     }
 }

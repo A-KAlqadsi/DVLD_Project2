@@ -34,6 +34,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,11 +70,22 @@
             this.maskedTextBox2.TabIndex = 3;
             this.maskedTextBox2.ValidatingType = typeof(int);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(727, 101);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(213, 68);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1441, 574);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.maskedTextBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.maskedTextBox1);
@@ -92,5 +104,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.Button button1;
     }
 }

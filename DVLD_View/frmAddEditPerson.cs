@@ -23,6 +23,8 @@ namespace DVLD_View
         private bool _IsEmpty = false;
         private string _NationalNo;
         private string _ImageLocation = "";
+        private string _DVLDPeopleImagesDirectory = @"C:\DVLD-People-Images";
+
         public frmAddEditPerson(int personID)
         {
             InitializeComponent();
@@ -40,6 +42,7 @@ namespace DVLD_View
             {
                 cbCountries.Items.Add(dr["CountryName"]);
             }
+            
         }
         
         private void _LoadData()
@@ -77,7 +80,7 @@ namespace DVLD_View
             txtPhone.Text = _Person.Phone;
             txtEmail.Text = _Person.Email;
             txtAddress.Text = _Person.Address;
-            dtpDateOfBirth.Value = _Person.DateOfBirth;
+            dtpDateOfBirth.Value = Convert.ToDateTime(_Person.DateOfBirth);
             cbCountries.SelectedItem = clsCountry.Find(_Person.NationalityCountryID).CountryName;
             llRemoveImage.Visible = (_Person.ImagePath != "");
 
@@ -96,8 +99,11 @@ namespace DVLD_View
 
             if(_Person.ImagePath != "")
             {
-                if (File.Exists(_Person.ImagePath))
-                    pbPersonalImage.Load(_Person.ImagePath);
+                if(File.Exists(_Person.ImagePath))
+                {
+                    pbPersonalImage.ImageLocation =_Person.ImagePath;
+                    _ImageLocation = _Person.ImagePath;
+                }
             }
             
 
@@ -113,7 +119,7 @@ namespace DVLD_View
 
             if (_IsTxtEmpty())
             {
-                MessageBox.Show($"Can't Save, mouse hover on{Environment.NewLine}the red icon(s) for Info", "Save Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Can't Save, mouse hover on{Environment.NewLine}the red icon(s) for Info", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _IsEmpty = false;
                 return;
             }
@@ -121,7 +127,7 @@ namespace DVLD_View
             if (clsPerson.IsPersonExist(txtNationalNo.Text) && txtNationalNo.Text != _NationalNo)
             {
                 epInputValidating.SetError(txtNationalNo, "National No already exist!");
-                MessageBox.Show($"Can't Save, mouse hover on{Environment.NewLine}the red icon(s) for Info", "Save Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Can't Save, mouse hover on{Environment.NewLine}the red icon(s) for Info", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -129,12 +135,10 @@ namespace DVLD_View
             {
                 if(!_IsValideEmail(txtEmail.Text.Trim()))
                 {
-                    MessageBox.Show($"Can't Save, mouse hover on{Environment.NewLine}the red icon(s) for Info", "Save Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Can't Save, mouse hover on{Environment.NewLine}the red icon(s) for Info", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
-
-
 
             _Person.NationalNo = txtNationalNo.Text;
             _Person.FirstName= txtFirstName.Text;
@@ -148,20 +152,19 @@ namespace DVLD_View
             _Person.NationalityCountryID = clsCountry.Find(cbCountries.SelectedItem.ToString()).CountryID;
             _Person.Gender = Convert.ToInt16((rbMale.Checked == true) ? 0 : 1);
 
-            //if (!pbPersonalImage.Image.Equals(Resources.Male_512)  && !pbPersonalImage.Image.Equals(Resources.Female_512))
-            //    _Person.ImagePath = pbPersonalImage.ImageLocation.ToString();
-            //else
-                _Person.ImagePath = "";
+
+            _Person.ImagePath = _ImageLocation;
 
             if (_Person.Save())
             {
-                MessageBox.Show("Save successfully");
+                MessageBox.Show("Data saved successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                MessageBox.Show("Save failed!!");
+                MessageBox.Show("Data save failed","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             
             lblMode.Text = $"Edit Person";
             this.Text = "Edit Person";
+            _ImageLocation = _Person.ImagePath;
             _PersonID = _Person.PersonID;
             _NationalNo = _Person.NationalNo;
             lblPersonID.Text = _Person.PersonID.ToString();
@@ -217,15 +220,36 @@ namespace DVLD_View
 
         private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            Guid guid = Guid.NewGuid();
+            string extention;
+            string newFileName;
+            string selectedFilePath;
+            string destinationFilePath;
             //MessageBox.Show("Set image will be here!");
             openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
             openFileDialog1.Title = "Choose Image";
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string selectedFilePath = openFileDialog1.FileName;
-                pbPersonalImage.Load(selectedFilePath);
+                selectedFilePath = openFileDialog1.FileName;
+                if (!Directory.Exists(_DVLDPeopleImagesDirectory))
+                {
+                    Directory.CreateDirectory(_DVLDPeopleImagesDirectory);
+                }
+
+                 extention = Path.GetExtension(selectedFilePath).ToLower();
+                 newFileName = guid.ToString() + extention;
+                 
+                 destinationFilePath = Path.Combine(_DVLDPeopleImagesDirectory, newFileName);
+                
+                File.Copy(selectedFilePath, destinationFilePath);
+                
+                _ImageLocation = destinationFilePath;
+                
+                pbPersonalImage.ImageLocation = _ImageLocation;
+                
             }
 
         }
@@ -234,7 +258,7 @@ namespace DVLD_View
         {
             //MessageBox.Show("Remove image will be here!");
             llRemoveImage.Visible=false;
-            
+            pbPersonalImage.ImageLocation = null;
             if (rbMale.Checked) 
             {
                 pbPersonalImage.Image = Resources.Male_512;
@@ -242,8 +266,12 @@ namespace DVLD_View
             else
             {
                 pbPersonalImage.Image = Resources.Female_512;
-
             }
+            
+            //if (File.Exists(_ImageLocation))
+                File.Delete(_ImageLocation);
+            _ImageLocation = "";
+
         }
 
         private void txtNationalNo_Validating(object sender, CancelEventArgs e)
@@ -343,7 +371,6 @@ namespace DVLD_View
                 pbPersonalImage.Image = Image.FromFile(@"C:\Users\Abdulkarim\source\Abu-Hadhoud\19 DVLD\DVLD_View\Icons\Female 512.png");
 
         }
-
 
     }
 }
