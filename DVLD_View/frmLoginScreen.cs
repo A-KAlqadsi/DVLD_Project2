@@ -46,6 +46,7 @@ namespace DVLD_View
             if (_IsEmpty())
             {
                 _isEmpty = false;
+                MessageBox.Show("Username/Password is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -58,13 +59,15 @@ namespace DVLD_View
                 }
                 else
                 {
-                    epLoginValidate.SetError(txtUsername, "Username is not active,contact your admin!");
+                    //epLoginValidate.SetError(txtUsername, "Username is not active,contact your admin!");
+                    MessageBox.Show("Username is not active contact your Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
+
             }
             else
             {
-                epLoginValidate.SetError(txtUsername, "Username/Password is not true!,try again!");
+               // epLoginValidate.SetError(txtUsername, "Username/Password is not true!,try again!");
+                MessageBox.Show("Username/Password is wrong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
