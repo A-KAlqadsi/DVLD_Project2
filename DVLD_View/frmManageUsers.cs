@@ -135,9 +135,7 @@ namespace DVLD_View
         {
             MessageBox.Show("Phone call to user will be here");
 
-        }
-
-       
+        }      
 
         private void cbFilterUsers_SelectedIndexChanged(object sender, EventArgs e)
         {

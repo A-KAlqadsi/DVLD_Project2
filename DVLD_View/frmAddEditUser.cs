@@ -72,9 +72,11 @@ namespace DVLD_View
         {
             //MessageBox.Show("Select a person will be here ");
             frmFindPerson findPerson = new frmFindPerson();
+
             findPerson.evPersonIDBack += _evPersonIDBack;
             
             findPerson.ShowDialog();
+            
         }
 
         private void _evPersonIDBack(int personID)

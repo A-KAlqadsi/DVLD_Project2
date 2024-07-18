@@ -18,10 +18,15 @@ namespace DVLD_View
     {
         private  enum enMode { AddNew =1,Update =2 }
         private enMode _Mode;
-        private int _PersonID;
+        private int _PersonID =-1;
         private clsPerson _Person;
+
         private bool _IsEmpty = false;
         private string _NationalNo;
+        
+        private bool _IsEmageDeleted = false;
+        private bool _IsDataSaved = false;
+        private bool _IsEmageSeted = false;
         private string _ImageLocation = "";
         private string _DVLDPeopleImagesDirectory = @"C:\DVLD-People-Images";
 
@@ -152,11 +157,17 @@ namespace DVLD_View
             _Person.NationalityCountryID = clsCountry.Find(cbCountries.SelectedItem.ToString()).CountryID;
             _Person.Gender = Convert.ToInt16((rbMale.Checked == true) ? 0 : 1);
 
+            if (_IsEmageDeleted)
+            {
+                File.Delete(_ImageLocation);
+                _ImageLocation = "";
+            }
 
             _Person.ImagePath = _ImageLocation;
 
             if (_Person.Save())
             {
+                _IsDataSaved = true;
                 MessageBox.Show("Data saved successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -214,17 +225,21 @@ namespace DVLD_View
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            
+            if(_IsEmageSeted && !_IsDataSaved)
+            {
+                if(File.Exists(_ImageLocation))
+                File.Delete(_ImageLocation);
+            }
             this.Close();
         }
 
         private void llSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Guid guid = Guid.NewGuid();
+            Guid guidImageName = Guid.NewGuid();
             string extention;
             string newFileName;
-            string selectedFilePath;
-            string destinationFilePath;
+            string _SelectedFilePath ;
+            string _DestinationFilePath;
             //MessageBox.Show("Set image will be here!");
             openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
             openFileDialog1.Title = "Choose Image";
@@ -233,22 +248,22 @@ namespace DVLD_View
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                selectedFilePath = openFileDialog1.FileName;
+                _SelectedFilePath = openFileDialog1.FileName;
                 if (!Directory.Exists(_DVLDPeopleImagesDirectory))
                 {
                     Directory.CreateDirectory(_DVLDPeopleImagesDirectory);
                 }
 
-                 extention = Path.GetExtension(selectedFilePath).ToLower();
-                 newFileName = guid.ToString() + extention;
+                 extention = Path.GetExtension(_SelectedFilePath).ToLower();
+                 newFileName = guidImageName.ToString() + extention;
                  
-                 destinationFilePath = Path.Combine(_DVLDPeopleImagesDirectory, newFileName);
-                
-                File.Copy(selectedFilePath, destinationFilePath);
-                
-                _ImageLocation = destinationFilePath;
-                
-                pbPersonalImage.ImageLocation = _ImageLocation;
+                 _DestinationFilePath = Path.Combine(_DVLDPeopleImagesDirectory, newFileName);
+                File.Copy(_SelectedFilePath, _DestinationFilePath);
+
+                _ImageLocation = _DestinationFilePath;
+
+                pbPersonalImage.ImageLocation = _DestinationFilePath;
+                _IsEmageSeted = true;
                 
             }
 
@@ -267,11 +282,7 @@ namespace DVLD_View
             {
                 pbPersonalImage.Image = Resources.Female_512;
             }
-            
-            //if (File.Exists(_ImageLocation))
-                File.Delete(_ImageLocation);
-            _ImageLocation = "";
-
+            _IsEmageDeleted = true;
         }
 
         private void txtNationalNo_Validating(object sender, CancelEventArgs e)

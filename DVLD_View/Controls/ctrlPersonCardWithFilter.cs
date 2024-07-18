@@ -17,18 +17,12 @@ namespace DVLD_View
         private int _PersonID;
         public int PersonID = -1;
         private clsPerson _Person;
-
         public ctrlPersonCardWithFilter()
         {
             InitializeComponent();
         }
 
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            frmAddEditPerson addEdit = new frmAddEditPerson(-1);
-            addEdit.ShowDialog();
-        }
-
+     
         private void btnFind_Click(object sender, EventArgs e)
         {
             epFilterValidating.Clear();
@@ -83,6 +77,12 @@ namespace DVLD_View
         private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
         {
             cbPersonFilters.SelectedIndex = 0;
+        }
+
+        private void btnAddNew_Click_1(object sender, EventArgs e)
+        {
+            frmAddEditPerson addEdit = new frmAddEditPerson(-1);
+            addEdit.ShowDialog();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace DVLD_View
 
         private void ctrlPersonCardWithFilter1_Load(object sender, EventArgs e)
         {
-
+           
         }
     }
 }
