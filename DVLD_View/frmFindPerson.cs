@@ -12,13 +12,7 @@ namespace DVLD_View
 {
     public partial class frmFindPerson : Form
     {
-        // Declare a delegate
-        public delegate void DataBackEventHandler(int PersonID);
-
-        // Declare an event using the delegate
-        public event DataBackEventHandler evPersonIDBack;
-
-
+        
         public frmFindPerson()
         {
             InitializeComponent();
@@ -26,10 +20,7 @@ namespace DVLD_View
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            int personID = ctrlPersonCardWithFilter1.PersonID;
-            
-            evPersonIDBack?.Invoke(personID);
-            
+           
             this.Close();
         }
 

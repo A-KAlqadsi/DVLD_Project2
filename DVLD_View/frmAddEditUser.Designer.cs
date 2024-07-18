@@ -34,7 +34,6 @@
             this.tcUserInfo = new System.Windows.Forms.TabControl();
             this.tpPersonalInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
-            this.btnSelectPerson = new System.Windows.Forms.Button();
             this.ctrlPersonCard1 = new DVLD_View.ctrlPersonCard();
             this.tpLoginInfo = new System.Windows.Forms.TabPage();
             this.btnPrevious = new System.Windows.Forms.Button();
@@ -87,7 +86,6 @@
             // 
             this.tpPersonalInfo.BackColor = System.Drawing.Color.White;
             this.tpPersonalInfo.Controls.Add(this.btnNext);
-            this.tpPersonalInfo.Controls.Add(this.btnSelectPerson);
             this.tpPersonalInfo.Controls.Add(this.ctrlPersonCard1);
             this.tpPersonalInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tpPersonalInfo.Location = new System.Drawing.Point(4, 25);
@@ -113,19 +111,6 @@
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnSelectPerson
-            // 
-            this.btnSelectPerson.BackColor = System.Drawing.Color.White;
-            this.btnSelectPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelectPerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectPerson.Location = new System.Drawing.Point(752, 25);
-            this.btnSelectPerson.Name = "btnSelectPerson";
-            this.btnSelectPerson.Size = new System.Drawing.Size(177, 48);
-            this.btnSelectPerson.TabIndex = 20;
-            this.btnSelectPerson.Text = "Select a Person";
-            this.btnSelectPerson.UseVisualStyleBackColor = false;
-            this.btnSelectPerson.Click += new System.EventHandler(this.btnSelectPerson_Click);
             // 
             // ctrlPersonCard1
             // 
@@ -375,7 +360,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnSelectPerson;
         private System.Windows.Forms.Label lblUserID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
