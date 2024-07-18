@@ -22,11 +22,35 @@ namespace DVLD_View
             InitializeComponent();
         }
 
-     
-        private void btnFind_Click(object sender, EventArgs e)
+        
+        private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
+        {
+            cbPersonFilters.SelectedIndex = 0;
+        }
+
+        private void btnAddNew_Click_1(object sender, EventArgs e)
+        {
+            frmAddEditPerson addEdit = new frmAddEditPerson(-1);
+            addEdit.evPersonIDBack += _evPersonIDBack; // subscripe to the event
+            addEdit.ShowDialog();
+        }
+
+        private void _evPersonIDBack(int personID)
+        {
+            if(personID != -1)
+            {
+                cbPersonFilters.SelectedIndex = 0;
+                PersonID = personID;
+                txtSearch.Text = personID.ToString();
+                ctrlPersonCard1.LoadPersonInfo(personID);
+            }
+        }
+
+
+        private void btnFind_Click_1(object sender, EventArgs e)
         {
             epFilterValidating.Clear();
-            if(txtSearch.Text.Trim() == "")
+            if (txtSearch.Text.Trim() == "")
             {
                 epFilterValidating.SetError(txtSearch, "Search field is Empty!!");
                 return;
@@ -34,7 +58,7 @@ namespace DVLD_View
 
             if (cbPersonFilters.SelectedIndex == 0)
             {
-                if(!int.TryParse(txtSearch.Text.ToString(), out _PersonID))
+                if (!int.TryParse(txtSearch.Text.ToString(), out _PersonID))
                 {
                     epFilterValidating.SetError(txtSearch, "Person ID is not valid,only digits!");
                     return;
@@ -45,7 +69,7 @@ namespace DVLD_View
             {
                 case 0:
                     {
-                       _Person = clsPerson.Find(_PersonID);
+                        _Person = clsPerson.Find(_PersonID);
                         if (_Person != null)
                         {
                             PersonID = _Person.PersonID;
@@ -71,18 +95,7 @@ namespace DVLD_View
                     break;
             }
 
-
         }
-
-        private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
-        {
-            cbPersonFilters.SelectedIndex = 0;
-        }
-
-        private void btnAddNew_Click_1(object sender, EventArgs e)
-        {
-            frmAddEditPerson addEdit = new frmAddEditPerson(-1);
-            addEdit.ShowDialog();
-        }
+    
     }
 }

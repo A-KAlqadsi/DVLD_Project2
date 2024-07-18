@@ -48,13 +48,13 @@
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.White;
-            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(787, 421);
+            this.btnClose.Location = new System.Drawing.Point(788, 448);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 49);
+            this.btnClose.Size = new System.Drawing.Size(135, 44);
             this.btnClose.TabIndex = 12;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -62,9 +62,10 @@
             // 
             // ctrlPersonCardWithFilter1
             // 
-            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(14, 113);
+            this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(11, 105);
             this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
-            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(913, 303);
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(913, 346);
             this.ctrlPersonCardWithFilter1.TabIndex = 0;
             this.ctrlPersonCardWithFilter1.Load += new System.EventHandler(this.ctrlPersonCardWithFilter1_Load);
             // 
@@ -73,7 +74,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(939, 477);
+            this.ClientSize = new System.Drawing.Size(939, 501);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ctrlPersonCardWithFilter1);

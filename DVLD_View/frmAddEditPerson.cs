@@ -30,6 +30,12 @@ namespace DVLD_View
         private string _ImageLocation = "";
         private string _DVLDPeopleImagesDirectory = @"C:\DVLD-People-Images";
 
+        // Declare a delegate
+        public delegate void DataBackEventHandler(int PersonID);
+
+        // Declare an event using the delegate
+        public event DataBackEventHandler evPersonIDBack;
+
         public frmAddEditPerson(int personID)
         {
             InitializeComponent();
@@ -168,6 +174,8 @@ namespace DVLD_View
             if (_Person.Save())
             {
                 _IsDataSaved = true;
+                evPersonIDBack?.Invoke(_Person.PersonID); // firing the event PersonIDBack
+
                 MessageBox.Show("Data saved successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else

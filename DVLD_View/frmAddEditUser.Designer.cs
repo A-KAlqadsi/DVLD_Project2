@@ -34,7 +34,6 @@
             this.tcUserInfo = new System.Windows.Forms.TabControl();
             this.tpPersonalInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
-            this.ctrlPersonCard1 = new DVLD_View.ctrlPersonCard();
             this.tpLoginInfo = new System.Windows.Forms.TabPage();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -52,6 +51,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.epLoginInfoValidate = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlPersonCardWithFilter1 = new DVLD_View.ctrlPersonCardWithFilter();
             this.tcUserInfo.SuspendLayout();
             this.tpPersonalInfo.SuspendLayout();
             this.tpLoginInfo.SuspendLayout();
@@ -66,7 +66,7 @@
             this.lblMode.AutoSize = true;
             this.lblMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblMode.Location = new System.Drawing.Point(373, 16);
+            this.lblMode.Location = new System.Drawing.Point(362, 9);
             this.lblMode.Name = "lblMode";
             this.lblMode.Size = new System.Drawing.Size(209, 36);
             this.lblMode.TabIndex = 5;
@@ -76,48 +76,41 @@
             // 
             this.tcUserInfo.Controls.Add(this.tpPersonalInfo);
             this.tcUserInfo.Controls.Add(this.tpLoginInfo);
-            this.tcUserInfo.Location = new System.Drawing.Point(12, 68);
+            this.tcUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tcUserInfo.Location = new System.Drawing.Point(9, 48);
             this.tcUserInfo.Name = "tcUserInfo";
             this.tcUserInfo.SelectedIndex = 0;
-            this.tcUserInfo.Size = new System.Drawing.Size(957, 428);
+            this.tcUserInfo.Size = new System.Drawing.Size(932, 467);
             this.tcUserInfo.TabIndex = 7;
             // 
             // tpPersonalInfo
             // 
             this.tpPersonalInfo.BackColor = System.Drawing.Color.White;
+            this.tpPersonalInfo.Controls.Add(this.ctrlPersonCardWithFilter1);
             this.tpPersonalInfo.Controls.Add(this.btnNext);
-            this.tpPersonalInfo.Controls.Add(this.ctrlPersonCard1);
             this.tpPersonalInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tpPersonalInfo.Location = new System.Drawing.Point(4, 25);
+            this.tpPersonalInfo.Location = new System.Drawing.Point(4, 34);
             this.tpPersonalInfo.Name = "tpPersonalInfo";
             this.tpPersonalInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPersonalInfo.Size = new System.Drawing.Size(949, 399);
+            this.tpPersonalInfo.Size = new System.Drawing.Size(924, 429);
             this.tpPersonalInfo.TabIndex = 0;
             this.tpPersonalInfo.Text = "Personal Info";
             // 
             // btnNext
             // 
-            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.BackColor = System.Drawing.Color.White;
             this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
             this.btnNext.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNext.Location = new System.Drawing.Point(794, 324);
+            this.btnNext.Location = new System.Drawing.Point(785, 364);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(138, 45);
+            this.btnNext.Size = new System.Drawing.Size(133, 40);
             this.btnNext.TabIndex = 21;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // ctrlPersonCard1
-            // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(22, 75);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(910, 249);
-            this.ctrlPersonCard1.TabIndex = 20;
             // 
             // tpLoginInfo
             // 
@@ -136,28 +129,26 @@
             this.tpLoginInfo.Controls.Add(this.label2);
             this.tpLoginInfo.Controls.Add(this.label1);
             this.tpLoginInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tpLoginInfo.Location = new System.Drawing.Point(4, 25);
+            this.tpLoginInfo.Location = new System.Drawing.Point(4, 34);
             this.tpLoginInfo.Name = "tpLoginInfo";
             this.tpLoginInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLoginInfo.Size = new System.Drawing.Size(949, 399);
+            this.tpLoginInfo.Size = new System.Drawing.Size(731, 429);
             this.tpLoginInfo.TabIndex = 1;
             this.tpLoginInfo.Text = "Login Info";
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrevious.BackColor = System.Drawing.Color.White;
             this.btnPrevious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrevious.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevious.Image")));
             this.btnPrevious.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrevious.Location = new System.Drawing.Point(6, 294);
+            this.btnPrevious.Location = new System.Drawing.Point(19, 297);
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(138, 45);
+            this.btnPrevious.Size = new System.Drawing.Size(156, 41);
             this.btnPrevious.TabIndex = 6;
             this.btnPrevious.Text = "Pervious";
-            this.btnPrevious.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrevious.UseVisualStyleBackColor = false;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
@@ -165,10 +156,10 @@
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(254, 200);
+            this.pictureBox2.Location = new System.Drawing.Point(224, 184);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 30);
+            this.pictureBox2.Size = new System.Drawing.Size(53, 39);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
@@ -179,7 +170,7 @@
             this.chbIsActive.Checked = true;
             this.chbIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbIsActive.Location = new System.Drawing.Point(309, 255);
+            this.chbIsActive.Location = new System.Drawing.Point(295, 230);
             this.chbIsActive.Name = "chbIsActive";
             this.chbIsActive.Size = new System.Drawing.Size(108, 29);
             this.chbIsActive.TabIndex = 3;
@@ -189,7 +180,7 @@
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConfirmPassword.Location = new System.Drawing.Point(309, 200);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(290, 184);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(176, 30);
@@ -198,7 +189,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(309, 155);
+            this.txtPassword.Location = new System.Drawing.Point(290, 137);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(176, 30);
@@ -207,7 +198,7 @@
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(309, 110);
+            this.txtUserName.Location = new System.Drawing.Point(290, 86);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(176, 30);
             this.txtUserName.TabIndex = 0;
@@ -216,10 +207,10 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(254, 155);
+            this.pictureBox1.Location = new System.Drawing.Point(224, 133);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 30);
+            this.pictureBox1.Size = new System.Drawing.Size(53, 39);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -228,10 +219,10 @@
             // 
             this.pbName.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbName.Image = ((System.Drawing.Image)(resources.GetObject("pbName.Image")));
-            this.pbName.Location = new System.Drawing.Point(254, 110);
+            this.pbName.Location = new System.Drawing.Point(224, 82);
             this.pbName.Margin = new System.Windows.Forms.Padding(2);
             this.pbName.Name = "pbName";
-            this.pbName.Size = new System.Drawing.Size(39, 30);
+            this.pbName.Size = new System.Drawing.Size(53, 39);
             this.pbName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbName.TabIndex = 5;
             this.pbName.TabStop = false;
@@ -240,7 +231,7 @@
             // 
             this.lblUserID.AutoSize = true;
             this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(304, 62);
+            this.lblUserID.Location = new System.Drawing.Point(290, 41);
             this.lblUserID.Name = "lblUserID";
             this.lblUserID.Size = new System.Drawing.Size(49, 25);
             this.lblUserID.TabIndex = 4;
@@ -250,7 +241,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(21, 203);
+            this.label4.Location = new System.Drawing.Point(14, 188);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(194, 25);
             this.label4.TabIndex = 3;
@@ -260,7 +251,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(102, 158);
+            this.label3.Location = new System.Drawing.Point(90, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 25);
             this.label3.TabIndex = 2;
@@ -270,7 +261,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(89, 113);
+            this.label2.Location = new System.Drawing.Point(77, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 25);
             this.label2.TabIndex = 1;
@@ -280,7 +271,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(124, 62);
+            this.label1.Location = new System.Drawing.Point(111, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 25);
             this.label1.TabIndex = 0;
@@ -294,9 +285,9 @@
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(829, 497);
+            this.btnSave.Location = new System.Drawing.Point(803, 521);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(138, 45);
+            this.btnSave.Size = new System.Drawing.Size(138, 43);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -311,9 +302,9 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(685, 497);
+            this.btnClose.Location = new System.Drawing.Point(659, 522);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 45);
+            this.btnClose.Size = new System.Drawing.Size(138, 43);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -323,16 +314,26 @@
             // 
             this.epLoginInfoValidate.ContainerControl = this;
             // 
+            // ctrlPersonCardWithFilter1
+            // 
+            this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(8, 14);
+            this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(2);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(911, 345);
+            this.ctrlPersonCardWithFilter1.TabIndex = 0;
+            // 
             // frmAddEditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(980, 561);
-            this.Controls.Add(this.btnSave);
+            this.ClientSize = new System.Drawing.Size(953, 586);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tcUserInfo);
             this.Controls.Add(this.lblMode);
+            this.Controls.Add(this.btnSave);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddEditUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -374,6 +375,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ErrorProvider epLoginInfoValidate;
         private System.Windows.Forms.Button btnPrevious;
-        public ctrlPersonCard ctrlPersonCard1;
+        private ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
     }
 }

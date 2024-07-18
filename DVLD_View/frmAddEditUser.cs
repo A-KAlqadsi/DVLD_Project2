@@ -15,7 +15,7 @@ namespace DVLD_View
     {
         public enum enMode { AddNew =1,Update =2}
         enMode _Mode;
-        private int _PersonID = -1;
+        private int _PersonID ;
         private string _UserName;
         private int _UserPersonID;
         private int _UserID;
@@ -52,8 +52,9 @@ namespace DVLD_View
             lblMode.Text = "Edit User";
             this.Text = "Edit User";
             _UserPersonID = _User.PersonID;
-            ctrlPersonCard1.LoadPersonInfo(_UserPersonID);
-
+            //ctrlPersonCard1.LoadPersonInfo(_UserPersonID);
+            ctrlPersonCardWithFilter1.gbFilter.Enabled = false;
+            ctrlPersonCardWithFilter1.ctrlPersonCard1.LoadPersonInfo(_User.PersonID);
             lblUserID.Text =_User.UserID.ToString();
             _UserName = _User.Username;
             txtUserName.Text = _User.Username;
@@ -73,6 +74,7 @@ namespace DVLD_View
         private void btnNext_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Next button will be here ");
+            _PersonID = ctrlPersonCardWithFilter1.PersonID;
             if(_PersonID != -1)
             {
                 if (clsUser.IsPersonUserExist(_PersonID) && _PersonID != _UserPersonID)
@@ -113,7 +115,8 @@ namespace DVLD_View
         private void btnSave_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Save user will be here ");
-            if(_PersonID == -1 && _Mode == enMode.AddNew)
+            _PersonID = ctrlPersonCardWithFilter1.PersonID;
+            if (_PersonID == -1 && _Mode == enMode.AddNew)
             {
                 MessageBox.Show("Select personal Info first!", "Save Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tcUserInfo.SelectedTab = tpPersonalInfo;

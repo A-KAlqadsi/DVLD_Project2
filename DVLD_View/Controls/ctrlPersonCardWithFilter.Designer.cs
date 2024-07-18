@@ -44,9 +44,9 @@
             // 
             // ctrlPersonCard1
             // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(3, 94);
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(2, 97);
             this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(910, 249);
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(910, 248);
             this.ctrlPersonCard1.TabIndex = 6;
             // 
             // epFilterValidating
@@ -61,9 +61,9 @@
             this.gbFilter.Controls.Add(this.cbPersonFilters);
             this.gbFilter.Controls.Add(this.label1);
             this.gbFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFilter.Location = new System.Drawing.Point(9, 12);
+            this.gbFilter.Location = new System.Drawing.Point(3, 4);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(701, 76);
+            this.gbFilter.Size = new System.Drawing.Size(701, 86);
             this.gbFilter.TabIndex = 7;
             this.gbFilter.TabStop = false;
             this.gbFilter.Text = "Filter";
@@ -73,9 +73,9 @@
             this.btnAddNew.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddNew.BackgroundImage")));
             this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNew.Location = new System.Drawing.Point(577, 26);
+            this.btnAddNew.Location = new System.Drawing.Point(598, 19);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(49, 41);
+            this.btnAddNew.Size = new System.Drawing.Size(55, 54);
             this.btnAddNew.TabIndex = 7;
             this.btnAddNew.UseVisualStyleBackColor = true;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click_1);
@@ -83,7 +83,7 @@
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(341, 29);
+            this.txtSearch.Location = new System.Drawing.Point(354, 29);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(166, 33);
@@ -95,11 +95,12 @@
             this.btnFind.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFind.BackgroundImage")));
             this.btnFind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.Location = new System.Drawing.Point(522, 26);
+            this.btnFind.Location = new System.Drawing.Point(533, 19);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(49, 41);
+            this.btnFind.Size = new System.Drawing.Size(58, 54);
             this.btnFind.TabIndex = 5;
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click_1);
             // 
             // cbPersonFilters
             // 
@@ -109,7 +110,7 @@
             this.cbPersonFilters.Items.AddRange(new object[] {
             "Person ID",
             "National No"});
-            this.cbPersonFilters.Location = new System.Drawing.Point(154, 29);
+            this.cbPersonFilters.Location = new System.Drawing.Point(167, 29);
             this.cbPersonFilters.Name = "cbPersonFilters";
             this.cbPersonFilters.Size = new System.Drawing.Size(181, 33);
             this.cbPersonFilters.TabIndex = 8;
@@ -118,7 +119,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(61, 32);
+            this.label1.Location = new System.Drawing.Point(74, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 25);
             this.label1.TabIndex = 6;
@@ -132,7 +133,7 @@
             this.Controls.Add(this.gbFilter);
             this.Controls.Add(this.ctrlPersonCard1);
             this.Name = "ctrlPersonCardWithFilter";
-            this.Size = new System.Drawing.Size(913, 346);
+            this.Size = new System.Drawing.Size(913, 344);
             this.Load += new System.EventHandler(this.ctrlPersonCardWithFilter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.epFilterValidating)).EndInit();
             this.gbFilter.ResumeLayout(false);
@@ -142,13 +143,13 @@
         }
 
         #endregion
-        private ctrlPersonCard ctrlPersonCard1;
         private System.Windows.Forms.ErrorProvider epFilterValidating;
-        private System.Windows.Forms.GroupBox gbFilter;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.ComboBox cbPersonFilters;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.GroupBox gbFilter;
+        public ctrlPersonCard ctrlPersonCard1;
     }
 }
