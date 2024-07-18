@@ -71,26 +71,7 @@ namespace DVLD_View
         //Will Be deleted
         
 
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Next button will be here ");
-            _PersonID = ctrlPersonCardWithFilter1.PersonID;
-            if(_PersonID != -1)
-            {
-                if (clsUser.IsPersonUserExist(_PersonID) && _PersonID != _UserPersonID)
-                {
-                    MessageBox.Show($"Person with ID=[{_PersonID}] already has user account!", "Save Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            tcUserInfo.SelectedTab = tpLoginInfo;
-        }
-        
-        private void btnPrevious_Click(object sender, EventArgs e)
-        {
-            tcUserInfo.SelectedTab = tpPersonalInfo;
-        }
-
+     
         private bool _IsFieldsEmpty()
         {
             epLoginInfoValidate.Clear();
@@ -176,6 +157,23 @@ namespace DVLD_View
             this.Close();
         }
 
+        private void btnNext_Click_1(object sender, EventArgs e)
+        {
+            _PersonID = ctrlPersonCardWithFilter1.PersonID;
+            if (_PersonID != -1)
+            {
+                if (clsUser.IsPersonUserExist(_PersonID) && _PersonID != _UserPersonID)
+                {
+                    MessageBox.Show($"Person with ID=[{_PersonID}] already has user account!", "Save Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            tcUserInfo.SelectedTab = tpLoginInfo;
+        }
 
+        private void btnPrevious_Click_1(object sender, EventArgs e)
+        {
+            tcUserInfo.SelectedTab = tpPersonalInfo;
+        }
     }
 }

@@ -23,24 +23,6 @@ namespace DVLD_View
             
         }
 
-        private void textBox1_Validating(object sender, CancelEventArgs e)
-        {
-            
-            if (string.IsNullOrEmpty(textBox1.Text))
-            {
-                errorProvider1.SetError(textBox1, "this is required!");
-            }
-            else
-                errorProvider1.SetError(textBox1, "");
-            
-            
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string location = "C:\\DVLD-People-Images\\7902477d-3f0e-41ab-bc22-1103a2eb4232.jpg";
-            File.Delete(location);
-        }
     }
 }
