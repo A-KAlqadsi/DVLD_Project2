@@ -184,6 +184,7 @@ namespace DVLD_View
             {
                 case 1:
                     {
+                        
                         if (txtFilter.Text == "")
                         {
                             _LoadAllPeople();
@@ -287,5 +288,19 @@ namespace DVLD_View
 
         }
 
+        // filter validate 
+        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _FilterValidate(e);
+        }
+
+        private void _FilterValidate(KeyPressEventArgs e)
+        {
+            if(cbFilterPeople.SelectedIndex == 1 || cbFilterPeople.SelectedIndex ==9)
+            {
+                if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                    e.Handled = true;
+            }
+        }
     }
 }
