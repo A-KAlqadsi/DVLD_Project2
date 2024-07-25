@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUsers));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(256, 136);
+            this.label1.Location = new System.Drawing.Point(329, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(208, 36);
             this.label1.TabIndex = 3;
@@ -96,9 +96,9 @@
             "Person ID",
             "UserName",
             "Is Active"});
-            this.cbFilterUsers.Location = new System.Drawing.Point(141, 200);
+            this.cbFilterUsers.Location = new System.Drawing.Point(120, 200);
             this.cbFilterUsers.Name = "cbFilterUsers";
-            this.cbFilterUsers.Size = new System.Drawing.Size(192, 33);
+            this.cbFilterUsers.Size = new System.Drawing.Size(155, 33);
             this.cbFilterUsers.TabIndex = 7;
             this.cbFilterUsers.SelectedIndexChanged += new System.EventHandler(this.cbFilterUsers_SelectedIndexChanged);
             // 
@@ -108,14 +108,14 @@
             this.dgvListUsers.AllowUserToDeleteRows = false;
             this.dgvListUsers.AllowUserToOrderColumns = true;
             this.dgvListUsers.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colUserID,
@@ -124,20 +124,20 @@
             this.colUsername,
             this.colIsActive});
             this.dgvListUsers.ContextMenuStrip = this.cmsUsersMenu;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListUsers.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListUsers.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvListUsers.Location = new System.Drawing.Point(36, 241);
             this.dgvListUsers.Name = "dgvListUsers";
             this.dgvListUsers.ReadOnly = true;
             this.dgvListUsers.RowHeadersWidth = 51;
             this.dgvListUsers.RowTemplate.Height = 24;
-            this.dgvListUsers.Size = new System.Drawing.Size(719, 280);
+            this.dgvListUsers.Size = new System.Drawing.Size(703, 280);
             this.dgvListUsers.TabIndex = 10;
             this.dgvListUsers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvListUsers_MouseDoubleClick);
             // 
@@ -303,18 +303,18 @@
             "All",
             "Active",
             "Not Active"});
-            this.cbIsActiveFilter.Location = new System.Drawing.Point(339, 200);
+            this.cbIsActiveFilter.Location = new System.Drawing.Point(280, 200);
             this.cbIsActiveFilter.Name = "cbIsActiveFilter";
-            this.cbIsActiveFilter.Size = new System.Drawing.Size(157, 33);
+            this.cbIsActiveFilter.Size = new System.Drawing.Size(155, 33);
             this.cbIsActiveFilter.TabIndex = 16;
             this.cbIsActiveFilter.SelectedIndexChanged += new System.EventHandler(this.cbIsActiveFilter_SelectedIndexChanged);
             // 
             // txtFilter
             // 
-            this.txtFilter.Location = new System.Drawing.Point(339, 200);
-            this.txtFilter.Multiline = true;
+            this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilter.Location = new System.Drawing.Point(280, 200);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(184, 33);
+            this.txtFilter.Size = new System.Drawing.Size(184, 30);
             this.txtFilter.TabIndex = 15;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
@@ -326,7 +326,7 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DVLD_View.Properties.Resources.Close_32;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(617, 528);
+            this.btnClose.Location = new System.Drawing.Point(601, 525);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(138, 46);
             this.btnClose.TabIndex = 12;
@@ -340,7 +340,7 @@
             this.btnAddNew.BackgroundImage = global::DVLD_View.Properties.Resources.Add_New_User_72;
             this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Location = new System.Drawing.Point(676, 175);
+            this.btnAddNew.Location = new System.Drawing.Point(660, 179);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(79, 58);
             this.btnAddNew.TabIndex = 9;
@@ -351,7 +351,7 @@
             // 
             this.pbManagePeople.BackColor = System.Drawing.Color.Transparent;
             this.pbManagePeople.Image = ((System.Drawing.Image)(resources.GetObject("pbManagePeople.Image")));
-            this.pbManagePeople.Location = new System.Drawing.Point(239, -1);
+            this.pbManagePeople.Location = new System.Drawing.Point(299, 1);
             this.pbManagePeople.Name = "pbManagePeople";
             this.pbManagePeople.Size = new System.Drawing.Size(243, 134);
             this.pbManagePeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -363,7 +363,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(764, 583);
+            this.ClientSize = new System.Drawing.Size(751, 583);
+            this.Controls.Add(this.cbFilterUsers);
             this.Controls.Add(this.cbIsActiveFilter);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.lblRecordsCount);
@@ -372,7 +373,6 @@
             this.Controls.Add(this.dgvListUsers);
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbFilterUsers);
             this.Controls.Add(this.pbManagePeople);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
