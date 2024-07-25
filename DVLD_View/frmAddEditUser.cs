@@ -150,6 +150,8 @@ namespace DVLD_View
             _UserName = _User.Username;
             _UserPersonID =_User.PersonID;
             _Mode = enMode.Update;
+            ctrlPersonCardWithFilter1.gbFilter.Enabled = false;
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
