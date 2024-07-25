@@ -42,12 +42,22 @@ namespace DVLD_View
             cbLicenseClasses.SelectedIndex = 2;
         }
 
+        private void _SetKnownFiledsValues()
+        {
+            lblUsername.Text = clsLoginUser.LoginUser;
+            lblApplicationDate.Text = DateTime.Now.ToShortDateString();
+            lblApplicationFees.Text = "15";
+            
+        }
+
         private void _LoadData()
         {
+
             _LoadLicenseClasses();
 
             if(_Mode ==enMode.AddNew)
             {
+                _SetKnownFiledsValues();
                 _Application = new clsApplication();
                 _LocalDrivingLicenseApp = new clsLocalDrivingLicenseApp();
                 return;

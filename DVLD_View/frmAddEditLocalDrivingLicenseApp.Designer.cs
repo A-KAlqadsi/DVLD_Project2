@@ -46,7 +46,7 @@
             this.lblDLApplicationID = new System.Windows.Forms.Label();
             this.lblApplicationDate = new System.Windows.Forms.Label();
             this.lblApplicationFees = new System.Windows.Forms.Label();
-            this.lblUserID = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -94,7 +94,7 @@
             this.tpApplicationInfo.Controls.Add(this.pictureBox4);
             this.tpApplicationInfo.Controls.Add(this.pictureBox3);
             this.tpApplicationInfo.Controls.Add(this.pictureBox2);
-            this.tpApplicationInfo.Controls.Add(this.lblUserID);
+            this.tpApplicationInfo.Controls.Add(this.lblUsername);
             this.tpApplicationInfo.Controls.Add(this.lblApplicationFees);
             this.tpApplicationInfo.Controls.Add(this.lblApplicationDate);
             this.tpApplicationInfo.Controls.Add(this.lblDLApplicationID);
@@ -264,15 +264,15 @@
             this.lblApplicationFees.TabIndex = 9;
             this.lblApplicationFees.Text = "[???]";
             // 
-            // lblUserID
+            // lblUsername
             // 
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(394, 257);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(62, 25);
-            this.lblUserID.TabIndex = 10;
-            this.lblUserID.Text = "[???]";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(394, 257);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(62, 25);
+            this.lblUsername.TabIndex = 10;
+            this.lblUsername.Text = "[???]";
             // 
             // pictureBox2
             // 
@@ -379,7 +379,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lblUserID;
+        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblApplicationFees;
         private System.Windows.Forms.Label lblApplicationDate;
         private System.Windows.Forms.Label lblDLApplicationID;
