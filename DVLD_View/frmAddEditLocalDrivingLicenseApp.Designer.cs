@@ -52,6 +52,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblMode = new System.Windows.Forms.Label();
+            this.btnPrevious = new System.Windows.Forms.Button();
             this.tcLocalDrivingLicenseInfo.SuspendLayout();
             this.tpPersonalInfo.SuspendLayout();
             this.tpApplicationInfo.SuspendLayout();
@@ -88,6 +89,7 @@
             // tpApplicationInfo
             // 
             this.tpApplicationInfo.BackColor = System.Drawing.Color.White;
+            this.tpApplicationInfo.Controls.Add(this.btnPrevious);
             this.tpApplicationInfo.Controls.Add(this.pictureBox5);
             this.tpApplicationInfo.Controls.Add(this.pictureBox4);
             this.tpApplicationInfo.Controls.Add(this.pictureBox3);
@@ -323,6 +325,20 @@
             this.lblMode.TabIndex = 4;
             this.lblMode.Text = "New Local Driving License Application";
             // 
+            // btnPrevious
+            // 
+            this.btnPrevious.BackColor = System.Drawing.Color.White;
+            this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevious.Image = ((System.Drawing.Image)(resources.GetObject("btnPrevious.Image")));
+            this.btnPrevious.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrevious.Location = new System.Drawing.Point(89, 362);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(181, 41);
+            this.btnPrevious.TabIndex = 15;
+            this.btnPrevious.Text = "Previous";
+            this.btnPrevious.UseVisualStyleBackColor = false;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
             // frmAddEditLocalDrivingLicenseApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -377,5 +393,6 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label lblMode;
+        private System.Windows.Forms.Button btnPrevious;
     }
 }

@@ -77,5 +77,10 @@ namespace DVLD_View
 
             tcLocalDrivingLicenseInfo.SelectedTab = tpApplicationInfo;
         }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            tcLocalDrivingLicenseInfo.SelectedTab = tpPersonalInfo;
+        }
     }
 }
