@@ -199,6 +199,9 @@ namespace DVLD_View
                     }
                     break;
                 case 3:
+                    _FilterByFullName(txtFilter.Text);
+                    break;
+                case 4:
                     _FilterByUsername(txtFilter.Text);
                     break;
             }
@@ -215,7 +218,14 @@ namespace DVLD_View
             _DataView.RowFilter = $"PersonID ={personID}";
             _RefreshUsers(_DataView);
         }
-        
+
+        private void _FilterByFullName(string fullName)
+        {
+            _DataView.RowFilter = $"FullName LIKE '{fullName}%'";
+            _RefreshUsers(_DataView);
+        }
+
+
         private void _FilterByUsername(string username)
         {
             _DataView.RowFilter = $"Username LIKE '{username}%'";
