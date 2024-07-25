@@ -95,6 +95,12 @@
     <Compile Include="frmAddEditAplicationType.Designer.cs">
       <DependentUpon>frmAddEditAplicationType.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddEditLocalDrivingLicenseApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddEditLocalDrivingLicenseApp.Designer.cs">
+      <DependentUpon>frmAddEditLocalDrivingLicenseApp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddEditPerson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddEditAplicationType.resx">
       <DependentUpon>frmAddEditAplicationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddEditLocalDrivingLicenseApp.resx">
+      <DependentUpon>frmAddEditLocalDrivingLicenseApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
