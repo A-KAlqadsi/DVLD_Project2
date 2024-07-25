@@ -13,12 +13,12 @@ namespace DVLD_View
 {
     public partial class frmMain : Form
     {
-        private string _Username;
+       
         public frmMain(string username)
         {
-            clsLoginUser.LoginUser = username;
             InitializeComponent();
-            _Username = username;
+            clsLoginUser.LoginUser = username;
+
         }
 
         private void _CenterPictureBox()
@@ -29,7 +29,7 @@ namespace DVLD_View
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            lblLoginUser.Text = $"Login Username is:[{_Username}]";
+            lblLoginUser.Text = $"Login Username is:[{clsLoginUser.LoginUser}]";
             _CenterPictureBox();
         }
 
@@ -47,7 +47,7 @@ namespace DVLD_View
 
         private void tsmiCurrentUserInfo_Click(object sender, EventArgs e)
         {
-            int userID = clsUser.Find(_Username).UserID;
+            int userID = clsUser.Find(clsLoginUser.LoginUser).UserID;
 
             frmUserDetails userDetails  = new frmUserDetails(userID);
             userDetails.ShowDialog();
@@ -55,7 +55,7 @@ namespace DVLD_View
 
         private void tsmiChangePassword_Click(object sender, EventArgs e)
         {
-            int userID =clsUser.Find(_Username).UserID;
+            int userID =clsUser.Find(clsLoginUser.LoginUser).UserID;
             frmChangePassword changePassword =new frmChangePassword(userID);
             changePassword.ShowDialog();
         }
