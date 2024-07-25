@@ -31,6 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListPeople));
             this.dgvListPeople = new System.Windows.Forms.DataGridView();
+            this.colPersonID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNationalNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSecondName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colThirdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiShowDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -50,17 +61,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.pbManagePeople = new System.Windows.Forms.PictureBox();
-            this.colPersonID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNationalNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSecondName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colThirdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListPeople)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).BeginInit();
@@ -93,6 +93,94 @@
             this.dgvListPeople.RowTemplate.Height = 24;
             this.dgvListPeople.Size = new System.Drawing.Size(1502, 333);
             this.dgvListPeople.TabIndex = 0;
+            // 
+            // colPersonID
+            // 
+            this.colPersonID.HeaderText = "Person ID";
+            this.colPersonID.MinimumWidth = 6;
+            this.colPersonID.Name = "colPersonID";
+            this.colPersonID.ReadOnly = true;
+            this.colPersonID.Width = 80;
+            // 
+            // colNationalNo
+            // 
+            this.colNationalNo.HeaderText = "National No";
+            this.colNationalNo.MinimumWidth = 6;
+            this.colNationalNo.Name = "colNationalNo";
+            this.colNationalNo.ReadOnly = true;
+            this.colNationalNo.Width = 90;
+            // 
+            // colFirstName
+            // 
+            this.colFirstName.HeaderText = "First Name";
+            this.colFirstName.MinimumWidth = 6;
+            this.colFirstName.Name = "colFirstName";
+            this.colFirstName.ReadOnly = true;
+            this.colFirstName.Width = 90;
+            // 
+            // colSecondName
+            // 
+            this.colSecondName.HeaderText = "Second Name";
+            this.colSecondName.MinimumWidth = 6;
+            this.colSecondName.Name = "colSecondName";
+            this.colSecondName.ReadOnly = true;
+            this.colSecondName.Width = 120;
+            // 
+            // colThirdName
+            // 
+            this.colThirdName.HeaderText = "Third Name";
+            this.colThirdName.MinimumWidth = 6;
+            this.colThirdName.Name = "colThirdName";
+            this.colThirdName.ReadOnly = true;
+            this.colThirdName.Width = 90;
+            // 
+            // colLastName
+            // 
+            this.colLastName.HeaderText = "Last Name";
+            this.colLastName.MinimumWidth = 6;
+            this.colLastName.Name = "colLastName";
+            this.colLastName.ReadOnly = true;
+            this.colLastName.Width = 90;
+            // 
+            // colGender
+            // 
+            this.colGender.HeaderText = "Gender";
+            this.colGender.MinimumWidth = 6;
+            this.colGender.Name = "colGender";
+            this.colGender.ReadOnly = true;
+            this.colGender.Width = 70;
+            // 
+            // colDateOfBirth
+            // 
+            this.colDateOfBirth.HeaderText = "Date Of Birth";
+            this.colDateOfBirth.MinimumWidth = 6;
+            this.colDateOfBirth.Name = "colDateOfBirth";
+            this.colDateOfBirth.ReadOnly = true;
+            this.colDateOfBirth.Width = 125;
+            // 
+            // colNationality
+            // 
+            this.colNationality.HeaderText = "Nationality";
+            this.colNationality.MinimumWidth = 6;
+            this.colNationality.Name = "colNationality";
+            this.colNationality.ReadOnly = true;
+            this.colNationality.Width = 80;
+            // 
+            // colPhone
+            // 
+            this.colPhone.HeaderText = "Phone";
+            this.colPhone.MinimumWidth = 6;
+            this.colPhone.Name = "colPhone";
+            this.colPhone.ReadOnly = true;
+            this.colPhone.Width = 90;
+            // 
+            // colEmail
+            // 
+            this.colEmail.HeaderText = "Email";
+            this.colEmail.MinimumWidth = 6;
+            this.colEmail.Name = "colEmail";
+            this.colEmail.ReadOnly = true;
+            this.colEmail.Width = 130;
             // 
             // contextMenuStrip1
             // 
@@ -204,7 +292,7 @@
             this.cbFilterPeople.Location = new System.Drawing.Point(114, 168);
             this.cbFilterPeople.Name = "cbFilterPeople";
             this.cbFilterPeople.Size = new System.Drawing.Size(192, 33);
-            this.cbFilterPeople.TabIndex = 3;
+            this.cbFilterPeople.TabIndex = 0;
             this.cbFilterPeople.SelectedIndexChanged += new System.EventHandler(this.cbFilterPeople_SelectedIndexChanged);
             // 
             // label2
@@ -242,11 +330,11 @@
             // 
             // txtFilter
             // 
+            this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFilter.Location = new System.Drawing.Point(312, 168);
-            this.txtFilter.Multiline = true;
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(184, 33);
-            this.txtFilter.TabIndex = 9;
+            this.txtFilter.Size = new System.Drawing.Size(184, 30);
+            this.txtFilter.TabIndex = 1;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
             // 
@@ -262,7 +350,7 @@
             this.cbGenderFilter.Location = new System.Drawing.Point(312, 168);
             this.cbGenderFilter.Name = "cbGenderFilter";
             this.cbGenderFilter.Size = new System.Drawing.Size(121, 33);
-            this.cbGenderFilter.TabIndex = 10;
+            this.cbGenderFilter.TabIndex = 1;
             this.cbGenderFilter.SelectedIndexChanged += new System.EventHandler(this.cbGenderFilter_SelectedIndexChanged);
             // 
             // btnClose
@@ -274,7 +362,7 @@
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClose.Location = new System.Drawing.Point(1378, 550);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 43);
+            this.btnClose.Size = new System.Drawing.Size(138, 47);
             this.btnClose.TabIndex = 11;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -304,99 +392,12 @@
             this.pbManagePeople.TabIndex = 1;
             this.pbManagePeople.TabStop = false;
             // 
-            // colPersonID
-            // 
-            this.colPersonID.HeaderText = "Person ID";
-            this.colPersonID.MinimumWidth = 6;
-            this.colPersonID.Name = "colPersonID";
-            this.colPersonID.ReadOnly = true;
-            this.colPersonID.Width = 80;
-            // 
-            // colNationalNo
-            // 
-            this.colNationalNo.HeaderText = "National No";
-            this.colNationalNo.MinimumWidth = 6;
-            this.colNationalNo.Name = "colNationalNo";
-            this.colNationalNo.ReadOnly = true;
-            this.colNationalNo.Width = 90;
-            // 
-            // colFirstName
-            // 
-            this.colFirstName.HeaderText = "First Name";
-            this.colFirstName.MinimumWidth = 6;
-            this.colFirstName.Name = "colFirstName";
-            this.colFirstName.ReadOnly = true;
-            this.colFirstName.Width = 90;
-            // 
-            // colSecondName
-            // 
-            this.colSecondName.HeaderText = "Second Name";
-            this.colSecondName.MinimumWidth = 6;
-            this.colSecondName.Name = "colSecondName";
-            this.colSecondName.ReadOnly = true;
-            this.colSecondName.Width = 120;
-            // 
-            // colThirdName
-            // 
-            this.colThirdName.HeaderText = "Third Name";
-            this.colThirdName.MinimumWidth = 6;
-            this.colThirdName.Name = "colThirdName";
-            this.colThirdName.ReadOnly = true;
-            this.colThirdName.Width = 90;
-            // 
-            // colLastName
-            // 
-            this.colLastName.HeaderText = "Last Name";
-            this.colLastName.MinimumWidth = 6;
-            this.colLastName.Name = "colLastName";
-            this.colLastName.ReadOnly = true;
-            this.colLastName.Width = 90;
-            // 
-            // colGender
-            // 
-            this.colGender.HeaderText = "Gender";
-            this.colGender.MinimumWidth = 6;
-            this.colGender.Name = "colGender";
-            this.colGender.ReadOnly = true;
-            this.colGender.Width = 70;
-            // 
-            // colDateOfBirth
-            // 
-            this.colDateOfBirth.HeaderText = "Date Of Birth";
-            this.colDateOfBirth.MinimumWidth = 6;
-            this.colDateOfBirth.Name = "colDateOfBirth";
-            this.colDateOfBirth.ReadOnly = true;
-            // 
-            // colNationality
-            // 
-            this.colNationality.HeaderText = "Nationality";
-            this.colNationality.MinimumWidth = 6;
-            this.colNationality.Name = "colNationality";
-            this.colNationality.ReadOnly = true;
-            this.colNationality.Width = 80;
-            // 
-            // colPhone
-            // 
-            this.colPhone.HeaderText = "Phone";
-            this.colPhone.MinimumWidth = 6;
-            this.colPhone.Name = "colPhone";
-            this.colPhone.ReadOnly = true;
-            this.colPhone.Width = 90;
-            // 
-            // colEmail
-            // 
-            this.colEmail.HeaderText = "Email";
-            this.colEmail.MinimumWidth = 6;
-            this.colEmail.Name = "colEmail";
-            this.colEmail.ReadOnly = true;
-            this.colEmail.Width = 130;
-            // 
             // frmListPeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1528, 602);
+            this.ClientSize = new System.Drawing.Size(1528, 617);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.cbGenderFilter);
             this.Controls.Add(this.txtFilter);

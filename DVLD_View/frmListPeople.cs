@@ -157,6 +157,7 @@ namespace DVLD_View
             {
                 cbGenderFilter.SelectedIndex = 0;
                 txtFilter.Visible = true;
+                txtFilter.Focus();
                 cbGenderFilter.Visible = false;
             }
             

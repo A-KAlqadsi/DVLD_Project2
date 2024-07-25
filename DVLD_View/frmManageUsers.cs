@@ -151,6 +151,7 @@ namespace DVLD_View
             {
                 cbIsActiveFilter.SelectedIndex = 0;
                 txtFilter.Visible = true;
+                txtFilter.Focus();
                 cbIsActiveFilter.Visible = false;
             }
         }
