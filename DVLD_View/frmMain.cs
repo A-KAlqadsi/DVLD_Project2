@@ -16,6 +16,7 @@ namespace DVLD_View
         private string _Username;
         public frmMain(string username)
         {
+            clsLoginUser.LoginUser = username;
             InitializeComponent();
             _Username = username;
         }

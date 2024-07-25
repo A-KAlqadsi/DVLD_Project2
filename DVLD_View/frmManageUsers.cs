@@ -112,7 +112,7 @@ namespace DVLD_View
 
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Delete user will be here");
+            //MessageBox.Show("Delete user will be here");
 
         }
         private void tsmiChangePassword_Click(object sender, EventArgs e)
