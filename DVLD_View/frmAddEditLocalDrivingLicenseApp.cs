@@ -16,6 +16,7 @@ namespace DVLD_View
         enum enMode { AddNew =1,Update =2}
         enMode _Mode;
         private int _LLicenseAppID;
+        private int _PersonID;
         private clsApplication _Application;
         private clsLocalDrivingLicenseApp _LocalDrivingLicenseApp;
 
@@ -58,6 +59,23 @@ namespace DVLD_View
         private void frmAddEditLocalDrivingLicenseApp_Load(object sender, EventArgs e)
         {
             _LoadData();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            _PersonID = ctrlPersonCardWithFilter1.PersonID;
+            if(_PersonID == -1)
+            {
+                MessageBox.Show($"Choose Person Info First!", "Person Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;   
+            }
+
+            tcLocalDrivingLicenseInfo.SelectedTab = tpApplicationInfo;
         }
     }
 }
