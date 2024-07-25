@@ -44,6 +44,7 @@ namespace DVLD_View
             {
                 _PersonID = personID;
                 _FillPersonInfo();
+                llEditPerson.Enabled = true;
             }
 
 
@@ -61,6 +62,7 @@ namespace DVLD_View
             {
                 _PersonID = _Person.PersonID;
                 _FillPersonInfo();
+                llEditPerson.Enabled = true;
             }
 
 
