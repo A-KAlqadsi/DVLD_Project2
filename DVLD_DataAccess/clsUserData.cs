@@ -399,6 +399,36 @@ namespace DVLD_DataAccess
             return isExist;
         }
 
+        public static bool IsUserMatchedApplication(int userID)
+        {
+            bool isMatched = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP(1) Found=1 From Applications WHERE CreatedByUserID=@userID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@userID", userID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int activity))
+                    isMatched = true;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isMatched;
+        }
+
 
     }
 }

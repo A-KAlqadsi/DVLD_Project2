@@ -105,6 +105,11 @@ namespace DVLD_Business
             return clsUserData.IsUserExist(userName);
         }
 
+        public static bool IsUserConnectedToService(int userID)
+        {
+            return clsUserData.IsUserMatchedApplication(userID);
+        }
+        
         public static bool IsUserActive(string userName)
         {
             return clsUserData.IsUserActive(userName);
