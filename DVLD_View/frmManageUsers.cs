@@ -91,14 +91,14 @@ namespace DVLD_View
             //MessageBox.Show("Add new user will be here");
             frmAddEditUser addEdit = new frmAddEditUser(-1);
             addEdit.ShowDialog();
-            _ResetFilter();
+            _LoadAllUsers();
         }
         private void btnAddNew_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Add new user will be here");
             frmAddEditUser addEdit = new frmAddEditUser(-1);
             addEdit.ShowDialog();
-            _ResetFilter();
+            _LoadAllUsers();
         }
 
         private void tsmiEdit_Click(object sender, EventArgs e)
@@ -107,12 +107,32 @@ namespace DVLD_View
             int userID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
             frmAddEditUser addEdit = new frmAddEditUser(userID);
             addEdit.ShowDialog();
-            _ResetFilter();              
+            _LoadAllUsers();              
         }
 
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Delete user will be here");
+            int userID = (int)dgvListUsers.CurrentRow.Cells[0].Value;
+            string userName = (string)dgvListUsers.CurrentRow.Cells["colUserName"].Value;
+            if(clsLoginUser.LoginUser == userName)
+            {
+                MessageBox.Show($"[{userName}] is login in the system now!!", "Delete Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(clsUser.IsUserConnectedToService(userID))
+            {
+                MessageBox.Show($"[{userName}] is match to service(s) in the system, cann't be deleted", "Delete Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(MessageBox.Show($"Are you sure you want to delete user with ID[{userID}]?","Confirm Delete",MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                clsUser.Delete(userID);
+                _LoadAllUsers();
+            }
+            
 
         }
         private void tsmiChangePassword_Click(object sender, EventArgs e)
