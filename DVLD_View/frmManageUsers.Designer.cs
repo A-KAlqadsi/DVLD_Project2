@@ -29,13 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageUsers));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbFilterUsers = new System.Windows.Forms.ComboBox();
             this.dgvListUsers = new System.Windows.Forms.DataGridView();
+            this.colUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPersonID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cmsUsersMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiShowDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,11 +58,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.pbManagePeople = new System.Windows.Forms.PictureBox();
-            this.colUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPersonID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListUsers)).BeginInit();
             this.cmsUsersMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).BeginInit();
@@ -108,14 +108,14 @@
             this.dgvListUsers.AllowUserToDeleteRows = false;
             this.dgvListUsers.AllowUserToOrderColumns = true;
             this.dgvListUsers.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colUserID,
@@ -124,14 +124,14 @@
             this.colUsername,
             this.colIsActive});
             this.dgvListUsers.ContextMenuStrip = this.cmsUsersMenu;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListUsers.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListUsers.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListUsers.Location = new System.Drawing.Point(36, 241);
             this.dgvListUsers.Name = "dgvListUsers";
             this.dgvListUsers.ReadOnly = true;
@@ -140,6 +140,48 @@
             this.dgvListUsers.Size = new System.Drawing.Size(719, 280);
             this.dgvListUsers.TabIndex = 10;
             this.dgvListUsers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvListUsers_MouseDoubleClick);
+            // 
+            // colUserID
+            // 
+            this.colUserID.HeaderText = "User ID";
+            this.colUserID.MinimumWidth = 6;
+            this.colUserID.Name = "colUserID";
+            this.colUserID.ReadOnly = true;
+            this.colUserID.Width = 90;
+            // 
+            // colPersonID
+            // 
+            this.colPersonID.HeaderText = "Person ID";
+            this.colPersonID.MinimumWidth = 6;
+            this.colPersonID.Name = "colPersonID";
+            this.colPersonID.ReadOnly = true;
+            this.colPersonID.Width = 90;
+            // 
+            // colFullName
+            // 
+            this.colFullName.HeaderText = "Full Name";
+            this.colFullName.MinimumWidth = 6;
+            this.colFullName.Name = "colFullName";
+            this.colFullName.ReadOnly = true;
+            this.colFullName.Width = 250;
+            // 
+            // colUsername
+            // 
+            this.colUsername.HeaderText = "User Name";
+            this.colUsername.MinimumWidth = 6;
+            this.colUsername.Name = "colUsername";
+            this.colUsername.ReadOnly = true;
+            this.colUsername.Width = 120;
+            // 
+            // colIsActive
+            // 
+            this.colIsActive.HeaderText = "Is Active";
+            this.colIsActive.MinimumWidth = 6;
+            this.colIsActive.Name = "colIsActive";
+            this.colIsActive.ReadOnly = true;
+            this.colIsActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colIsActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colIsActive.Width = 90;
             // 
             // cmsUsersMenu
             // 
@@ -275,6 +317,7 @@
             this.txtFilter.Size = new System.Drawing.Size(184, 33);
             this.txtFilter.TabIndex = 15;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
             // 
             // btnClose
             // 
@@ -314,48 +357,6 @@
             this.pbManagePeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbManagePeople.TabIndex = 4;
             this.pbManagePeople.TabStop = false;
-            // 
-            // colUserID
-            // 
-            this.colUserID.HeaderText = "User ID";
-            this.colUserID.MinimumWidth = 6;
-            this.colUserID.Name = "colUserID";
-            this.colUserID.ReadOnly = true;
-            this.colUserID.Width = 90;
-            // 
-            // colPersonID
-            // 
-            this.colPersonID.HeaderText = "Person ID";
-            this.colPersonID.MinimumWidth = 6;
-            this.colPersonID.Name = "colPersonID";
-            this.colPersonID.ReadOnly = true;
-            this.colPersonID.Width = 90;
-            // 
-            // colFullName
-            // 
-            this.colFullName.HeaderText = "Full Name";
-            this.colFullName.MinimumWidth = 6;
-            this.colFullName.Name = "colFullName";
-            this.colFullName.ReadOnly = true;
-            this.colFullName.Width = 250;
-            // 
-            // colUsername
-            // 
-            this.colUsername.HeaderText = "User Name";
-            this.colUsername.MinimumWidth = 6;
-            this.colUsername.Name = "colUsername";
-            this.colUsername.ReadOnly = true;
-            this.colUsername.Width = 120;
-            // 
-            // colIsActive
-            // 
-            this.colIsActive.HeaderText = "Is Active";
-            this.colIsActive.MinimumWidth = 6;
-            this.colIsActive.Name = "colIsActive";
-            this.colIsActive.ReadOnly = true;
-            this.colIsActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colIsActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colIsActive.Width = 90;
             // 
             // frmManageUsers
             // 

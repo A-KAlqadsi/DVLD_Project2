@@ -230,6 +230,17 @@ namespace DVLD_View
             _RefreshUsers(_DataView);
         }
 
-        
+        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _FilterValidate(e);
+        }
+        private void _FilterValidate(KeyPressEventArgs e)
+        {
+            if(cbFilterUsers.SelectedIndex == 1 || cbFilterUsers.SelectedIndex ==2)
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                    e.Handled = true;
+            }
+        }
     }
 }
