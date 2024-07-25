@@ -53,6 +53,7 @@ namespace DVLD_View
             this.Text = "Edit User";
             _UserPersonID = _User.PersonID;
             //ctrlPersonCard1.LoadPersonInfo(_UserPersonID);
+            ctrlPersonCardWithFilter1.txtSearch.Text = _User.PersonID.ToString();
             ctrlPersonCardWithFilter1.gbFilter.Enabled = false;
             ctrlPersonCardWithFilter1.ctrlPersonCard1.LoadPersonInfo(_User.PersonID);
             lblUserID.Text =_User.UserID.ToString();

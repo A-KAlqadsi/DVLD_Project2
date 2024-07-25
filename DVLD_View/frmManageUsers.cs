@@ -117,13 +117,13 @@ namespace DVLD_View
             string userName = (string)dgvListUsers.CurrentRow.Cells["colUserName"].Value;
             if(clsLoginUser.LoginUser == userName)
             {
-                MessageBox.Show($"[{userName}] is login in the system now!!", "Delete Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"[{userName}] is login in the system now, cannot be deleted", "Delete Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if(clsUser.IsUserConnectedToService(userID))
             {
-                MessageBox.Show($"[{userName}] is match to service(s) in the system, cann't be deleted", "Delete Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"[{userName}] is match to service(s) in the system, cannot be deleted", "Delete Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -270,6 +270,11 @@ namespace DVLD_View
                 if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                     e.Handled = true;
             }
+        }
+
+        private void dgvListUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
