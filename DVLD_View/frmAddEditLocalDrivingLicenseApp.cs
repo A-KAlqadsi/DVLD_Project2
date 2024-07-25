@@ -7,14 +7,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD_Business;
 
 namespace DVLD_View
 {
     public partial class frmAddEditLocalDrivingLicenseApp : Form
     {
-        public frmAddEditLocalDrivingLicenseApp()
+        enum enMode { AddNew =1,Update =2}
+        enMode _Mode;
+        private int _LLicenseAppID;
+        private clsApplication _Application;
+        private clsLocalDrivingLicenseApp _LocalDrivingLicenseApp;
+
+        public frmAddEditLocalDrivingLicenseApp(int lLicenseAppID)
         {
             InitializeComponent();
+
+            _LLicenseAppID = lLicenseAppID;
+            if(_LLicenseAppID == -1)
+                _Mode=enMode.AddNew;
+            else 
+                _Mode=enMode.Update;
+
+        }
+
+        private void _LoadLicenseClasses()
+        {
+            DataTable dt = clsLicenseClass.GetAll();
+            foreach (DataRow dr in dt.Rows)
+            {
+                cbLicenseClasses.Items.Add(dr["ClassName"]);
+            }
+            cbLicenseClasses.SelectedIndex = 2;
+        }
+
+        private void _LoadData()
+        {
+            _LoadLicenseClasses();
+
+            if(_Mode ==enMode.AddNew)
+            {
+                _Application = new clsApplication();
+                _LocalDrivingLicenseApp = new clsLocalDrivingLicenseApp();
+                return;
+            }
+
+
+        }
+
+        private void frmAddEditLocalDrivingLicenseApp_Load(object sender, EventArgs e)
+        {
+            _LoadData();
         }
     }
 }

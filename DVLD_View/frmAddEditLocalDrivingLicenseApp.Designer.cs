@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditLocalDrivingLicenseApp));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tcLocalDrivingLicenseInfo = new System.Windows.Forms.TabControl();
             this.tpPersonalInfo = new System.Windows.Forms.TabPage();
             this.tpApplicationInfo = new System.Windows.Forms.TabPage();
             this.ctrlPersonCardWithFilter1 = new DVLD_View.ctrlPersonCardWithFilter();
@@ -52,7 +52,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblMode = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.tcLocalDrivingLicenseInfo.SuspendLayout();
             this.tpPersonalInfo.SuspendLayout();
             this.tpApplicationInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -62,16 +62,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tcLocalDrivingLicenseInfo
             // 
-            this.tabControl1.Controls.Add(this.tpPersonalInfo);
-            this.tabControl1.Controls.Add(this.tpApplicationInfo);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(9, 66);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(951, 535);
-            this.tabControl1.TabIndex = 0;
+            this.tcLocalDrivingLicenseInfo.Controls.Add(this.tpPersonalInfo);
+            this.tcLocalDrivingLicenseInfo.Controls.Add(this.tpApplicationInfo);
+            this.tcLocalDrivingLicenseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tcLocalDrivingLicenseInfo.Location = new System.Drawing.Point(9, 66);
+            this.tcLocalDrivingLicenseInfo.Name = "tcLocalDrivingLicenseInfo";
+            this.tcLocalDrivingLicenseInfo.SelectedIndex = 0;
+            this.tcLocalDrivingLicenseInfo.Size = new System.Drawing.Size(951, 535);
+            this.tcLocalDrivingLicenseInfo.TabIndex = 0;
             // 
             // tpPersonalInfo
             // 
@@ -177,7 +177,7 @@
             this.cbLicenseClasses.FormattingEnabled = true;
             this.cbLicenseClasses.Location = new System.Drawing.Point(394, 148);
             this.cbLicenseClasses.Name = "cbLicenseClasses";
-            this.cbLicenseClasses.Size = new System.Drawing.Size(301, 33);
+            this.cbLicenseClasses.Size = new System.Drawing.Size(369, 33);
             this.cbLicenseClasses.TabIndex = 1;
             // 
             // pictureBox1
@@ -330,12 +330,13 @@
             this.Controls.Add(this.lblMode);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tcLocalDrivingLicenseInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddEditLocalDrivingLicenseApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Local Driving License Application";
-            this.tabControl1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.frmAddEditLocalDrivingLicenseApp_Load);
+            this.tcLocalDrivingLicenseInfo.ResumeLayout(false);
             this.tpPersonalInfo.ResumeLayout(false);
             this.tpApplicationInfo.ResumeLayout(false);
             this.tpApplicationInfo.PerformLayout();
@@ -351,7 +352,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tcLocalDrivingLicenseInfo;
         private System.Windows.Forms.TabPage tpPersonalInfo;
         private System.Windows.Forms.TabPage tpApplicationInfo;
         private ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
