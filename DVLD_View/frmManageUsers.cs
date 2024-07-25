@@ -27,17 +27,15 @@ namespace DVLD_View
             dgvListUsers.Rows.Clear();
             bool isActive;
             int counter = 0;
-            int personID;
             if (dv != null)
                 counter = dv.Count;
 
             for (int i = 0; i < dv.Count; i++)
             {
-                personID = Convert.ToInt32(dv[i]["PersonID"]);
-                _Person = clsPerson.Find(personID);
+                
                 isActive = Convert.ToBoolean(dv[i]["IsActive"]);
 
-                dgvListUsers.Rows.Add(dv[i]["UserID"], dv[i]["PersonID"], _Person.FullName(), dv[i]["Username"],isActive);
+                dgvListUsers.Rows.Add(dv[i]["UserID"], dv[i]["PersonID"], dv[i]["FullName"], dv[i]["Username"],isActive);
             }
 
 
@@ -47,7 +45,7 @@ namespace DVLD_View
 
         private void _LoadAllUsers()
         {
-            _DataTable = clsUser.GetAll();
+            _DataTable = clsUser.GetAllMaster();
             _DataView = _DataTable.DefaultView;
             _RefreshUsers(_DataView);
         }

@@ -86,6 +86,10 @@ namespace DVLD_Business
             return clsUserData.GetAllUsers();
         }
 
+        public static DataTable GetAllMaster()
+        {
+            return clsUserData.GetAllUsersMaster();
+        }
         public static bool Delete(int userID)
         {
             return clsUserData.DeleteUser(userID);

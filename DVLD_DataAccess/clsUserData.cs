@@ -190,6 +190,40 @@ namespace DVLD_DataAccess
 
         }
 
+        public static DataTable GetAllUsersMaster()
+        {
+            DataTable table = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "select U.UserID, U.PersonID ,P.FirstName+ ' ' + P.SecondName + ' '+ ISNULL(P.ThirdName,'') + ' '+ P.LastName as FullName, " +
+                "U.UserName, U.IsActive " +
+                "from Users U " +
+                "JOIN People P " +
+                "ON (U.PersonID = P.PersonID);";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                    table.Load(reader);
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return table;
+
+        }
+
         public static bool DeleteUser(int userID)
         {
             int rowsAffected = 0;
