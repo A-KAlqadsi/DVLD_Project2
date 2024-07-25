@@ -16,6 +16,7 @@ namespace DVLD_View
         enum enMode { AddNew =1,Update =2}
         enMode _Mode;
         private int _LLicenseAppID;
+        private const int appTypeID = 1;
         private int _PersonID;
         private clsApplication _Application;
         private clsLocalDrivingLicenseApp _LocalDrivingLicenseApp;
@@ -42,12 +43,18 @@ namespace DVLD_View
             cbLicenseClasses.SelectedIndex = 2;
         }
 
-        private void _SetKnownFiledsValues()
+        private void _SetNewLicenseKnownFieldsValues()
         {
             lblUsername.Text = clsLoginUser.LoginUser;
             lblApplicationDate.Text = DateTime.Now.ToShortDateString();
-            lblApplicationFees.Text = "15";
-            
+
+            clsApplicationType appType = clsApplicationType.Find(appTypeID);
+
+            if (appType != null)
+            {
+                lblApplicationFees.Text= appType.ApplicationFees.ToString();
+            }
+
         }
 
         private void _LoadData()
@@ -57,7 +64,7 @@ namespace DVLD_View
 
             if(_Mode ==enMode.AddNew)
             {
-                _SetKnownFiledsValues();
+                _SetNewLicenseKnownFieldsValues();
                 _Application = new clsApplication();
                 _LocalDrivingLicenseApp = new clsLocalDrivingLicenseApp();
                 return;
@@ -69,6 +76,12 @@ namespace DVLD_View
         private void frmAddEditLocalDrivingLicenseApp_Load(object sender, EventArgs e)
         {
             _LoadData();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            _PersonID = ctrlPersonCardWithFilter1.PersonID;
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -92,5 +105,7 @@ namespace DVLD_View
         {
             tcLocalDrivingLicenseInfo.SelectedTab = tpPersonalInfo;
         }
+
+        
     }
 }
