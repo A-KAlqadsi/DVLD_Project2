@@ -145,15 +145,15 @@ namespace DVLD_View
 
         private void tsmiSendEmail_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Send email to user will be here");
+            MessageBox.Show("Not impelementd yet, soon will be added as feature", "Not Impelementd", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
         }
 
         private void tsmiPhoneCall_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Phone call to user will be here");
+            MessageBox.Show("Not impelementd yet, soon will be added as feature", "Not Impelementd", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-        }      
+        }
 
         private void cbFilterUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
