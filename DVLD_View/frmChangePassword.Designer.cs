@@ -196,7 +196,7 @@
             this.ctrlUserPersonCard1.Location = new System.Drawing.Point(25, 51);
             this.ctrlUserPersonCard1.Name = "ctrlUserPersonCard1";
             this.ctrlUserPersonCard1.Size = new System.Drawing.Size(914, 334);
-            this.ctrlUserPersonCard1.TabIndex = 0;
+            this.ctrlUserPersonCard1.TabIndex = 19;
             // 
             // frmChangePassword
             // 
