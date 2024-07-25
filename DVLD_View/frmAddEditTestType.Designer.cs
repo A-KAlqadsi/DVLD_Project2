@@ -54,7 +54,7 @@
             // txtFees
             // 
             this.txtFees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFees.Location = new System.Drawing.Point(219, 304);
+            this.txtFees.Location = new System.Drawing.Point(219, 391);
             this.txtFees.Name = "txtFees";
             this.txtFees.Size = new System.Drawing.Size(453, 30);
             this.txtFees.TabIndex = 2;
@@ -97,7 +97,7 @@
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(538, 342);
+            this.btnSave.Location = new System.Drawing.Point(538, 427);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(134, 43);
             this.btnSave.TabIndex = 3;
@@ -114,7 +114,7 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(397, 342);
+            this.btnClose.Location = new System.Drawing.Point(397, 427);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(134, 43);
             this.btnClose.TabIndex = 4;
@@ -138,7 +138,7 @@
             // 
             this.pbFees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbFees.Image = ((System.Drawing.Image)(resources.GetObject("pbFees.Image")));
-            this.pbFees.Location = new System.Drawing.Point(167, 304);
+            this.pbFees.Location = new System.Drawing.Point(167, 391);
             this.pbFees.Margin = new System.Windows.Forms.Padding(2);
             this.pbFees.Name = "pbFees";
             this.pbFees.Size = new System.Drawing.Size(41, 32);
@@ -150,7 +150,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(72, 304);
+            this.label4.Location = new System.Drawing.Point(72, 391);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 25);
             this.label4.TabIndex = 47;
@@ -204,7 +204,7 @@
             this.txtDescription.Location = new System.Drawing.Point(219, 184);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(453, 110);
+            this.txtDescription.Size = new System.Drawing.Size(453, 201);
             this.txtDescription.TabIndex = 1;
             // 
             // epValidateInput
@@ -218,7 +218,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(707, 397);
+            this.ClientSize = new System.Drawing.Size(696, 488);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.pbDescription);
             this.Controls.Add(this.label1);
@@ -233,6 +233,7 @@
             this.Controls.Add(this.lblTestTypeID);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.lblMode);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddEditTestType";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAddEditTestType";

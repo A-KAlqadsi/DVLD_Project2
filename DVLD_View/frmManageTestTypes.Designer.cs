@@ -78,7 +78,7 @@
             this.dgvListTestTypes.ReadOnly = true;
             this.dgvListTestTypes.RowHeadersWidth = 51;
             this.dgvListTestTypes.RowTemplate.Height = 24;
-            this.dgvListTestTypes.Size = new System.Drawing.Size(892, 261);
+            this.dgvListTestTypes.Size = new System.Drawing.Size(872, 292);
             this.dgvListTestTypes.TabIndex = 7;
             // 
             // colID
@@ -135,7 +135,7 @@
             this.lblRecordsCount.AutoSize = true;
             this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordsCount.ForeColor = System.Drawing.Color.Black;
-            this.lblRecordsCount.Location = new System.Drawing.Point(97, 494);
+            this.lblRecordsCount.Location = new System.Drawing.Point(97, 526);
             this.lblRecordsCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(15, 16);
@@ -147,7 +147,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(16, 492);
+            this.label3.Location = new System.Drawing.Point(16, 524);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 16);
@@ -161,7 +161,7 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(761, 489);
+            this.btnClose.Location = new System.Drawing.Point(741, 523);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(144, 39);
@@ -187,7 +187,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(918, 541);
+            this.ClientSize = new System.Drawing.Size(898, 586);
             this.Controls.Add(this.lblRecordsCount);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnClose);
