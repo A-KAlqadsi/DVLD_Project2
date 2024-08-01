@@ -19,6 +19,7 @@ namespace DVLD_View
         private const int appTypeID = 1; // this is the Id of AddLocalLicenseApplication
         private int _PersonID;
         private int _ClassID ;
+        private int _AppStatus = 1; // 1 => New, 2 => canceled, 3 => completed 
         private clsApplication _Application;
         private clsLocalDrivingLicenseApp _LocalDrivingLicenseApp;
 
@@ -42,6 +43,8 @@ namespace DVLD_View
                 cbLicenseClasses.Items.Add(dr["ClassName"]);
             }
             cbLicenseClasses.SelectedIndex = 2;
+            _ClassID = cbLicenseClasses.SelectedIndex + 1;
+
         }
 
         private void _SetNewLicenseKnownFieldsValues()
@@ -107,6 +110,10 @@ namespace DVLD_View
             tcLocalDrivingLicenseInfo.SelectedTab = tpPersonalInfo;
         }
 
-        
+        private void cbLicenseClasses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _ClassID = cbLicenseClasses.SelectedIndex + 1;
+            MessageBox.Show($"{_ClassID}");
+        }
     }
 }

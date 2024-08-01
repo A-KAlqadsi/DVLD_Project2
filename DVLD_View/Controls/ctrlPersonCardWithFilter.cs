@@ -25,7 +25,7 @@ namespace DVLD_View
         
         private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
         {
-            cbPersonFilters.SelectedIndex = 0;
+            cbPersonFilters.SelectedIndex = 1;
         }
 
         private void btnAddNew_Click_1(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace DVLD_View
         {
             if(personID != -1)
             {
-                cbPersonFilters.SelectedIndex = 1;
+                cbPersonFilters.SelectedIndex = 0;
                 PersonID = personID;
                 txtSearch.Text = personID.ToString();
                 ctrlPersonCard1.LoadPersonInfo(personID);
