@@ -41,15 +41,6 @@
             this.colApplicationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPassedTests = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbFilterLocalDrivingLicenseApps = new System.Windows.Forms.ComboBox();
-            this.txtFilter = new System.Windows.Forms.TextBox();
-            this.cbStatusFilter = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.lblRecordsCount = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnAddNew = new System.Windows.Forms.Button();
             this.cmsManageLocalDrivingLicenseApp = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiShowAppDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -59,20 +50,29 @@
             this.tsmiCancelApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.sToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiScheduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiIssueDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiShowLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiShowPersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiScheduleVisionTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiScheduleWrittenTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiScheduleStreetTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbFilterLocalDrivingLicenseApps = new System.Windows.Forms.ComboBox();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.cbStatusFilter = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.lblRecordsCount = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnAddNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbManageLDLApps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListLocalDrivingLicenseApps)).BeginInit();
-            this.panel1.SuspendLayout();
             this.cmsManageLocalDrivingLicenseApp.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -193,126 +193,6 @@
             this.colStatus.ReadOnly = true;
             this.colStatus.Width = 125;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(22, 223);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 25);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Filter By:";
-            // 
-            // cbFilterLocalDrivingLicenseApps
-            // 
-            this.cbFilterLocalDrivingLicenseApps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilterLocalDrivingLicenseApps.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFilterLocalDrivingLicenseApps.FormattingEnabled = true;
-            this.cbFilterLocalDrivingLicenseApps.Items.AddRange(new object[] {
-            "None",
-            "L.D.L AppID",
-            "Driving Class",
-            "National No",
-            "Full Name",
-            "Passed Tests",
-            "Status"});
-            this.cbFilterLocalDrivingLicenseApps.Location = new System.Drawing.Point(110, 219);
-            this.cbFilterLocalDrivingLicenseApps.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.cbFilterLocalDrivingLicenseApps.Name = "cbFilterLocalDrivingLicenseApps";
-            this.cbFilterLocalDrivingLicenseApps.Size = new System.Drawing.Size(192, 33);
-            this.cbFilterLocalDrivingLicenseApps.TabIndex = 9;
-            this.cbFilterLocalDrivingLicenseApps.SelectedIndexChanged += new System.EventHandler(this.cbFilterLocalDrivingLicenseApps_SelectedIndexChanged);
-            // 
-            // txtFilter
-            // 
-            this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(308, 220);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(270, 30);
-            this.txtFilter.TabIndex = 11;
-            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
-            this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
-            // 
-            // cbStatusFilter
-            // 
-            this.cbStatusFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStatusFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbStatusFilter.FormattingEnabled = true;
-            this.cbStatusFilter.Items.AddRange(new object[] {
-            "None",
-            "New",
-            "Cancelled",
-            "Completed"});
-            this.cbStatusFilter.Location = new System.Drawing.Point(308, 218);
-            this.cbStatusFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.cbStatusFilter.Name = "cbStatusFilter";
-            this.cbStatusFilter.Size = new System.Drawing.Size(122, 33);
-            this.cbStatusFilter.TabIndex = 12;
-            this.cbStatusFilter.SelectedIndexChanged += new System.EventHandler(this.cbStatusFilter_SelectedIndexChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dgvListLocalDrivingLicenseApps);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(11, 268);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1309, 294);
-            this.panel1.TabIndex = 13;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.White;
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1182, 567);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 41);
-            this.btnClose.TabIndex = 16;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // lblRecordsCount
-            // 
-            this.lblRecordsCount.AutoSize = true;
-            this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.ForeColor = System.Drawing.Color.Black;
-            this.lblRecordsCount.Location = new System.Drawing.Point(96, 567);
-            this.lblRecordsCount.Name = "lblRecordsCount";
-            this.lblRecordsCount.Size = new System.Drawing.Size(15, 16);
-            this.lblRecordsCount.TabIndex = 15;
-            this.lblRecordsCount.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(15, 567);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 16);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "# Records:";
-            // 
-            // btnAddNew
-            // 
-            this.btnAddNew.BackColor = System.Drawing.Color.White;
-            this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.Image")));
-            this.btnAddNew.Location = new System.Drawing.Point(1236, 182);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(84, 80);
-            this.btnAddNew.TabIndex = 17;
-            this.btnAddNew.UseVisualStyleBackColor = false;
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
-            // 
             // cmsManageLocalDrivingLicenseApp
             // 
             this.cmsManageLocalDrivingLicenseApp.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -394,6 +274,32 @@
             this.tsmiScheduleTests.Size = new System.Drawing.Size(341, 38);
             this.tsmiScheduleTests.Text = "Schedule Tests";
             // 
+            // tsmiScheduleVisionTest
+            // 
+            this.tsmiScheduleVisionTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiScheduleVisionTest.Image")));
+            this.tsmiScheduleVisionTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiScheduleVisionTest.Name = "tsmiScheduleVisionTest";
+            this.tsmiScheduleVisionTest.Size = new System.Drawing.Size(271, 38);
+            this.tsmiScheduleVisionTest.Text = "Schedule Vision Test";
+            // 
+            // tsmiScheduleWrittenTest
+            // 
+            this.tsmiScheduleWrittenTest.Enabled = false;
+            this.tsmiScheduleWrittenTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiScheduleWrittenTest.Image")));
+            this.tsmiScheduleWrittenTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiScheduleWrittenTest.Name = "tsmiScheduleWrittenTest";
+            this.tsmiScheduleWrittenTest.Size = new System.Drawing.Size(271, 38);
+            this.tsmiScheduleWrittenTest.Text = "Schedule Written Test";
+            // 
+            // tsmiScheduleStreetTest
+            // 
+            this.tsmiScheduleStreetTest.Enabled = false;
+            this.tsmiScheduleStreetTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiScheduleStreetTest.Image")));
+            this.tsmiScheduleStreetTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiScheduleStreetTest.Name = "tsmiScheduleStreetTest";
+            this.tsmiScheduleStreetTest.Size = new System.Drawing.Size(271, 38);
+            this.tsmiScheduleStreetTest.Text = "Schedule Street Test";
+            // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
@@ -435,31 +341,127 @@
             this.tsmiShowPersonLicenseHistory.Size = new System.Drawing.Size(341, 38);
             this.tsmiShowPersonLicenseHistory.Text = "Show Person License History";
             // 
-            // tsmiScheduleVisionTest
+            // label2
             // 
-            this.tsmiScheduleVisionTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiScheduleVisionTest.Image")));
-            this.tsmiScheduleVisionTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiScheduleVisionTest.Name = "tsmiScheduleVisionTest";
-            this.tsmiScheduleVisionTest.Size = new System.Drawing.Size(271, 38);
-            this.tsmiScheduleVisionTest.Text = "Schedule Vision Test";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(22, 223);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 25);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Filter By:";
             // 
-            // tsmiScheduleWrittenTest
+            // cbFilterLocalDrivingLicenseApps
             // 
-            this.tsmiScheduleWrittenTest.Enabled = false;
-            this.tsmiScheduleWrittenTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiScheduleWrittenTest.Image")));
-            this.tsmiScheduleWrittenTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiScheduleWrittenTest.Name = "tsmiScheduleWrittenTest";
-            this.tsmiScheduleWrittenTest.Size = new System.Drawing.Size(271, 38);
-            this.tsmiScheduleWrittenTest.Text = "Schedule Written Test";
+            this.cbFilterLocalDrivingLicenseApps.BackColor = System.Drawing.Color.White;
+            this.cbFilterLocalDrivingLicenseApps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterLocalDrivingLicenseApps.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFilterLocalDrivingLicenseApps.FormattingEnabled = true;
+            this.cbFilterLocalDrivingLicenseApps.Items.AddRange(new object[] {
+            "None",
+            "L.D.L AppID",
+            "Driving Class",
+            "National No",
+            "Full Name",
+            "Passed Tests",
+            "Status"});
+            this.cbFilterLocalDrivingLicenseApps.Location = new System.Drawing.Point(110, 219);
+            this.cbFilterLocalDrivingLicenseApps.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.cbFilterLocalDrivingLicenseApps.Name = "cbFilterLocalDrivingLicenseApps";
+            this.cbFilterLocalDrivingLicenseApps.Size = new System.Drawing.Size(192, 33);
+            this.cbFilterLocalDrivingLicenseApps.TabIndex = 9;
+            this.cbFilterLocalDrivingLicenseApps.SelectedIndexChanged += new System.EventHandler(this.cbFilterLocalDrivingLicenseApps_SelectedIndexChanged);
             // 
-            // tsmiScheduleStreetTest
+            // txtFilter
             // 
-            this.tsmiScheduleStreetTest.Enabled = false;
-            this.tsmiScheduleStreetTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiScheduleStreetTest.Image")));
-            this.tsmiScheduleStreetTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiScheduleStreetTest.Name = "tsmiScheduleStreetTest";
-            this.tsmiScheduleStreetTest.Size = new System.Drawing.Size(271, 38);
-            this.tsmiScheduleStreetTest.Text = "Schedule Street Test";
+            this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilter.Location = new System.Drawing.Point(308, 220);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(270, 30);
+            this.txtFilter.TabIndex = 11;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
+            // 
+            // cbStatusFilter
+            // 
+            this.cbStatusFilter.BackColor = System.Drawing.Color.White;
+            this.cbStatusFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatusFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbStatusFilter.FormattingEnabled = true;
+            this.cbStatusFilter.Items.AddRange(new object[] {
+            "None",
+            "New",
+            "Cancelled",
+            "Completed"});
+            this.cbStatusFilter.Location = new System.Drawing.Point(308, 218);
+            this.cbStatusFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.cbStatusFilter.Name = "cbStatusFilter";
+            this.cbStatusFilter.Size = new System.Drawing.Size(122, 33);
+            this.cbStatusFilter.TabIndex = 12;
+            this.cbStatusFilter.SelectedIndexChanged += new System.EventHandler(this.cbStatusFilter_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvListLocalDrivingLicenseApps);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(11, 268);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1309, 294);
+            this.panel1.TabIndex = 13;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.White;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1182, 567);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(138, 41);
+            this.btnClose.TabIndex = 16;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblRecordsCount
+            // 
+            this.lblRecordsCount.AutoSize = true;
+            this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordsCount.ForeColor = System.Drawing.Color.Black;
+            this.lblRecordsCount.Location = new System.Drawing.Point(96, 567);
+            this.lblRecordsCount.Name = "lblRecordsCount";
+            this.lblRecordsCount.Size = new System.Drawing.Size(15, 16);
+            this.lblRecordsCount.TabIndex = 15;
+            this.lblRecordsCount.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(15, 567);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 16);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "# Records:";
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.BackColor = System.Drawing.Color.White;
+            this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.Image")));
+            this.btnAddNew.Location = new System.Drawing.Point(1236, 182);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(84, 80);
+            this.btnAddNew.TabIndex = 17;
+            this.btnAddNew.UseVisualStyleBackColor = false;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // frmManageLocalDrivingLicenseApp
             // 
@@ -489,8 +491,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbManageLDLApps)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListLocalDrivingLicenseApps)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.cmsManageLocalDrivingLicenseApp.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
