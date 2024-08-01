@@ -16,5 +16,10 @@ namespace DVLD_View
         {
             InitializeComponent();
         }
+
+        private void frmVisionTestAppointment_Load(object sender, EventArgs e)
+        {
+            ctrlApplicationCard1.LoadApplicationInfo(41);
+        }
     }
 }

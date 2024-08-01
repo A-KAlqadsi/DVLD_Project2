@@ -33,7 +33,7 @@ namespace DVLD_DataAccess
                     applicantPersonID = (int)reader["ApplicantPersonID"];
                     ApplicationDate = Convert.ToDateTime(reader["ApplicationDate"]);
                     applicationTypeID = (int)reader["ApplicationTypeID"];
-                    applicationStatus = (short)reader["ApplicationStatus"];
+                    applicationStatus = Convert.ToInt16(reader["ApplicationStatus"]);
                     lastStatusDate = Convert.ToDateTime(reader["LastStatusDate"]);
                     paidFees = Convert.ToSingle(reader["PaidFees"]);
                     createdByUserID = (int)reader["CreatedByUserID"];

@@ -34,15 +34,15 @@
             this.pbVisionTestAppointment = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvListAllVisionTestAppointments = new System.Windows.Forms.DataGridView();
+            this.cmsManageVisionTestAppointment = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiEditTestAppointment = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiTakeTest = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddAppointment = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dgvListAllVisionTestAppointments = new System.Windows.Forms.DataGridView();
             this.ctrlApplicationCard1 = new DVLD_View.ctrlApplicationCard();
-            this.cmsManageVisionTestAppointment = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmiEditTestAppointment = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiTakeTest = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbVisionTestAppointment)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListAllVisionTestAppointments)).BeginInit();
@@ -90,6 +90,45 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1027, 156);
             this.panel1.TabIndex = 11;
+            // 
+            // dgvListAllVisionTestAppointments
+            // 
+            this.dgvListAllVisionTestAppointments.BackgroundColor = System.Drawing.Color.White;
+            this.dgvListAllVisionTestAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListAllVisionTestAppointments.ContextMenuStrip = this.cmsManageVisionTestAppointment;
+            this.dgvListAllVisionTestAppointments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvListAllVisionTestAppointments.Location = new System.Drawing.Point(0, 0);
+            this.dgvListAllVisionTestAppointments.Name = "dgvListAllVisionTestAppointments";
+            this.dgvListAllVisionTestAppointments.RowHeadersWidth = 51;
+            this.dgvListAllVisionTestAppointments.RowTemplate.Height = 24;
+            this.dgvListAllVisionTestAppointments.Size = new System.Drawing.Size(1027, 156);
+            this.dgvListAllVisionTestAppointments.TabIndex = 0;
+            // 
+            // cmsManageVisionTestAppointment
+            // 
+            this.cmsManageVisionTestAppointment.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsManageVisionTestAppointment.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsManageVisionTestAppointment.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiEditTestAppointment,
+            this.tsmiTakeTest});
+            this.cmsManageVisionTestAppointment.Name = "cmsManageVisionTestAppointment";
+            this.cmsManageVisionTestAppointment.Size = new System.Drawing.Size(164, 80);
+            // 
+            // tsmiEditTestAppointment
+            // 
+            this.tsmiEditTestAppointment.Image = ((System.Drawing.Image)(resources.GetObject("tsmiEditTestAppointment.Image")));
+            this.tsmiEditTestAppointment.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiEditTestAppointment.Name = "tsmiEditTestAppointment";
+            this.tsmiEditTestAppointment.Size = new System.Drawing.Size(163, 38);
+            this.tsmiEditTestAppointment.Text = "Edit";
+            // 
+            // tsmiTakeTest
+            // 
+            this.tsmiTakeTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiTakeTest.Image")));
+            this.tsmiTakeTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiTakeTest.Name = "tsmiTakeTest";
+            this.tsmiTakeTest.Size = new System.Drawing.Size(163, 38);
+            this.tsmiTakeTest.Text = "Take Test";
             // 
             // btnAddAppointment
             // 
@@ -141,19 +180,6 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "# Records:";
             // 
-            // dgvListAllVisionTestAppointments
-            // 
-            this.dgvListAllVisionTestAppointments.BackgroundColor = System.Drawing.Color.White;
-            this.dgvListAllVisionTestAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListAllVisionTestAppointments.ContextMenuStrip = this.cmsManageVisionTestAppointment;
-            this.dgvListAllVisionTestAppointments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvListAllVisionTestAppointments.Location = new System.Drawing.Point(0, 0);
-            this.dgvListAllVisionTestAppointments.Name = "dgvListAllVisionTestAppointments";
-            this.dgvListAllVisionTestAppointments.RowHeadersWidth = 51;
-            this.dgvListAllVisionTestAppointments.RowTemplate.Height = 24;
-            this.dgvListAllVisionTestAppointments.Size = new System.Drawing.Size(1027, 156);
-            this.dgvListAllVisionTestAppointments.TabIndex = 0;
-            // 
             // ctrlApplicationCard1
             // 
             this.ctrlApplicationCard1.BackColor = System.Drawing.Color.White;
@@ -161,32 +187,6 @@
             this.ctrlApplicationCard1.Name = "ctrlApplicationCard1";
             this.ctrlApplicationCard1.Size = new System.Drawing.Size(1037, 450);
             this.ctrlApplicationCard1.TabIndex = 9;
-            // 
-            // cmsManageVisionTestAppointment
-            // 
-            this.cmsManageVisionTestAppointment.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmsManageVisionTestAppointment.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsManageVisionTestAppointment.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiEditTestAppointment,
-            this.tsmiTakeTest});
-            this.cmsManageVisionTestAppointment.Name = "cmsManageVisionTestAppointment";
-            this.cmsManageVisionTestAppointment.Size = new System.Drawing.Size(164, 80);
-            // 
-            // tsmiEditTestAppointment
-            // 
-            this.tsmiEditTestAppointment.Image = ((System.Drawing.Image)(resources.GetObject("tsmiEditTestAppointment.Image")));
-            this.tsmiEditTestAppointment.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiEditTestAppointment.Name = "tsmiEditTestAppointment";
-            this.tsmiEditTestAppointment.Size = new System.Drawing.Size(163, 38);
-            this.tsmiEditTestAppointment.Text = "Edit";
-            // 
-            // tsmiTakeTest
-            // 
-            this.tsmiTakeTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiTakeTest.Image")));
-            this.tsmiTakeTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiTakeTest.Name = "tsmiTakeTest";
-            this.tsmiTakeTest.Size = new System.Drawing.Size(163, 38);
-            this.tsmiTakeTest.Text = "Take Test";
             // 
             // frmVisionTestAppointment
             // 
@@ -207,6 +207,7 @@
             this.Name = "frmVisionTestAppointment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vision Test Appointment";
+            this.Load += new System.EventHandler(this.frmVisionTestAppointment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbVisionTestAppointment)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListAllVisionTestAppointments)).EndInit();
