@@ -82,5 +82,11 @@ namespace DVLD_View
             frmAddEditLocalDrivingLicenseApp frm = new frmAddEditLocalDrivingLicenseApp(-1);
             frm.ShowDialog();
         }
+
+        private void tsmiLocalDrivingLicenseApps_Click(object sender, EventArgs e)
+        {
+            frmManageLocalDrivingLicenseApp manageApps = new frmManageLocalDrivingLicenseApp();
+            manageApps.ShowDialog();
+        }
     }
 }

@@ -33,6 +33,13 @@
             this.pbManageLDLApps = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvListLocalDrivingLicenseApps = new System.Windows.Forms.DataGridView();
+            this.colLDLAppID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDrivingClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNationalNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApplicationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPassedTests = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.cbFilterLocalDrivingLicenseApps = new System.Windows.Forms.ComboBox();
             this.txtFilter = new System.Windows.Forms.TextBox();
@@ -42,13 +49,6 @@
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAddNew = new System.Windows.Forms.Button();
-            this.colLDLAppID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDrivingClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNationalNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApplicationDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPassedTests = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pbManageLDLApps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListLocalDrivingLicenseApps)).BeginInit();
@@ -116,120 +116,6 @@
             this.dgvListLocalDrivingLicenseApps.Size = new System.Drawing.Size(1309, 248);
             this.dgvListLocalDrivingLicenseApps.TabIndex = 8;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(22, 223);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 25);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Filter By:";
-            // 
-            // cbFilterLocalDrivingLicenseApps
-            // 
-            this.cbFilterLocalDrivingLicenseApps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilterLocalDrivingLicenseApps.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFilterLocalDrivingLicenseApps.FormattingEnabled = true;
-            this.cbFilterLocalDrivingLicenseApps.Items.AddRange(new object[] {
-            "None",
-            "L.D.L AppID",
-            "Driving Class",
-            "National No",
-            "Full Name",
-            "Passed Tests",
-            "Status"});
-            this.cbFilterLocalDrivingLicenseApps.Location = new System.Drawing.Point(110, 219);
-            this.cbFilterLocalDrivingLicenseApps.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.cbFilterLocalDrivingLicenseApps.Name = "cbFilterLocalDrivingLicenseApps";
-            this.cbFilterLocalDrivingLicenseApps.Size = new System.Drawing.Size(192, 33);
-            this.cbFilterLocalDrivingLicenseApps.TabIndex = 9;
-            // 
-            // txtFilter
-            // 
-            this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(308, 220);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(270, 30);
-            this.txtFilter.TabIndex = 11;
-            // 
-            // cbStatusFilter
-            // 
-            this.cbStatusFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStatusFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbStatusFilter.FormattingEnabled = true;
-            this.cbStatusFilter.Items.AddRange(new object[] {
-            "New",
-            "Cancelled",
-            "Complete"});
-            this.cbStatusFilter.Location = new System.Drawing.Point(308, 218);
-            this.cbStatusFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.cbStatusFilter.Name = "cbStatusFilter";
-            this.cbStatusFilter.Size = new System.Drawing.Size(122, 33);
-            this.cbStatusFilter.TabIndex = 12;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dgvListLocalDrivingLicenseApps);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(11, 268);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1309, 248);
-            this.panel1.TabIndex = 13;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.White;
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1182, 517);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(138, 41);
-            this.btnClose.TabIndex = 16;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            // 
-            // lblRecordsCount
-            // 
-            this.lblRecordsCount.AutoSize = true;
-            this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.ForeColor = System.Drawing.Color.Black;
-            this.lblRecordsCount.Location = new System.Drawing.Point(96, 519);
-            this.lblRecordsCount.Name = "lblRecordsCount";
-            this.lblRecordsCount.Size = new System.Drawing.Size(15, 16);
-            this.lblRecordsCount.TabIndex = 15;
-            this.lblRecordsCount.Text = "0";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(15, 519);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 16);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "# Records:";
-            // 
-            // btnAddNew
-            // 
-            this.btnAddNew.BackColor = System.Drawing.Color.White;
-            this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.Image")));
-            this.btnAddNew.Location = new System.Drawing.Point(1236, 182);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(84, 80);
-            this.btnAddNew.TabIndex = 17;
-            this.btnAddNew.UseVisualStyleBackColor = false;
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
-            // 
             // colLDLAppID
             // 
             this.colLDLAppID.HeaderText = "L.D.L AppID";
@@ -285,6 +171,126 @@
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
             this.colStatus.Width = 125;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(22, 223);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 25);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Filter By:";
+            // 
+            // cbFilterLocalDrivingLicenseApps
+            // 
+            this.cbFilterLocalDrivingLicenseApps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterLocalDrivingLicenseApps.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFilterLocalDrivingLicenseApps.FormattingEnabled = true;
+            this.cbFilterLocalDrivingLicenseApps.Items.AddRange(new object[] {
+            "None",
+            "L.D.L AppID",
+            "Driving Class",
+            "National No",
+            "Full Name",
+            "Passed Tests",
+            "Status"});
+            this.cbFilterLocalDrivingLicenseApps.Location = new System.Drawing.Point(110, 219);
+            this.cbFilterLocalDrivingLicenseApps.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.cbFilterLocalDrivingLicenseApps.Name = "cbFilterLocalDrivingLicenseApps";
+            this.cbFilterLocalDrivingLicenseApps.Size = new System.Drawing.Size(192, 33);
+            this.cbFilterLocalDrivingLicenseApps.TabIndex = 9;
+            this.cbFilterLocalDrivingLicenseApps.SelectedIndexChanged += new System.EventHandler(this.cbFilterLocalDrivingLicenseApps_SelectedIndexChanged);
+            // 
+            // txtFilter
+            // 
+            this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilter.Location = new System.Drawing.Point(308, 220);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(270, 30);
+            this.txtFilter.TabIndex = 11;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
+            // 
+            // cbStatusFilter
+            // 
+            this.cbStatusFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatusFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbStatusFilter.FormattingEnabled = true;
+            this.cbStatusFilter.Items.AddRange(new object[] {
+            "None",
+            "New",
+            "Cancelled",
+            "Complete"});
+            this.cbStatusFilter.Location = new System.Drawing.Point(308, 218);
+            this.cbStatusFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.cbStatusFilter.Name = "cbStatusFilter";
+            this.cbStatusFilter.Size = new System.Drawing.Size(122, 33);
+            this.cbStatusFilter.TabIndex = 12;
+            this.cbStatusFilter.SelectedIndexChanged += new System.EventHandler(this.cbStatusFilter_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvListLocalDrivingLicenseApps);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(11, 268);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1309, 248);
+            this.panel1.TabIndex = 13;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.White;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1182, 517);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(138, 41);
+            this.btnClose.TabIndex = 16;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblRecordsCount
+            // 
+            this.lblRecordsCount.AutoSize = true;
+            this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordsCount.ForeColor = System.Drawing.Color.Black;
+            this.lblRecordsCount.Location = new System.Drawing.Point(96, 519);
+            this.lblRecordsCount.Name = "lblRecordsCount";
+            this.lblRecordsCount.Size = new System.Drawing.Size(15, 16);
+            this.lblRecordsCount.TabIndex = 15;
+            this.lblRecordsCount.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(15, 519);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 16);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "# Records:";
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.BackColor = System.Drawing.Color.White;
+            this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.Image")));
+            this.btnAddNew.Location = new System.Drawing.Point(1236, 182);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(84, 80);
+            this.btnAddNew.TabIndex = 17;
+            this.btnAddNew.UseVisualStyleBackColor = false;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // frmManageLocalDrivingLicenseApp
             // 

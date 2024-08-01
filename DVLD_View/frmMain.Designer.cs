@@ -206,6 +206,7 @@
             this.tsmiLocalDrivingLicenseApps.Name = "tsmiLocalDrivingLicenseApps";
             this.tsmiLocalDrivingLicenseApps.Size = new System.Drawing.Size(449, 38);
             this.tsmiLocalDrivingLicenseApps.Text = "Local Driving License Applications";
+            this.tsmiLocalDrivingLicenseApps.Click += new System.EventHandler(this.tsmiLocalDrivingLicenseApps_Click);
             // 
             // tsmiInternationalLicenseApps
             // 

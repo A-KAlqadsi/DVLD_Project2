@@ -17,7 +17,7 @@ namespace DVLD_View
         {
             InitializeComponent();
         }
-        
+        private DataView _DataView;
 
         private DataView _LoadAllLocalDrivingLicenseApplicationIntoView()
         {
@@ -70,5 +70,145 @@ namespace DVLD_View
             _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
 
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //Filter part
+        private void cbFilterLocalDrivingLicenseApps_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbFilterLocalDrivingLicenseApps.SelectedIndex == 0)
+            {
+                _ResetFilter();
+            }
+            else if (cbFilterLocalDrivingLicenseApps.SelectedItem == "Status")
+            {
+                _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+                txtFilter.Visible = false;
+                cbStatusFilter.Visible = true;
+            }
+            else
+            {
+                cbStatusFilter.SelectedIndex = 0;
+                cbStatusFilter.Visible = false;
+                txtFilter.Visible = true;
+                txtFilter.Focus();
+            }
+        }
+
+        private void cbStatusFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbStatusFilter.SelectedIndex)
+            {
+                case 0:
+                    _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+                    break;
+                case 1:
+                    _FilterAppsByStatus("New");
+                    break;
+                case 2:
+                    _FilterAppsByStatus("Cancelled");
+                    break;
+                case 3:
+                    _FilterAppsByStatus("Completed");
+                    break;
+
+            }
+        }
+
+        private void _FilterAppsByStatus(string status)
+        {
+            _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
+            _DataView.RowFilter = $"Status = {status}";
+            _RefreshLDLApplications(_DataView);
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            int value;
+            switch (cbFilterLocalDrivingLicenseApps.SelectedIndex)
+            {
+                case 1:
+                    {
+                        if(txtFilter.Text.Trim() == "")
+                        {
+                            _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+                            return;
+                        }
+                        if(int.TryParse(txtFilter.Text.Trim(), out value))
+                            _FilterByAppsID(value);
+                    }
+                break;
+                case 2:
+                    _FilterByClassName(txtFilter.Text.Trim());
+                    break;
+                case 3:
+                    _FilterByNationalNo(txtFilter.Text.Trim());
+                    break;
+                case 4:
+                    _FilterByFullName(txtFilter.Text.Trim());
+                    break;
+                case 5:
+                    if (txtFilter.Text.Trim() == "")
+                    {
+                        _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+                        return;
+                    }
+                    if (int.TryParse(txtFilter.Text.Trim(), out  value))
+                        _FilterByPassedTests(value);
+                    break;
+
+            }
+        }
+
+        private void _FilterByAppsID(int iD)
+        {
+            _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
+            _DataView.RowFilter = $"LocalDrivingLicenseApplicationID = {iD}";
+            _RefreshLDLApplications(_DataView);
+        }
+        private void _FilterByClassName(string className)
+        {
+            _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
+            _DataView.RowFilter = $"ClassName Like '{className}%'";
+            _RefreshLDLApplications(_DataView);
+        }
+        private void _FilterByNationalNo(string nationalNo)
+        {
+            _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
+            _DataView.RowFilter = $"NationalNo Like '{nationalNo}%'";
+            _RefreshLDLApplications(_DataView);
+        }
+
+        private void _FilterByFullName(string fullName)
+        {
+            _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
+            _DataView.RowFilter = $"FullName Like '{fullName}%'";
+            _RefreshLDLApplications(_DataView);
+        }
+        
+        private void _FilterByPassedTests(int passedTests)
+        {
+            _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
+            _DataView.RowFilter = $"PassedTestCount = {passedTests}";
+            _RefreshLDLApplications(_DataView);
+        }
+
+        private void _FilterValidate(KeyPressEventArgs e)
+        {
+            if (cbFilterLocalDrivingLicenseApps.SelectedIndex == 1 || cbFilterLocalDrivingLicenseApps.SelectedIndex == 5)
+            {
+                if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                    e.Handled = true;
+            }
+        }
+
+        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _FilterValidate(e);
+        }
+    
     }
 }
