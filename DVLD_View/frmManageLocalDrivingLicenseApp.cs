@@ -106,13 +106,13 @@ namespace DVLD_View
                     _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
                     break;
                 case 1:
-                    _FilterAppsByStatus("New");
+                    _FilterAppsByStatus(cbStatusFilter.Text.Trim());
                     break;
                 case 2:
-                    _FilterAppsByStatus("Cancelled");
+                    _FilterAppsByStatus(cbStatusFilter.Text.Trim());
                     break;
                 case 3:
-                    _FilterAppsByStatus("Completed");
+                    _FilterAppsByStatus(cbStatusFilter.Text.Trim());
                     break;
 
             }
@@ -121,7 +121,7 @@ namespace DVLD_View
         private void _FilterAppsByStatus(string status)
         {
             _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
-            _DataView.RowFilter = $"Status = {status}";
+            _DataView.RowFilter = $"Status Like '{status}'";
             _RefreshLDLApplications(_DataView);
         }
 
@@ -181,14 +181,12 @@ namespace DVLD_View
             _DataView.RowFilter = $"NationalNo Like '{nationalNo}%'";
             _RefreshLDLApplications(_DataView);
         }
-
         private void _FilterByFullName(string fullName)
         {
             _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
             _DataView.RowFilter = $"FullName Like '{fullName}%'";
             _RefreshLDLApplications(_DataView);
         }
-        
         private void _FilterByPassedTests(int passedTests)
         {
             _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
@@ -210,5 +208,7 @@ namespace DVLD_View
             _FilterValidate(e);
         }
     
+        // End Filter 
+
     }
 }

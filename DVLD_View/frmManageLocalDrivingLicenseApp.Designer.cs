@@ -224,7 +224,7 @@
             "None",
             "New",
             "Cancelled",
-            "Complete"});
+            "Completed"});
             this.cbStatusFilter.Location = new System.Drawing.Point(308, 218);
             this.cbStatusFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbStatusFilter.Name = "cbStatusFilter";
