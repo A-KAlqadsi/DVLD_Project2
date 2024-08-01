@@ -31,17 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageApplicationTypes));
             this.label1 = new System.Windows.Forms.Label();
-            this.pbManagePeople = new System.Windows.Forms.PictureBox();
+            this.pbManageApplicationTypes = new System.Windows.Forms.PictureBox();
             this.dgvListApplicationTypes = new System.Windows.Forms.DataGridView();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFees = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiEditApplicationTypeInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFees = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbManageApplicationTypes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListApplicationTypes)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,17 +58,17 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Manage Application Types";
             // 
-            // pbManagePeople
+            // pbManageApplicationTypes
             // 
-            this.pbManagePeople.BackColor = System.Drawing.Color.Transparent;
-            this.pbManagePeople.Image = ((System.Drawing.Image)(resources.GetObject("pbManagePeople.Image")));
-            this.pbManagePeople.Location = new System.Drawing.Point(188, 0);
-            this.pbManagePeople.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbManagePeople.Name = "pbManagePeople";
-            this.pbManagePeople.Size = new System.Drawing.Size(314, 136);
-            this.pbManagePeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbManagePeople.TabIndex = 3;
-            this.pbManagePeople.TabStop = false;
+            this.pbManageApplicationTypes.BackColor = System.Drawing.Color.Transparent;
+            this.pbManageApplicationTypes.Image = ((System.Drawing.Image)(resources.GetObject("pbManageApplicationTypes.Image")));
+            this.pbManageApplicationTypes.Location = new System.Drawing.Point(188, 0);
+            this.pbManageApplicationTypes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbManageApplicationTypes.Name = "pbManageApplicationTypes";
+            this.pbManageApplicationTypes.Size = new System.Drawing.Size(314, 136);
+            this.pbManageApplicationTypes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbManageApplicationTypes.TabIndex = 3;
+            this.pbManageApplicationTypes.TabStop = false;
             // 
             // dgvListApplicationTypes
             // 
@@ -90,6 +90,30 @@
             this.dgvListApplicationTypes.RowTemplate.Height = 24;
             this.dgvListApplicationTypes.Size = new System.Drawing.Size(655, 308);
             this.dgvListApplicationTypes.TabIndex = 5;
+            // 
+            // colID
+            // 
+            this.colID.HeaderText = "ID";
+            this.colID.MinimumWidth = 6;
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Width = 90;
+            // 
+            // colTitle
+            // 
+            this.colTitle.HeaderText = "Title";
+            this.colTitle.MinimumWidth = 6;
+            this.colTitle.Name = "colTitle";
+            this.colTitle.ReadOnly = true;
+            this.colTitle.Width = 400;
+            // 
+            // colFees
+            // 
+            this.colFees.HeaderText = "Fees";
+            this.colFees.MinimumWidth = 6;
+            this.colFees.Name = "colFees";
+            this.colFees.ReadOnly = true;
+            this.colFees.Width = 90;
             // 
             // contextMenuStrip1
             // 
@@ -148,30 +172,6 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // colID
-            // 
-            this.colID.HeaderText = "ID";
-            this.colID.MinimumWidth = 6;
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Width = 90;
-            // 
-            // colTitle
-            // 
-            this.colTitle.HeaderText = "Title";
-            this.colTitle.MinimumWidth = 6;
-            this.colTitle.Name = "colTitle";
-            this.colTitle.ReadOnly = true;
-            this.colTitle.Width = 400;
-            // 
-            // colFees
-            // 
-            this.colFees.HeaderText = "Fees";
-            this.colFees.MinimumWidth = 6;
-            this.colFees.Name = "colFees";
-            this.colFees.ReadOnly = true;
-            this.colFees.Width = 90;
-            // 
             // frmManageApplicationTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -183,7 +183,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvListApplicationTypes);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pbManagePeople);
+            this.Controls.Add(this.pbManageApplicationTypes);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -191,7 +191,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Application Types";
             this.Load += new System.EventHandler(this.frmManageApplicationTypes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbManageApplicationTypes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListApplicationTypes)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -202,7 +202,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pbManagePeople;
+        private System.Windows.Forms.PictureBox pbManageApplicationTypes;
         private System.Windows.Forms.DataGridView dgvListApplicationTypes;
         private System.Windows.Forms.Label lblRecordsCount;
         private System.Windows.Forms.Label label3;
