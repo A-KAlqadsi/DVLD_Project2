@@ -135,16 +135,12 @@
             this.cbFilterLocalDrivingLicenseApps.FormattingEnabled = true;
             this.cbFilterLocalDrivingLicenseApps.Items.AddRange(new object[] {
             "None",
-            "Person ID",
+            "L.D.L AppID",
+            "Driving Class",
             "National No",
-            "First Name",
-            "Second Name",
-            "Third Name",
-            "Last Name",
-            "Nationality",
-            "Gender",
-            "Phone",
-            "Email"});
+            "Full Name",
+            "Passed Tests",
+            "Status"});
             this.cbFilterLocalDrivingLicenseApps.Location = new System.Drawing.Point(110, 219);
             this.cbFilterLocalDrivingLicenseApps.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbFilterLocalDrivingLicenseApps.Name = "cbFilterLocalDrivingLicenseApps";
@@ -166,9 +162,9 @@
             this.cbStatusFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStatusFilter.FormattingEnabled = true;
             this.cbStatusFilter.Items.AddRange(new object[] {
-            "All",
-            "Male",
-            "Female"});
+            "New",
+            "Cancelled",
+            "Complete"});
             this.cbStatusFilter.Location = new System.Drawing.Point(308, 218);
             this.cbStatusFilter.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbStatusFilter.Name = "cbStatusFilter";
@@ -232,6 +228,7 @@
             this.btnAddNew.Size = new System.Drawing.Size(84, 80);
             this.btnAddNew.TabIndex = 17;
             this.btnAddNew.UseVisualStyleBackColor = false;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // colLDLAppID
             // 
@@ -247,7 +244,7 @@
             this.colDrivingClass.MinimumWidth = 6;
             this.colDrivingClass.Name = "colDrivingClass";
             this.colDrivingClass.ReadOnly = true;
-            this.colDrivingClass.Width = 300;
+            this.colDrivingClass.Width = 280;
             // 
             // colNationalNo
             // 
@@ -271,7 +268,7 @@
             this.colApplicationDate.MinimumWidth = 6;
             this.colApplicationDate.Name = "colApplicationDate";
             this.colApplicationDate.ReadOnly = true;
-            this.colApplicationDate.Width = 140;
+            this.colApplicationDate.Width = 155;
             // 
             // colPassedTests
             // 

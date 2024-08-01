@@ -131,13 +131,13 @@ namespace DVLD_DataAccess
             return rowsAffected > 0;
         }
 
-        public static DataTable GetAllLocalDrivingLicenseApps()
+        public static DataTable GetAllLocalDrivingLicenseApps_Master()
         {
             DataTable table = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT * From LocalDrivingLicenseApplications;";
+            string query = "SELECT * From LocalDrivingLicenseApplications_View;";
 
             SqlCommand command = new SqlCommand(query, connection);
             try

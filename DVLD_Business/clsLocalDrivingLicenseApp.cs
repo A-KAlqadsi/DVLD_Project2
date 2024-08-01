@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,10 @@ namespace DVLD_Business
             return clsLocalDrivingLicenseAppData.IsLocalDrivingLicenseAppExist(localDrivingLicenseID);
         }
 
+        public static DataTable GetAll()
+        {
+            return clsLocalDrivingLicenseAppData.GetAllLocalDrivingLicenseApps_Master();
+        }
         public bool Save()
         {
             switch (_Mode)
