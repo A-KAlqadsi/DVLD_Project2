@@ -15,18 +15,19 @@ namespace DVLD_View
     {
         enum enMode { AddNew =1,Update =2}
         enMode _Mode;
-        private int _LLicenseAppID;
-        private const int appTypeID = 1;
+        private int _LocalLicenseAppID;
+        private const int appTypeID = 1; // this is the Id of AddLocalLicenseApplication
         private int _PersonID;
+        private int _ClassID ;
         private clsApplication _Application;
         private clsLocalDrivingLicenseApp _LocalDrivingLicenseApp;
 
-        public frmAddEditLocalDrivingLicenseApp(int lLicenseAppID)
+        public frmAddEditLocalDrivingLicenseApp(int localLicenseAppID)
         {
             InitializeComponent();
 
-            _LLicenseAppID = lLicenseAppID;
-            if(_LLicenseAppID == -1)
+            _LocalLicenseAppID = localLicenseAppID;
+            if(_LocalLicenseAppID == -1)
                 _Mode=enMode.AddNew;
             else 
                 _Mode=enMode.Update;

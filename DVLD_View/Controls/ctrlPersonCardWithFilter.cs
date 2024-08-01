@@ -39,7 +39,7 @@ namespace DVLD_View
         {
             if(personID != -1)
             {
-                cbPersonFilters.SelectedIndex = 0;
+                cbPersonFilters.SelectedIndex = 1;
                 PersonID = personID;
                 txtSearch.Text = personID.ToString();
                 ctrlPersonCard1.LoadPersonInfo(personID);
@@ -86,7 +86,7 @@ namespace DVLD_View
                         if (_Person != null)
                         {
                             PersonID = _Person.PersonID;
-                            ctrlPersonCard1.LoadPersonInfo(_Person.PersonID);
+                            ctrlPersonCard1.LoadPersonInfo(_Person.NationalNo);
                         }
                         else
                             MessageBox.Show($"Person with National No = [{txtSearch.Text}] is not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
