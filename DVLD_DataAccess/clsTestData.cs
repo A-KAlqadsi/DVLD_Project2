@@ -209,6 +209,36 @@ namespace DVLD_DataAccess
             return isExist;
         }
 
+        public static int CountPassedTests(int localDrivingLicenseAppID)
+        {
+            int passedTests = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT COUNT(dbo.TestAppointments.TestTypeID) " +
+                "FROM dbo.Tests INNER JOIN " +
+                "dbo.TestAppointments ON (dbo.Tests.TestAppointmentID = dbo.TestAppointments.TestAppointmentID) " +
+                "WHERE (dbo.TestAppointments.LocalDrivingLicenseApplicationID = @localDrivingLicenseAppID) AND (dbo.Tests.TestResult = 1);";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@localDrivingLicenseAppID", localDrivingLicenseAppID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int tests))
+                    passedTests =tests;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return passedTests;
+        }
 
     }
 }

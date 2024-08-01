@@ -19,7 +19,7 @@ namespace DVLD_View
 
         private void frmVisionTestAppointment_Load(object sender, EventArgs e)
         {
-            ctrlApplicationCard1.LoadApplicationInfo(41);
+            ctrlApplicationCard1.LoadApplicationInfo(30);
         }
     }
 }

@@ -76,7 +76,7 @@ namespace DVLD_View
         {
             lblDLAppID.Text = _LocalDrivingLicenseApp.LocalDrivingLicenseAppID.ToString();
             lblClassName.Text = clsLicenseClass.Find(_LocalDrivingLicenseApp.LicenseClassID).ClassName;
-            lblPassedTests.Text = "[????]";
+            lblPassedTests.Text = $"{clsTest.CountPassedTest(_LocalDrivingLicenseAppID)}/3";
 
             lblAppID.Text = _Application.ApplicationID.ToString();
             lblAppDate.Text = _Application.ApplicationDate.ToShortDateString();
