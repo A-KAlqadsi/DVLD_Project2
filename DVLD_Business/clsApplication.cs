@@ -12,7 +12,7 @@ namespace DVLD_Business
     {
         private enum enMode { AddNew = 1, Update = 2 };
         enMode _Mode = enMode.AddNew;
-        public int ApplicationID { get; }
+        public int ApplicationID;
         public int ApplicantApplicationID;
         public DateTime ApplicationDate;
         public int ApplicationTypeID;
@@ -51,9 +51,9 @@ namespace DVLD_Business
 
         private bool _AddNewApplication()
         {
-            int applicationID = clsApplicationData.AddNewApplication(ApplicantApplicationID,
+           ApplicationID = clsApplicationData.AddNewApplication(ApplicantApplicationID,
                 ApplicationDate,ApplicationTypeID,ApplicationStatus,LastStatusDate,PaidFees,UserID);
-            return applicationID != -1;
+            return ApplicationID != -1;
         }
 
         private bool _UpdateApplication()
@@ -104,11 +104,14 @@ namespace DVLD_Business
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
                         if (_AddNewApplication())
+                        {
+                            _Mode = enMode.Update;
                             return true;
+                        }
                         else
                             return false;
+                        
                     }
                 case enMode.Update:
                     {

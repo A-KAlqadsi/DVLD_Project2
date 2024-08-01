@@ -76,5 +76,11 @@ namespace DVLD_View
             frmManageTestTypes manageTestTypes = new frmManageTestTypes();
             manageTestTypes.ShowDialog();
         }
+
+        private void tsmiNewLocalLicense_Click(object sender, EventArgs e)
+        {
+            frmAddEditLocalDrivingLicenseApp frm = new frmAddEditLocalDrivingLicenseApp(-1);
+            frm.ShowDialog();
+        }
     }
 }

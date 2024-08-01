@@ -12,7 +12,7 @@ namespace DVLD_Business
     {
         enum enMode { AddNew=1,Update=2 }
         enMode _Mode;
-        public int LocalDrivingLicenseAppID { get; }
+        public int LocalDrivingLicenseAppID;
         public int ApplicationID;
         public int LicenseClassID;
 
@@ -34,8 +34,8 @@ namespace DVLD_Business
 
         private bool _AddNew()
         {
-            int localDrivingLicenseId = clsLocalDrivingLicenseAppData.AddNewLocalLicenseDrivingApp(ApplicationID, LicenseClassID);
-            return localDrivingLicenseId != -1;
+            LocalDrivingLicenseAppID = clsLocalDrivingLicenseAppData.AddNewLocalLicenseDrivingApp(ApplicationID, LicenseClassID);
+            return LocalDrivingLicenseAppID != -1;
         }
 
         private bool _Update()
@@ -71,9 +71,12 @@ namespace DVLD_Business
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
                         if (_AddNew())
+                        {
+                            _Mode = enMode.Update;
                             return true;
+
+                        }
                         else
                             return false;
                     }

@@ -353,7 +353,7 @@
             this.Controls.Add(this.tcLocalDrivingLicenseInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddEditLocalDrivingLicenseApp";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Local Driving License Application";
             this.Load += new System.EventHandler(this.frmAddEditLocalDrivingLicenseApp_Load);
             this.tcLocalDrivingLicenseInfo.ResumeLayout(false);
