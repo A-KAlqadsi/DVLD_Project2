@@ -190,5 +190,41 @@ namespace DVLD_DataAccess
             return isExist;
         }
 
+        public static bool IsPersonHasSameLicenseClass(int personID, int classID,string appStatus="1, 3")
+        {
+            int licenseCount = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "Select COUNT(App.ApplicantPersonID) From " +
+                            "Applications App " +
+                            "Join LocalDrivingLicenseApplications LDLApp " +
+                            "ON (LDLApp.ApplicationID = App.ApplicationID) " +
+                            "Where LDLApp.LicenseClassID =@ClassID And App.ApplicantPersonID = @PersonID And App.ApplicationStatus IN("+ appStatus +")";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ClassID", classID);
+            command.Parameters.AddWithValue("@PersonID", personID);
+
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int found))
+                    licenseCount = found;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return licenseCount == 1;
+        }
+
+    
     }
 }

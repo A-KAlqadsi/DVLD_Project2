@@ -95,6 +95,12 @@ namespace DVLD_View
                 return;
             }
 
+            if(clsLocalDrivingLicenseApp.IsPersonHasSameLicenseClass(_PersonID,_ClassID))
+            {
+                MessageBox.Show($"Person with ID [{_PersonID}] already has the same license class{Environment.NewLine} choose another class", "Ooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             _Application.ApplicantApplicationID = _PersonID;
             _Application.ApplicationTypeID= _AppTypeID;
             _Application.ApplicationDate = DateTime.Now;

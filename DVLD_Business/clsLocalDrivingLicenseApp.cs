@@ -85,5 +85,11 @@ namespace DVLD_Business
             }
             return false;
         }
+    
+        public static bool IsPersonHasSameLicenseClass(int personID, int classID)
+        {
+            return clsLocalDrivingLicenseAppData.IsPersonHasSameLicenseClass(personID, classID);
+        }
+
     }
 }
