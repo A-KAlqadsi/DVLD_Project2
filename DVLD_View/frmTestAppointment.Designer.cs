@@ -1,6 +1,6 @@
 ﻿namespace DVLD_View
 {
-    partial class frmVisionTestAppointment
+    partial class frmTestAppointment
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVisionTestAppointment));
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTestAppointment));
+            this.lblMode = new System.Windows.Forms.Label();
             this.pbVisionTestAppointment = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -49,17 +49,17 @@
             this.cmsManageVisionTestAppointment.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblMode
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(344, 92);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(355, 36);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Vision Test Appointments";
+            this.lblMode.AutoSize = true;
+            this.lblMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblMode.Location = new System.Drawing.Point(344, 92);
+            this.lblMode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMode.Name = "lblMode";
+            this.lblMode.Size = new System.Drawing.Size(263, 36);
+            this.lblMode.TabIndex = 8;
+            this.lblMode.Text = "Test Appointments";
             // 
             // pbVisionTestAppointment
             // 
@@ -142,6 +142,7 @@
             this.btnAddAppointment.Size = new System.Drawing.Size(58, 46);
             this.btnAddAppointment.TabIndex = 18;
             this.btnAddAppointment.UseVisualStyleBackColor = false;
+            this.btnAddAppointment.Click += new System.EventHandler(this.btnAddAppointment_Click);
             // 
             // btnClose
             // 
@@ -188,7 +189,7 @@
             this.ctrlApplicationCard1.Size = new System.Drawing.Size(1037, 450);
             this.ctrlApplicationCard1.TabIndex = 9;
             // 
-            // frmVisionTestAppointment
+            // frmTestAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -201,10 +202,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ctrlApplicationCard1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblMode);
             this.Controls.Add(this.pbVisionTestAppointment);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmVisionTestAppointment";
+            this.Name = "frmTestAppointment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vision Test Appointment";
             this.Load += new System.EventHandler(this.frmVisionTestAppointment_Load);
@@ -219,7 +220,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMode;
         private System.Windows.Forms.PictureBox pbVisionTestAppointment;
         private ctrlApplicationCard ctrlApplicationCard1;
         private System.Windows.Forms.Label label2;

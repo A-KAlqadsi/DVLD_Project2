@@ -29,7 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmScheduleTest));
-            this.gbVisionTest = new System.Windows.Forms.GroupBox();
+            this.gbTestType = new System.Windows.Forms.GroupBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.gbRetakeTestInfo = new System.Windows.Forms.GroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblMode = new System.Windows.Forms.Label();
+            this.pbTestAppointment = new System.Windows.Forms.PictureBox();
             this.pbTrial = new System.Windows.Forms.PictureBox();
             this.lblTrial = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,65 +61,211 @@
             this.lblApplicant = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lblClassName = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pbVisionTestAppointment = new System.Windows.Forms.PictureBox();
-            this.gbRetakeTestInfo = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.gbVisionTest.SuspendLayout();
+            this.gbTestType.SuspendLayout();
+            this.gbRetakeTestInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTestAppointment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDLAppID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLicenseClass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbApplicant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVisionTestAppointment)).BeginInit();
-            this.gbRetakeTestInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
-            // gbVisionTest
+            // gbTestType
             // 
-            this.gbVisionTest.Controls.Add(this.btnSave);
-            this.gbVisionTest.Controls.Add(this.gbRetakeTestInfo);
-            this.gbVisionTest.Controls.Add(this.label2);
-            this.gbVisionTest.Controls.Add(this.pbVisionTestAppointment);
-            this.gbVisionTest.Controls.Add(this.pbTrial);
-            this.gbVisionTest.Controls.Add(this.lblTrial);
-            this.gbVisionTest.Controls.Add(this.label4);
-            this.gbVisionTest.Controls.Add(this.dtpTestDate);
-            this.gbVisionTest.Controls.Add(this.label1);
-            this.gbVisionTest.Controls.Add(this.pbDLAppID);
-            this.gbVisionTest.Controls.Add(this.lblDLAppID);
-            this.gbVisionTest.Controls.Add(this.label3);
-            this.gbVisionTest.Controls.Add(this.pbLicenseClass);
-            this.gbVisionTest.Controls.Add(this.pbDate);
-            this.gbVisionTest.Controls.Add(this.label15);
-            this.gbVisionTest.Controls.Add(this.pbFees);
-            this.gbVisionTest.Controls.Add(this.lblAppFees);
-            this.gbVisionTest.Controls.Add(this.label9);
-            this.gbVisionTest.Controls.Add(this.pbApplicant);
-            this.gbVisionTest.Controls.Add(this.lblApplicant);
-            this.gbVisionTest.Controls.Add(this.label13);
-            this.gbVisionTest.Controls.Add(this.lblClassName);
-            this.gbVisionTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbVisionTest.Location = new System.Drawing.Point(12, 31);
-            this.gbVisionTest.Name = "gbVisionTest";
-            this.gbVisionTest.Size = new System.Drawing.Size(634, 666);
-            this.gbVisionTest.TabIndex = 0;
-            this.gbVisionTest.TabStop = false;
-            this.gbVisionTest.Text = "Vision Test";
+            this.gbTestType.Controls.Add(this.btnSave);
+            this.gbTestType.Controls.Add(this.gbRetakeTestInfo);
+            this.gbTestType.Controls.Add(this.lblMode);
+            this.gbTestType.Controls.Add(this.pbTestAppointment);
+            this.gbTestType.Controls.Add(this.pbTrial);
+            this.gbTestType.Controls.Add(this.lblTrial);
+            this.gbTestType.Controls.Add(this.label4);
+            this.gbTestType.Controls.Add(this.dtpTestDate);
+            this.gbTestType.Controls.Add(this.label1);
+            this.gbTestType.Controls.Add(this.pbDLAppID);
+            this.gbTestType.Controls.Add(this.lblDLAppID);
+            this.gbTestType.Controls.Add(this.label3);
+            this.gbTestType.Controls.Add(this.pbLicenseClass);
+            this.gbTestType.Controls.Add(this.pbDate);
+            this.gbTestType.Controls.Add(this.label15);
+            this.gbTestType.Controls.Add(this.pbFees);
+            this.gbTestType.Controls.Add(this.lblAppFees);
+            this.gbTestType.Controls.Add(this.label9);
+            this.gbTestType.Controls.Add(this.pbApplicant);
+            this.gbTestType.Controls.Add(this.lblApplicant);
+            this.gbTestType.Controls.Add(this.label13);
+            this.gbTestType.Controls.Add(this.lblClassName);
+            this.gbTestType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbTestType.Location = new System.Drawing.Point(12, 31);
+            this.gbTestType.Name = "gbTestType";
+            this.gbTestType.Size = new System.Drawing.Size(634, 666);
+            this.gbTestType.TabIndex = 0;
+            this.gbTestType.TabStop = false;
+            this.gbTestType.Text = "Vision Test";
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.White;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(472, 612);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(156, 41);
+            this.btnSave.TabIndex = 88;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            // 
+            // gbRetakeTestInfo
+            // 
+            this.gbRetakeTestInfo.Controls.Add(this.pictureBox3);
+            this.gbRetakeTestInfo.Controls.Add(this.label10);
+            this.gbRetakeTestInfo.Controls.Add(this.label11);
+            this.gbRetakeTestInfo.Controls.Add(this.pictureBox2);
+            this.gbRetakeTestInfo.Controls.Add(this.label7);
+            this.gbRetakeTestInfo.Controls.Add(this.label8);
+            this.gbRetakeTestInfo.Controls.Add(this.label5);
+            this.gbRetakeTestInfo.Controls.Add(this.pictureBox1);
+            this.gbRetakeTestInfo.Controls.Add(this.label6);
+            this.gbRetakeTestInfo.Enabled = false;
+            this.gbRetakeTestInfo.Location = new System.Drawing.Point(6, 458);
+            this.gbRetakeTestInfo.Name = "gbRetakeTestInfo";
+            this.gbRetakeTestInfo.Size = new System.Drawing.Size(622, 147);
+            this.gbRetakeTestInfo.TabIndex = 87;
+            this.gbRetakeTestInfo.TabStop = false;
+            this.gbRetakeTestInfo.Text = "Retake Test Info";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(493, 56);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(39, 30);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox3.TabIndex = 84;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(550, 60);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(60, 22);
+            this.label10.TabIndex = 83;
+            this.label10.Text = "[????]";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(363, 59);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(122, 25);
+            this.label11.TabIndex = 82;
+            this.label11.Text = "Total Fees:";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(182, 60);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(39, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 81;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(236, 64);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 22);
+            this.label7.TabIndex = 80;
+            this.label7.Text = "[????]";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(39, 59);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(132, 25);
+            this.label8.TabIndex = 79;
+            this.label8.Text = "R.App Fees:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(11, 103);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(160, 25);
+            this.label5.TabIndex = 70;
+            this.label5.Text = "R. Test App.ID:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(182, 103);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 72;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(236, 107);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 22);
+            this.label6.TabIndex = 71;
+            this.label6.Text = "[????]";
+            // 
+            // lblMode
+            // 
+            this.lblMode.AutoSize = true;
+            this.lblMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblMode.Location = new System.Drawing.Point(212, 132);
+            this.lblMode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMode.Name = "lblMode";
+            this.lblMode.Size = new System.Drawing.Size(205, 36);
+            this.lblMode.TabIndex = 86;
+            this.lblMode.Text = "Schedule Test";
+            // 
+            // pbTestAppointment
+            // 
+            this.pbTestAppointment.BackColor = System.Drawing.Color.Transparent;
+            this.pbTestAppointment.Image = ((System.Drawing.Image)(resources.GetObject("pbTestAppointment.Image")));
+            this.pbTestAppointment.Location = new System.Drawing.Point(211, 31);
+            this.pbTestAppointment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbTestAppointment.Name = "pbTestAppointment";
+            this.pbTestAppointment.Size = new System.Drawing.Size(206, 96);
+            this.pbTestAppointment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTestAppointment.TabIndex = 85;
+            this.pbTestAppointment.TabStop = false;
             // 
             // pbTrial
             // 
@@ -310,151 +469,6 @@
             this.lblClassName.TabIndex = 71;
             this.lblClassName.Text = "[????]";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(212, 132);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(205, 36);
-            this.label2.TabIndex = 86;
-            this.label2.Text = "Schedule Test";
-            // 
-            // pbVisionTestAppointment
-            // 
-            this.pbVisionTestAppointment.BackColor = System.Drawing.Color.Transparent;
-            this.pbVisionTestAppointment.Image = ((System.Drawing.Image)(resources.GetObject("pbVisionTestAppointment.Image")));
-            this.pbVisionTestAppointment.Location = new System.Drawing.Point(211, 31);
-            this.pbVisionTestAppointment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbVisionTestAppointment.Name = "pbVisionTestAppointment";
-            this.pbVisionTestAppointment.Size = new System.Drawing.Size(206, 96);
-            this.pbVisionTestAppointment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbVisionTestAppointment.TabIndex = 85;
-            this.pbVisionTestAppointment.TabStop = false;
-            // 
-            // gbRetakeTestInfo
-            // 
-            this.gbRetakeTestInfo.Controls.Add(this.pictureBox3);
-            this.gbRetakeTestInfo.Controls.Add(this.label10);
-            this.gbRetakeTestInfo.Controls.Add(this.label11);
-            this.gbRetakeTestInfo.Controls.Add(this.pictureBox2);
-            this.gbRetakeTestInfo.Controls.Add(this.label7);
-            this.gbRetakeTestInfo.Controls.Add(this.label8);
-            this.gbRetakeTestInfo.Controls.Add(this.label5);
-            this.gbRetakeTestInfo.Controls.Add(this.pictureBox1);
-            this.gbRetakeTestInfo.Controls.Add(this.label6);
-            this.gbRetakeTestInfo.Enabled = false;
-            this.gbRetakeTestInfo.Location = new System.Drawing.Point(6, 458);
-            this.gbRetakeTestInfo.Name = "gbRetakeTestInfo";
-            this.gbRetakeTestInfo.Size = new System.Drawing.Size(622, 147);
-            this.gbRetakeTestInfo.TabIndex = 87;
-            this.gbRetakeTestInfo.TabStop = false;
-            this.gbRetakeTestInfo.Text = "Retake Test Info";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(11, 103);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(160, 25);
-            this.label5.TabIndex = 70;
-            this.label5.Text = "R. Test App.ID:";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(182, 103);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 72;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(236, 107);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 22);
-            this.label6.TabIndex = 71;
-            this.label6.Text = "[????]";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(182, 60);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 81;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(236, 64);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 22);
-            this.label7.TabIndex = 80;
-            this.label7.Text = "[????]";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(39, 59);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(132, 25);
-            this.label8.TabIndex = 79;
-            this.label8.Text = "R.App Fees:";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(493, 56);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(39, 30);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 84;
-            this.pictureBox3.TabStop = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(550, 60);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 22);
-            this.label10.TabIndex = 83;
-            this.label10.Text = "[????]";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(363, 59);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(122, 25);
-            this.label11.TabIndex = 82;
-            this.label11.Text = "Total Fees:";
-            // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.White;
@@ -470,20 +484,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
             // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.White;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(472, 612);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(156, 41);
-            this.btnSave.TabIndex = 88;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            // 
             // frmScheduleTest
             // 
             this.AcceptButton = this.btnSave;
@@ -492,32 +492,33 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(655, 763);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.gbVisionTest);
+            this.Controls.Add(this.gbTestType);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmScheduleTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Schedule Test";
             this.Load += new System.EventHandler(this.frmScheduleTest_Load);
-            this.gbVisionTest.ResumeLayout(false);
-            this.gbVisionTest.PerformLayout();
+            this.gbTestType.ResumeLayout(false);
+            this.gbTestType.PerformLayout();
+            this.gbRetakeTestInfo.ResumeLayout(false);
+            this.gbRetakeTestInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTestAppointment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDLAppID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLicenseClass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbApplicant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVisionTestAppointment)).EndInit();
-            this.gbRetakeTestInfo.ResumeLayout(false);
-            this.gbRetakeTestInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gbVisionTest;
+        private System.Windows.Forms.GroupBox gbTestType;
         private System.Windows.Forms.PictureBox pbTrial;
         private System.Windows.Forms.Label lblTrial;
         private System.Windows.Forms.Label label4;
@@ -540,8 +541,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pbVisionTestAppointment;
+        private System.Windows.Forms.Label lblMode;
+        private System.Windows.Forms.PictureBox pbTestAppointment;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;

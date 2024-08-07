@@ -207,8 +207,13 @@ namespace DVLD_View
         {
             _FilterValidate(e);
         }
-    
-        // End Filter 
 
+        // End Filter 
+        private void tsmiScheduleVisionTest_Click(object sender, EventArgs e)
+        {
+            int testTypeID = Convert.ToInt32(tsmiScheduleVisionTest.Tag);
+            frmTestAppointment testAppointment = new frmTestAppointment(testTypeID);
+            testAppointment.ShowDialog();
+        }
     }
 }

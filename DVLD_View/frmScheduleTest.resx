@@ -201,7 +201,7 @@
         CiK7jvjJEVMy5L4PnJnt7giSDoIfuDL9TFEUnda+FP8m5xtKzOYAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="pbVisionTestAppointment.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pbTestAppointment.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAUBlJREFUeF7t
         3Ql4FFd+7/2ZTPK+ycwkM5kkczO5k5tl8mayvDfL3Nz73JubxcnNeF5Md6uqWq0VbUhIQkgsQuz7vu/7

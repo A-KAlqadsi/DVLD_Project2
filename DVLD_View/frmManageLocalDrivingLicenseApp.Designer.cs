@@ -280,7 +280,9 @@
             this.tsmiScheduleVisionTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiScheduleVisionTest.Name = "tsmiScheduleVisionTest";
             this.tsmiScheduleVisionTest.Size = new System.Drawing.Size(271, 38);
+            this.tsmiScheduleVisionTest.Tag = "1";
             this.tsmiScheduleVisionTest.Text = "Schedule Vision Test";
+            this.tsmiScheduleVisionTest.Click += new System.EventHandler(this.tsmiScheduleVisionTest_Click);
             // 
             // tsmiScheduleWrittenTest
             // 
@@ -289,6 +291,7 @@
             this.tsmiScheduleWrittenTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiScheduleWrittenTest.Name = "tsmiScheduleWrittenTest";
             this.tsmiScheduleWrittenTest.Size = new System.Drawing.Size(271, 38);
+            this.tsmiScheduleWrittenTest.Tag = "2";
             this.tsmiScheduleWrittenTest.Text = "Schedule Written Test";
             // 
             // tsmiScheduleStreetTest
@@ -298,6 +301,7 @@
             this.tsmiScheduleStreetTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiScheduleStreetTest.Name = "tsmiScheduleStreetTest";
             this.tsmiScheduleStreetTest.Size = new System.Drawing.Size(271, 38);
+            this.tsmiScheduleStreetTest.Tag = "3";
             this.tsmiScheduleStreetTest.Text = "Schedule Street Test";
             // 
             // toolStripMenuItem3
