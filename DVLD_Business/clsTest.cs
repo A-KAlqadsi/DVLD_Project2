@@ -81,6 +81,11 @@ namespace DVLD_Business
             return clsTestData.CountPassedTests(localDrivingLicenseApplicationID);
         }
 
+        public static bool IsTestPassed(int localDrivingLicenseApplicationID, int testTypeID, bool testResult=true)
+        {
+            return clsTestData.IsTestPassed(localDrivingLicenseApplicationID,testTypeID,testResult);
+        }
+
         public bool Save()
         {
             switch (_Mode)

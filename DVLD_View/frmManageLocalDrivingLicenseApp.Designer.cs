@@ -213,7 +213,7 @@
             this.toolStripMenuItem5,
             this.tsmiShowPersonLicenseHistory});
             this.cmsManageLocalDrivingLicenseApp.Name = "cmsManageLocalDrivingLicenseApp";
-            this.cmsManageLocalDrivingLicenseApp.Size = new System.Drawing.Size(342, 344);
+            this.cmsManageLocalDrivingLicenseApp.Size = new System.Drawing.Size(342, 372);
             // 
             // tsmiShowAppDetails
             // 
@@ -273,6 +273,7 @@
             this.tsmiScheduleTests.Name = "tsmiScheduleTests";
             this.tsmiScheduleTests.Size = new System.Drawing.Size(341, 38);
             this.tsmiScheduleTests.Text = "Schedule Tests";
+            this.tsmiScheduleTests.Click += new System.EventHandler(this.tsmiScheduleTests_Click);
             // 
             // tsmiScheduleVisionTest
             // 

@@ -97,7 +97,7 @@ namespace DVLD_DataAccess
 
             string query = "Update TestAppointments " +
                 " SET TestTypeID=@TestTypeID,LocalDrivingLicenseApplicationID=@localLicenseID," +
-                "AppointmentDate=@AppointmentDate,PaidFees=@PaidFees,UserID=@UserID,IsLocked=@IsLocked " +
+                "AppointmentDate=@AppointmentDate,PaidFees=@PaidFees,CreatedByUserID=@UserID,IsLocked=@IsLocked " +
                 " Where TestAppointmentID=@TestAppointmentID; ";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -184,6 +184,38 @@ namespace DVLD_DataAccess
 
         }
 
+        public static DataTable GetestAppointmentsMasterByID(int testAppointmentID)
+        {
+            DataTable table = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * From TestAppointments_View Where TestAppointmentID=@TestAppointmentID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@TestAppointmentID", testAppointmentID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                    table.Load(reader);
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return table;
+
+        }
+
         public static bool IsTestAppointmentExist(int testAppointmentID)
         {
             bool isExist = false;
@@ -211,6 +243,69 @@ namespace DVLD_DataAccess
             }
 
             return isExist;
+        }
+
+        public static bool IsPersonHasActiveTestAppointment(int localDrivingLicenseAppID)
+        {
+            bool isExist = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP(1) Found=1 From TestAppointments WHERE LocalDrivingLicenseApplicationID=@LocalDrivingLicenseAppID And IsLocked=@IsLocked";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseAppID", localDrivingLicenseAppID);
+            command.Parameters.AddWithValue("@IsLocked", false);
+
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int found))
+                    isExist = true;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isExist;
+        }
+
+        public static int IsTestAppointmentPassed(int testAppointmentID)
+        {
+            int testResult = 2;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TestResult  From Tests WHERE TestAppointmentID=@TestAppointmentID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@TestAppointmentID", testAppointmentID);
+
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && bool.TryParse(result.ToString(), out bool findResult))
+                {
+                    testResult = findResult ? 1 : 0;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return testResult;
         }
 
     }

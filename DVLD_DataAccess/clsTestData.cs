@@ -240,5 +240,41 @@ namespace DVLD_DataAccess
             return passedTests;
         }
 
+        public static bool IsTestPassed(int localDrivingLicenseAppID, int testTypeID, bool testResult = true)
+        {
+            bool isPassed = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP(1) Found=1 " +
+                "FROM dbo.Tests INNER JOIN " +
+                "dbo.TestAppointments ON (dbo.Tests.TestAppointmentID = dbo.TestAppointments.TestAppointmentID) " +
+                "WHERE (dbo.TestAppointments.LocalDrivingLicenseApplicationID = @localDrivingLicenseAppID) AND (dbo.Tests.TestResult = @Result) AND (dbo.TestAppointments.TestTypeID=@TestTypeID);";
+            
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@localDrivingLicenseAppID", localDrivingLicenseAppID);
+            command.Parameters.AddWithValue("@TestTypeID", testTypeID);
+            command.Parameters.AddWithValue("@Result", testResult);
+            
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int tests))
+                    isPassed = true;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isPassed;
+        }
+
+        
+
     }
 }

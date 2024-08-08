@@ -34,8 +34,12 @@
             this.pbVisionTestAppointment = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvListAllVisionTestAppointments = new System.Windows.Forms.DataGridView();
-            this.cmsManageVisionTestAppointment = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dgvListAllTestAppointments = new System.Windows.Forms.DataGridView();
+            this.colAppointmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAppointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPaidFees = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsLocked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cmsManageTestAppointment = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiEditTestAppointment = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTakeTest = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddAppointment = new System.Windows.Forms.Button();
@@ -45,8 +49,8 @@
             this.ctrlApplicationCard1 = new DVLD_View.ctrlApplicationCard();
             ((System.ComponentModel.ISupportInitialize)(this.pbVisionTestAppointment)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListAllVisionTestAppointments)).BeginInit();
-            this.cmsManageVisionTestAppointment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListAllTestAppointments)).BeginInit();
+            this.cmsManageTestAppointment.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblMode
@@ -85,50 +89,99 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dgvListAllVisionTestAppointments);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.dgvListAllTestAppointments);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(16, 640);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1027, 156);
             this.panel1.TabIndex = 11;
             // 
-            // dgvListAllVisionTestAppointments
+            // dgvListAllTestAppointments
             // 
-            this.dgvListAllVisionTestAppointments.BackgroundColor = System.Drawing.Color.White;
-            this.dgvListAllVisionTestAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListAllVisionTestAppointments.ContextMenuStrip = this.cmsManageVisionTestAppointment;
-            this.dgvListAllVisionTestAppointments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvListAllVisionTestAppointments.Location = new System.Drawing.Point(0, 0);
-            this.dgvListAllVisionTestAppointments.Name = "dgvListAllVisionTestAppointments";
-            this.dgvListAllVisionTestAppointments.RowHeadersWidth = 51;
-            this.dgvListAllVisionTestAppointments.RowTemplate.Height = 24;
-            this.dgvListAllVisionTestAppointments.Size = new System.Drawing.Size(1027, 156);
-            this.dgvListAllVisionTestAppointments.TabIndex = 0;
+            this.dgvListAllTestAppointments.AllowUserToAddRows = false;
+            this.dgvListAllTestAppointments.AllowUserToDeleteRows = false;
+            this.dgvListAllTestAppointments.AllowUserToOrderColumns = true;
+            this.dgvListAllTestAppointments.BackgroundColor = System.Drawing.Color.White;
+            this.dgvListAllTestAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListAllTestAppointments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colAppointmentID,
+            this.colAppointmentDate,
+            this.colPaidFees,
+            this.colIsLocked});
+            this.dgvListAllTestAppointments.ContextMenuStrip = this.cmsManageTestAppointment;
+            this.dgvListAllTestAppointments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvListAllTestAppointments.Location = new System.Drawing.Point(0, 0);
+            this.dgvListAllTestAppointments.Name = "dgvListAllTestAppointments";
+            this.dgvListAllTestAppointments.ReadOnly = true;
+            this.dgvListAllTestAppointments.RowHeadersWidth = 51;
+            this.dgvListAllTestAppointments.RowTemplate.Height = 24;
+            this.dgvListAllTestAppointments.Size = new System.Drawing.Size(1025, 154);
+            this.dgvListAllTestAppointments.TabIndex = 0;
+            this.dgvListAllTestAppointments.Visible = false;
             // 
-            // cmsManageVisionTestAppointment
+            // colAppointmentID
             // 
-            this.cmsManageVisionTestAppointment.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmsManageVisionTestAppointment.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.cmsManageVisionTestAppointment.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.colAppointmentID.HeaderText = "Appointment ID";
+            this.colAppointmentID.MinimumWidth = 6;
+            this.colAppointmentID.Name = "colAppointmentID";
+            this.colAppointmentID.ReadOnly = true;
+            this.colAppointmentID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colAppointmentID.Width = 160;
+            // 
+            // colAppointmentDate
+            // 
+            this.colAppointmentDate.HeaderText = "Appointment Date";
+            this.colAppointmentDate.MinimumWidth = 6;
+            this.colAppointmentDate.Name = "colAppointmentDate";
+            this.colAppointmentDate.ReadOnly = true;
+            this.colAppointmentDate.Width = 180;
+            // 
+            // colPaidFees
+            // 
+            this.colPaidFees.HeaderText = "Paid Fees";
+            this.colPaidFees.MinimumWidth = 6;
+            this.colPaidFees.Name = "colPaidFees";
+            this.colPaidFees.ReadOnly = true;
+            this.colPaidFees.Width = 125;
+            // 
+            // colIsLocked
+            // 
+            this.colIsLocked.HeaderText = "Is Locked";
+            this.colIsLocked.MinimumWidth = 6;
+            this.colIsLocked.Name = "colIsLocked";
+            this.colIsLocked.ReadOnly = true;
+            this.colIsLocked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colIsLocked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colIsLocked.Width = 125;
+            // 
+            // cmsManageTestAppointment
+            // 
+            this.cmsManageTestAppointment.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmsManageTestAppointment.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsManageTestAppointment.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiEditTestAppointment,
             this.tsmiTakeTest});
-            this.cmsManageVisionTestAppointment.Name = "cmsManageVisionTestAppointment";
-            this.cmsManageVisionTestAppointment.Size = new System.Drawing.Size(164, 80);
+            this.cmsManageTestAppointment.Name = "cmsManageVisionTestAppointment";
+            this.cmsManageTestAppointment.Size = new System.Drawing.Size(227, 108);
             // 
             // tsmiEditTestAppointment
             // 
             this.tsmiEditTestAppointment.Image = ((System.Drawing.Image)(resources.GetObject("tsmiEditTestAppointment.Image")));
             this.tsmiEditTestAppointment.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiEditTestAppointment.Name = "tsmiEditTestAppointment";
-            this.tsmiEditTestAppointment.Size = new System.Drawing.Size(163, 38);
+            this.tsmiEditTestAppointment.Size = new System.Drawing.Size(226, 38);
             this.tsmiEditTestAppointment.Text = "Edit";
+            this.tsmiEditTestAppointment.Click += new System.EventHandler(this.tsmiEditTestAppointment_Click);
             // 
             // tsmiTakeTest
             // 
             this.tsmiTakeTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiTakeTest.Image")));
             this.tsmiTakeTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiTakeTest.Name = "tsmiTakeTest";
-            this.tsmiTakeTest.Size = new System.Drawing.Size(163, 38);
+            this.tsmiTakeTest.Size = new System.Drawing.Size(226, 38);
             this.tsmiTakeTest.Text = "Take Test";
+            this.tsmiTakeTest.Click += new System.EventHandler(this.tsmiTakeTest_Click);
             // 
             // btnAddAppointment
             // 
@@ -152,12 +205,13 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(905, 797);
+            this.btnClose.Location = new System.Drawing.Point(905, 799);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(138, 38);
             this.btnClose.TabIndex = 19;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblRecordsCount
             // 
@@ -211,8 +265,8 @@
             this.Load += new System.EventHandler(this.frmVisionTestAppointment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbVisionTestAppointment)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListAllVisionTestAppointments)).EndInit();
-            this.cmsManageVisionTestAppointment.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListAllTestAppointments)).EndInit();
+            this.cmsManageTestAppointment.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,9 +283,13 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblRecordsCount;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dgvListAllVisionTestAppointments;
-        private System.Windows.Forms.ContextMenuStrip cmsManageVisionTestAppointment;
+        private System.Windows.Forms.DataGridView dgvListAllTestAppointments;
+        private System.Windows.Forms.ContextMenuStrip cmsManageTestAppointment;
         private System.Windows.Forms.ToolStripMenuItem tsmiEditTestAppointment;
         private System.Windows.Forms.ToolStripMenuItem tsmiTakeTest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAppointmentID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAppointmentDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPaidFees;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colIsLocked;
     }
 }

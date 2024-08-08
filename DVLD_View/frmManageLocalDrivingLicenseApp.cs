@@ -38,8 +38,11 @@ namespace DVLD_View
             cbStatusFilter.Visible = false;
         }
 
+        
+
         private void _RefreshLDLApplications(DataView dv)
         {
+            
             int count = 0;
             dgvListLocalDrivingLicenseApps.Rows.Clear();
 
@@ -56,9 +59,11 @@ namespace DVLD_View
 
         }
         
+      
 
         private void frmManageLocalDrivingLicenseApp_Load(object sender, EventArgs e)
         {
+            _ValidateTestOrders();
             _ResetFilter();
             _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
         }
@@ -212,8 +217,41 @@ namespace DVLD_View
         private void tsmiScheduleVisionTest_Click(object sender, EventArgs e)
         {
             int testTypeID = Convert.ToInt32(tsmiScheduleVisionTest.Tag);
-            frmTestAppointment testAppointment = new frmTestAppointment(testTypeID);
+            int lDLAppID = (int) dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID,testTypeID);
             testAppointment.ShowDialog();
+        }
+
+        
+
+        private void _ValidateTestOrders()
+        {
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+
+            tsmiScheduleTests.Enabled = true;
+
+            if (clsTest.IsTestPassed(lDLAppID, 1))
+            {
+                tsmiScheduleVisionTest.Enabled = false;
+                tsmiScheduleWrittenTest.Enabled = true;
+            }
+
+            if (clsTest.IsTestPassed(lDLAppID, 2))
+            {
+                tsmiScheduleWrittenTest.Enabled = false;
+                tsmiScheduleStreetTest.Enabled = true;
+            }
+
+            if (clsTest.IsTestPassed(lDLAppID, 3))
+            {
+                tsmiScheduleStreetTest.Enabled = false;
+                tsmiScheduleTests.Enabled = false;
+            }
+        }
+
+        private void tsmiScheduleTests_Click(object sender, EventArgs e)
+        {
+            _ValidateTestOrders();
         }
     }
 }

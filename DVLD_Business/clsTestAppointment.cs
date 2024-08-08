@@ -13,7 +13,7 @@ namespace DVLD_Business
         enum enMode { AddNew =1,Update=2}
         enMode _Mode = enMode.AddNew;
 
-        public int TestAppointmentID { get; }
+        public int TestAppointmentID;
         public int TestTypeID;
         public int LocalDrivingLicenseAppID;
         public DateTime AppointmentDate;
@@ -47,8 +47,8 @@ namespace DVLD_Business
 
         private bool _AddNew()
         {
-            int appointmentId = clsTestAppointmentData.AddNewTestAppointment(TestTypeID, LocalDrivingLicenseAppID, AppointmentDate, PaidFees, UserID, IsLocked);
-            return appointmentId != -1;
+             TestAppointmentID = clsTestAppointmentData.AddNewTestAppointment(TestTypeID, LocalDrivingLicenseAppID, AppointmentDate, PaidFees, UserID, IsLocked);
+            return TestAppointmentID != -1;
         }
         
         private bool _Update()
@@ -80,10 +80,22 @@ namespace DVLD_Business
         {
             return clsTestAppointmentData.GetAllTestAppointments();
         }
+        public static DataTable GetTestAppointmentMasterByID(int testAppointmentID)
+        {
+            return clsTestAppointmentData.GetestAppointmentsMasterByID(testAppointmentID);
+        }
 
         public static bool IsTestAppointmentExist(int testAppointmentID)
         {
             return clsTestAppointmentData.IsTestAppointmentExist(testAppointmentID);
+        }
+        public static bool IsPersonHasActiveTestAppointment(int localDrivingLicenseAppID)
+        {
+            return clsTestAppointmentData.IsPersonHasActiveTestAppointment(localDrivingLicenseAppID);
+        }
+        public static int IsTestAppointmentPassed(int testAppointmentID)
+        {
+            return clsTestAppointmentData.IsTestAppointmentPassed(testAppointmentID);
         }
 
         public bool Save()
@@ -92,9 +104,11 @@ namespace DVLD_Business
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
                         if(_AddNew())
+                        {
+                            _Mode = enMode.Update;
                             return true;
+                        }
                         else 
                             return false;
                     }
