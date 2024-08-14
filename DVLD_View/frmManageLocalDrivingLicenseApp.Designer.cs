@@ -136,6 +136,7 @@
             this.dgvListLocalDrivingLicenseApps.RowTemplate.Height = 24;
             this.dgvListLocalDrivingLicenseApps.Size = new System.Drawing.Size(1309, 294);
             this.dgvListLocalDrivingLicenseApps.TabIndex = 8;
+            this.dgvListLocalDrivingLicenseApps.SelectionChanged += new System.EventHandler(this.dgvListLocalDrivingLicenseApps_SelectionChanged);
             // 
             // colLDLAppID
             // 
@@ -273,10 +274,10 @@
             this.tsmiScheduleTests.Name = "tsmiScheduleTests";
             this.tsmiScheduleTests.Size = new System.Drawing.Size(341, 38);
             this.tsmiScheduleTests.Text = "Schedule Tests";
-            this.tsmiScheduleTests.Click += new System.EventHandler(this.tsmiScheduleTests_Click);
             // 
             // tsmiScheduleVisionTest
             // 
+            this.tsmiScheduleVisionTest.Enabled = false;
             this.tsmiScheduleVisionTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiScheduleVisionTest.Image")));
             this.tsmiScheduleVisionTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiScheduleVisionTest.Name = "tsmiScheduleVisionTest";
@@ -294,6 +295,7 @@
             this.tsmiScheduleWrittenTest.Size = new System.Drawing.Size(271, 38);
             this.tsmiScheduleWrittenTest.Tag = "2";
             this.tsmiScheduleWrittenTest.Text = "Schedule Written Test";
+            this.tsmiScheduleWrittenTest.Click += new System.EventHandler(this.tsmiScheduleWrittenTest_Click);
             // 
             // tsmiScheduleStreetTest
             // 
@@ -304,6 +306,7 @@
             this.tsmiScheduleStreetTest.Size = new System.Drawing.Size(271, 38);
             this.tsmiScheduleStreetTest.Tag = "3";
             this.tsmiScheduleStreetTest.Text = "Schedule Street Test";
+            this.tsmiScheduleStreetTest.Click += new System.EventHandler(this.tsmiScheduleStreetTest_Click);
             // 
             // toolStripMenuItem3
             // 

@@ -63,7 +63,6 @@ namespace DVLD_View
 
         private void frmManageLocalDrivingLicenseApp_Load(object sender, EventArgs e)
         {
-            _ValidateTestOrders();
             _ResetFilter();
             _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
         }
@@ -222,36 +221,69 @@ namespace DVLD_View
             testAppointment.ShowDialog();
         }
 
-        
+        private void tsmiScheduleWrittenTest_Click(object sender, EventArgs e)
+        {
+            int testTypeID = Convert.ToInt32(tsmiScheduleWrittenTest.Tag);
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID, testTypeID);
+            testAppointment.ShowDialog();
+        }
+        private void tsmiScheduleStreetTest_Click(object sender, EventArgs e)
+        {
+            int testTypeID = Convert.ToInt32(tsmiScheduleStreetTest.Tag);
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID, testTypeID);
+            testAppointment.ShowDialog();
+        }
 
         private void _ValidateTestOrders()
         {
             int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
 
-            tsmiScheduleTests.Enabled = true;
+
+
+            if (clsTest.CountPassedTest(lDLAppID) == 3)
+            {
+                tsmiScheduleTests.Enabled = false;
+                return;
+            }
+            else 
+                tsmiScheduleTests.Enabled =true;
 
             if (clsTest.IsTestPassed(lDLAppID, 1))
             {
                 tsmiScheduleVisionTest.Enabled = false;
+            }
+            else
+                tsmiScheduleVisionTest.Enabled = true;
+
+
+
+            if (clsTest.IsTestPassed(lDLAppID,1) && !clsTest.IsTestPassed(lDLAppID, 2))
+            {
                 tsmiScheduleWrittenTest.Enabled = true;
             }
-
-            if (clsTest.IsTestPassed(lDLAppID, 2))
-            {
+            else
                 tsmiScheduleWrittenTest.Enabled = false;
+
+
+            if (clsTest.IsTestPassed(lDLAppID, 1) && clsTest.IsTestPassed(lDLAppID, 2) && !clsTest.IsTestPassed(lDLAppID, 3))
+            {
                 tsmiScheduleStreetTest.Enabled = true;
             }
-
-            if (clsTest.IsTestPassed(lDLAppID, 3))
+            else
             {
                 tsmiScheduleStreetTest.Enabled = false;
-                tsmiScheduleTests.Enabled = false;
             }
         }
 
-        private void tsmiScheduleTests_Click(object sender, EventArgs e)
+       
+        private void dgvListLocalDrivingLicenseApps_SelectionChanged(object sender, EventArgs e)
         {
-            _ValidateTestOrders();
+            
+           _ValidateTestOrders();
         }
+
+       
     }
 }
