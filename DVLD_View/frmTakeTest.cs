@@ -66,7 +66,9 @@ namespace DVLD_View
                 rbFail.Enabled = false;
                 lblStatus.Visible = true;
                 rbPass.Checked = true;
+                lblTestID.Text = clsTest.FindTestByAppointmentID(_TestAppointmentID).TestID.ToString();
                 lblStatus.Text = "Person already passed this test";
+                
             }
             if(clsTestAppointment.IsTestAppointmentPassed(_TestAppointmentID) == 0)
             {
@@ -76,6 +78,7 @@ namespace DVLD_View
                 rbFail.Checked = true;
                 lblStatus.Visible = true;
                 lblMode.Text = "ReTake Test";
+                lblTestID.Text = clsTest.FindTestByAppointmentID(_TestAppointmentID).TestID.ToString();
                 lblStatus.Text = "Person already sat this test";
             }
 
@@ -91,7 +94,6 @@ namespace DVLD_View
                 lblClassName.Text = row["ClassName"].ToString();
                 lblAppFees.Text = row["PaidFees"].ToString();
                 lblTestDate.Text = row["AppointmentDate"].ToString();
-
             }
 
         }
@@ -128,6 +130,7 @@ namespace DVLD_View
                 MessageBox.Show("Test result added successfully", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("Adding test result fail", "Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            lblTestID.Text = clsTest.FindTestByAppointmentID(_TestAppointmentID).TestID.ToString();
             this.Close();
         }
 

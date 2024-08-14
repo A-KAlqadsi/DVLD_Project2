@@ -44,6 +44,45 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
+        public static bool GetTestByAppointmentID(int testAppointmentID, ref int testID , ref bool testResult,
+            ref string notes, ref int createdByUserID)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * From Tests WHERE TestAppointmentID=@AppointmentID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@AppointmentID", testAppointmentID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    isFound = true;
+                    testID = (int)reader["TestID"];
+                    testResult = Convert.ToBoolean(reader["TestResult"]);
+                    notes = (reader["Notes"] != DBNull.Value) ? reader["Notes"].ToString() : "";
+                    createdByUserID = (int)reader["CreatedByUserID"];
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+
         public static int AddNewTest(int testAppointmentID,bool testResult,
              string notes,int createdByUserID)
         {

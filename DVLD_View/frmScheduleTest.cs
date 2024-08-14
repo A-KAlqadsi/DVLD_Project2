@@ -76,6 +76,8 @@ namespace DVLD_View
             _InitilizeTestTypeDefaults();
             _CheckTestAppointmentStatus();
             _RetakeTestInfo();
+            
+                
             lblTotalFees.Text = (_RetakeTestFees + _TestTypeFees).ToString();
 
             if(_Mode == enMode.AddNew)
@@ -91,6 +93,7 @@ namespace DVLD_View
                 this.Close();
                 return;
             }
+            lblRTestAppID.Text = _TestAppointmentID.ToString();
             
             dtpTestDate.Value = _TestAppointment.AppointmentDate;
 
@@ -98,7 +101,7 @@ namespace DVLD_View
 
         private void  _RetakeTestInfo()
         {
-            if(!clsTest.IsTestPassed(_LDLAppID,_TestTypeID))
+            if(clsTest.IsTestPassed(_LDLAppID,_TestTypeID,false))
             {
                 _ReTakeTestApplication = new clsApplication();
                 _ReTakeTestApplication.ApplicantApplicationID = _ApplicantID;
@@ -106,11 +109,15 @@ namespace DVLD_View
                 _ReTakeTestApplication.PaidFees = clsApplicationType.Find(_RetakeTestAppID).ApplicationFees;
                 _ReTakeTestApplication.ApplicationStatus = 1;
                 _ReTakeTestApplication.ApplicationDate = DateTime.Now;
-                _ReTakeTestApplication.UserID =clsUser.Find(clsLoginUser.LoginUser).UserID;
+                _ReTakeTestApplication.UserID = clsUser.Find(clsLoginUser.LoginUser).UserID;
                 _ReTakeTestApplication.LastStatusDate = DateTime.Now;
                 lblRTestAppFees.Text = _ReTakeTestApplication.PaidFees.ToString();
                 _RetakeTestFees = _ReTakeTestApplication.PaidFees;
                 gbRetakeTestInfo.Enabled = true;
+            }
+            else 
+            {
+                gbRetakeTestInfo.Enabled = false;
 
             }
         }
@@ -177,10 +184,14 @@ namespace DVLD_View
             if(gbRetakeTestInfo.Enabled)
             {
                 _ReTakeTestApplication.Save();
+                    
             }
 
             if (_TestAppointment.Save())
+            {
                 MessageBox.Show("Test appointment added successfully!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
             else
                 MessageBox.Show("Test appointment save failed!", "Ooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

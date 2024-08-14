@@ -60,6 +60,16 @@ namespace DVLD_Business
             else 
                 return null;
         }
+        public static clsTest FindTestByAppointmentID(int appointmentId)
+        {
+            int testID = 0, userID = -1;
+            bool testResult = false;
+            string notes = string.Empty;
+            if (clsTestData.GetTestByAppointmentID(appointmentId ,ref testID, ref testResult, ref notes, ref userID))
+                return new clsTest(testID, appointmentId, testResult, notes, userID);
+            else
+                return null;
+        }
 
         public static bool Delete(int testID)
         {

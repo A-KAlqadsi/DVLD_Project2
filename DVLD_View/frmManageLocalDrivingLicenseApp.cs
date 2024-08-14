@@ -219,6 +219,7 @@ namespace DVLD_View
             int lDLAppID = (int) dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
             frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID,testTypeID);
             testAppointment.ShowDialog();
+            _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
         }
 
         private void tsmiScheduleWrittenTest_Click(object sender, EventArgs e)
@@ -227,6 +228,8 @@ namespace DVLD_View
             int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
             frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID, testTypeID);
             testAppointment.ShowDialog();
+            _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+
         }
         private void tsmiScheduleStreetTest_Click(object sender, EventArgs e)
         {
@@ -234,6 +237,8 @@ namespace DVLD_View
             int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
             frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID, testTypeID);
             testAppointment.ShowDialog();
+            _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+
         }
 
         private void _ValidateTestOrders()

@@ -63,8 +63,9 @@ namespace DVLD_View
             DataView dv = clsTestAppointment.GetAll().DefaultView;
             
             dv.RowFilter = $"LocalDrivingLicenseApplicationID = {_LDLAppId} And TestTypeID={_TestTypeID}";
+            dv.Sort = "TestAppointmentID DESC";
             dgvListAllTestAppointments.Visible = dv.Count > 0;
-
+            
             for (int i = 0; i < dv.Count; i++)
             {
                 dgvListAllTestAppointments.Rows.Add(dv[i]["TestAppointmentID"], dv[i]["AppointmentDate"], dv[i]["PaidFees"], dv[i]["IsLocked"]);
