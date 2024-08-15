@@ -262,5 +262,37 @@ namespace DVLD_DataAccess
             return isExist;
         }
 
+        public static short GetApplicationStatus(int applicationId)
+        {
+            short status = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP(1) ApplicationStatus From Applications WHERE ApplicationID=@ApplicationID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", applicationId);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && short.TryParse(result.ToString(), out status))
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return status;
+        }
+
+
     }
 }

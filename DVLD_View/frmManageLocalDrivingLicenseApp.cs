@@ -295,8 +295,18 @@ namespace DVLD_View
         private void dgvListLocalDrivingLicenseApps_SelectionChanged(object sender, EventArgs e)
         {
             _LocalDrivingLicenseID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            int applicatoinID = clsLocalDrivingLicenseApp.Find(_LocalDrivingLicenseID).ApplicationID;
+            if (clsApplication.GetStatus(applicatoinID) == 2)
+            {
+                tsmiCancelApplication.Enabled = false;
+                tsmiEditApplication.Enabled = false;
+                tsmiScheduleTests.Enabled = false;
+                tsmiShowLicense.Enabled = false;
+                return;
+            }
             
-            if (clsTest.CountPassedTest(_LocalDrivingLicenseID) == 3 && !clsLicense.IsApplicationHasLicense(clsLocalDrivingLicenseApp.Find(_LocalDrivingLicenseID).ApplicationID))
+
+            if (clsTest.CountPassedTest(_LocalDrivingLicenseID) == 3 && !clsLicense.IsApplicationHasLicense(applicatoinID))
                 tsmiIssueDrivingLicense.Enabled = true;
             else
                 tsmiIssueDrivingLicense.Enabled = false;
@@ -360,6 +370,22 @@ namespace DVLD_View
 
         private void tsmiCancelApplication_Click(object sender, EventArgs e)
         {
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            int applicationID = clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID;
+            
+            if (MessageBox.Show("Are you sure you want to cancel this application","Confirm",MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if(clsApplication.UpdateApplicationStatus(applicationID, 2))
+                {
+                    tsmiCancelApplication.Enabled = false;
+                    tsmiEditApplication.Enabled = false;
+                    tsmiScheduleTests.Enabled = false;
+                    tsmiShowLicense.Enabled = false;
+                }
+
+
+                _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+            }
 
         }
 

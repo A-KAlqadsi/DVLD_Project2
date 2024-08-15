@@ -35,14 +35,14 @@ namespace DVLD_Business
 
         }
 
-        private clsApplication(int applicationID, int applicantApplicationID,DateTime applicationDate,
-            int applicationTypeId,short applicationSatus,DateTime lastStatusDate,float paidFees,int userID)
+        private clsApplication(int applicationID, int applicantApplicationID, DateTime applicationDate,
+            int applicationTypeId, short applicationSatus, DateTime lastStatusDate, float paidFees, int userID)
         {
             ApplicationID = applicationID;
             ApplicantApplicationID = applicantApplicationID;
-            ApplicationDate= applicationDate;
-            ApplicationTypeID= applicationTypeId;
-            ApplicationStatus= applicationSatus;
+            ApplicationDate = applicationDate;
+            ApplicationTypeID = applicationTypeId;
+            ApplicationStatus = applicationSatus;
             LastStatusDate = lastStatusDate;
             PaidFees = paidFees;
             UserID = userID;
@@ -51,20 +51,20 @@ namespace DVLD_Business
 
         private bool _AddNewApplication()
         {
-           ApplicationID = clsApplicationData.AddNewApplication(ApplicantApplicationID,
-                ApplicationDate,ApplicationTypeID,ApplicationStatus,LastStatusDate,PaidFees,UserID);
+            ApplicationID = clsApplicationData.AddNewApplication(ApplicantApplicationID,
+                 ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, UserID);
             return ApplicationID != -1;
         }
 
         private bool _UpdateApplication()
         {
-            return clsApplicationData.UpdateApplication(ApplicationID,ApplicantApplicationID,
+            return clsApplicationData.UpdateApplication(ApplicationID, ApplicantApplicationID,
                 ApplicationDate, ApplicationTypeID, ApplicationStatus, LastStatusDate, PaidFees, UserID);
         }
 
         public static clsApplication Find(int applicationID)
         {
-            
+
             int applicantApplicationID = -1;
             DateTime applicationDate = DateTime.Now;
             int applicationTypeID = -1;
@@ -72,13 +72,13 @@ namespace DVLD_Business
             DateTime lastStatusDate = DateTime.Now;
             float paidFees = 0;
             int userID = -1;
-            if(clsApplicationData.GetApplicationById(applicationID,ref applicantApplicationID,
-                ref applicationDate,ref applicationTypeID,ref applicationStatus,
-                ref lastStatusDate,ref paidFees,ref userID))
+            if (clsApplicationData.GetApplicationById(applicationID, ref applicantApplicationID,
+                ref applicationDate, ref applicationTypeID, ref applicationStatus,
+                ref lastStatusDate, ref paidFees, ref userID))
             {
                 return new clsApplication(applicationID, applicantApplicationID, applicationDate, applicationTypeID, applicationStatus, lastStatusDate, paidFees, userID);
             }
-            else 
+            else
                 return null;
 
         }
@@ -101,6 +101,11 @@ namespace DVLD_Business
         public static bool IsApplicationExist(int applicationID)
         {
             return clsApplicationData.IsApplicationExist(applicationID);
+        }
+
+        public static short GetStatus(int applicationID)
+        {
+            return clsApplicationData.GetApplicationStatus(applicationID);
         }
 
         public bool Save()
