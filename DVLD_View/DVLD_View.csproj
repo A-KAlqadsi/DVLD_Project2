@@ -191,6 +191,12 @@
     <Compile Include="frmScheduleTest.Designer.cs">
       <DependentUpon>frmScheduleTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmShowApplicationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowApplicationInfo.Designer.cs">
+      <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmShowLicenseCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmScheduleTest.resx">
       <DependentUpon>frmScheduleTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowApplicationInfo.resx">
+      <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmShowLicenseCard.resx">
       <DependentUpon>frmShowLicenseCard.cs</DependentUpon>

@@ -78,6 +78,29 @@ namespace DVLD_View
                 return;
             }
 
+            _LocalDrivingLicenseApp = clsLocalDrivingLicenseApp.Find(_LocalLicenseAppID);
+            if(_LocalDrivingLicenseApp == null )
+            {
+                MessageBox.Show($"This form will be closed because no{Environment.NewLine}local driving license application with Id={_LocalLicenseAppID}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+            _Application = clsApplication.Find(_LocalDrivingLicenseApp.ApplicationID);
+
+            lblMode.Text = "Edit Local Driving License Application";
+            ctrlPersonCardWithFilter1.gbFilter.Enabled = false;
+            _PersonID = _Application.ApplicantApplicationID;
+            ctrlPersonCardWithFilter1.txtSearch.Text = clsPerson.Find(_Application.ApplicantApplicationID).NationalNo;
+            ctrlPersonCardWithFilter1.ctrlPersonCard1.LoadPersonInfo(_Application.ApplicantApplicationID);
+            lblUsername.Text = clsUser.Find(_Application.UserID).Username;
+            _UserID = clsUser.Find(clsLoginUser.LoginUser).UserID;
+            lblDLApplicationID.Text = _LocalLicenseAppID.ToString();
+            lblApplicationFees.Text = _Application.PaidFees.ToString();
+            lblApplicationDate.Text = _Application.ApplicationDate.ToShortDateString();
+            cbLicenseClasses.SelectedIndex = _LocalDrivingLicenseApp.LicenseClassID - 1;
+            _ClassID = _LocalDrivingLicenseApp.LicenseClassID;
+            _AppStatus = _Application.ApplicationStatus;
+
 
         }
 
@@ -88,8 +111,10 @@ namespace DVLD_View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _PersonID = ctrlPersonCardWithFilter1.PersonID;
-            if(_PersonID == -1)
+            if(_Mode == enMode.AddNew)
+                _PersonID = ctrlPersonCardWithFilter1.PersonID;
+            
+            if (_PersonID == -1)
             {
                 MessageBox.Show($"Choose Person first!!","Ooops!",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
@@ -103,11 +128,12 @@ namespace DVLD_View
 
             _Application.ApplicantApplicationID = _PersonID;
             _Application.ApplicationTypeID= _AppTypeID;
-            _Application.ApplicationDate = DateTime.Now;
+            _Application.ApplicationDate = Convert.ToDateTime(lblApplicationDate.Text);
             _Application.LastStatusDate = DateTime.Now;
             _Application.PaidFees = _AppFees;
             _Application.ApplicationStatus = _AppStatus;
             _Application.UserID = _UserID;
+
             if (_Application.Save())
             {
                 _ApplicationID = _Application.ApplicationID;
@@ -137,7 +163,9 @@ namespace DVLD_View
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            _PersonID = ctrlPersonCardWithFilter1.PersonID;
+            if(_Mode == enMode.AddNew)
+                _PersonID = ctrlPersonCardWithFilter1.PersonID;
+
             if(_PersonID == -1)
             {
                 MessageBox.Show($"Choose Person Info First!", "Person Required", MessageBoxButtons.OK, MessageBoxIcon.Information);

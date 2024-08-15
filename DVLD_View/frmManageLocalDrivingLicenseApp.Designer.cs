@@ -223,6 +223,7 @@
             this.tsmiShowAppDetails.Name = "tsmiShowAppDetails";
             this.tsmiShowAppDetails.Size = new System.Drawing.Size(341, 38);
             this.tsmiShowAppDetails.Text = "Show  Application Details";
+            this.tsmiShowAppDetails.Click += new System.EventHandler(this.tsmiShowAppDetails_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -236,6 +237,7 @@
             this.tsmiEditApplication.Name = "tsmiEditApplication";
             this.tsmiEditApplication.Size = new System.Drawing.Size(341, 38);
             this.tsmiEditApplication.Text = "Edit Application";
+            this.tsmiEditApplication.Click += new System.EventHandler(this.tsmiEditApplication_Click);
             // 
             // tsmiDeleteApplication
             // 
@@ -244,6 +246,7 @@
             this.tsmiDeleteApplication.Name = "tsmiDeleteApplication";
             this.tsmiDeleteApplication.Size = new System.Drawing.Size(341, 38);
             this.tsmiDeleteApplication.Text = "Delete Application";
+            this.tsmiDeleteApplication.Click += new System.EventHandler(this.tsmiDeleteApplication_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -257,6 +260,7 @@
             this.tsmiCancelApplication.Name = "tsmiCancelApplication";
             this.tsmiCancelApplication.Size = new System.Drawing.Size(341, 38);
             this.tsmiCancelApplication.Text = "Cancel Application";
+            this.tsmiCancelApplication.Click += new System.EventHandler(this.tsmiCancelApplication_Click);
             // 
             // sToolStripMenuItem
             // 

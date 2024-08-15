@@ -349,5 +349,31 @@ namespace DVLD_View
             licenseCard.ShowDialog();
 
         }
+
+        private void tsmiEditApplication_Click(object sender, EventArgs e)
+        {
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            frmAddEditLocalDrivingLicenseApp frm = new frmAddEditLocalDrivingLicenseApp(lDLAppID);
+            frm.ShowDialog();
+            _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+        }
+
+        private void tsmiCancelApplication_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsmiDeleteApplication_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsmiShowAppDetails_Click(object sender, EventArgs e)
+        {
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+
+            frmShowApplicationInfo showAppInfo = new frmShowApplicationInfo(lDLAppID);
+            showAppInfo.ShowDialog();
+        }
     }
 }
