@@ -86,7 +86,30 @@ namespace DVLD_Business
 
             if (clsLicenseData.GetLicenseByID(licenseID, ref applicationId, ref driverID, ref licenseClassID, ref issueDate, ref expirationDate, ref notes, ref paidFees, ref isActive, ref issueReason, ref userID))
             {
-                return new clsLicense();
+                return new clsLicense(licenseID,applicationId,driverID,licenseClassID,issueDate,expirationDate,notes,paidFees,isActive,issueReason,userID);
+            }
+            else
+                return null;
+
+        }
+
+        public static clsLicense FindByApplicationID(int applicationId)
+        {
+
+            int licenseID = -1;
+            int driverID = -1;
+            int licenseClassID = -1;
+            DateTime issueDate = DateTime.Now;
+            DateTime expirationDate = DateTime.Now;
+            string notes = string.Empty;
+            float paidFees = 0;
+            bool isActive = false;
+            short issueReason = 0;
+            int userID = -1;
+
+            if (clsLicenseData.GetLicenseByApplicationID(applicationId, ref licenseID , ref driverID, ref licenseClassID, ref issueDate, ref expirationDate, ref notes, ref paidFees, ref isActive, ref issueReason, ref userID))
+            {
+                return new clsLicense(licenseID, applicationId, driverID, licenseClassID, issueDate, expirationDate, notes, paidFees, isActive, issueReason, userID);
             }
             else
                 return null;

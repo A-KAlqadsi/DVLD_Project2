@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTestAppointment));
             this.lblMode = new System.Windows.Forms.Label();
-            this.pbVisionTestAppointment = new System.Windows.Forms.PictureBox();
+            this.pbTestAppointment = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvListAllTestAppointments = new System.Windows.Forms.DataGridView();
@@ -47,7 +47,7 @@
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.ctrlApplicationCard1 = new DVLD_View.ctrlApplicationCard();
-            ((System.ComponentModel.ISupportInitialize)(this.pbVisionTestAppointment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTestAppointment)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListAllTestAppointments)).BeginInit();
             this.cmsManageTestAppointment.SuspendLayout();
@@ -65,17 +65,17 @@
             this.lblMode.TabIndex = 8;
             this.lblMode.Text = "Test Appointments";
             // 
-            // pbVisionTestAppointment
+            // pbTestAppointment
             // 
-            this.pbVisionTestAppointment.BackColor = System.Drawing.Color.Transparent;
-            this.pbVisionTestAppointment.Image = ((System.Drawing.Image)(resources.GetObject("pbVisionTestAppointment.Image")));
-            this.pbVisionTestAppointment.Location = new System.Drawing.Point(435, -4);
-            this.pbVisionTestAppointment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbVisionTestAppointment.Name = "pbVisionTestAppointment";
-            this.pbVisionTestAppointment.Size = new System.Drawing.Size(206, 96);
-            this.pbVisionTestAppointment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbVisionTestAppointment.TabIndex = 7;
-            this.pbVisionTestAppointment.TabStop = false;
+            this.pbTestAppointment.BackColor = System.Drawing.Color.Transparent;
+            this.pbTestAppointment.Image = ((System.Drawing.Image)(resources.GetObject("pbTestAppointment.Image")));
+            this.pbTestAppointment.Location = new System.Drawing.Point(435, -4);
+            this.pbTestAppointment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbTestAppointment.Name = "pbTestAppointment";
+            this.pbTestAppointment.Size = new System.Drawing.Size(206, 96);
+            this.pbTestAppointment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTestAppointment.TabIndex = 7;
+            this.pbTestAppointment.TabStop = false;
             // 
             // label2
             // 
@@ -163,14 +163,14 @@
             this.tsmiEditTestAppointment,
             this.tsmiTakeTest});
             this.cmsManageTestAppointment.Name = "cmsManageVisionTestAppointment";
-            this.cmsManageTestAppointment.Size = new System.Drawing.Size(227, 108);
+            this.cmsManageTestAppointment.Size = new System.Drawing.Size(164, 80);
             // 
             // tsmiEditTestAppointment
             // 
             this.tsmiEditTestAppointment.Image = ((System.Drawing.Image)(resources.GetObject("tsmiEditTestAppointment.Image")));
             this.tsmiEditTestAppointment.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiEditTestAppointment.Name = "tsmiEditTestAppointment";
-            this.tsmiEditTestAppointment.Size = new System.Drawing.Size(226, 38);
+            this.tsmiEditTestAppointment.Size = new System.Drawing.Size(163, 38);
             this.tsmiEditTestAppointment.Text = "Edit";
             this.tsmiEditTestAppointment.Click += new System.EventHandler(this.tsmiEditTestAppointment_Click);
             // 
@@ -179,7 +179,7 @@
             this.tsmiTakeTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiTakeTest.Image")));
             this.tsmiTakeTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiTakeTest.Name = "tsmiTakeTest";
-            this.tsmiTakeTest.Size = new System.Drawing.Size(226, 38);
+            this.tsmiTakeTest.Size = new System.Drawing.Size(163, 38);
             this.tsmiTakeTest.Text = "Take Test";
             this.tsmiTakeTest.Click += new System.EventHandler(this.tsmiTakeTest_Click);
             // 
@@ -257,13 +257,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ctrlApplicationCard1);
             this.Controls.Add(this.lblMode);
-            this.Controls.Add(this.pbVisionTestAppointment);
+            this.Controls.Add(this.pbTestAppointment);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTestAppointment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vision Test Appointment";
             this.Load += new System.EventHandler(this.frmVisionTestAppointment_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbVisionTestAppointment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTestAppointment)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListAllTestAppointments)).EndInit();
             this.cmsManageTestAppointment.ResumeLayout(false);
@@ -275,7 +275,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblMode;
-        private System.Windows.Forms.PictureBox pbVisionTestAppointment;
+        private System.Windows.Forms.PictureBox pbTestAppointment;
         private ctrlApplicationCard ctrlApplicationCard1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;

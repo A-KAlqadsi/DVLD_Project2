@@ -6,23 +6,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 using System.Windows.Forms;
 
 namespace DVLD_View
 {
-    public partial class frmTest : Form
+    public partial class frmShowLicenseCard : Form
     {
-        public frmTest()
+        private int _LicenseID;
+        public frmShowLicenseCard(int licenseID)
         {
             InitializeComponent();
+            _LicenseID = licenseID;
         }
 
-        private void frmTest_Load(object sender, EventArgs e)
+        private void frmShowLicenseCard_Load(object sender, EventArgs e)
         {
-            ctrlDriverLicenseCard1.LoadLicenseCardInfo(18);
+            ctrlDriverLicenseCard1.LoadLicenseCardInfo(_LicenseID);
         }
-
-
     }
 }

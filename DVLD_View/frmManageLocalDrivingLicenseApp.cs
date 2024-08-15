@@ -229,6 +229,8 @@ namespace DVLD_View
             int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
             frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID, testTypeID);
             testAppointment.ShowDialog();
+           
+
             _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
 
         }
@@ -238,29 +240,31 @@ namespace DVLD_View
             int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
             frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID, testTypeID);
             testAppointment.ShowDialog();
+
+            if (clsTest.CountPassedTest(lDLAppID) == 3)
+                clsApplication.UpdateApplicationStatus(clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID, 3);
+
             _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
 
         }
 
         private void _ValidateTestOrders()
         {
-            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
-
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;           
             
             if(clsTest.CountPassedTest(lDLAppID) == 3)
             {
-
                 tsmiScheduleTests.Enabled = false;
                 if (clsLicense.IsApplicationHasLicense(clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID))
                     tsmiIssueDrivingLicense.Enabled = false;
                 else
                     tsmiIssueDrivingLicense.Enabled = true;
-
-                return;
             }
             else 
                 tsmiScheduleTests.Enabled =true;
 
+            
+            
             if (clsTest.IsTestPassed(lDLAppID, 1))
             {
                 tsmiScheduleVisionTest.Enabled = false;
@@ -288,7 +292,6 @@ namespace DVLD_View
             }
         }
 
-       
         private void dgvListLocalDrivingLicenseApps_SelectionChanged(object sender, EventArgs e)
         {
             _LocalDrivingLicenseID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
@@ -297,6 +300,21 @@ namespace DVLD_View
                 tsmiIssueDrivingLicense.Enabled = true;
             else
                 tsmiIssueDrivingLicense.Enabled = false;
+
+            if (clsLicense.IsApplicationHasLicense(clsLocalDrivingLicenseApp.Find(_LocalDrivingLicenseID).ApplicationID))
+            {
+                tsmiShowLicense.Enabled = true;
+                tsmiCancelApplication.Enabled = false;
+                tsmiDeleteApplication.Enabled = false;
+                tsmiEditApplication.Enabled = false;
+            }
+            else
+            {
+                tsmiShowLicense.Enabled = false;
+                tsmiCancelApplication.Enabled = true;
+                tsmiDeleteApplication.Enabled = true;
+                tsmiEditApplication.Enabled = true;
+            }
 
             _ValidateTestOrders();
         }
@@ -308,13 +326,27 @@ namespace DVLD_View
             isseLicense.ShowDialog();
 
             if (clsLicense.IsApplicationHasLicense(clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID))
+            {
                 tsmiIssueDrivingLicense.Enabled = false;
+                tsmiShowLicense.Enabled = true;
+            }
             else
                 tsmiIssueDrivingLicense.Enabled = true;
         }
 
         private void tsmiShowLicense_Click(object sender, EventArgs e)
         {
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            int applicationID = clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID;
+            int licenseId; 
+            clsLicense license =  clsLicense.FindByApplicationID(applicationID);
+            if (license == null)
+                licenseId = -1;
+            else
+                licenseId = license.LicenseID;
+
+            frmShowLicenseCard licenseCard = new frmShowLicenseCard(licenseId);
+            licenseCard.ShowDialog();
 
         }
     }

@@ -13,6 +13,8 @@ namespace DVLD_View
 {
     public partial class frmScheduleTest : Form
     {
+        private string _ImagePath = @"C:\Users\Abdulkarim\source\Abu-Hadhoud\19 DVLD\DVLD_View\Icons\";
+
         enum enTestType { Vision = 1, Written=2,Street=3}
         enum enMode { AddNew =1, Update =2}
         enMode _Mode;
@@ -63,10 +65,14 @@ namespace DVLD_View
             else if (_TestType == enTestType.Written)
             {
                 gbTestType.Text = "Written Test";
+                pbTestType.ImageLocation = _ImagePath + "Written Test 512.png";
+
             }
             else
             {
                 gbTestType.Text = "Street Test";
+                pbTestType.ImageLocation = _ImagePath + "driving-test 512.png";
+
             }
         }
 

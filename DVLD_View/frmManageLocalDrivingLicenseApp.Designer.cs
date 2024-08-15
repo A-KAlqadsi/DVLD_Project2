@@ -44,7 +44,7 @@
             this.cmsManageLocalDrivingLicenseApp = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiShowAppDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.editApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEditApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDeleteApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiCancelApplication = new System.Windows.Forms.ToolStripMenuItem();
@@ -201,7 +201,7 @@
             this.cmsManageLocalDrivingLicenseApp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiShowAppDetails,
             this.toolStripMenuItem1,
-            this.editApplicationToolStripMenuItem,
+            this.tsmiEditApplication,
             this.tsmiDeleteApplication,
             this.toolStripMenuItem2,
             this.tsmiCancelApplication,
@@ -229,13 +229,13 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(338, 6);
             // 
-            // editApplicationToolStripMenuItem
+            // tsmiEditApplication
             // 
-            this.editApplicationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("editApplicationToolStripMenuItem.Image")));
-            this.editApplicationToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.editApplicationToolStripMenuItem.Name = "editApplicationToolStripMenuItem";
-            this.editApplicationToolStripMenuItem.Size = new System.Drawing.Size(341, 38);
-            this.editApplicationToolStripMenuItem.Text = "Edit Application";
+            this.tsmiEditApplication.Image = ((System.Drawing.Image)(resources.GetObject("tsmiEditApplication.Image")));
+            this.tsmiEditApplication.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiEditApplication.Name = "tsmiEditApplication";
+            this.tsmiEditApplication.Size = new System.Drawing.Size(341, 38);
+            this.tsmiEditApplication.Text = "Edit Application";
             // 
             // tsmiDeleteApplication
             // 
@@ -533,7 +533,7 @@
         private System.Windows.Forms.ContextMenuStrip cmsManageLocalDrivingLicenseApp;
         private System.Windows.Forms.ToolStripMenuItem tsmiShowAppDetails;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem editApplicationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditApplication;
         private System.Windows.Forms.ToolStripMenuItem tsmiDeleteApplication;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem tsmiCancelApplication;

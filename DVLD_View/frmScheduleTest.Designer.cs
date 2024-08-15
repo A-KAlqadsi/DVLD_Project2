@@ -43,7 +43,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblRTestAppID = new System.Windows.Forms.Label();
             this.lblMode = new System.Windows.Forms.Label();
-            this.pbTestAppointment = new System.Windows.Forms.PictureBox();
+            this.pbTestType = new System.Windows.Forms.PictureBox();
             this.pbTrial = new System.Windows.Forms.PictureBox();
             this.lblTrial = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTestAppointment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDLAppID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLicenseClass)).BeginInit();
@@ -83,7 +83,7 @@
             this.gbTestType.Controls.Add(this.btnSave);
             this.gbTestType.Controls.Add(this.gbRetakeTestInfo);
             this.gbTestType.Controls.Add(this.lblMode);
-            this.gbTestType.Controls.Add(this.pbTestAppointment);
+            this.gbTestType.Controls.Add(this.pbTestType);
             this.gbTestType.Controls.Add(this.pbTrial);
             this.gbTestType.Controls.Add(this.lblTrial);
             this.gbTestType.Controls.Add(this.label4);
@@ -270,17 +270,17 @@
             this.lblMode.TabIndex = 86;
             this.lblMode.Text = "Schedule Test";
             // 
-            // pbTestAppointment
+            // pbTestType
             // 
-            this.pbTestAppointment.BackColor = System.Drawing.Color.Transparent;
-            this.pbTestAppointment.Image = ((System.Drawing.Image)(resources.GetObject("pbTestAppointment.Image")));
-            this.pbTestAppointment.Location = new System.Drawing.Point(211, 20);
-            this.pbTestAppointment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pbTestAppointment.Name = "pbTestAppointment";
-            this.pbTestAppointment.Size = new System.Drawing.Size(206, 96);
-            this.pbTestAppointment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbTestAppointment.TabIndex = 85;
-            this.pbTestAppointment.TabStop = false;
+            this.pbTestType.BackColor = System.Drawing.Color.Transparent;
+            this.pbTestType.Image = ((System.Drawing.Image)(resources.GetObject("pbTestType.Image")));
+            this.pbTestType.Location = new System.Drawing.Point(211, 20);
+            this.pbTestType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbTestType.Name = "pbTestType";
+            this.pbTestType.Size = new System.Drawing.Size(206, 96);
+            this.pbTestType.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTestType.TabIndex = 85;
+            this.pbTestType.TabStop = false;
             // 
             // pbTrial
             // 
@@ -521,7 +521,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTestAppointment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTestType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDLAppID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLicenseClass)).EndInit();
@@ -558,7 +558,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblRTestAppID;
         private System.Windows.Forms.Label lblMode;
-        private System.Windows.Forms.PictureBox pbTestAppointment;
+        private System.Windows.Forms.PictureBox pbTestType;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lblTotalFees;
         private System.Windows.Forms.Label label11;

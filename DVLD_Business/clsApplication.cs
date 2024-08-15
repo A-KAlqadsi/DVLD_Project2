@@ -83,6 +83,11 @@ namespace DVLD_Business
 
         }
 
+        public static bool UpdateApplicationStatus(int applicationID, int newStatus)
+        {
+            return clsApplicationData.UpdateApplicationStatus(applicationID, newStatus);
+        }
+
         public static DataTable GetAll()
         {
             return clsApplicationData.GetAllApplications();

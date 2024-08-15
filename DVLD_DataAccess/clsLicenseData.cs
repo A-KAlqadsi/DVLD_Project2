@@ -34,7 +34,7 @@ namespace DVLD_DataAccess
                     notes = (reader["Notes"] != DBNull.Value) ? reader["Notes"].ToString() : "";
                     paidFees = Convert.ToSingle(reader["PaidFees"]);
                     isActive = Convert.ToBoolean(reader["IsActive"]);
-                    issueReason = (short)reader["IssueReason"];
+                    issueReason = Convert.ToInt16(reader["IssueReason"]);
                     createdByUserID = (int)reader["CreatedByUserID"];
                 }
                 reader.Close();
@@ -49,6 +49,51 @@ namespace DVLD_DataAccess
             }
             return isFound;
         }
+
+        public static bool GetLicenseByApplicationID(int applicationId,ref int licenseID, ref int driverID,
+        ref int licenseClass, ref DateTime issueDate, ref DateTime expirationDate, ref string notes,
+        ref float paidFees, ref bool isActive, ref short issueReason, ref int createdByUserID)
+        {
+            bool isFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * From Licenses WHERE ApplicationID=@ApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", applicationId);
+            
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    isFound = true;
+                    licenseID = (int)reader["LicenseID"];
+                    driverID = (int)reader["DriverID"];
+                    licenseClass = (int)reader["LicenseClass"];
+                    issueDate = Convert.ToDateTime(reader["IssueDate"]);
+                    expirationDate = Convert.ToDateTime(reader["ExpirationDate"]);
+                    notes = (reader["Notes"] != DBNull.Value) ? reader["Notes"].ToString() : "";
+                    paidFees = Convert.ToSingle(reader["PaidFees"]);
+                    isActive = Convert.ToBoolean(reader["IsActive"]);
+                    issueReason = Convert.ToInt16(reader["IssueReason"]);
+                    createdByUserID = (int)reader["CreatedByUserID"];
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isFound;
+        }
+
 
         public static int AddNewLicense( int applicationId, int driverID,
              int licenseClass,  DateTime issueDate,  DateTime expirationDate,  string notes,

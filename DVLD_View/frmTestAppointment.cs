@@ -17,6 +17,8 @@ namespace DVLD_View
         enTestType _TestType;
         int _TestTypeID;
         int _LDLAppId;
+        private string _ImagePath = @"C:\Users\Abdulkarim\source\Abu-Hadhoud\19 DVLD\DVLD_View\Icons\";
+
         public frmTestAppointment(int lDLAppId, int testTypeID)
         {
             InitializeComponent();
@@ -42,11 +44,15 @@ namespace DVLD_View
             {
                 lblMode.Text = "Written Test Appointment";
                 this.Text = "Written Test Appointment";
+                pbTestAppointment.ImageLocation = _ImagePath + "Written Test 512.png";
+
             }
             else
             {
                 lblMode.Text = "Street Test Appointment";
                 this.Text =  "Street Test Appointment";
+                pbTestAppointment.ImageLocation = _ImagePath + "driving-test 512.png";
+
             }
         }
 
