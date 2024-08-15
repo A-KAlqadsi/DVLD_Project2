@@ -276,6 +276,36 @@ namespace DVLD_DataAccess
             return isExist;
         }
 
+        public static bool IsPersonHasTestAppointment(int localDrivingLicenseAppID)
+        {
+            bool isExist = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP(1) Found=1 From TestAppointments WHERE LocalDrivingLicenseApplicationID=@LocalDrivingLicenseAppID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseAppID", localDrivingLicenseAppID);
+           
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int found))
+                    isExist = true;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isExist;
+        }
+
         public static int IsTestAppointmentPassed(int testAppointmentID)
         {
             int testResult = 2;

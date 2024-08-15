@@ -93,6 +93,10 @@ namespace DVLD_Business
         {
             return clsTestAppointmentData.IsPersonHasActiveTestAppointment(localDrivingLicenseAppID);
         }
+        public static bool IsPersonHasTestAppointment(int localDrivingLicenseAppID)
+        {
+            return clsTestAppointmentData.IsPersonHasTestAppointment(localDrivingLicenseAppID);
+        }
         public static int IsTestAppointmentPassed(int testAppointmentID)
         {
             return clsTestAppointmentData.IsTestAppointmentPassed(testAppointmentID);

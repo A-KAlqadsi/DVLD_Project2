@@ -295,6 +295,8 @@ namespace DVLD_View
         private void dgvListLocalDrivingLicenseApps_SelectionChanged(object sender, EventArgs e)
         {
             _LocalDrivingLicenseID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            if (clsLocalDrivingLicenseApp.Find(_LocalDrivingLicenseID) == null)
+                return;
             int applicatoinID = clsLocalDrivingLicenseApp.Find(_LocalDrivingLicenseID).ApplicationID;
             if (clsApplication.GetStatus(applicatoinID) == 2)
             {
@@ -302,7 +304,16 @@ namespace DVLD_View
                 tsmiEditApplication.Enabled = false;
                 tsmiScheduleTests.Enabled = false;
                 tsmiShowLicense.Enabled = false;
+                tsmiDeleteApplication.Enabled = true;
                 return;
+            }
+            else
+            {
+                tsmiCancelApplication.Enabled = true;
+                tsmiEditApplication.Enabled = true;
+                tsmiScheduleTests.Enabled = true;
+                tsmiShowLicense.Enabled = true;
+                tsmiDeleteApplication.Enabled = true;
             }
             
 
@@ -311,7 +322,7 @@ namespace DVLD_View
             else
                 tsmiIssueDrivingLicense.Enabled = false;
 
-            if (clsLicense.IsApplicationHasLicense(clsLocalDrivingLicenseApp.Find(_LocalDrivingLicenseID).ApplicationID))
+            if (clsLicense.IsApplicationHasLicense(applicatoinID))
             {
                 tsmiShowLicense.Enabled = true;
                 tsmiCancelApplication.Enabled = false;
@@ -381,7 +392,9 @@ namespace DVLD_View
                     tsmiEditApplication.Enabled = false;
                     tsmiScheduleTests.Enabled = false;
                     tsmiShowLicense.Enabled = false;
+                    tsmiDeleteApplication.Enabled = true;
                 }
+
 
 
                 _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
@@ -391,7 +404,30 @@ namespace DVLD_View
 
         private void tsmiDeleteApplication_Click(object sender, EventArgs e)
         {
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            int applicationID = clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID;
 
+            if (clsTest.CountPassedTest(lDLAppID) == 0 && !clsTestAppointment.IsPersonHasTestAppointment(lDLAppID))
+            {
+
+                if (MessageBox.Show("Are you sure you want to delete this application", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    if (clsLocalDrivingLicenseApp.Delete(lDLAppID))
+                    {
+                        if (clsApplication.Delete(applicationID))
+                        {
+                            MessageBox.Show("Application deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+                        }
+                    }
+
+                }
+            }
+            else
+                MessageBox.Show("You cannot delete this application because it has connections in other resources!!", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
+
+            
         }
 
         private void tsmiShowAppDetails_Click(object sender, EventArgs e)
