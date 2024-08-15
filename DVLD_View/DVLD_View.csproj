@@ -89,6 +89,12 @@
     <Compile Include="ctrlDriverLicenseCardWithFilter.Designer.cs">
       <DependentUpon>ctrlDriverLicenseCardWithFilter.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlDriverLicenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlDriverLicenses.Designer.cs">
+      <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddEditAplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlDriverLicenseCardWithFilter.resx">
       <DependentUpon>ctrlDriverLicenseCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlDriverLicenses.resx">
+      <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddEditAplicationType.resx">
       <DependentUpon>frmAddEditAplicationType.cs</DependentUpon>

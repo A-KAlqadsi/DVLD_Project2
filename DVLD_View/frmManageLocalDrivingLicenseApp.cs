@@ -437,5 +437,10 @@ namespace DVLD_View
             frmShowApplicationInfo showAppInfo = new frmShowApplicationInfo(lDLAppID);
             showAppInfo.ShowDialog();
         }
+
+        private void tsmiShowPersonLicenseHistory_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Person license history will be here!");
+        }
     }
 }

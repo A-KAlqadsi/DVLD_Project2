@@ -68,12 +68,17 @@ namespace DVLD_View
             _Driver.PersonID = personId;
             _Driver.UserID = userId;
             _Driver.CreateDate = DateTime.Now;
-           // clsDriver.IsPersonADriver(personId)
-            if(_Driver.Save())
-                _License.DriverID = _Driver.DriverID;
+            if (!clsDriver.IsPersonADriver(personId))
+            {
+                if (_Driver.Save())
+                    _License.DriverID = _Driver.DriverID;
+                else
+                    MessageBox.Show("Adding new local driving license failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
-                MessageBox.Show("Adding new local driving license failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            {
+                _License.DriverID = clsDriver.FindByPersonID(personId).DriverID;
+            }
             if (_License.Save())
                 MessageBox.Show($"New local driving license added successfully with LicenesId=[{_License.LicenseID}]", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else

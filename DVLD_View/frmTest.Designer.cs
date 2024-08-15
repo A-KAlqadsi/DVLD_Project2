@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ctrlDriverLicenseCard1 = new DVLD_View.ctrlDriverLicenseCard();
+            this.ctrlDriverLicenses1 = new DVLD_View.ctrlDriverLicenses();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,20 +39,20 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // ctrlDriverLicenseCard1
+            // ctrlDriverLicenses1
             // 
-            this.ctrlDriverLicenseCard1.BackColor = System.Drawing.Color.White;
-            this.ctrlDriverLicenseCard1.Location = new System.Drawing.Point(48, 48);
-            this.ctrlDriverLicenseCard1.Name = "ctrlDriverLicenseCard1";
-            this.ctrlDriverLicenseCard1.Size = new System.Drawing.Size(1015, 388);
-            this.ctrlDriverLicenseCard1.TabIndex = 0;
+            this.ctrlDriverLicenses1.BackColor = System.Drawing.Color.White;
+            this.ctrlDriverLicenses1.Location = new System.Drawing.Point(12, 27);
+            this.ctrlDriverLicenses1.Name = "ctrlDriverLicenses1";
+            this.ctrlDriverLicenses1.Size = new System.Drawing.Size(1179, 404);
+            this.ctrlDriverLicenses1.TabIndex = 0;
             // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1229, 517);
-            this.Controls.Add(this.ctrlDriverLicenseCard1);
+            this.Controls.Add(this.ctrlDriverLicenses1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTest";
             this.Text = "frmTest";
@@ -65,6 +65,6 @@
         #endregion
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private ctrlDriverLicenseCard ctrlDriverLicenseCard1;
+        private ctrlDriverLicenses ctrlDriverLicenses1;
     }
 }

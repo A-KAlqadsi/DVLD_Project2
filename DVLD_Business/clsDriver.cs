@@ -63,6 +63,22 @@ namespace DVLD_Business
 
         }
 
+        public static clsDriver FindByPersonID(int personID)
+        {
+            int driverID = -1;
+            int userID = -1;
+            DateTime createDate = DateTime.Now;
+
+            if (clsDriverData.GetDriverByPersonId( personID,ref driverID, ref userID, ref createDate))
+            {
+                return new clsDriver(driverID, personID, userID, createDate);
+            }
+            else
+                return null;
+
+        }
+
+
         public static DataTable GetAll()
         {
             return clsDriverData.GetAllDrivers();
@@ -89,9 +105,11 @@ namespace DVLD_Business
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
                         if (_AddNewDriver())
+                        {
+                            _Mode = enMode.Update;
                             return true;
+                        }
                         else
                             return false;
                     }
