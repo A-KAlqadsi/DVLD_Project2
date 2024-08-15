@@ -83,7 +83,10 @@ namespace DVLD_Business
         {
             return clsDriverData.GetAllDrivers();
         }
-
+        public static DataTable GetAllMaster()
+        {
+            return clsDriverData.GetAllDriversMaster();
+        }
         public static bool Delete(int driverID)
         {
             return clsDriverData.DeleteDriver(driverID);
