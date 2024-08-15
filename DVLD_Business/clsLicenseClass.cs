@@ -45,8 +45,8 @@ namespace DVLD_Business
 
         private bool _AddNewClass()
         {
-            int classID = clsLicenseClassData.AddNewLicenseClass(ClassName, Description, MinimumAllowedAge, ValidityLength, ClassFees);
-            return classID != -1;
+            this.ClassID = clsLicenseClassData.AddNewLicenseClass(ClassName, Description, MinimumAllowedAge, ValidityLength, ClassFees);
+            return this.ClassID != -1;
         }
 
         private bool _UpdateClass()
@@ -89,9 +89,11 @@ namespace DVLD_Business
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
                         if (_AddNewClass())
+                        {
+                            _Mode = enMode.Update;
                             return true;
+                        }
                         else
                             return false;
                     }

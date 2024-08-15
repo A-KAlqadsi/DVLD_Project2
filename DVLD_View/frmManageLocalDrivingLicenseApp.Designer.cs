@@ -321,6 +321,7 @@
             this.tsmiIssueDrivingLicense.Name = "tsmiIssueDrivingLicense";
             this.tsmiIssueDrivingLicense.Size = new System.Drawing.Size(341, 38);
             this.tsmiIssueDrivingLicense.Text = "Issue Driving License (First Time)";
+            this.tsmiIssueDrivingLicense.Click += new System.EventHandler(this.tsmiIssueDrivingLicense_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -335,6 +336,7 @@
             this.tsmiShowLicense.Name = "tsmiShowLicense";
             this.tsmiShowLicense.Size = new System.Drawing.Size(341, 38);
             this.tsmiShowLicense.Text = "Show License";
+            this.tsmiShowLicense.Click += new System.EventHandler(this.tsmiShowLicense_Click);
             // 
             // toolStripMenuItem5
             // 

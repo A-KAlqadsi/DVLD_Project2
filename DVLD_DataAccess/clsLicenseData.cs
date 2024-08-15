@@ -58,7 +58,7 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = "INSERT INTO Licenses (ApplicationID,DriverID,LicenseClass,IssueDate," +
-                "ExpirationDate,Notes,PaidFees,IsActive,IssueReasno,CreatedByUserID) " +
+                "ExpirationDate,Notes,PaidFees,IsActive,IssueReason,CreatedByUserID) " +
                 "Values(@ApplicationID,@DriverID,@LicenseClass,@IssueDate,@ExpirationDate,@Notes," +
                 "@PaidFees,@IsActive,@IssueReason,@CreatedByUserID); " +
                 "SELECT SCOPE_IDENTITY(); ";
@@ -263,6 +263,37 @@ namespace DVLD_DataAccess
 
             return isActive;
         }
+
+        public static bool IsApplicationHasLicense(int applicationID)
+        {
+            bool isExist = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP(1) Found=1 From Licenses WHERE ApplicationID=@ApplicationID ;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ApplicationID", applicationID);
+
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int found))
+                    isExist = true;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isExist;
+        }
+
 
     }
 }

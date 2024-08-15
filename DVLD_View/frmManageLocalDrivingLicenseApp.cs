@@ -13,6 +13,7 @@ namespace DVLD_View
 {
     public partial class frmManageLocalDrivingLicenseApp : Form
     {
+        private int _LocalDrivingLicenseID;
         public frmManageLocalDrivingLicenseApp()
         {
             InitializeComponent();
@@ -245,11 +246,16 @@ namespace DVLD_View
         {
             int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
 
-
-
-            if (clsTest.CountPassedTest(lDLAppID) == 3)
+            
+            if(clsTest.CountPassedTest(lDLAppID) == 3)
             {
+
                 tsmiScheduleTests.Enabled = false;
+                if (clsLicense.IsApplicationHasLicense(clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID))
+                    tsmiIssueDrivingLicense.Enabled = false;
+                else
+                    tsmiIssueDrivingLicense.Enabled = true;
+
                 return;
             }
             else 
@@ -285,10 +291,31 @@ namespace DVLD_View
        
         private void dgvListLocalDrivingLicenseApps_SelectionChanged(object sender, EventArgs e)
         {
+            _LocalDrivingLicenseID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
             
-           _ValidateTestOrders();
+            if (clsTest.CountPassedTest(_LocalDrivingLicenseID) == 3 && !clsLicense.IsApplicationHasLicense(clsLocalDrivingLicenseApp.Find(_LocalDrivingLicenseID).ApplicationID))
+                tsmiIssueDrivingLicense.Enabled = true;
+            else
+                tsmiIssueDrivingLicense.Enabled = false;
+
+            _ValidateTestOrders();
         }
 
-       
+        private void tsmiIssueDrivingLicense_Click(object sender, EventArgs e)
+        {
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            frmIssueDrivingLicense isseLicense = new frmIssueDrivingLicense(lDLAppID);
+            isseLicense.ShowDialog();
+
+            if (clsLicense.IsApplicationHasLicense(clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID))
+                tsmiIssueDrivingLicense.Enabled = false;
+            else
+                tsmiIssueDrivingLicense.Enabled = true;
+        }
+
+        private void tsmiShowLicense_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

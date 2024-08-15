@@ -20,6 +20,7 @@ namespace DVLD_View
         private clsLocalDrivingLicenseApp _LocalDrivingLicenseApp;
         private int _LocalDrivingLicenseAppID = -1;
         private int _PersonID = -1;
+        public int LicenseClassID { get; private set; }
         public int LocalDrivingLicenseAppID
         {
             get
@@ -75,6 +76,7 @@ namespace DVLD_View
         private void _FillApplicationCardInfo()
         {
             lblDLAppID.Text = _LocalDrivingLicenseApp.LocalDrivingLicenseAppID.ToString();
+            LicenseClassID = _LocalDrivingLicenseApp.LicenseClassID;
             lblClassName.Text = clsLicenseClass.Find(_LocalDrivingLicenseApp.LicenseClassID).ClassName;
             lblPassedTests.Text = $"{clsTest.CountPassedTest(_LocalDrivingLicenseAppID)}/3";
 

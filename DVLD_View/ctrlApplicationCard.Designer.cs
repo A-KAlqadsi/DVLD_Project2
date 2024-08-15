@@ -31,43 +31,47 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlApplicationCard));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.llShowLicenseInfo = new System.Windows.Forms.LinkLabel();
+            this.pbShowLicenseInfo = new System.Windows.Forms.PictureBox();
+            this.pbPassedTests = new System.Windows.Forms.PictureBox();
             this.lblPassedTests = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.pbLicenseClass = new System.Windows.Forms.PictureBox();
             this.lblClassName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.pbDLAppID = new System.Windows.Forms.PictureBox();
             this.lblDLAppID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.llViewPersonInfo = new System.Windows.Forms.LinkLabel();
+            this.pbUser = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.pbStatusDate = new System.Windows.Forms.PictureBox();
             this.lblLastStatusDate = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.pbDate = new System.Windows.Forms.PictureBox();
             this.lblAppDate = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.pbApplicant = new System.Windows.Forms.PictureBox();
             this.lblApplicant = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.pbAppType = new System.Windows.Forms.PictureBox();
             this.lblAppType = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.pbFees = new System.Windows.Forms.PictureBox();
             this.lblAppFees = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.pbStatus = new System.Windows.Forms.PictureBox();
             this.lblAppStatus = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.pbAppID = new System.Windows.Forms.PictureBox();
             this.lblAppID = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.pbUser = new System.Windows.Forms.PictureBox();
-            this.pbStatusDate = new System.Windows.Forms.PictureBox();
-            this.pbDate = new System.Windows.Forms.PictureBox();
-            this.pbApplicant = new System.Windows.Forms.PictureBox();
-            this.pbAppType = new System.Windows.Forms.PictureBox();
-            this.pbFees = new System.Windows.Forms.PictureBox();
-            this.pbStatus = new System.Windows.Forms.PictureBox();
-            this.pbAppID = new System.Windows.Forms.PictureBox();
-            this.pbShowLicenseInfo = new System.Windows.Forms.PictureBox();
-            this.pbPassedTests = new System.Windows.Forms.PictureBox();
-            this.pbLicenseClass = new System.Windows.Forms.PictureBox();
-            this.pbDLAppID = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbShowLicenseInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPassedTests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLicenseClass)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDLAppID)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatusDate)).BeginInit();
@@ -77,10 +81,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbFees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAppID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbShowLicenseInfo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPassedTests)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLicenseClass)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbDLAppID)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -115,6 +115,30 @@
             this.llShowLicenseInfo.TabStop = true;
             this.llShowLicenseInfo.Text = "View License Info.";
             // 
+            // pbShowLicenseInfo
+            // 
+            this.pbShowLicenseInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbShowLicenseInfo.Image = ((System.Drawing.Image)(resources.GetObject("pbShowLicenseInfo.Image")));
+            this.pbShowLicenseInfo.Location = new System.Drawing.Point(138, 95);
+            this.pbShowLicenseInfo.Margin = new System.Windows.Forms.Padding(2);
+            this.pbShowLicenseInfo.Name = "pbShowLicenseInfo";
+            this.pbShowLicenseInfo.Size = new System.Drawing.Size(39, 43);
+            this.pbShowLicenseInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbShowLicenseInfo.TabIndex = 30;
+            this.pbShowLicenseInfo.TabStop = false;
+            // 
+            // pbPassedTests
+            // 
+            this.pbPassedTests.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbPassedTests.Image = ((System.Drawing.Image)(resources.GetObject("pbPassedTests.Image")));
+            this.pbPassedTests.Location = new System.Drawing.Point(566, 86);
+            this.pbPassedTests.Margin = new System.Windows.Forms.Padding(2);
+            this.pbPassedTests.Name = "pbPassedTests";
+            this.pbPassedTests.Size = new System.Drawing.Size(39, 43);
+            this.pbPassedTests.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbPassedTests.TabIndex = 29;
+            this.pbPassedTests.TabStop = false;
+            // 
             // lblPassedTests
             // 
             this.lblPassedTests.AutoSize = true;
@@ -136,6 +160,18 @@
             this.label5.TabIndex = 27;
             this.label5.Text = "Passed Tests:";
             // 
+            // pbLicenseClass
+            // 
+            this.pbLicenseClass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbLicenseClass.Image = ((System.Drawing.Image)(resources.GetObject("pbLicenseClass.Image")));
+            this.pbLicenseClass.Location = new System.Drawing.Point(566, 35);
+            this.pbLicenseClass.Margin = new System.Windows.Forms.Padding(2);
+            this.pbLicenseClass.Name = "pbLicenseClass";
+            this.pbLicenseClass.Size = new System.Drawing.Size(39, 43);
+            this.pbLicenseClass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbLicenseClass.TabIndex = 26;
+            this.pbLicenseClass.TabStop = false;
+            // 
             // lblClassName
             // 
             this.lblClassName.AutoSize = true;
@@ -156,6 +192,18 @@
             this.label3.Size = new System.Drawing.Size(211, 25);
             this.label3.TabIndex = 24;
             this.label3.Text = "Applied For License:";
+            // 
+            // pbDLAppID
+            // 
+            this.pbDLAppID.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbDLAppID.Image = ((System.Drawing.Image)(resources.GetObject("pbDLAppID.Image")));
+            this.pbDLAppID.Location = new System.Drawing.Point(138, 31);
+            this.pbDLAppID.Margin = new System.Windows.Forms.Padding(2);
+            this.pbDLAppID.Name = "pbDLAppID";
+            this.pbDLAppID.Size = new System.Drawing.Size(39, 43);
+            this.pbDLAppID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbDLAppID.TabIndex = 23;
+            this.pbDLAppID.TabStop = false;
             // 
             // lblDLAppID
             // 
@@ -224,6 +272,18 @@
             this.llViewPersonInfo.Text = "View Person Info.";
             this.llViewPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llViewPersonInfo_LinkClicked);
             // 
+            // pbUser
+            // 
+            this.pbUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbUser.Image = ((System.Drawing.Image)(resources.GetObject("pbUser.Image")));
+            this.pbUser.Location = new System.Drawing.Point(819, 104);
+            this.pbUser.Margin = new System.Windows.Forms.Padding(2);
+            this.pbUser.Name = "pbUser";
+            this.pbUser.Size = new System.Drawing.Size(39, 35);
+            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbUser.TabIndex = 47;
+            this.pbUser.TabStop = false;
+            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -244,6 +304,18 @@
             this.label19.Size = new System.Drawing.Size(127, 25);
             this.label19.TabIndex = 45;
             this.label19.Text = "Created By:";
+            // 
+            // pbStatusDate
+            // 
+            this.pbStatusDate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbStatusDate.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusDate.Image")));
+            this.pbStatusDate.Location = new System.Drawing.Point(819, 64);
+            this.pbStatusDate.Margin = new System.Windows.Forms.Padding(2);
+            this.pbStatusDate.Name = "pbStatusDate";
+            this.pbStatusDate.Size = new System.Drawing.Size(39, 30);
+            this.pbStatusDate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbStatusDate.TabIndex = 44;
+            this.pbStatusDate.TabStop = false;
             // 
             // lblLastStatusDate
             // 
@@ -266,6 +338,18 @@
             this.label17.TabIndex = 42;
             this.label17.Text = "Status Date:";
             // 
+            // pbDate
+            // 
+            this.pbDate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbDate.Image = ((System.Drawing.Image)(resources.GetObject("pbDate.Image")));
+            this.pbDate.Location = new System.Drawing.Point(819, 21);
+            this.pbDate.Margin = new System.Windows.Forms.Padding(2);
+            this.pbDate.Name = "pbDate";
+            this.pbDate.Size = new System.Drawing.Size(39, 30);
+            this.pbDate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbDate.TabIndex = 41;
+            this.pbDate.TabStop = false;
+            // 
             // lblAppDate
             // 
             this.lblAppDate.AutoSize = true;
@@ -286,6 +370,18 @@
             this.label15.Size = new System.Drawing.Size(64, 25);
             this.label15.TabIndex = 39;
             this.label15.Text = "Date:";
+            // 
+            // pbApplicant
+            // 
+            this.pbApplicant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbApplicant.Image = ((System.Drawing.Image)(resources.GetObject("pbApplicant.Image")));
+            this.pbApplicant.Location = new System.Drawing.Point(162, 222);
+            this.pbApplicant.Margin = new System.Windows.Forms.Padding(2);
+            this.pbApplicant.Name = "pbApplicant";
+            this.pbApplicant.Size = new System.Drawing.Size(39, 30);
+            this.pbApplicant.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbApplicant.TabIndex = 38;
+            this.pbApplicant.TabStop = false;
             // 
             // lblApplicant
             // 
@@ -308,6 +404,18 @@
             this.label13.TabIndex = 36;
             this.label13.Text = "Applicant:";
             // 
+            // pbAppType
+            // 
+            this.pbAppType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbAppType.Image = ((System.Drawing.Image)(resources.GetObject("pbAppType.Image")));
+            this.pbAppType.Location = new System.Drawing.Point(162, 171);
+            this.pbAppType.Margin = new System.Windows.Forms.Padding(2);
+            this.pbAppType.Name = "pbAppType";
+            this.pbAppType.Size = new System.Drawing.Size(39, 40);
+            this.pbAppType.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbAppType.TabIndex = 35;
+            this.pbAppType.TabStop = false;
+            // 
             // lblAppType
             // 
             this.lblAppType.AutoSize = true;
@@ -328,6 +436,18 @@
             this.label11.Size = new System.Drawing.Size(68, 25);
             this.label11.TabIndex = 33;
             this.label11.Text = "Type:";
+            // 
+            // pbFees
+            // 
+            this.pbFees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbFees.Image = ((System.Drawing.Image)(resources.GetObject("pbFees.Image")));
+            this.pbFees.Location = new System.Drawing.Point(162, 129);
+            this.pbFees.Margin = new System.Windows.Forms.Padding(2);
+            this.pbFees.Name = "pbFees";
+            this.pbFees.Size = new System.Drawing.Size(39, 30);
+            this.pbFees.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbFees.TabIndex = 32;
+            this.pbFees.TabStop = false;
             // 
             // lblAppFees
             // 
@@ -350,6 +470,18 @@
             this.label9.TabIndex = 30;
             this.label9.Text = "Fees:";
             // 
+            // pbStatus
+            // 
+            this.pbStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbStatus.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus.Image")));
+            this.pbStatus.Location = new System.Drawing.Point(162, 85);
+            this.pbStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.pbStatus.Name = "pbStatus";
+            this.pbStatus.Size = new System.Drawing.Size(39, 30);
+            this.pbStatus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbStatus.TabIndex = 29;
+            this.pbStatus.TabStop = false;
+            // 
             // lblAppStatus
             // 
             this.lblAppStatus.AutoSize = true;
@@ -370,6 +502,18 @@
             this.label7.Size = new System.Drawing.Size(81, 25);
             this.label7.TabIndex = 27;
             this.label7.Text = "Status:";
+            // 
+            // pbAppID
+            // 
+            this.pbAppID.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbAppID.Image = ((System.Drawing.Image)(resources.GetObject("pbAppID.Image")));
+            this.pbAppID.Location = new System.Drawing.Point(162, 41);
+            this.pbAppID.Margin = new System.Windows.Forms.Padding(2);
+            this.pbAppID.Name = "pbAppID";
+            this.pbAppID.Size = new System.Drawing.Size(39, 30);
+            this.pbAppID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbAppID.TabIndex = 26;
+            this.pbAppID.TabStop = false;
             // 
             // lblAppID
             // 
@@ -392,150 +536,6 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "ID:";
             // 
-            // pbUser
-            // 
-            this.pbUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbUser.Image = ((System.Drawing.Image)(resources.GetObject("pbUser.Image")));
-            this.pbUser.Location = new System.Drawing.Point(819, 104);
-            this.pbUser.Margin = new System.Windows.Forms.Padding(2);
-            this.pbUser.Name = "pbUser";
-            this.pbUser.Size = new System.Drawing.Size(39, 35);
-            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbUser.TabIndex = 47;
-            this.pbUser.TabStop = false;
-            // 
-            // pbStatusDate
-            // 
-            this.pbStatusDate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbStatusDate.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusDate.Image")));
-            this.pbStatusDate.Location = new System.Drawing.Point(819, 64);
-            this.pbStatusDate.Margin = new System.Windows.Forms.Padding(2);
-            this.pbStatusDate.Name = "pbStatusDate";
-            this.pbStatusDate.Size = new System.Drawing.Size(39, 30);
-            this.pbStatusDate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbStatusDate.TabIndex = 44;
-            this.pbStatusDate.TabStop = false;
-            // 
-            // pbDate
-            // 
-            this.pbDate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbDate.Image = ((System.Drawing.Image)(resources.GetObject("pbDate.Image")));
-            this.pbDate.Location = new System.Drawing.Point(819, 21);
-            this.pbDate.Margin = new System.Windows.Forms.Padding(2);
-            this.pbDate.Name = "pbDate";
-            this.pbDate.Size = new System.Drawing.Size(39, 30);
-            this.pbDate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbDate.TabIndex = 41;
-            this.pbDate.TabStop = false;
-            // 
-            // pbApplicant
-            // 
-            this.pbApplicant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbApplicant.Image = ((System.Drawing.Image)(resources.GetObject("pbApplicant.Image")));
-            this.pbApplicant.Location = new System.Drawing.Point(162, 222);
-            this.pbApplicant.Margin = new System.Windows.Forms.Padding(2);
-            this.pbApplicant.Name = "pbApplicant";
-            this.pbApplicant.Size = new System.Drawing.Size(39, 30);
-            this.pbApplicant.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbApplicant.TabIndex = 38;
-            this.pbApplicant.TabStop = false;
-            // 
-            // pbAppType
-            // 
-            this.pbAppType.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbAppType.Image = ((System.Drawing.Image)(resources.GetObject("pbAppType.Image")));
-            this.pbAppType.Location = new System.Drawing.Point(162, 171);
-            this.pbAppType.Margin = new System.Windows.Forms.Padding(2);
-            this.pbAppType.Name = "pbAppType";
-            this.pbAppType.Size = new System.Drawing.Size(39, 40);
-            this.pbAppType.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbAppType.TabIndex = 35;
-            this.pbAppType.TabStop = false;
-            // 
-            // pbFees
-            // 
-            this.pbFees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbFees.Image = ((System.Drawing.Image)(resources.GetObject("pbFees.Image")));
-            this.pbFees.Location = new System.Drawing.Point(162, 129);
-            this.pbFees.Margin = new System.Windows.Forms.Padding(2);
-            this.pbFees.Name = "pbFees";
-            this.pbFees.Size = new System.Drawing.Size(39, 30);
-            this.pbFees.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbFees.TabIndex = 32;
-            this.pbFees.TabStop = false;
-            // 
-            // pbStatus
-            // 
-            this.pbStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbStatus.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus.Image")));
-            this.pbStatus.Location = new System.Drawing.Point(162, 85);
-            this.pbStatus.Margin = new System.Windows.Forms.Padding(2);
-            this.pbStatus.Name = "pbStatus";
-            this.pbStatus.Size = new System.Drawing.Size(39, 30);
-            this.pbStatus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbStatus.TabIndex = 29;
-            this.pbStatus.TabStop = false;
-            // 
-            // pbAppID
-            // 
-            this.pbAppID.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbAppID.Image = ((System.Drawing.Image)(resources.GetObject("pbAppID.Image")));
-            this.pbAppID.Location = new System.Drawing.Point(162, 41);
-            this.pbAppID.Margin = new System.Windows.Forms.Padding(2);
-            this.pbAppID.Name = "pbAppID";
-            this.pbAppID.Size = new System.Drawing.Size(39, 30);
-            this.pbAppID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbAppID.TabIndex = 26;
-            this.pbAppID.TabStop = false;
-            // 
-            // pbShowLicenseInfo
-            // 
-            this.pbShowLicenseInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbShowLicenseInfo.Image = ((System.Drawing.Image)(resources.GetObject("pbShowLicenseInfo.Image")));
-            this.pbShowLicenseInfo.Location = new System.Drawing.Point(138, 95);
-            this.pbShowLicenseInfo.Margin = new System.Windows.Forms.Padding(2);
-            this.pbShowLicenseInfo.Name = "pbShowLicenseInfo";
-            this.pbShowLicenseInfo.Size = new System.Drawing.Size(39, 43);
-            this.pbShowLicenseInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbShowLicenseInfo.TabIndex = 30;
-            this.pbShowLicenseInfo.TabStop = false;
-            // 
-            // pbPassedTests
-            // 
-            this.pbPassedTests.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbPassedTests.Image = ((System.Drawing.Image)(resources.GetObject("pbPassedTests.Image")));
-            this.pbPassedTests.Location = new System.Drawing.Point(566, 86);
-            this.pbPassedTests.Margin = new System.Windows.Forms.Padding(2);
-            this.pbPassedTests.Name = "pbPassedTests";
-            this.pbPassedTests.Size = new System.Drawing.Size(39, 43);
-            this.pbPassedTests.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbPassedTests.TabIndex = 29;
-            this.pbPassedTests.TabStop = false;
-            // 
-            // pbLicenseClass
-            // 
-            this.pbLicenseClass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbLicenseClass.Image = ((System.Drawing.Image)(resources.GetObject("pbLicenseClass.Image")));
-            this.pbLicenseClass.Location = new System.Drawing.Point(566, 35);
-            this.pbLicenseClass.Margin = new System.Windows.Forms.Padding(2);
-            this.pbLicenseClass.Name = "pbLicenseClass";
-            this.pbLicenseClass.Size = new System.Drawing.Size(39, 43);
-            this.pbLicenseClass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbLicenseClass.TabIndex = 26;
-            this.pbLicenseClass.TabStop = false;
-            // 
-            // pbDLAppID
-            // 
-            this.pbDLAppID.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbDLAppID.Image = ((System.Drawing.Image)(resources.GetObject("pbDLAppID.Image")));
-            this.pbDLAppID.Location = new System.Drawing.Point(138, 31);
-            this.pbDLAppID.Margin = new System.Windows.Forms.Padding(2);
-            this.pbDLAppID.Name = "pbDLAppID";
-            this.pbDLAppID.Size = new System.Drawing.Size(39, 43);
-            this.pbDLAppID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbDLAppID.TabIndex = 23;
-            this.pbDLAppID.TabStop = false;
-            // 
             // ctrlApplicationCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -547,6 +547,10 @@
             this.Size = new System.Drawing.Size(1037, 450);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbShowLicenseInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPassedTests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLicenseClass)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDLAppID)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
@@ -557,10 +561,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbFees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAppID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbShowLicenseInfo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPassedTests)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLicenseClass)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbDLAppID)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -600,10 +600,10 @@
         private System.Windows.Forms.Label lblAppStatus;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pbAppID;
-        private System.Windows.Forms.Label lblAppID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel llViewPersonInfo;
         private System.Windows.Forms.LinkLabel llShowLicenseInfo;
         private System.Windows.Forms.PictureBox pbShowLicenseInfo;
+        public System.Windows.Forms.Label lblAppID;
     }
 }

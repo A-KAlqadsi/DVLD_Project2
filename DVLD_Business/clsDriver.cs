@@ -13,8 +13,8 @@ namespace DVLD_Business
         enum enMode { AddNew = 1, Update = 2 }
         enMode _Mode;
 
-        public int DriverID { get; }
-        public int PersonID { get; }
+        public int DriverID { get; set; }
+        public int PersonID { get; set; }
         public int UserID;
         public DateTime CreateDate;
 
@@ -39,8 +39,8 @@ namespace DVLD_Business
 
         private bool _AddNewDriver()
         {
-            int driverID = clsDriverData.AddNewDriver(PersonID,UserID,CreateDate);
-            return driverID != -1;
+            this.DriverID = clsDriverData.AddNewDriver(PersonID,UserID,CreateDate);
+            return this.DriverID != -1;
         }
 
         private bool _UpdateDriver()
@@ -76,6 +76,11 @@ namespace DVLD_Business
         public static bool IsDriverExist(int driverID)
         {
             return clsDriverData.IsDriverExist(driverID);
+        }
+
+        public static bool IsPersonADriver(int personID)
+        {
+            return clsDriverData.IsPersonADriver(personID);
         }
 
         public bool Save()

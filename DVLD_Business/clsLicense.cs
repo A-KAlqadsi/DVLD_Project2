@@ -61,8 +61,8 @@ namespace DVLD_Business
 
         private bool _AddNewLicense()
         {
-            int licenseID= clsLicenseData.AddNewLicense(ApplicationId, DriverID, LicenseClassID,IssueDate,ExpirationDate,Notes,PaidFees,IsActive,IssueReason,UserID);
-            return licenseID != -1;
+             this.LicenseID  = clsLicenseData.AddNewLicense(ApplicationId, DriverID, LicenseClassID,IssueDate,ExpirationDate,Notes,PaidFees,IsActive,IssueReason,UserID);
+            return this.LicenseID != -1;
         }
         
         private bool _UpdateLicense()
@@ -107,16 +107,22 @@ namespace DVLD_Business
         {
             return clsLicenseData.IsLicenseExist(licenseID);
         }
-
+        public static bool IsApplicationHasLicense(int applicationID)
+        {
+            return clsLicenseData.IsApplicationHasLicense(applicationID);
+        }
         public bool Save()
         {
             switch (_Mode)
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
+                        
                         if (_AddNewLicense())
+                        {
+                            _Mode = enMode.Update;
                             return true;
+                        }
                         else
                             return false;
                     }
