@@ -120,7 +120,10 @@ namespace DVLD_Business
         {
             return clsLicenseData.GetAllLicenses();
         }
-        
+        public static DataTable GetAllDriverLicenses(int driverId)
+        {
+            return clsLicenseData.GetAllDriverLicenses(driverId);
+        }
         public static bool Delete(int licenseID)
         {
             return clsLicenseData.DeleteLicense(licenseID);

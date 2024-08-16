@@ -89,6 +89,11 @@ namespace DVLD_Business
             return clsInternationalLicenseData.GetAllInternationalLicenses();
         }
 
+        public static DataTable GetAllDriverLicenses(int driverId)
+        {
+            return clsInternationalLicenseData.GetAllDriverInternationalLicense(driverId);
+        }
+
         public static bool Delete(int internationalLicenseID)
         {
             return clsInternationalLicenseData.DeleteInternationalLicense(internationalLicenseID);

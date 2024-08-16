@@ -440,6 +440,12 @@ namespace DVLD_View
 
         private void tsmiShowPersonLicenseHistory_Click(object sender, EventArgs e)
         {
+            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+            int applicationID = clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID;
+            int personId = clsApplication.Find(applicationID).ApplicantApplicationID;
+            int driverID = clsDriver.FindByPersonID(applicationID).DriverID;
+
+
             MessageBox.Show("Person license history will be here!");
         }
     }

@@ -250,6 +250,44 @@ namespace DVLD_DataAccess
 
         }
 
+        public static DataTable GetAllDriverLicenses(int driverId)
+        {
+            DataTable table = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "select l.LicenseID, l.ApplicationID,lc.ClassName,l.IssueDate, l.ExpirationDate,l.IsActive " +
+                "from Licenses l " +
+                "Join LicenseClasses lc " +
+                "On (l.LicenseClass = lc.LicenseClassID) " +
+                "where l.DriverID = @DriverID ;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@DriverID", driverId);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                    table.Load(reader);
+
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return table;
+
+        }
+
+
         public static bool IsLicenseExist(int licenseID)
         {
             bool isExist = false;

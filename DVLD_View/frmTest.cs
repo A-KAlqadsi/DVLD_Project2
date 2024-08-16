@@ -20,7 +20,8 @@ namespace DVLD_View
 
         private void frmTest_Load(object sender, EventArgs e)
         {
-           
+            ctrlDriverLicenses1.LoadLocalLicenseHistory(9);
+            ctrlDriverLicenses1.LoadInternatioalLicenseHistory(9);
         }
 
 

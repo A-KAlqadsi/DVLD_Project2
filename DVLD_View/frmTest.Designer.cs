@@ -42,7 +42,7 @@
             // ctrlDriverLicenses1
             // 
             this.ctrlDriverLicenses1.BackColor = System.Drawing.Color.White;
-            this.ctrlDriverLicenses1.Location = new System.Drawing.Point(12, 27);
+            this.ctrlDriverLicenses1.Location = new System.Drawing.Point(12, 34);
             this.ctrlDriverLicenses1.Name = "ctrlDriverLicenses1";
             this.ctrlDriverLicenses1.Size = new System.Drawing.Size(1179, 404);
             this.ctrlDriverLicenses1.TabIndex = 0;
