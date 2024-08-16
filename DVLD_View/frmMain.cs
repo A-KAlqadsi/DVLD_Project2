@@ -29,7 +29,7 @@ namespace DVLD_View
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            lblLoginUser.Text = $"Login Username is:[{clsLoginUser.LoginUser}]";
+            
             _CenterPictureBox();
         }
 

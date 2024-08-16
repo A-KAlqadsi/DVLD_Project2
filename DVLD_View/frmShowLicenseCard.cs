@@ -23,5 +23,10 @@ namespace DVLD_View
         {
             ctrlDriverLicenseCard1.LoadLicenseCardInfo(_LicenseID);
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -146,10 +146,10 @@
         private System.Windows.Forms.ErrorProvider epFilterValidating;
         private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Button btnFind;
-        private System.Windows.Forms.ComboBox cbPersonFilters;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.GroupBox gbFilter;
         public ctrlPersonCard ctrlPersonCard1;
         public System.Windows.Forms.TextBox txtSearch;
+        public System.Windows.Forms.ComboBox cbPersonFilters;
     }
 }

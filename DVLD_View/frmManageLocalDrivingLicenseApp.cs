@@ -443,10 +443,11 @@ namespace DVLD_View
             int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
             int applicationID = clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID;
             int personId = clsApplication.Find(applicationID).ApplicantApplicationID;
-            int driverID = clsDriver.FindByPersonID(applicationID).DriverID;
+            //int driverID = clsDriver.FindByPersonID(applicationID).DriverID;
+            frmLicenseHistory licenesHistory = new frmLicenseHistory(personId);
+            licenesHistory.ShowDialog();
 
-
-            MessageBox.Show("Person license history will be here!");
+            //MessageBox.Show("Person license history will be here!");
         }
     }
 }

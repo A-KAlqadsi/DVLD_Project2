@@ -31,7 +31,7 @@ namespace DVLD_Business
         {
             
             PersonID = personID;
-            DriverID = DriverID;
+            DriverID = driverID;
             UserID= userID;
             CreateDate = createDate;
             _Mode = enMode.Update;
