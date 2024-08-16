@@ -88,5 +88,11 @@ namespace DVLD_View
             frmManageLocalDrivingLicenseApp manageApps = new frmManageLocalDrivingLicenseApp();
             manageApps.ShowDialog();
         }
+
+        private void tsmiDrivers_Click(object sender, EventArgs e)
+        {
+            frmListDrivers drivers = new frmListDrivers();
+            drivers.ShowDialog();
+        }
     }
 }

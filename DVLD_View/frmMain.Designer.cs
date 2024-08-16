@@ -291,6 +291,7 @@
             this.tsmiDrivers.Name = "tsmiDrivers";
             this.tsmiDrivers.Size = new System.Drawing.Size(162, 76);
             this.tsmiDrivers.Text = "Drivers";
+            this.tsmiDrivers.Click += new System.EventHandler(this.tsmiDrivers_Click);
             // 
             // tsmiUsers
             // 
