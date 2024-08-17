@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ctrlDriverLicenses1 = new DVLD_View.ctrlDriverLicenses();
+            this.ctrlDriverLicenseCardWithFilter1 = new DVLD_View.ctrlDriverLicenseCardWithFilter();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,20 +39,20 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // ctrlDriverLicenses1
+            // ctrlDriverLicenseCardWithFilter1
             // 
-            this.ctrlDriverLicenses1.BackColor = System.Drawing.Color.White;
-            this.ctrlDriverLicenses1.Location = new System.Drawing.Point(12, 34);
-            this.ctrlDriverLicenses1.Name = "ctrlDriverLicenses1";
-            this.ctrlDriverLicenses1.Size = new System.Drawing.Size(1179, 404);
-            this.ctrlDriverLicenses1.TabIndex = 0;
+            this.ctrlDriverLicenseCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlDriverLicenseCardWithFilter1.Location = new System.Drawing.Point(27, 7);
+            this.ctrlDriverLicenseCardWithFilter1.Name = "ctrlDriverLicenseCardWithFilter1";
+            this.ctrlDriverLicenseCardWithFilter1.Size = new System.Drawing.Size(1021, 498);
+            this.ctrlDriverLicenseCardWithFilter1.TabIndex = 0;
             // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1229, 517);
-            this.Controls.Add(this.ctrlDriverLicenses1);
+            this.Controls.Add(this.ctrlDriverLicenseCardWithFilter1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTest";
             this.Text = "frmTest";
@@ -65,6 +65,6 @@
         #endregion
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private ctrlDriverLicenses ctrlDriverLicenses1;
+        private ctrlDriverLicenseCardWithFilter ctrlDriverLicenseCardWithFilter1;
     }
 }

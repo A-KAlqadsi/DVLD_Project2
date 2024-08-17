@@ -115,7 +115,10 @@ namespace DVLD_Business
                 return null;
 
         }
-
+        public static DataTable FindMaster(int licenseID)
+        {
+            return clsLicenseData.GetLicenseByIdMaster(licenseID);
+        }
         public static DataTable GetAll()
         {
             return clsLicenseData.GetAllLicenses();
