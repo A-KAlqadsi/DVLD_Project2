@@ -13,7 +13,8 @@ namespace DVLD_View
 {
     public partial class ctrlDriverLicenseCardWithFilter : UserControl
     {
-        
+        public bool IsFound ;
+        public bool IsDetained;
         public ctrlDriverLicenseCardWithFilter()
         {
             InitializeComponent();
@@ -29,6 +30,8 @@ namespace DVLD_View
             }
             int licenseId = Convert.ToInt32(txtSearchLicenseID.Text);
             ctrlDriverLicenseCard1.LoadLicenseCardInfo(licenseId);
+            IsFound = ctrlDriverLicenseCard1.IsFound;
+            IsDetained =ctrlDriverLicenseCard1.IsDetained;
         }
 
         private void txtSearchLicenseID_KeyPress(object sender, KeyPressEventArgs e)

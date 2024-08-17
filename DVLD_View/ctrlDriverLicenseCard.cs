@@ -14,6 +14,8 @@ namespace DVLD_View
 {
     public partial class ctrlDriverLicenseCard : UserControl
     {
+        public bool IsFound = false;
+        public bool IsDetained = false;
         DataTable _LicenseInfo;
         private string _ImagePath = @"C:\Users\Abdulkarim\source\Abu-Hadhoud\19 DVLD\DVLD_View\Icons\";
 
@@ -29,7 +31,7 @@ namespace DVLD_View
             if (_LicenseInfo.Rows.Count == 0)
             {
                 _ResetLicenseCard();
-                MessageBox.Show($"No license with ID={licenseID}", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"No license with ID={licenseID}", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
@@ -42,6 +44,7 @@ namespace DVLD_View
             string imagePath = "";
             foreach (DataRow row in _LicenseInfo.Rows)
             {
+                IsFound = true;
                 lblClassName.Text = row["ClassName"].ToString();
                 lblDateOfBirth.Text =Convert.ToDateTime(row["DateOfBirth"]).ToShortDateString();
                 lblDriverID.Text = row["DriverID"].ToString();
@@ -55,9 +58,15 @@ namespace DVLD_View
                 lblName.Text = row["FullName"].ToString();
                 lblNationalNo.Text = row["NationalNo"].ToString();
                 lblNotes.Text = row["Notes"] != DBNull.Value ? row["Notes"].ToString() : "No Notes";
-                
+
+                if (lblIsDetained.Text == "Yes")
+                    IsDetained = true;
+                else
+                    IsDetained = false;
+
                 gender = lblGender.Text == "Male"?false:true;
                 imagePath = row["ImagePath"] != DBNull.Value ? row["ImagePath"].ToString() : "";
+                
                 if (gender)
                     pbGender.ImageLocation = _ImagePath + "Woman 32.png";
                 else
