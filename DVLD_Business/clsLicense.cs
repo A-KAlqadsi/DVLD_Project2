@@ -136,6 +136,11 @@ namespace DVLD_Business
         {
             return clsLicenseData.IsLicenseExist(licenseID);
         }
+        public static bool IsLicenseInternational(int licenseID)
+        {
+            return clsLicenseData.IsLicenseInternational(licenseID);
+        }
+        
         public static bool IsApplicationHasLicense(int applicationID)
         {
             return clsLicenseData.IsApplicationHasLicense(applicationID);

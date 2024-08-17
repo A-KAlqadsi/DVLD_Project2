@@ -345,6 +345,36 @@ namespace DVLD_DataAccess
             return isExist;
         }
 
+        public static bool IsLicenseInternational(int licenseID)
+        {
+            bool isExist = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP(1) Found=1 From InternationalLicenses WHERE IssuedUsingLocalLicenseID=@LicenseID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", licenseID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int found))
+                    isExist = true;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isExist;
+        }
+
+
         public static bool IsLicenseActive(int licenseID)
         {
             bool isActive = false;
