@@ -232,6 +232,39 @@ namespace DVLD_DataAccess
 
         }
 
+        public static DataTable FindInternationalLicenseMaster(int internationalLicenseID)
+        {
+            DataTable table = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "Select * from DriverInternationalLicenses_View where InternationalLicenseID =@InternationalLicense;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@InternationalLicense", internationalLicenseID);
+            
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                    table.Load(reader);
+
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return table;
+
+        }
+
 
         public static bool IsLicenseExist(int internationalLicenseID)
         {

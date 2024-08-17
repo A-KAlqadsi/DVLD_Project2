@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -227,6 +230,12 @@
     <Compile Include="frmShowApplicationInfo.Designer.cs">
       <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmShowInternationalLicenseCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowInternationalLicenseCard.Designer.cs">
+      <DependentUpon>frmShowInternationalLicenseCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmShowLicenseCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -349,6 +358,9 @@
     <EmbeddedResource Include="frmShowApplicationInfo.resx">
       <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmShowInternationalLicenseCard.resx">
+      <DependentUpon>frmShowInternationalLicenseCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmShowLicenseCard.resx">
       <DependentUpon>frmShowLicenseCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -374,6 +386,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

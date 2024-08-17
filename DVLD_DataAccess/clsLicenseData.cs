@@ -345,12 +345,13 @@ namespace DVLD_DataAccess
             return isExist;
         }
 
-        public static bool IsLicenseInternational(int licenseID)
+        public static int IsLicenseInternational(int licenseID)
         {
-            bool isExist = false;
+            
+            int interLicenseID = -1;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT TOP(1) Found=1 From InternationalLicenses WHERE IssuedUsingLocalLicenseID=@LicenseID";
+            string query = "SELECT TOP(1) InternationalLicenseID From InternationalLicenses WHERE IssuedUsingLocalLicenseID=@LicenseID";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LicenseID", licenseID);
 
@@ -358,8 +359,9 @@ namespace DVLD_DataAccess
             {
                 connection.Open();
                 object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int found))
-                    isExist = true;
+                if (result != null && int.TryParse(result.ToString(), out interLicenseID))
+                { 
+                }
 
             }
             catch (Exception ex)
@@ -371,7 +373,7 @@ namespace DVLD_DataAccess
                 connection.Close();
             }
 
-            return isExist;
+            return interLicenseID;
         }
 
 

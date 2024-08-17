@@ -94,5 +94,11 @@ namespace DVLD_View
             frmListDrivers drivers = new frmListDrivers();
             drivers.ShowDialog();
         }
+
+        private void tsmiNewInternationalLicense_Click(object sender, EventArgs e)
+        {
+            frmAddNewInternationalLicenseApp interLicense = new frmAddNewInternationalLicenseApp();
+            interLicense.ShowDialog();
+        }
     }
 }

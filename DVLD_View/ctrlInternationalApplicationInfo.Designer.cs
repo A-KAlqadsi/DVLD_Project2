@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlInternationalApplicationInfo));
             this.gbApplicationInfo = new System.Windows.Forms.GroupBox();
+            this.pbUser = new System.Windows.Forms.PictureBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.pbFees = new System.Windows.Forms.PictureBox();
+            this.lblAppFees = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblILAppID = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pbExpirationDate = new System.Windows.Forms.PictureBox();
@@ -47,22 +54,15 @@
             this.pbIntLicenseID = new System.Windows.Forms.PictureBox();
             this.lblIntLicenseID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pbUser = new System.Windows.Forms.PictureBox();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.pbFees = new System.Windows.Forms.PictureBox();
-            this.lblAppFees = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.gbApplicationInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFees)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbExpirationDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDateOfBirth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLicenseID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIntLicenseID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFees)).BeginInit();
             this.SuspendLayout();
             // 
             // gbApplicationInfo
@@ -98,6 +98,84 @@
             this.gbApplicationInfo.TabIndex = 0;
             this.gbApplicationInfo.TabStop = false;
             this.gbApplicationInfo.Text = "Application Info";
+            // 
+            // pbUser
+            // 
+            this.pbUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbUser.Image = ((System.Drawing.Image)(resources.GetObject("pbUser.Image")));
+            this.pbUser.Location = new System.Drawing.Point(693, 183);
+            this.pbUser.Margin = new System.Windows.Forms.Padding(2);
+            this.pbUser.Name = "pbUser";
+            this.pbUser.Size = new System.Drawing.Size(39, 35);
+            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbUser.TabIndex = 87;
+            this.pbUser.TabStop = false;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(747, 188);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(68, 25);
+            this.lblUsername.TabIndex = 86;
+            this.lblUsername.Text = "[????]";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(541, 188);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(127, 25);
+            this.label19.TabIndex = 85;
+            this.label19.Text = "Created By:";
+            // 
+            // pbFees
+            // 
+            this.pbFees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbFees.Image = ((System.Drawing.Image)(resources.GetObject("pbFees.Image")));
+            this.pbFees.Location = new System.Drawing.Point(232, 185);
+            this.pbFees.Margin = new System.Windows.Forms.Padding(2);
+            this.pbFees.Name = "pbFees";
+            this.pbFees.Size = new System.Drawing.Size(39, 30);
+            this.pbFees.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbFees.TabIndex = 84;
+            this.pbFees.TabStop = false;
+            // 
+            // lblAppFees
+            // 
+            this.lblAppFees.AutoSize = true;
+            this.lblAppFees.Location = new System.Drawing.Point(284, 188);
+            this.lblAppFees.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAppFees.Name = "lblAppFees";
+            this.lblAppFees.Size = new System.Drawing.Size(68, 25);
+            this.lblAppFees.TabIndex = 83;
+            this.lblAppFees.Text = "[????]";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(144, 188);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 25);
+            this.label2.TabIndex = 82;
+            this.label2.Text = "Fees:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(232, 59);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 81;
+            this.pictureBox1.TabStop = false;
             // 
             // lblILAppID
             // 
@@ -285,84 +363,6 @@
             this.label1.TabIndex = 52;
             this.label1.Text = "Int.License ID:";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(232, 59);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 81;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pbUser
-            // 
-            this.pbUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbUser.Image = ((System.Drawing.Image)(resources.GetObject("pbUser.Image")));
-            this.pbUser.Location = new System.Drawing.Point(693, 183);
-            this.pbUser.Margin = new System.Windows.Forms.Padding(2);
-            this.pbUser.Name = "pbUser";
-            this.pbUser.Size = new System.Drawing.Size(39, 35);
-            this.pbUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbUser.TabIndex = 87;
-            this.pbUser.TabStop = false;
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(747, 188);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(68, 25);
-            this.lblUsername.TabIndex = 86;
-            this.lblUsername.Text = "[????]";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(541, 188);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(127, 25);
-            this.label19.TabIndex = 85;
-            this.label19.Text = "Created By:";
-            // 
-            // pbFees
-            // 
-            this.pbFees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbFees.Image = ((System.Drawing.Image)(resources.GetObject("pbFees.Image")));
-            this.pbFees.Location = new System.Drawing.Point(232, 185);
-            this.pbFees.Margin = new System.Windows.Forms.Padding(2);
-            this.pbFees.Name = "pbFees";
-            this.pbFees.Size = new System.Drawing.Size(39, 30);
-            this.pbFees.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbFees.TabIndex = 84;
-            this.pbFees.TabStop = false;
-            // 
-            // lblAppFees
-            // 
-            this.lblAppFees.AutoSize = true;
-            this.lblAppFees.Location = new System.Drawing.Point(284, 188);
-            this.lblAppFees.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAppFees.Name = "lblAppFees";
-            this.lblAppFees.Size = new System.Drawing.Size(68, 25);
-            this.lblAppFees.TabIndex = 83;
-            this.lblAppFees.Text = "[????]";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(144, 188);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 25);
-            this.label2.TabIndex = 82;
-            this.label2.Text = "Fees:";
-            // 
             // ctrlInternationalApplicationInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -371,16 +371,17 @@
             this.Controls.Add(this.gbApplicationInfo);
             this.Name = "ctrlInternationalApplicationInfo";
             this.Size = new System.Drawing.Size(1008, 241);
+            this.Load += new System.EventHandler(this.ctrlInternationalApplicationInfo_Load);
             this.gbApplicationInfo.ResumeLayout(false);
             this.gbApplicationInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFees)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbExpirationDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDateOfBirth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIssueDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLicenseID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIntLicenseID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFees)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -389,28 +390,28 @@
 
         private System.Windows.Forms.GroupBox gbApplicationInfo;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblILAppID;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pbExpirationDate;
-        private System.Windows.Forms.Label lblExpirationDate;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pbDateOfBirth;
-        private System.Windows.Forms.Label lblApplicationDate;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pbIssueDate;
-        private System.Windows.Forms.Label lblIssueDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pbLicenseID;
-        private System.Windows.Forms.Label lblLicenseID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pbIntLicenseID;
-        private System.Windows.Forms.Label lblIntLicenseID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbUser;
-        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.PictureBox pbFees;
-        private System.Windows.Forms.Label lblAppFees;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label lblILAppID;
+        public System.Windows.Forms.Label lblLicenseID;
+        public System.Windows.Forms.Label lblIntLicenseID;
+        public System.Windows.Forms.Label lblApplicationDate;
+        public System.Windows.Forms.Label lblExpirationDate;
+        public System.Windows.Forms.Label lblIssueDate;
+        public System.Windows.Forms.Label lblUsername;
+        public System.Windows.Forms.Label lblAppFees;
     }
 }
