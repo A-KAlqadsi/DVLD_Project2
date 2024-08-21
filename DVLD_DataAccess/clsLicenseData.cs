@@ -94,6 +94,34 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
+        public static DataTable GetLicenseByIdMaster(int licenseID)
+        {
+            DataTable table = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * From DriverLicenses_View WHERE LicenseID=@LicenseID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", licenseID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if(reader.HasRows)
+                    table.Load(reader);
+                reader.Close();
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return table;
+        }
 
         public static int AddNewLicense( int applicationId, int driverID,
              int licenseClass,  DateTime issueDate,  DateTime expirationDate,  string notes,
@@ -316,6 +344,38 @@ namespace DVLD_DataAccess
 
             return isExist;
         }
+
+        public static int IsLicenseInternational(int licenseID)
+        {
+            
+            int interLicenseID = -1;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP(1) InternationalLicenseID From InternationalLicenses WHERE IssuedUsingLocalLicenseID=@LicenseID";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", licenseID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out interLicenseID))
+                { 
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return interLicenseID;
+        }
+
 
         public static bool IsLicenseActive(int licenseID)
         {

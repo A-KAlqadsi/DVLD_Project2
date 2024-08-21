@@ -55,8 +55,8 @@ namespace DVLD_Business
 
         private bool _AddNewLicense()
         {
-            int InternationalLicenseID = clsInternationalLicenseData.AddNewInternationaLicense(ApplicationId, DriverID, LicenseID, IssueDate, ExpirationDate, IsActive, UserID);
-            return InternationalLicenseID != -1;
+            this.InternationalLicenseID = clsInternationalLicenseData.AddNewInternationaLicense(ApplicationId, DriverID, LicenseID, IssueDate, ExpirationDate, IsActive, UserID);
+            return this.InternationalLicenseID != -1;
         }
 
         private bool _UpdateLicense()
@@ -94,6 +94,11 @@ namespace DVLD_Business
             return clsInternationalLicenseData.GetAllDriverInternationalLicense(driverId);
         }
 
+        public static DataTable FindMaster(int internationalLicenseID)
+        {
+            return clsInternationalLicenseData.FindInternationalLicenseMaster(internationalLicenseID);
+        }
+
         public static bool Delete(int internationalLicenseID)
         {
             return clsInternationalLicenseData.DeleteInternationalLicense(internationalLicenseID);
@@ -101,8 +106,15 @@ namespace DVLD_Business
 
         public static bool IsLicenseExist(int internationalLicenseID)
         {
-            return clsLicenseData.IsLicenseExist(internationalLicenseID);
+            return clsInternationalLicenseData.IsLicenseExist(internationalLicenseID);
         }
+
+        public static bool IsLicenseActive(int internationalLicenseID)
+        {
+            return clsInternationalLicenseData.IsLicenseActive(internationalLicenseID);
+        }
+
+        
 
         public bool Save()
         {
@@ -110,9 +122,11 @@ namespace DVLD_Business
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
                         if (_AddNewLicense())
+                        {
+                            _Mode = enMode.Update;
                             return true;
+                        }
                         else
                             return false;
                     }

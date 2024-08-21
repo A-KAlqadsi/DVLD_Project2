@@ -115,7 +115,10 @@ namespace DVLD_Business
                 return null;
 
         }
-
+        public static DataTable FindMaster(int licenseID)
+        {
+            return clsLicenseData.GetLicenseByIdMaster(licenseID);
+        }
         public static DataTable GetAll()
         {
             return clsLicenseData.GetAllLicenses();
@@ -133,6 +136,11 @@ namespace DVLD_Business
         {
             return clsLicenseData.IsLicenseExist(licenseID);
         }
+        public static int IsLicenseInternational(int licenseID)
+        {
+            return clsLicenseData.IsLicenseInternational(licenseID);
+        }
+        
         public static bool IsApplicationHasLicense(int applicationID)
         {
             return clsLicenseData.IsApplicationHasLicense(applicationID);
