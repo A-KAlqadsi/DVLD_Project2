@@ -18,6 +18,8 @@ namespace DVLD_View
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmTest());
             Application.Run(new frmLoginScreen());
+            //Application.Run(new frmManageInternationalLicenseApp());
+            Application.Run(new frmLoginScreen());
             //Application.Run(new frmManageUsers());
         }
     }
