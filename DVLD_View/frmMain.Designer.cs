@@ -215,6 +215,7 @@
             this.tsmiInternationalLicenseApps.Name = "tsmiInternationalLicenseApps";
             this.tsmiInternationalLicenseApps.Size = new System.Drawing.Size(449, 38);
             this.tsmiInternationalLicenseApps.Text = "International License Applications";
+            this.tsmiInternationalLicenseApps.Click += new System.EventHandler(this.tsmiInternationalLicenseApps_Click);
             // 
             // tsmiDetainLicenses
             // 

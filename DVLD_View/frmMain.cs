@@ -100,5 +100,11 @@ namespace DVLD_View
             frmAddNewInternationalLicenseApp interLicense = new frmAddNewInternationalLicenseApp();
             interLicense.ShowDialog();
         }
+
+        private void tsmiInternationalLicenseApps_Click(object sender, EventArgs e)
+        {
+            frmManageInternationalLicenseApp international = new frmManageInternationalLicenseApp();
+            international.ShowDialog();
+        }
     }
 }
