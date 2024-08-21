@@ -104,6 +104,12 @@
     <Compile Include="ctrlInternationalApplicationInfo.Designer.cs">
       <DependentUpon>ctrlInternationalApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlRenewLicenseApplicationInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlRenewLicenseApplicationInfo.Designer.cs">
+      <DependentUpon>ctrlRenewLicenseApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddEditAplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlInternationalApplicationInfo.resx">
       <DependentUpon>ctrlInternationalApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlRenewLicenseApplicationInfo.resx">
+      <DependentUpon>ctrlRenewLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddEditAplicationType.resx">
       <DependentUpon>frmAddEditAplicationType.cs</DependentUpon>
