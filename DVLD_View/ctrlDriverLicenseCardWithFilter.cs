@@ -71,7 +71,10 @@ namespace DVLD_View
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 e.Handled = true;
         }
-        
 
+        private void ctrlDriverLicenseCardWithFilter_Load(object sender, EventArgs e)
+        {
+            txtSearchLicenseID.Focus();
+        }
     }
 }

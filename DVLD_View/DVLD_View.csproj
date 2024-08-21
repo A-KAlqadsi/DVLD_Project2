@@ -68,6 +68,12 @@
     <Compile Include="Controls\ctrlUserPersonCard.Designer.cs">
       <DependentUpon>ctrlUserPersonCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctrlAppInfoForLicenseReplacement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlAppInfoForLicenseReplacement.Designer.cs">
+      <DependentUpon>ctrlAppInfoForLicenseReplacement.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlApplicationCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -236,6 +242,12 @@
     <Compile Include="frmRenewLocalDrivingLicense.Designer.cs">
       <DependentUpon>frmRenewLocalDrivingLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReplacementForDamageOrLost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReplacementForDamageOrLost.Designer.cs">
+      <DependentUpon>frmReplacementForDamageOrLost.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmScheduleTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ctrlUserPersonCard.resx">
       <DependentUpon>ctrlUserPersonCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlAppInfoForLicenseReplacement.resx">
+      <DependentUpon>ctrlAppInfoForLicenseReplacement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlApplicationCard.resx">
       <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
@@ -378,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRenewLocalDrivingLicense.resx">
       <DependentUpon>frmRenewLocalDrivingLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReplacementForDamageOrLost.resx">
+      <DependentUpon>frmReplacementForDamageOrLost.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmScheduleTest.resx">
       <DependentUpon>frmScheduleTest.cs</DependentUpon>

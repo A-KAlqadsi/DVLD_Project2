@@ -104,6 +104,7 @@
             this.Controls.Add(this.ctrlDriverLicenseCard1);
             this.Name = "ctrlDriverLicenseCardWithFilter";
             this.Size = new System.Drawing.Size(1021, 444);
+            this.Load += new System.EventHandler(this.ctrlDriverLicenseCardWithFilter_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epFindLicenseValidate)).EndInit();
@@ -116,8 +117,8 @@
         private ctrlDriverLicenseCard ctrlDriverLicenseCard1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtSearchLicenseID;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ErrorProvider epFindLicenseValidate;
+        public System.Windows.Forms.TextBox txtSearchLicenseID;
     }
 }
