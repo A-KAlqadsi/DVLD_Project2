@@ -164,8 +164,7 @@ namespace DVLD_View
         }
 
         private void llShowLicense_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            
+        {           
             frmShowInternationalLicenseCard internationalLicense = new frmShowInternationalLicenseCard(_InterLicenseID);
             internationalLicense.ShowDialog();
         }

@@ -106,5 +106,11 @@ namespace DVLD_View
             frmManageInternationalLicenseApp international = new frmManageInternationalLicenseApp();
             international.ShowDialog();
         }
+
+        private void tsmiRenewDrivingLicense_Click(object sender, EventArgs e)
+        {
+            frmRenewLocalDrivingLicense renewLicense = new frmRenewLocalDrivingLicense();
+            renewLicense.ShowDialog();
+        }
     }
 }

@@ -136,6 +136,12 @@ namespace DVLD_Business
         {
             return clsLicenseData.IsLicenseExist(licenseID);
         }
+
+        public static bool IsLicenseExpired(int licenseID)
+        {
+            return clsLicenseData.IsLicenseExpired(licenseID);
+        }
+
         public static int IsLicenseInternational(int licenseID)
         {
             return clsLicenseData.IsLicenseInternational(licenseID);
@@ -164,6 +170,11 @@ namespace DVLD_Business
                     return _UpdateLicense();
             }
             return false;
+        }
+
+        public static bool UpdateLicenseActivity(int licenseID, bool newActivity)
+        {
+            return clsLicenseData.UpdateLicenseActivity(licenseID, newActivity);
         }
 
     }

@@ -155,6 +155,7 @@
             this.tsmiRenewDrivingLicense.Name = "tsmiRenewDrivingLicense";
             this.tsmiRenewDrivingLicense.Size = new System.Drawing.Size(436, 38);
             this.tsmiRenewDrivingLicense.Text = "Renew Driving License";
+            this.tsmiRenewDrivingLicense.Click += new System.EventHandler(this.tsmiRenewDrivingLicense_Click);
             // 
             // tsmiLostDrivingLicense
             // 

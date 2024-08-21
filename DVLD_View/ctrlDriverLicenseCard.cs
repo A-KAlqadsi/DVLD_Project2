@@ -45,24 +45,38 @@ namespace DVLD_View
                 return;
             }
             else
+            {
+                LocalLicenseID = licenseID;
                 _FillLicenseCard();
+            }
         }
 
         private void _FillLicenseCard()
         {
             clsLicense license;
+            
             bool gender = false;
             string imagePath = "";
+            
             foreach (DataRow row in _LicenseInfo.Rows)
             {
                 IsFound = true;
-                LocalLicenseID = Convert.ToInt32(row["LicenseID"]);
+                //LocalLicenseID = Convert.ToInt32(row["LicenseID"]);
                 license = clsLicense.Find(LocalLicenseID);
-                
-                if (license != null && license.LicenseClassID == 3)
-                    IsClass3 = true;               
+
+                if (license != null)
+                {
+                    LocalLicenseID = license.LicenseID;
+                    if (license.LicenseClassID == 3)
+                        IsClass3 = true;
+                    else
+                        IsClass3 = false;
+                }
                 else
-                    IsClass3 = false;
+                {
+                    IsFound = false;
+                    return;
+                }
 
                 lblClassName.Text = row["ClassName"].ToString();
                 lblDateOfBirth.Text =Convert.ToDateTime(row["DateOfBirth"]).ToShortDateString();

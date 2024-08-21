@@ -220,6 +220,38 @@ namespace DVLD_DataAccess
             return rowsAffected >0;
         }
 
+        public static bool UpdateLicenseActivity(int licenseID,bool isActive)
+        {
+            int rowsAffected = 0;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "Update Licenses " +
+                " Set IsActive=@IsActive " +
+                "Where LicenseID=@LicenseID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", licenseID);
+            command.Parameters.AddWithValue("@IsActive", isActive);
+            
+            
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return rowsAffected > 0;
+        }
+
+
         public static bool DeleteLicense(int licenseID)
         {
             int rowsAffected = 0;
@@ -314,7 +346,6 @@ namespace DVLD_DataAccess
             return table;
 
         }
-
 
         public static bool IsLicenseExist(int licenseID)
         {
@@ -435,6 +466,38 @@ namespace DVLD_DataAccess
             }
 
             return isExist;
+        }
+
+        public static bool IsLicenseExpired(int licenseID)
+        {
+            bool isExpired = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "select Found=1 from Licenses where IssueDate >= ExpirationDate;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", licenseID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int isFound))
+                    isExpired = true;
+                else
+                    isExpired = false;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isExpired;
         }
 
 

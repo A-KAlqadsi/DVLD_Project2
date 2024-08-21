@@ -88,7 +88,7 @@
             this.ctrlDriverLicenseCard1.BackColor = System.Drawing.Color.White;
             this.ctrlDriverLicenseCard1.Location = new System.Drawing.Point(3, 112);
             this.ctrlDriverLicenseCard1.Name = "ctrlDriverLicenseCard1";
-            this.ctrlDriverLicenseCard1.Size = new System.Drawing.Size(1015, 388);
+            this.ctrlDriverLicenseCard1.Size = new System.Drawing.Size(1015, 332);
             this.ctrlDriverLicenseCard1.TabIndex = 0;
             // 
             // epFindLicenseValidate
@@ -103,7 +103,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ctrlDriverLicenseCard1);
             this.Name = "ctrlDriverLicenseCardWithFilter";
-            this.Size = new System.Drawing.Size(1021, 498);
+            this.Size = new System.Drawing.Size(1021, 444);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epFindLicenseValidate)).EndInit();
