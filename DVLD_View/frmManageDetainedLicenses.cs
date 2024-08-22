@@ -121,10 +121,10 @@ namespace DVLD_View
                     _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
                     break;
                 case 1:
-                    _FilterByIsReales(true);
+                    _FilterByIsReales(1);
                     break;
                 case 2:
-                    _FilterByIsReales(false);
+                    _FilterByIsReales(0);
                     break;
                 
 
@@ -182,10 +182,10 @@ namespace DVLD_View
                     break;
             }
         }
-        private void _FilterByIsReales(bool isRelease)
+        private void _FilterByIsReales(int isRelease)
         {
             _DataView = _LoadAllDetainedLicensesIntoView();
-            _DataView.RowFilter = $"IsRelease = '{isRelease}'";
+            _DataView.RowFilter = $"IsReleased = '{isRelease}'";
             _RefreshDetainedLicenses(_DataView);
         }
         private void _FilterByID(string columnName, int iD)
@@ -223,6 +223,49 @@ namespace DVLD_View
                 if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                     e.Handled = true;
             }
+        }
+
+        private void tsmiShowPersonDetails_Click(object sender, EventArgs e)
+        {
+            string nationalNo= dgvListDetainedLicenses.CurrentRow.Cells[6].Value.ToString();
+            int personID = clsPerson.Find(nationalNo).PersonID;
+            frmPersonDetails person = new frmPersonDetails(personID);
+            person.ShowDialog();
+        }
+
+        private void tsmiShowLicenseDetails_Click(object sender, EventArgs e)
+        {
+            int licenseID = (int)dgvListDetainedLicenses.CurrentRow.Cells[1].Value;
+            frmShowLicenseCard license = new frmShowLicenseCard(licenseID);
+            license.ShowDialog();
+        }
+
+        private void tsmiShowPersonHistory_Click(object sender, EventArgs e)
+        {
+            string nationalNo = dgvListDetainedLicenses.CurrentRow.Cells[6].Value.ToString();
+            int personID = clsPerson.Find(nationalNo).PersonID;
+            frmLicenseHistory licenseHistory = new frmLicenseHistory(personID);
+            licenseHistory.ShowDialog();
+        }
+
+        private void tsmiReleaseDetainedLicense_Click(object sender, EventArgs e)
+        {
+            int licenseID = (int)dgvListDetainedLicenses.CurrentRow.Cells[1].Value;
+
+
+            frmReleaseLicense releaseLicnse = new frmReleaseLicense();
+            releaseLicnse.ShowDialog();
+            _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
+        }
+
+        private void dgvListDetainedLicenses_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isRelease = Convert.ToBoolean(dgvListDetainedLicenses.CurrentRow.Cells[3].Value);
+            if (isRelease)
+                tsmiReleaseDetainedLicense.Enabled = false;
+            else
+                tsmiReleaseDetainedLicense.Enabled = true;
+
         }
 
 
