@@ -75,7 +75,7 @@ namespace DVLD_View
 
         private void btnReleaseDetainedLicense_Click(object sender, EventArgs e)
         {
-            frmReleaseLicense releaseLicnse = new frmReleaseLicense();
+            frmReleaseLicense releaseLicnse = new frmReleaseLicense(-1);
             releaseLicnse.ShowDialog();
             _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
 
@@ -253,7 +253,7 @@ namespace DVLD_View
             int licenseID = (int)dgvListDetainedLicenses.CurrentRow.Cells[1].Value;
 
 
-            frmReleaseLicense releaseLicnse = new frmReleaseLicense();
+            frmReleaseLicense releaseLicnse = new frmReleaseLicense(licenseID);
             releaseLicnse.ShowDialog();
             _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
         }

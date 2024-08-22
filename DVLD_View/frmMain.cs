@@ -139,13 +139,13 @@ namespace DVLD_View
 
         private void tsmiReleaseDetainLicense_Click(object sender, EventArgs e)
         {
-            frmReleaseLicense releaseLicense = new frmReleaseLicense();
+            frmReleaseLicense releaseLicense = new frmReleaseLicense(-1);
             releaseLicense.ShowDialog();
         }
 
         private void tsmiReleaseDetainedDrivingLicense_Click(object sender, EventArgs e)
         {
-            frmReleaseLicense releaseLicense = new frmReleaseLicense();
+            frmReleaseLicense releaseLicense = new frmReleaseLicense(-1);
             releaseLicense.ShowDialog();
         }
     }

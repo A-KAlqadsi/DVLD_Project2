@@ -35,7 +35,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblRelAppID = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblTotalFees = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblApplicationFees = new System.Windows.Forms.Label();
@@ -97,7 +97,7 @@
             this.gbDetainInfo.Controls.Add(this.pictureBox4);
             this.gbDetainInfo.Controls.Add(this.lblRelAppID);
             this.gbDetainInfo.Controls.Add(this.label7);
-            this.gbDetainInfo.Controls.Add(this.label5);
+            this.gbDetainInfo.Controls.Add(this.lblTotalFees);
             this.gbDetainInfo.Controls.Add(this.pictureBox3);
             this.gbDetainInfo.Controls.Add(this.label6);
             this.gbDetainInfo.Controls.Add(this.lblApplicationFees);
@@ -125,7 +125,6 @@
             this.gbDetainInfo.TabIndex = 125;
             this.gbDetainInfo.TabStop = false;
             this.gbDetainInfo.Text = "Detain Info:";
-            this.gbDetainInfo.Enter += new System.EventHandler(this.gbDetainInfo_Enter);
             // 
             // pictureBox4
             // 
@@ -160,15 +159,15 @@
             this.label7.TabIndex = 137;
             this.label7.Text = "R.Application ID:";
             // 
-            // label5
+            // lblTotalFees
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(261, 142);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 25);
-            this.label5.TabIndex = 136;
-            this.label5.Text = "[????]";
+            this.lblTotalFees.AutoSize = true;
+            this.lblTotalFees.Location = new System.Drawing.Point(261, 142);
+            this.lblTotalFees.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTotalFees.Name = "lblTotalFees";
+            this.lblTotalFees.Size = new System.Drawing.Size(68, 25);
+            this.lblTotalFees.TabIndex = 136;
+            this.lblTotalFees.Text = "[????]";
             // 
             // pictureBox3
             // 
@@ -381,6 +380,7 @@
             this.llShowLicense.TabIndex = 124;
             this.llShowLicense.TabStop = true;
             this.llShowLicense.Text = "Show License Info";
+            this.llShowLicense.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicense_LinkClicked);
             // 
             // llShowLicenseHistory
             // 
@@ -393,6 +393,7 @@
             this.llShowLicenseHistory.TabIndex = 123;
             this.llShowLicenseHistory.TabStop = true;
             this.llShowLicenseHistory.Text = "Show License History";
+            this.llShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseHistory_LinkClicked);
             // 
             // ctrlDriverLicenseCardWithFilter1
             // 
@@ -401,6 +402,7 @@
             this.ctrlDriverLicenseCardWithFilter1.Name = "ctrlDriverLicenseCardWithFilter1";
             this.ctrlDriverLicenseCardWithFilter1.Size = new System.Drawing.Size(1021, 444);
             this.ctrlDriverLicenseCardWithFilter1.TabIndex = 120;
+            this.ctrlDriverLicenseCardWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseCardWithFilter1_OnLicenseSelected);
             // 
             // lblMode
             // 
@@ -443,8 +445,9 @@
             this.btnRelease.Name = "btnRelease";
             this.btnRelease.Size = new System.Drawing.Size(138, 44);
             this.btnRelease.TabIndex = 121;
-            this.btnRelease.Text = "Detain";
+            this.btnRelease.Text = "Release";
             this.btnRelease.UseVisualStyleBackColor = false;
+            this.btnRelease.Click += new System.EventHandler(this.btnRelease_Click);
             // 
             // frmReleaseLicense
             // 
@@ -463,6 +466,7 @@
             this.Name = "frmReleaseLicense";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Release Detained License";
+            this.Load += new System.EventHandler(this.frmReleaseLicense_Load);
             this.gbDetainInfo.ResumeLayout(false);
             this.gbDetainInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -500,7 +504,7 @@
         private ctrlDriverLicenseCardWithFilter ctrlDriverLicenseCardWithFilter1;
         private System.Windows.Forms.Button btnRelease;
         private System.Windows.Forms.Label lblMode;
-        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label lblTotalFees;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label lblApplicationFees;

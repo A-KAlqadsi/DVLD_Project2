@@ -14,7 +14,7 @@ namespace DVLD_Business
         enum enMode { AddNew = 1,Update =2}
         enMode _Mode;
 
-        public int ReleaseID { get; }
+        public int ReleaseID { get; set; }
         public int ApplicationID;
         public DateTime ReleaseDate;
         public int UserID;
@@ -39,8 +39,8 @@ namespace DVLD_Business
 
         private bool _AddNew()
         {
-            int releaseID=clsReleasedLicenseData.AddNewReleaseLicense(ApplicationID,ReleaseDate,UserID);
-            return releaseID != -1;
+            this.ReleaseID =clsReleasedLicenseData.AddNewReleaseLicense(ApplicationID,ReleaseDate,UserID);
+            return this.ReleaseID != -1;
 
         }
 
@@ -82,9 +82,11 @@ namespace DVLD_Business
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
                         if(_AddNew())
+                        {
+                            _Mode = enMode.Update;
                             return true;
+                        }
                         else 
                             return false;
                     }

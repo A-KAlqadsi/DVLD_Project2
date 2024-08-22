@@ -140,7 +140,7 @@ namespace DVLD_Business
         {
             return clsLicenseData.IsLicenseActive(licenseID);
         }
-        public static bool IsLicenseDetained(int licenseID)
+        public static int IsLicenseDetained(int licenseID)
         {
             return clsLicenseData.IsLicenseDetainedAndNotReleased(licenseID);
         }

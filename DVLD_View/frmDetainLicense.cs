@@ -81,7 +81,7 @@ namespace DVLD_View
 
         private void btnDetain_Click(object sender, EventArgs e)
         {
-            if(clsLicense.IsLicenseDetained(_LocalLicenseID))
+            if(clsLicense.IsLicenseDetained(_LocalLicenseID) != -1)
             {
                 MessageBox.Show($"Selected license is already detained!, select another one!", "Not allowd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnDetain.Enabled = false;
@@ -123,7 +123,7 @@ namespace DVLD_View
 
         private void llShowLicenseHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmLicenseHistory licenseHistory = new frmLicenseHistory(_LocalLicenseID);
+            frmLicenseHistory licenseHistory = new frmLicenseHistory(_PersonID);
             licenseHistory.ShowDialog();
         }
     }
