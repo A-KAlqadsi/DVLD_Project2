@@ -16,7 +16,7 @@ namespace DVLD_View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmReleaseLicense());
+            Application.Run(new frmManageDetainedLicenses());
             //Application.Run(new frmLoginScreen());
             //Application.Run(new frmManageUsers());
         }
