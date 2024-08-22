@@ -47,8 +47,8 @@ namespace DVLD_Business
 
         private bool _AddNewDetain()
         {
-            int detainID = clsDetainedLicenseData.AddNewDetainLicense(LicenseID, DetainDate, FineFees, UserID, ReleaseID);
-            return detainID != -1;
+            this.DetainID = clsDetainedLicenseData.AddNewDetainLicense(LicenseID, DetainDate, FineFees, UserID, ReleaseID);
+            return this.DetainID != -1;
         }
 
         private bool _UpdateDetain()
@@ -99,9 +99,11 @@ namespace DVLD_Business
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
                         if (_AddNewDetain())
+                        {
+                            _Mode = enMode.Update;
                             return true;
+                        }
                         else
                             return false;
                     }

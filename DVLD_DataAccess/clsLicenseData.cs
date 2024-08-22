@@ -438,6 +438,37 @@ namespace DVLD_DataAccess
             return isActive;
         }
 
+        public static bool IsLicenseDetainedAndNotReleased(int licenseID)
+        {
+            bool isDetained = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT TOP(1) Found=1 From DetainedLicenses WHERE LicenseID=@LicenseID AND ReleaseID Is Null;";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@LicenseID", licenseID);
+
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int found))
+                    isDetained = true;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isDetained;
+        }
+
+
         public static bool IsApplicationHasLicense(int applicationID)
         {
             bool isExist = false;
