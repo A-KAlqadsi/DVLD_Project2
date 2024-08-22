@@ -171,6 +171,7 @@
             this.tsmiReleaseDetainedDrivingLicense.Name = "tsmiReleaseDetainedDrivingLicense";
             this.tsmiReleaseDetainedDrivingLicense.Size = new System.Drawing.Size(438, 38);
             this.tsmiReleaseDetainedDrivingLicense.Text = "Release Detained Driving License";
+            this.tsmiReleaseDetainedDrivingLicense.Click += new System.EventHandler(this.tsmiReleaseDetainedDrivingLicense_Click);
             // 
             // tsmiRetakeTest
             // 
@@ -179,6 +180,7 @@
             this.tsmiRetakeTest.Name = "tsmiRetakeTest";
             this.tsmiRetakeTest.Size = new System.Drawing.Size(438, 38);
             this.tsmiRetakeTest.Text = "Retake Test";
+            this.tsmiRetakeTest.Click += new System.EventHandler(this.tsmiRetakeTest_Click);
             // 
             // tsmiManageApplications
             // 
@@ -228,6 +230,7 @@
             this.tsmiManageDetainedLicense.Name = "tsmiManageDetainedLicense";
             this.tsmiManageDetainedLicense.Size = new System.Drawing.Size(372, 38);
             this.tsmiManageDetainedLicense.Text = "Manage Detained Licenses";
+            this.tsmiManageDetainedLicense.Click += new System.EventHandler(this.tsmiManageDetainedLicense_Click);
             // 
             // tsmiDetainLicense
             // 
@@ -236,6 +239,7 @@
             this.tsmiDetainLicense.Name = "tsmiDetainLicense";
             this.tsmiDetainLicense.Size = new System.Drawing.Size(372, 38);
             this.tsmiDetainLicense.Text = "Detain License";
+            this.tsmiDetainLicense.Click += new System.EventHandler(this.tsmiDetainLicense_Click);
             // 
             // tsmiReleaseDetainLicense
             // 
@@ -244,6 +248,7 @@
             this.tsmiReleaseDetainLicense.Name = "tsmiReleaseDetainLicense";
             this.tsmiReleaseDetainLicense.Size = new System.Drawing.Size(372, 38);
             this.tsmiReleaseDetainLicense.Text = "Release Detained License";
+            this.tsmiReleaseDetainLicense.Click += new System.EventHandler(this.tsmiReleaseDetainLicense_Click);
             // 
             // toolStripMenuItem2
             // 

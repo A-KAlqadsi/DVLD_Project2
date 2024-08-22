@@ -118,5 +118,35 @@ namespace DVLD_View
             frmReplacementForDamageOrLost replacement = new frmReplacementForDamageOrLost();
             replacement.ShowDialog();
         }
+
+        private void tsmiRetakeTest_Click(object sender, EventArgs e)
+        {
+            frmManageLocalDrivingLicenseApp localLicenses = new frmManageLocalDrivingLicenseApp();
+            localLicenses.ShowDialog();
+        }
+
+        private void tsmiManageDetainedLicense_Click(object sender, EventArgs e)
+        {
+            frmManageDetainedLicenses detainedLicenses = new frmManageDetainedLicenses();
+            detainedLicenses.ShowDialog();
+        }
+
+        private void tsmiDetainLicense_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense detainLicense = new frmDetainLicense();
+            detainLicense.ShowDialog();
+        }
+
+        private void tsmiReleaseDetainLicense_Click(object sender, EventArgs e)
+        {
+            frmReleaseLicense releaseLicense = new frmReleaseLicense();
+            releaseLicense.ShowDialog();
+        }
+
+        private void tsmiReleaseDetainedDrivingLicense_Click(object sender, EventArgs e)
+        {
+            frmReleaseLicense releaseLicense = new frmReleaseLicense();
+            releaseLicense.ShowDialog();
+        }
     }
 }

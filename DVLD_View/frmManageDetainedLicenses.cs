@@ -16,5 +16,22 @@ namespace DVLD_View
         {
             InitializeComponent();
         }
+
+        private void btnDetainLicense_Click(object sender, EventArgs e)
+        {
+            frmDetainLicense detainLicense = new frmDetainLicense();
+            detainLicense.ShowDialog();
+        }
+
+        private void btnReleaseDetainedLicense_Click(object sender, EventArgs e)
+        {
+            frmReleaseLicense releaseLicnse = new frmReleaseLicense();
+            releaseLicnse.ShowDialog();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

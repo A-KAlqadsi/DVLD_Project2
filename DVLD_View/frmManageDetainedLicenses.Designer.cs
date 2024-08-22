@@ -148,6 +148,7 @@
             this.btnClose.TabIndex = 15;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // colDetainID
             // 
@@ -239,6 +240,7 @@
             this.btnDetainLicense.Size = new System.Drawing.Size(84, 80);
             this.btnDetainLicense.TabIndex = 18;
             this.btnDetainLicense.UseVisualStyleBackColor = false;
+            this.btnDetainLicense.Click += new System.EventHandler(this.btnDetainLicense_Click);
             // 
             // btnReleaseDetainedLicense
             // 
@@ -251,6 +253,7 @@
             this.btnReleaseDetainedLicense.Size = new System.Drawing.Size(84, 80);
             this.btnReleaseDetainedLicense.TabIndex = 19;
             this.btnReleaseDetainedLicense.UseVisualStyleBackColor = false;
+            this.btnReleaseDetainedLicense.Click += new System.EventHandler(this.btnReleaseDetainedLicense_Click);
             // 
             // cbIsReleaseFilter
             // 
@@ -334,7 +337,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmManageDetainedLicenses";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmManageDetainedLicenses";
+            this.Text = "Manage Detained Licenses";
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListDetainedLicenses)).EndInit();
