@@ -473,7 +473,7 @@ namespace DVLD_DataAccess
             bool isExpired = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "select Found=1 from Licenses where IssueDate >= ExpirationDate;";
+            string query = "select Found=1 from Licenses where LicenseID=@LicenseID AND IssueDate >= ExpirationDate;";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LicenseID", licenseID);
 

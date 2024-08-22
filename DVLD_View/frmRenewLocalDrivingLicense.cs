@@ -39,6 +39,8 @@ namespace DVLD_View
             if (!_IsFound)
                 return;
 
+            llShowLicenseHistory.Enabled = true;
+
             ctrlRenewLicenseApplicationInfo1.LoadInitialData(_LocalLicenseID);
 
             if(!clsLicense.IsLicenseExpired(_LocalLicenseID))
@@ -115,8 +117,16 @@ namespace DVLD_View
         private void btnIssue_Click(object sender, EventArgs e)
         {
             int applicationID = -1;
+            if (!clsLicense.IsLicenseActive(_LocalLicenseID))
+            {
+                MessageBox.Show($"Local license with ID=[{_LocalLicenseID}] is not active", "Not Allowd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnIssue.Enabled = false;
+                return;
+            }
+
             if (MessageBox.Show($"Are you sure you want to renew license for licenseID={_LocalLicenseID}", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
                 return;
+
             if (_Application.Save())
             {
                 applicationID = _Application.ApplicationID;
@@ -141,7 +151,6 @@ namespace DVLD_View
                 clsLicense.UpdateLicenseActivity(_LocalLicenseID,false);
 
                 llShowLicense.Enabled = true;
-                btnIssue.Enabled = false;
             }
             else
                 MessageBox.Show($"Fail to renew local license", "Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);

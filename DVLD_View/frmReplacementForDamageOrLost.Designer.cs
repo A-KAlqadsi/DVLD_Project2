@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReplacementForDamageOrLost));
             this.lblMode = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbDamageLicense = new System.Windows.Forms.RadioButton();
             this.rbLostLicense = new System.Windows.Forms.RadioButton();
+            this.rbDamageLicense = new System.Windows.Forms.RadioButton();
             this.llShowLicense = new System.Windows.Forms.LinkLabel();
             this.llShowLicenseHistory = new System.Windows.Forms.LinkLabel();
             this.btnClose = new System.Windows.Forms.Button();
@@ -66,6 +66,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Replacement For";
             // 
+            // rbLostLicense
+            // 
+            this.rbLostLicense.AutoSize = true;
+            this.rbLostLicense.Location = new System.Drawing.Point(6, 68);
+            this.rbLostLicense.Name = "rbLostLicense";
+            this.rbLostLicense.Size = new System.Drawing.Size(143, 29);
+            this.rbLostLicense.TabIndex = 1;
+            this.rbLostLicense.Text = "Lost License";
+            this.rbLostLicense.UseVisualStyleBackColor = true;
+            this.rbLostLicense.CheckedChanged += new System.EventHandler(this.rbLostLicense_CheckedChanged);
+            // 
             // rbDamageLicense
             // 
             this.rbDamageLicense.AutoSize = true;
@@ -79,17 +90,6 @@
             this.rbDamageLicense.UseVisualStyleBackColor = true;
             this.rbDamageLicense.CheckedChanged += new System.EventHandler(this.rbDamageLicense_CheckedChanged);
             // 
-            // rbLostLicense
-            // 
-            this.rbLostLicense.AutoSize = true;
-            this.rbLostLicense.Location = new System.Drawing.Point(6, 68);
-            this.rbLostLicense.Name = "rbLostLicense";
-            this.rbLostLicense.Size = new System.Drawing.Size(143, 29);
-            this.rbLostLicense.TabIndex = 1;
-            this.rbLostLicense.Text = "Lost License";
-            this.rbLostLicense.UseVisualStyleBackColor = true;
-            this.rbLostLicense.CheckedChanged += new System.EventHandler(this.rbLostLicense_CheckedChanged);
-            // 
             // llShowLicense
             // 
             this.llShowLicense.AutoSize = true;
@@ -101,10 +101,12 @@
             this.llShowLicense.TabIndex = 113;
             this.llShowLicense.TabStop = true;
             this.llShowLicense.Text = "Show New License Info";
+            this.llShowLicense.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicense_LinkClicked);
             // 
             // llShowLicenseHistory
             // 
             this.llShowLicenseHistory.AutoSize = true;
+            this.llShowLicenseHistory.Enabled = false;
             this.llShowLicenseHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llShowLicenseHistory.Location = new System.Drawing.Point(21, 661);
             this.llShowLicenseHistory.Name = "llShowLicenseHistory";
@@ -112,6 +114,7 @@
             this.llShowLicenseHistory.TabIndex = 112;
             this.llShowLicenseHistory.TabStop = true;
             this.llShowLicenseHistory.Text = "Show License History";
+            this.llShowLicenseHistory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llShowLicenseHistory_LinkClicked);
             // 
             // btnClose
             // 
@@ -128,11 +131,13 @@
             this.btnClose.TabIndex = 111;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnIssue
             // 
             this.btnIssue.BackColor = System.Drawing.Color.White;
             this.btnIssue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnIssue.Enabled = false;
             this.btnIssue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIssue.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIssue.Image = ((System.Drawing.Image)(resources.GetObject("btnIssue.Image")));
@@ -152,6 +157,7 @@
             this.ctrlDriverLicenseCardWithFilter1.Name = "ctrlDriverLicenseCardWithFilter1";
             this.ctrlDriverLicenseCardWithFilter1.Size = new System.Drawing.Size(1021, 444);
             this.ctrlDriverLicenseCardWithFilter1.TabIndex = 10;
+            this.ctrlDriverLicenseCardWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseCardWithFilter1_OnLicenseSelected);
             // 
             // ctrlAppInfoForLicenseReplacement1
             // 

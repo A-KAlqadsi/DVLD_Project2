@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlDriverLicenses));
             this.gbDriverLicenses = new System.Windows.Forms.GroupBox();
             this.tcDriverLicenses = new System.Windows.Forms.TabControl();
             this.tpLocal = new System.Windows.Forms.TabPage();
@@ -54,6 +56,10 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cmsShowLocalLicenseInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsShowInterLicenseInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiShowLocalLicenseInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiShowInterLicenseInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.gbDriverLicenses.SuspendLayout();
             this.tcDriverLicenses.SuspendLayout();
             this.tpLocal.SuspendLayout();
@@ -62,6 +68,8 @@
             this.tpInternational.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListInternationalLicenses)).BeginInit();
+            this.cmsShowLocalLicenseInfo.SuspendLayout();
+            this.cmsShowInterLicenseInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbDriverLicenses
@@ -152,6 +160,7 @@
             this.colIssueDate,
             this.colExpirationDate,
             this.colIsActive});
+            this.dgvListLocalLicenses.ContextMenuStrip = this.cmsShowLocalLicenseInfo;
             this.dgvListLocalLicenses.Location = new System.Drawing.Point(3, 40);
             this.dgvListLocalLicenses.Name = "dgvListLocalLicenses";
             this.dgvListLocalLicenses.ReadOnly = true;
@@ -275,6 +284,7 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewCheckBoxColumn1});
+            this.dgvListInternationalLicenses.ContextMenuStrip = this.cmsShowInterLicenseInfo;
             this.dgvListInternationalLicenses.Location = new System.Drawing.Point(3, 40);
             this.dgvListInternationalLicenses.Name = "dgvListInternationalLicenses";
             this.dgvListInternationalLicenses.ReadOnly = true;
@@ -331,6 +341,42 @@
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             this.dataGridViewCheckBoxColumn1.Width = 125;
             // 
+            // cmsShowLocalLicenseInfo
+            // 
+            this.cmsShowLocalLicenseInfo.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsShowLocalLicenseInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiShowLocalLicenseInfo});
+            this.cmsShowLocalLicenseInfo.Name = "cmsShowLocalLicenseInfo";
+            this.cmsShowLocalLicenseInfo.Size = new System.Drawing.Size(232, 42);
+            // 
+            // cmsShowInterLicenseInfo
+            // 
+            this.cmsShowInterLicenseInfo.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsShowInterLicenseInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiShowInterLicenseInfo});
+            this.cmsShowInterLicenseInfo.Name = "cmsShowInterLicenseInfo";
+            this.cmsShowInterLicenseInfo.Size = new System.Drawing.Size(232, 70);
+            // 
+            // tsmiShowLocalLicenseInfo
+            // 
+            this.tsmiShowLocalLicenseInfo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiShowLocalLicenseInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmiShowLocalLicenseInfo.Image")));
+            this.tsmiShowLocalLicenseInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiShowLocalLicenseInfo.Name = "tsmiShowLocalLicenseInfo";
+            this.tsmiShowLocalLicenseInfo.Size = new System.Drawing.Size(231, 38);
+            this.tsmiShowLocalLicenseInfo.Text = "Show License Info";
+            this.tsmiShowLocalLicenseInfo.Click += new System.EventHandler(this.tsmiShowLocalLicenseInfo_Click);
+            // 
+            // tsmiShowInterLicenseInfo
+            // 
+            this.tsmiShowInterLicenseInfo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsmiShowInterLicenseInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsmiShowInterLicenseInfo.Image")));
+            this.tsmiShowInterLicenseInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiShowInterLicenseInfo.Name = "tsmiShowInterLicenseInfo";
+            this.tsmiShowInterLicenseInfo.Size = new System.Drawing.Size(231, 38);
+            this.tsmiShowInterLicenseInfo.Text = "Show License Info";
+            this.tsmiShowInterLicenseInfo.Click += new System.EventHandler(this.tsmiShowInterLicenseInfo_Click);
+            // 
             // ctrlDriverLicenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -349,6 +395,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListInternationalLicenses)).EndInit();
+            this.cmsShowLocalLicenseInfo.ResumeLayout(false);
+            this.cmsShowInterLicenseInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -381,5 +429,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.ContextMenuStrip cmsShowLocalLicenseInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmiShowLocalLicenseInfo;
+        private System.Windows.Forms.ContextMenuStrip cmsShowInterLicenseInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmiShowInterLicenseInfo;
     }
 }

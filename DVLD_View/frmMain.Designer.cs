@@ -37,8 +37,7 @@
             this.tsmiNewLocalLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNewInternationalLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRenewDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLostDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDamagedDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLicenseReplacement = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiReleaseDetainedDrivingLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiRetakeTest = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiManageApplications = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,8 +108,7 @@
             this.tsmiDrivingLicenseServices.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiNewDrivingLicense,
             this.tsmiRenewDrivingLicense,
-            this.tsmiLostDrivingLicense,
-            this.tsmiDamagedDrivingLicense,
+            this.tsmiLicenseReplacement,
             this.tsmiReleaseDetainedDrivingLicense,
             this.tsmiRetakeTest});
             this.tsmiDrivingLicenseServices.Image = ((System.Drawing.Image)(resources.GetObject("tsmiDrivingLicenseServices.Image")));
@@ -127,7 +125,7 @@
             this.tsmiNewDrivingLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiNewDrivingLicense.Image")));
             this.tsmiNewDrivingLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiNewDrivingLicense.Name = "tsmiNewDrivingLicense";
-            this.tsmiNewDrivingLicense.Size = new System.Drawing.Size(436, 38);
+            this.tsmiNewDrivingLicense.Size = new System.Drawing.Size(438, 38);
             this.tsmiNewDrivingLicense.Text = "New Driving License";
             // 
             // tsmiNewLocalLicense
@@ -153,32 +151,25 @@
             this.tsmiRenewDrivingLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiRenewDrivingLicense.Image")));
             this.tsmiRenewDrivingLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiRenewDrivingLicense.Name = "tsmiRenewDrivingLicense";
-            this.tsmiRenewDrivingLicense.Size = new System.Drawing.Size(436, 38);
+            this.tsmiRenewDrivingLicense.Size = new System.Drawing.Size(438, 38);
             this.tsmiRenewDrivingLicense.Text = "Renew Driving License";
             this.tsmiRenewDrivingLicense.Click += new System.EventHandler(this.tsmiRenewDrivingLicense_Click);
             // 
-            // tsmiLostDrivingLicense
+            // tsmiLicenseReplacement
             // 
-            this.tsmiLostDrivingLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiLostDrivingLicense.Image")));
-            this.tsmiLostDrivingLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiLostDrivingLicense.Name = "tsmiLostDrivingLicense";
-            this.tsmiLostDrivingLicense.Size = new System.Drawing.Size(436, 38);
-            this.tsmiLostDrivingLicense.Text = "Lost Driving License";
-            // 
-            // tsmiDamagedDrivingLicense
-            // 
-            this.tsmiDamagedDrivingLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiDamagedDrivingLicense.Image")));
-            this.tsmiDamagedDrivingLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsmiDamagedDrivingLicense.Name = "tsmiDamagedDrivingLicense";
-            this.tsmiDamagedDrivingLicense.Size = new System.Drawing.Size(436, 38);
-            this.tsmiDamagedDrivingLicense.Text = "Damaged Driving License";
+            this.tsmiLicenseReplacement.Image = ((System.Drawing.Image)(resources.GetObject("tsmiLicenseReplacement.Image")));
+            this.tsmiLicenseReplacement.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmiLicenseReplacement.Name = "tsmiLicenseReplacement";
+            this.tsmiLicenseReplacement.Size = new System.Drawing.Size(438, 38);
+            this.tsmiLicenseReplacement.Text = "Replacement For Damage or Lost";
+            this.tsmiLicenseReplacement.Click += new System.EventHandler(this.tsmiLicenseReplacement_Click);
             // 
             // tsmiReleaseDetainedDrivingLicense
             // 
             this.tsmiReleaseDetainedDrivingLicense.Image = ((System.Drawing.Image)(resources.GetObject("tsmiReleaseDetainedDrivingLicense.Image")));
             this.tsmiReleaseDetainedDrivingLicense.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiReleaseDetainedDrivingLicense.Name = "tsmiReleaseDetainedDrivingLicense";
-            this.tsmiReleaseDetainedDrivingLicense.Size = new System.Drawing.Size(436, 38);
+            this.tsmiReleaseDetainedDrivingLicense.Size = new System.Drawing.Size(438, 38);
             this.tsmiReleaseDetainedDrivingLicense.Text = "Release Detained Driving License";
             // 
             // tsmiRetakeTest
@@ -186,7 +177,7 @@
             this.tsmiRetakeTest.Image = ((System.Drawing.Image)(resources.GetObject("tsmiRetakeTest.Image")));
             this.tsmiRetakeTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsmiRetakeTest.Name = "tsmiRetakeTest";
-            this.tsmiRetakeTest.Size = new System.Drawing.Size(436, 38);
+            this.tsmiRetakeTest.Size = new System.Drawing.Size(438, 38);
             this.tsmiRetakeTest.Text = "Retake Test";
             // 
             // tsmiManageApplications
@@ -392,8 +383,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiNewLocalLicense;
         private System.Windows.Forms.ToolStripMenuItem tsmiNewInternationalLicense;
         private System.Windows.Forms.ToolStripMenuItem tsmiRenewDrivingLicense;
-        private System.Windows.Forms.ToolStripMenuItem tsmiLostDrivingLicense;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDamagedDrivingLicense;
+        private System.Windows.Forms.ToolStripMenuItem tsmiLicenseReplacement;
         private System.Windows.Forms.ToolStripMenuItem tsmiReleaseDetainedDrivingLicense;
         private System.Windows.Forms.ToolStripMenuItem tsmiRetakeTest;
         private System.Windows.Forms.ToolStripMenuItem tsmiDetainLicenses;

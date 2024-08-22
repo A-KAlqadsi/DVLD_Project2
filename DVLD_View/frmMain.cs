@@ -112,5 +112,11 @@ namespace DVLD_View
             frmRenewLocalDrivingLicense renewLicense = new frmRenewLocalDrivingLicense();
             renewLicense.ShowDialog();
         }
+
+        private void tsmiLicenseReplacement_Click(object sender, EventArgs e)
+        {
+            frmReplacementForDamageOrLost replacement = new frmReplacementForDamageOrLost();
+            replacement.ShowDialog();
+        }
     }
 }
