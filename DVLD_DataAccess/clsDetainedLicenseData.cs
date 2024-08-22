@@ -188,6 +188,37 @@ namespace DVLD_DataAccess
 
         }
 
+        public static DataTable GetAllDetainedLicenses_Master()
+        {
+            DataTable table = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * from DetainedLicenses_View;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                    table.Load(reader);
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return table;
+
+        }
+
+
         public static bool IsDetainedLicenseExist(int detainID)
         {
             bool isExist = false;

@@ -36,6 +36,12 @@
             this.lblRecordsCount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnDetainLicense = new System.Windows.Forms.Button();
+            this.btnReleaseDetainedLicense = new System.Windows.Forms.Button();
+            this.cbIsReleaseFilter = new System.Windows.Forms.ComboBox();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbFilterDetainedLicenses = new System.Windows.Forms.ComboBox();
             this.colDetainID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLicenseID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetainDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,12 +51,6 @@
             this.colNationalNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colReleaseAppID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDetainLicense = new System.Windows.Forms.Button();
-            this.btnReleaseDetainedLicense = new System.Windows.Forms.Button();
-            this.cbIsReleaseFilter = new System.Windows.Forms.ComboBox();
-            this.txtFilter = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbFilterDetainedLicenses = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListDetainedLicenses)).BeginInit();
@@ -61,7 +61,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(612, 129);
+            this.label1.Location = new System.Drawing.Point(635, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(374, 36);
             this.label1.TabIndex = 4;
@@ -71,7 +71,7 @@
             // 
             this.pbManagePeople.BackColor = System.Drawing.Color.Transparent;
             this.pbManagePeople.Image = ((System.Drawing.Image)(resources.GetObject("pbManagePeople.Image")));
-            this.pbManagePeople.Location = new System.Drawing.Point(676, 5);
+            this.pbManagePeople.Location = new System.Drawing.Point(699, 5);
             this.pbManagePeople.Name = "pbManagePeople";
             this.pbManagePeople.Size = new System.Drawing.Size(220, 121);
             this.pbManagePeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -84,7 +84,7 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(7, 221);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1602, 320);
+            this.panel1.Size = new System.Drawing.Size(1676, 320);
             this.panel1.TabIndex = 5;
             // 
             // dgvListDetainedLicenses
@@ -110,7 +110,7 @@
             this.dgvListDetainedLicenses.ReadOnly = true;
             this.dgvListDetainedLicenses.RowHeadersWidth = 51;
             this.dgvListDetainedLicenses.RowTemplate.Height = 24;
-            this.dgvListDetainedLicenses.Size = new System.Drawing.Size(1602, 320);
+            this.dgvListDetainedLicenses.Size = new System.Drawing.Size(1676, 320);
             this.dgvListDetainedLicenses.TabIndex = 0;
             // 
             // lblRecordsCount
@@ -142,7 +142,7 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1470, 544);
+            this.btnClose.Location = new System.Drawing.Point(1547, 544);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(138, 42);
             this.btnClose.TabIndex = 15;
@@ -150,92 +150,13 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // colDetainID
-            // 
-            this.colDetainID.HeaderText = "D.ID";
-            this.colDetainID.MinimumWidth = 6;
-            this.colDetainID.Name = "colDetainID";
-            this.colDetainID.ReadOnly = true;
-            this.colDetainID.Width = 75;
-            // 
-            // colLicenseID
-            // 
-            this.colLicenseID.HeaderText = "L.ID";
-            this.colLicenseID.MinimumWidth = 6;
-            this.colLicenseID.Name = "colLicenseID";
-            this.colLicenseID.ReadOnly = true;
-            this.colLicenseID.Width = 75;
-            // 
-            // colDetainDate
-            // 
-            this.colDetainDate.HeaderText = "D.Date";
-            this.colDetainDate.MinimumWidth = 6;
-            this.colDetainDate.Name = "colDetainDate";
-            this.colDetainDate.ReadOnly = true;
-            this.colDetainDate.Width = 140;
-            // 
-            // colIsReleased
-            // 
-            this.colIsReleased.HeaderText = "Is Released";
-            this.colIsReleased.MinimumWidth = 6;
-            this.colIsReleased.Name = "colIsReleased";
-            this.colIsReleased.ReadOnly = true;
-            // 
-            // colFineFees
-            // 
-            this.colFineFees.HeaderText = "Fine Fees";
-            this.colFineFees.MinimumWidth = 6;
-            this.colFineFees.Name = "colFineFees";
-            this.colFineFees.ReadOnly = true;
-            this.colFineFees.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colFineFees.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colReleaseDate
-            // 
-            this.colReleaseDate.HeaderText = "Release Date";
-            this.colReleaseDate.MinimumWidth = 6;
-            this.colReleaseDate.Name = "colReleaseDate";
-            this.colReleaseDate.ReadOnly = true;
-            this.colReleaseDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colReleaseDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colReleaseDate.Width = 140;
-            // 
-            // colNationalNo
-            // 
-            this.colNationalNo.HeaderText = "N.No";
-            this.colNationalNo.MinimumWidth = 6;
-            this.colNationalNo.Name = "colNationalNo";
-            this.colNationalNo.ReadOnly = true;
-            this.colNationalNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colNationalNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colFullName
-            // 
-            this.colFullName.HeaderText = "Full Name";
-            this.colFullName.MinimumWidth = 6;
-            this.colFullName.Name = "colFullName";
-            this.colFullName.ReadOnly = true;
-            this.colFullName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colFullName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colFullName.Width = 290;
-            // 
-            // colReleaseAppID
-            // 
-            this.colReleaseAppID.HeaderText = "Rlease App.ID";
-            this.colReleaseAppID.MinimumWidth = 6;
-            this.colReleaseAppID.Name = "colReleaseAppID";
-            this.colReleaseAppID.ReadOnly = true;
-            this.colReleaseAppID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colReleaseAppID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colReleaseAppID.Width = 120;
-            // 
             // btnDetainLicense
             // 
             this.btnDetainLicense.BackColor = System.Drawing.Color.White;
             this.btnDetainLicense.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnDetainLicense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetainLicense.Image = ((System.Drawing.Image)(resources.GetObject("btnDetainLicense.Image")));
-            this.btnDetainLicense.Location = new System.Drawing.Point(1522, 135);
+            this.btnDetainLicense.Location = new System.Drawing.Point(1596, 135);
             this.btnDetainLicense.Name = "btnDetainLicense";
             this.btnDetainLicense.Size = new System.Drawing.Size(84, 80);
             this.btnDetainLicense.TabIndex = 18;
@@ -248,7 +169,7 @@
             this.btnReleaseDetainedLicense.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnReleaseDetainedLicense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReleaseDetainedLicense.Image = ((System.Drawing.Image)(resources.GetObject("btnReleaseDetainedLicense.Image")));
-            this.btnReleaseDetainedLicense.Location = new System.Drawing.Point(1428, 135);
+            this.btnReleaseDetainedLicense.Location = new System.Drawing.Point(1506, 135);
             this.btnReleaseDetainedLicense.Name = "btnReleaseDetainedLicense";
             this.btnReleaseDetainedLicense.Size = new System.Drawing.Size(84, 80);
             this.btnReleaseDetainedLicense.TabIndex = 19;
@@ -271,6 +192,7 @@
             this.cbIsReleaseFilter.Size = new System.Drawing.Size(122, 33);
             this.cbIsReleaseFilter.TabIndex = 23;
             this.cbIsReleaseFilter.Visible = false;
+            this.cbIsReleaseFilter.SelectedIndexChanged += new System.EventHandler(this.cbIsReleaseFilter_SelectedIndexChanged);
             // 
             // txtFilter
             // 
@@ -281,6 +203,8 @@
             this.txtFilter.Size = new System.Drawing.Size(270, 30);
             this.txtFilter.TabIndex = 22;
             this.txtFilter.Visible = false;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
             // 
             // label2
             // 
@@ -314,6 +238,86 @@
             this.cbFilterDetainedLicenses.Name = "cbFilterDetainedLicenses";
             this.cbFilterDetainedLicenses.Size = new System.Drawing.Size(192, 33);
             this.cbFilterDetainedLicenses.TabIndex = 20;
+            this.cbFilterDetainedLicenses.SelectedIndexChanged += new System.EventHandler(this.cbFilterDetainedLicenses_SelectedIndexChanged);
+            // 
+            // colDetainID
+            // 
+            this.colDetainID.HeaderText = "D.ID";
+            this.colDetainID.MinimumWidth = 6;
+            this.colDetainID.Name = "colDetainID";
+            this.colDetainID.ReadOnly = true;
+            this.colDetainID.Width = 75;
+            // 
+            // colLicenseID
+            // 
+            this.colLicenseID.HeaderText = "L.ID";
+            this.colLicenseID.MinimumWidth = 6;
+            this.colLicenseID.Name = "colLicenseID";
+            this.colLicenseID.ReadOnly = true;
+            this.colLicenseID.Width = 75;
+            // 
+            // colDetainDate
+            // 
+            this.colDetainDate.HeaderText = "D.Date";
+            this.colDetainDate.MinimumWidth = 6;
+            this.colDetainDate.Name = "colDetainDate";
+            this.colDetainDate.ReadOnly = true;
+            this.colDetainDate.Width = 165;
+            // 
+            // colIsReleased
+            // 
+            this.colIsReleased.HeaderText = "Is Released";
+            this.colIsReleased.MinimumWidth = 6;
+            this.colIsReleased.Name = "colIsReleased";
+            this.colIsReleased.ReadOnly = true;
+            // 
+            // colFineFees
+            // 
+            this.colFineFees.HeaderText = "Fine Fees";
+            this.colFineFees.MinimumWidth = 6;
+            this.colFineFees.Name = "colFineFees";
+            this.colFineFees.ReadOnly = true;
+            this.colFineFees.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colFineFees.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colReleaseDate
+            // 
+            this.colReleaseDate.HeaderText = "Release Date";
+            this.colReleaseDate.MinimumWidth = 6;
+            this.colReleaseDate.Name = "colReleaseDate";
+            this.colReleaseDate.ReadOnly = true;
+            this.colReleaseDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colReleaseDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colReleaseDate.Width = 165;
+            // 
+            // colNationalNo
+            // 
+            this.colNationalNo.HeaderText = "N.No";
+            this.colNationalNo.MinimumWidth = 6;
+            this.colNationalNo.Name = "colNationalNo";
+            this.colNationalNo.ReadOnly = true;
+            this.colNationalNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colNationalNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colFullName
+            // 
+            this.colFullName.HeaderText = "Full Name";
+            this.colFullName.MinimumWidth = 6;
+            this.colFullName.Name = "colFullName";
+            this.colFullName.ReadOnly = true;
+            this.colFullName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colFullName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colFullName.Width = 290;
+            // 
+            // colReleaseAppID
+            // 
+            this.colReleaseAppID.HeaderText = "Rlease App.ID";
+            this.colReleaseAppID.MinimumWidth = 6;
+            this.colReleaseAppID.Name = "colReleaseAppID";
+            this.colReleaseAppID.ReadOnly = true;
+            this.colReleaseAppID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colReleaseAppID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colReleaseAppID.Width = 120;
             // 
             // frmManageDetainedLicenses
             // 
@@ -321,7 +325,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1613, 606);
+            this.ClientSize = new System.Drawing.Size(1695, 606);
             this.Controls.Add(this.cbIsReleaseFilter);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label2);
@@ -338,6 +342,7 @@
             this.Name = "frmManageDetainedLicenses";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Detained Licenses";
+            this.Load += new System.EventHandler(this.frmManageDetainedLicenses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListDetainedLicenses)).EndInit();
@@ -355,6 +360,12 @@
         private System.Windows.Forms.Label lblRecordsCount;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnDetainLicense;
+        private System.Windows.Forms.Button btnReleaseDetainedLicense;
+        private System.Windows.Forms.ComboBox cbIsReleaseFilter;
+        private System.Windows.Forms.TextBox txtFilter;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbFilterDetainedLicenses;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetainID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLicenseID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetainDate;
@@ -364,11 +375,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colNationalNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReleaseAppID;
-        private System.Windows.Forms.Button btnDetainLicense;
-        private System.Windows.Forms.Button btnReleaseDetainedLicense;
-        private System.Windows.Forms.ComboBox cbIsReleaseFilter;
-        private System.Windows.Forms.TextBox txtFilter;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbFilterDetainedLicenses;
     }
 }

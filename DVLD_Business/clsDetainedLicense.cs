@@ -76,6 +76,10 @@ namespace DVLD_Business
         {
             return clsDetainedLicenseData.GetAllDetainedLicenses();
         }
+        public static DataTable GetAllMaster()
+        {
+            return clsDetainedLicenseData.GetAllDetainedLicenses_Master();
+        }
 
         public static bool Delete(int detainID) 
         { 
