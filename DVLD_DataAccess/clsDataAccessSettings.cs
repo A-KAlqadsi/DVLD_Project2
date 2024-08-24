@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace DVLD_DataAccess
 {
     public class clsDataAccessSettings
     {
-        public static string ConnectionString = "Server=Abu-Ghaith\\AMSSQLSERVER;DataBase=DVLD;User Id=sa;Password=isa123456;";
+
+        public static string ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
+
     }
 }
