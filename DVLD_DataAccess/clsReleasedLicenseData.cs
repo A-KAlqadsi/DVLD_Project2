@@ -37,7 +37,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ReleasedLicenseData Error: {ex.Message}");
             }
             finally
             {
@@ -74,7 +75,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ReleasedLicenseData Error: {ex.Message}");
             }
             finally
             {
@@ -108,7 +110,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ReleasedLicenseData Error: {ex.Message}");
             }
             finally
             {
@@ -137,7 +140,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ReleasedLicenseData Error: {ex.Message}");
             }
             finally
             {
@@ -167,7 +171,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ReleasedLicenseData Error: {ex.Message}");
             }
             finally
             {
@@ -196,7 +201,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ReleasedLicenseData Error: {ex.Message}");
             }
             finally
             {

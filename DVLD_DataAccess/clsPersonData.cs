@@ -46,6 +46,8 @@ namespace DVLD_DataAccess
             catch (Exception ex)
             {
                 isFound = false;
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"PersonData Error: {ex.Message}");
             }
             finally
             {
@@ -95,6 +97,8 @@ namespace DVLD_DataAccess
             catch (Exception ex)
             {
                 isFound = false;
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"PersonData Error: {ex.Message}");
             }
             finally
             {
@@ -161,6 +165,8 @@ namespace DVLD_DataAccess
             catch (Exception ex)
             {
                 personID = -1;
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"PersonData Error: {ex.Message}");
             }
             finally
             {
@@ -220,6 +226,8 @@ namespace DVLD_DataAccess
             catch (Exception ex)
             {
                 rowsAffected = 0;
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"PersonData Error: {ex.Message}");
             }
             finally
             {
@@ -249,7 +257,8 @@ namespace DVLD_DataAccess
             }
             catch(Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"PersonData Error: {ex.Message}");
             }
             finally
             {
@@ -277,6 +286,8 @@ namespace DVLD_DataAccess
             catch( Exception ex)
             {
                 rowsAffected = 0;
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"PersonData Error: {ex.Message}");
             }
             finally
             {
@@ -306,6 +317,8 @@ namespace DVLD_DataAccess
             catch (Exception ex)
             {
                 isExist = false;
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"PersonData Error: {ex.Message}");
             }
             finally
             {
@@ -335,6 +348,8 @@ namespace DVLD_DataAccess
             catch (Exception ex)
             {
                 isExist = false;
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"PersonData Error: {ex.Message}");
             }
             finally
             {

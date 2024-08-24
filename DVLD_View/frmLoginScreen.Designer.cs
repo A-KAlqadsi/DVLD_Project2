@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLoginScreen));
             this.pbDVLDLogo = new System.Windows.Forms.PictureBox();
-            this.cbRememberMe = new System.Windows.Forms.CheckBox();
+            this.chkRememberMe = new System.Windows.Forms.CheckBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -68,18 +68,18 @@
             this.pbDVLDLogo.TabIndex = 0;
             this.pbDVLDLogo.TabStop = false;
             // 
-            // cbRememberMe
+            // chkRememberMe
             // 
-            this.cbRememberMe.AutoSize = true;
-            this.cbRememberMe.Checked = true;
-            this.cbRememberMe.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbRememberMe.Location = new System.Drawing.Point(232, 326);
-            this.cbRememberMe.Name = "cbRememberMe";
-            this.cbRememberMe.Size = new System.Drawing.Size(162, 29);
-            this.cbRememberMe.TabIndex = 2;
-            this.cbRememberMe.Text = "Remember Me";
-            this.cbRememberMe.UseVisualStyleBackColor = true;
+            this.chkRememberMe.AutoSize = true;
+            this.chkRememberMe.Checked = true;
+            this.chkRememberMe.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRememberMe.Location = new System.Drawing.Point(232, 326);
+            this.chkRememberMe.Name = "chkRememberMe";
+            this.chkRememberMe.Size = new System.Drawing.Size(162, 29);
+            this.chkRememberMe.TabIndex = 2;
+            this.chkRememberMe.Text = "Remember Me";
+            this.chkRememberMe.UseVisualStyleBackColor = true;
             // 
             // btnLogin
             // 
@@ -249,7 +249,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.cbRememberMe);
+            this.panel1.Controls.Add(this.chkRememberMe);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.txtUsername);
@@ -296,7 +296,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pbDVLDLogo;
-        private System.Windows.Forms.CheckBox cbRememberMe;
+        private System.Windows.Forms.CheckBox chkRememberMe;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUsername;

@@ -31,7 +31,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
             }
             finally
             {
@@ -65,7 +66,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
             }
             finally
             {
@@ -97,7 +99,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
             }
             finally
             {
@@ -125,6 +128,8 @@ namespace DVLD_DataAccess
             catch (Exception ex)
             {
                 rowsAffected = 0;
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
             }
             finally
             {
@@ -154,7 +159,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
             }
             finally
             {
@@ -183,7 +189,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
             }
             finally
             {

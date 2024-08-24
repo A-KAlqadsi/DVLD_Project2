@@ -44,6 +44,9 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationData Error: {ex.Message}");
+
                 isFound = false;
             }
             finally
@@ -91,7 +94,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationData Error: {ex.Message}");
             }
             finally
             {
@@ -135,7 +139,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationData Error: {ex.Message}");
             }
             finally
             {
@@ -165,7 +170,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationData Error: {ex.Message}");
             }
             finally
             {
@@ -192,6 +198,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationData Error: {ex.Message}");
                 rowsAffected = 0;
             }
             finally
@@ -223,7 +231,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationData Error: {ex.Message}");
             }
             finally
             {
@@ -253,6 +262,8 @@ namespace DVLD_DataAccess
             catch (Exception ex)
             {
                 isExist = false;
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationData Error: {ex.Message}");
             }
             finally
             {
@@ -283,7 +294,8 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                
+                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                eventLogger.Log($"ApplicationData Error: {ex.Message}");
             }
             finally
             {
