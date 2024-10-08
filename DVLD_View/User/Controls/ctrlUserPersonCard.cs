@@ -29,6 +29,7 @@ namespace DVLD_View
         public ctrlUserPersonCard()
         {
             InitializeComponent();
+            
         }
 
         public void LoadUserInfo(int userID)

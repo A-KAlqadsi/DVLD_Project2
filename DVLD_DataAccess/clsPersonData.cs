@@ -241,28 +241,30 @@ namespace DVLD_DataAccess
         {
             DataTable table = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                string query = "SELECT * FROM People;";
 
-            string query = "SELECT * From People";
 
-            SqlCommand command = new SqlCommand(query, connection);
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                    table.Load(reader);
-                reader.Close();
-                
-            }
-            catch(Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"PersonData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                table.Load(reader);
+                        }                          
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+                        eventLogger.Log($"PersonData Error: {ex.Message}");
+                    }
+                    
+                }
             }
             return table;
 
