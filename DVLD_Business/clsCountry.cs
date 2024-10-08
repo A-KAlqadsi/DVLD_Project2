@@ -10,36 +10,14 @@ namespace DVLD_Business
 {
     public class clsCountry
     {
-        enum enMode { AddNew = 1, Update = 2 }
-        enMode _Mode;
-
+       
         public int CountryID { get; }
         public string CountryName;
        
-
-        public clsCountry()
-        {
-            CountryID = -1;
-            CountryName = string.Empty;
-            _Mode = enMode.AddNew;
-        }
-
         private clsCountry(int countryID, string countryName)
         {
             CountryName = countryName;
             CountryID = countryID;
-            _Mode = enMode.Update;
-        }
-
-        private bool _AddNewCountry()
-        {
-            int countryID = clsCountryData.AddNewCountry(CountryName);
-            return countryID != -1;
-        }
-
-        private bool _UpdateCountry()
-        {
-            return clsCountryData.UpdateCountry(CountryID,CountryName);
         }
 
         public static clsCountry Find(int countryID)
@@ -71,38 +49,6 @@ namespace DVLD_Business
             return clsCountryData.GetAllCountries();
         }
 
-        public static bool Delete(int countryID)
-        {
-            return clsCountryData.DeleteCountry(countryID);
-        }
-
-        public static bool IsCountryExist(int countryID)
-        {
-            return clsCountryData.IsCountryExist(countryID);
-        }
-
-        public static bool IsCountryExist(string countryName)
-        {
-            return clsCountryData.IsCountryExist(countryName);
-        }
-
-        public bool Save()
-        {
-            switch (_Mode)
-            {
-                case enMode.AddNew:
-                    {
-                        _Mode = enMode.Update;
-                        if (_AddNewCountry())
-                            return true;
-                        else
-                            return false;
-                    }
-                case enMode.Update:
-                    return _UpdateCountry();
-            }
-            return false;
-        }
 
     }
 }
