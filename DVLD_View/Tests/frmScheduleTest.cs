@@ -139,7 +139,7 @@ namespace DVLD_View
                 clsLicenseClass licenseClass = clsLicenseClass.Find(localLicense.LicenseClassID);
                 lblDLAppID.Text = localLicense.LocalDrivingLicenseAppID.ToString();
                 lblClassName.Text = licenseClass.ClassName;
-                lblApplicant.Text = clsPerson.Find(application.ApplicantApplicationID).FullName();
+                lblApplicant.Text = clsPerson.Find(application.ApplicantApplicationID).FullName;
                 lblAppFees.Text = testType.TestTypeFees.ToString();
                 _TestTypeFees = testType.TestTypeFees;
                 lblTrial.Text = "0";// In progress

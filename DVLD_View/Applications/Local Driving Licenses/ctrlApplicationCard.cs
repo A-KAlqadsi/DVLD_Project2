@@ -83,7 +83,7 @@ namespace DVLD_View
             lblAppID.Text = _Application.ApplicationID.ToString();
             lblAppDate.Text = _Application.ApplicationDate.ToShortDateString();
             lblAppFees.Text = _Application.PaidFees.ToString();
-            lblApplicant.Text = clsPerson.Find(_Application.ApplicantApplicationID).FullName();
+            lblApplicant.Text = clsPerson.Find(_Application.ApplicantApplicationID).FullName;
             _PersonID =_Application.ApplicantApplicationID;
             lblAppStatus.Text = (_Application.ApplicationStatus == 1)? "New" : (_Application.ApplicationStatus == 2)?"Cancelled":"Completed";
             lblAppType.Text = clsApplicationType.Find(_Application.ApplicationTypeID).ApplicationTitle;

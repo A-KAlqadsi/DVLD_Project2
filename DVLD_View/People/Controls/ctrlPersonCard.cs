@@ -88,7 +88,7 @@ namespace DVLD_View
             _PersonID = _Person.PersonID;
             lblPersonID.Text = _Person.PersonID.ToString();
             lblNationalNo.Text = _Person.NationalNo.ToString();
-            lblName.Text = _Person.FullName();
+            lblName.Text = _Person.FullName;
             
             if(_Person.Gender == 0)
             {

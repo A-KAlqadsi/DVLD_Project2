@@ -17,11 +17,25 @@ namespace DVLD_Business
         public int PersonID { get; set; }
         public string NationalNo;
         public string FirstName, SecondName, ThirdName, LastName;
+        public string FullName
+        {
+            get { return( FirstName + " " + SecondName + " " + ThirdName + " " + LastName); }
+        }
         public DateTime DateOfBirth;
         public string  Address, Phone, Email;
         public short Gender;
         public int NationalityCountryID;
-        public string ImagePath;
+
+        private string _ImagePath;
+
+        public string ImagePath
+        {
+            get { return _ImagePath; }
+            set { _ImagePath = value; }
+        }
+
+
+        public clsCountry Country;
 
         public clsPerson()
         {
@@ -39,7 +53,7 @@ namespace DVLD_Business
             NationalityCountryID = -1;
             ImagePath = string.Empty;
             _Mode = enMode.AddNew;
-
+            
         }
 
         private clsPerson(int personID,string nationalNo,string firstName,string secondName,
@@ -58,6 +72,7 @@ namespace DVLD_Business
             Phone =phone;
             Email =email;
             NationalityCountryID = nationalityCountryID;
+            Country = clsCountry.Find(nationalityCountryID);
             ImagePath=imagePath;
             _Mode = enMode.Update;
         }
@@ -84,9 +99,12 @@ namespace DVLD_Business
             short gender = 0;
             string address = "", phone = "", email = "",imagePath ="";
             int nationalityCountryID = -1;
-            
-            if(clsPersonData.GetPersonById(personID,ref nationalNo,ref firstName,ref secondName,ref thirdName,ref lastName,
-                ref dateOfBirth,ref gender,ref address,ref phone,ref email,ref nationalityCountryID,ref imagePath))
+
+            bool isExist = clsPersonData.GetPersonById(personID, ref nationalNo, ref firstName, ref secondName, ref thirdName, ref lastName,
+                ref dateOfBirth, ref gender, ref address, ref phone, ref email, ref nationalityCountryID, ref imagePath);
+
+
+			if (isExist)
             {
                 return new clsPerson(personID, nationalNo, firstName,secondName,thirdName,
                     lastName,dateOfBirth,gender,address,phone,email,
@@ -106,8 +124,10 @@ namespace DVLD_Business
             string address = "", phone = "", email = "", imagePath = "";
             int nationalityCountryID = -1;
 
-            if (clsPersonData.GetPersonByNationalNo(nationalNo, ref personID, ref firstName, ref secondName, ref thirdName, ref lastName,
-                ref dateOfBirth, ref gender, ref address, ref phone, ref email, ref nationalityCountryID, ref imagePath))
+            bool isExist = clsPersonData.GetPersonByNationalNo(nationalNo, ref personID, ref firstName, ref secondName, ref thirdName, ref lastName,
+                ref dateOfBirth, ref gender, ref address, ref phone, ref email, ref nationalityCountryID, ref imagePath);
+
+			if (isExist)
             {
                 return new clsPerson(personID, nationalNo, firstName, secondName, thirdName,
                     lastName, dateOfBirth, gender, address, phone, email,
@@ -159,10 +179,6 @@ namespace DVLD_Business
             return false;
         }
 
-        public string FullName()
-        {
-            return FirstName + " " + SecondName + " " + ThirdName + " " + LastName;
-        }
-
+       
     }
 }
