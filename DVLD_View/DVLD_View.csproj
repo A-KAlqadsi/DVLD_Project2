@@ -51,6 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsLoginUser.cs" />
+    <Compile Include="Global Classes\Format.cs" />
+    <Compile Include="Global Classes\Global.cs" />
+    <Compile Include="Global Classes\Util.cs" />
+    <Compile Include="Global Classes\Validation.cs" />
     <Compile Include="People\Controls\ctrlPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
