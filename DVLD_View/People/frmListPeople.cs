@@ -80,12 +80,12 @@ namespace DVLD_View
 		private void cbFilterPeople_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			txtFilter.Visible = (cbFilterPeople.Text != "None");
+			txtFilter.Text = "";
 			if (txtFilter.Visible)
 			{
-				txtFilter.Text = "";
 				txtFilter.Focus();
 			}
-
+			
 		}
 
 		private void txtFilter_TextChanged(object sender, EventArgs e)
