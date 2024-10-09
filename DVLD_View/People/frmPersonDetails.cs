@@ -12,21 +12,23 @@ namespace DVLD_View
 {
     public partial class frmPersonDetails : Form
     {
-        private int _PersonID;
+        
         public frmPersonDetails(int personID)
         {
             InitializeComponent();
-            _PersonID = personID;
-        }
+			ctrlPersonCard1.LoadPersonInfo(personID);
+		}
 
-        private void btnClose_Click(object sender, EventArgs e)
+		public frmPersonDetails(string nationalNo)
+		{
+			InitializeComponent();
+			ctrlPersonCard1.LoadPersonInfo(nationalNo);
+		}
+
+		private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void frmPersonDetails_Load(object sender, EventArgs e)
-        {
-            ctrlPersonCard1.LoadPersonInfo(_PersonID);
-        }
     }
 }
