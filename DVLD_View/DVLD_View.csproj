@@ -495,7 +495,6 @@
   <ItemGroup>
     <None Include="Resources\Male 512.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Add Person 40.png" />
   </ItemGroup>

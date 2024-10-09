@@ -77,11 +77,11 @@ namespace DVLD_View
             else
 				pbPersonalImage.Image = Resources.Female_512;
 
-            dtpDateOfBirth.MinDate = DateTime.Now.AddYears(18);
+            dtpDateOfBirth.MaxDate = DateTime.Now.AddYears(-18);
 
-            dtpDateOfBirth.Value = dtpDateOfBirth.MinDate;
+            dtpDateOfBirth.Value = dtpDateOfBirth.MaxDate;
 
-            dtpDateOfBirth.MaxDate = DateTime.Now.AddYears(100);
+            dtpDateOfBirth.MinDate = DateTime.Now.AddYears(-100);
 
             cbCountries.SelectedIndex = cbCountries.FindString("Yemen");
 
