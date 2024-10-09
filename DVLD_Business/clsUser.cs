@@ -14,6 +14,7 @@ namespace DVLD_Business
 
         public int UserID { get; set; }
         public int PersonID { get; set; }
+        public clsPerson PersonInfo { get; set; }
         public string Username;
         public string Password;
         public bool IsActive;
@@ -32,6 +33,7 @@ namespace DVLD_Business
         {
             Username = userName;
             PersonID = personID;
+            PersonInfo = clsPerson.Find(PersonID);
             UserID = userID;
             Password = password;
             IsActive = isActive;
@@ -65,7 +67,37 @@ namespace DVLD_Business
 
         }
 
-        public static clsUser Find(string userName)
+		public static clsUser FindByPersonId(int personId)
+		{
+			int userID = -1;
+			string userName = string.Empty;
+			string password = string.Empty;
+			bool isActive = false;
+
+			if (clsUserData.GetUserByPersonId(personId, ref userID, ref userName, ref password, ref isActive))
+			{
+				return new clsUser(personId, userID, userName, password, isActive);
+			}
+			else
+				return null;
+
+		}
+
+        public static clsUser FindByUserNameAndPassword(string userName, string password)
+        {
+			int userID = -1;
+            int personId = -1;
+			bool isActive = false;
+
+			if (clsUserData.GetUserByUsernameAndPassword(userName, password, ref userID,ref personId, ref isActive))
+			{
+				return new clsUser(personId, userID, userName, password, isActive);
+			}
+			else
+				return null;
+		}
+
+		public static clsUser Find(string userName)
         {
             int personID = -1;
             int  userID = -1;
@@ -90,6 +122,7 @@ namespace DVLD_Business
         {
             return clsUserData.GetAllUsersMaster();
         }
+        
         public static bool Delete(int userID)
         {
             return clsUserData.DeleteUser(userID);
@@ -105,7 +138,12 @@ namespace DVLD_Business
             return clsUserData.IsUserExist(userName);
         }
 
-        public static bool IsUserConnectedToService(int userID)
+		public static bool IsUserExistForPersonID(int personID)
+		{
+			return clsUserData.IsUserExistForPersonId(personID);
+		}
+
+		public static bool IsUserConnectedToService(int userID)
         {
             return clsUserData.IsUserMatchedApplication(userID);
         }
