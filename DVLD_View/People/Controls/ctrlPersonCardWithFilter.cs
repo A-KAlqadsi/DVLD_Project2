@@ -163,5 +163,9 @@ namespace DVLD_View
 				e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
 
 		}
-	}
+	    public void FilterFocus()
+        {
+            txtSearch.Focus();
+        }
+    }
 }
