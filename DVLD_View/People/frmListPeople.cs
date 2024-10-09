@@ -157,7 +157,6 @@ namespace DVLD_View
 
 		private void tsmiShowDetails_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("show person details will be here");
             int personID =(int)dgvListPeople.CurrentRow.Cells[0].Value;
             frmPersonDetails personDetails = new frmPersonDetails(personID);
             personDetails.ShowDialog();
@@ -166,8 +165,7 @@ namespace DVLD_View
 
         private void tsmiAddNewPerson_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("add new person will be here");
-            frmAddEditPerson addEditPerson = new frmAddEditPerson(-1);
+            frmAddEditPerson addEditPerson = new frmAddEditPerson();
             addEditPerson.ShowDialog();
             frmListPeople_Load(null, null);
         }
@@ -214,12 +212,8 @@ namespace DVLD_View
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("add new person will be here");
-            frmAddEditPerson addEditPerson = new frmAddEditPerson(-1);
-            addEditPerson.ShowDialog();
-            frmListPeople_Load(null, null);
+            MessageBox.Show("this button is not work");            
         }
-
 
 
 		private void btnClose_Click(object sender, EventArgs e)
@@ -240,6 +234,13 @@ namespace DVLD_View
 		private void button1_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		private void btnAddPerson_Click(object sender, EventArgs e)
+		{
+			frmAddEditPerson frm = new frmAddEditPerson();
+			frm.ShowDialog();
+			frmListPeople_Load(null, null);
 		}
 	}
 }

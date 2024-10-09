@@ -51,6 +51,7 @@
 			this.pbManagePeople = new System.Windows.Forms.PictureBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnAddPerson = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvListPeople)).BeginInit();
 			this.contextMenuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbManagePeople)).BeginInit();
@@ -281,7 +282,7 @@
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.button1.Location = new System.Drawing.Point(1284, 560);
-			this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.button1.Margin = new System.Windows.Forms.Padding(2);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(101, 29);
 			this.button1.TabIndex = 93;
@@ -298,12 +299,24 @@
 			this.panel1.Size = new System.Drawing.Size(1360, 336);
 			this.panel1.TabIndex = 94;
 			// 
+			// btnAddPerson
+			// 
+			this.btnAddPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAddPerson.Image = global::DVLD_View.Properties.Resources.Add_Person_40;
+			this.btnAddPerson.Location = new System.Drawing.Point(1296, 159);
+			this.btnAddPerson.Name = "btnAddPerson";
+			this.btnAddPerson.Size = new System.Drawing.Size(88, 55);
+			this.btnAddPerson.TabIndex = 95;
+			this.btnAddPerson.UseVisualStyleBackColor = true;
+			this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
+			// 
 			// frmListPeople
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(1396, 595);
+			this.Controls.Add(this.btnAddPerson);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.btnClose);
@@ -354,5 +367,6 @@
         private System.Windows.Forms.Button btnClose;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Button btnAddPerson;
 	}
 }
