@@ -67,6 +67,7 @@
     <Compile Include="People\Controls\ctrlPersonCardWithFilter.Designer.cs">
       <DependentUpon>ctrlPersonCardWithFilter.cs</DependentUpon>
     </Compile>
+    <Compile Include="People\Controls\Event Args\OnPersonSelectedEventArgs.cs" />
     <Compile Include="User\Controls\ctrlUserPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -504,5 +505,6 @@
   <ItemGroup>
     <None Include="Resources\Close 32.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

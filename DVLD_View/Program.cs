@@ -18,7 +18,7 @@ namespace DVLD_View
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmManageDetainedLicenses());
             Application.Run(new frmLoginScreen());
-            //Application.Run(new frmManageUsers());
+            //Application.Run(new frmFindPerson());
         }
     }
 }

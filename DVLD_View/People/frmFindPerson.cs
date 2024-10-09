@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_View.People.Controls.Events;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,5 +29,10 @@ namespace DVLD_View
         {
            
         }
-    }
+
+		private void ctrlPersonCardWithFilter1_OnPersonSelected(object sender, OnPersonSelectedEventArgs e)
+		{
+            MessageBox.Show(e.PersonId.ToString()); 
+		}
+	}
 }
