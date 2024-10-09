@@ -25,6 +25,10 @@ namespace DVLD_View
                 return _PersonID;
             }
         }
+        public clsPerson SelectedPersonInfo
+        {
+            get { return _Person;}
+        }
 
         public ctrlPersonCard()
         {
@@ -40,14 +44,8 @@ namespace DVLD_View
                 _ResetPersonInfo();
                 MessageBox.Show("No Person with PersonID = " + personID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                _PersonID = personID;
+            else                
                 _FillPersonInfo();
-                llEditPerson.Enabled = true;
-            }
-
-
         }
 
         public void LoadPersonInfo(string nationalNo)
@@ -56,20 +54,15 @@ namespace DVLD_View
             if (_Person == null)
             {
                 _ResetPersonInfo();
-                MessageBox.Show("No Person with PersonID = " + nationalNo, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Person with NationalNo = " + nationalNo, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-            {
-                _PersonID = _Person.PersonID;
-                _FillPersonInfo();
-                llEditPerson.Enabled = true;
-            }
-
-
+               _FillPersonInfo();
         }
 
         private void _ResetPersonInfo()
         {
+            llEditPerson.Enabled = false;
             lblPersonID.Text = "[????]";
             lblName.Text = "[????]";
             lblAddress.Text = "[????]";
@@ -82,48 +75,48 @@ namespace DVLD_View
             lblPhone.Text = "[????]";
             pbPersonalImage.Image = Resources.Male_512;
         }
-
-        private void _FillPersonInfo()
+        private void _LoadPersonImage()
         {
-            _PersonID = _Person.PersonID;
+			if (_Person.Gender == 0)
+            {
+				pbGender.Image = Resources.Man_32;
+				pbPersonalImage.Image = Resources.Male_512;
+			}
+            else
+            {
+				pbGender.Image = Resources.Woman_32;
+				pbPersonalImage.Image = Resources.Female_512;
+			}
+
+			if (_Person.ImagePath != "")
+				if (File.Exists(_Person.ImagePath))
+					pbPersonalImage.ImageLocation =_Person.ImagePath;
+				else
+					MessageBox.Show("Could not find this image: " + _Person.ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+		}
+		private void _FillPersonInfo()
+        {
+			llEditPerson.Enabled = true;
+			_PersonID = _Person.PersonID;
             lblPersonID.Text = _Person.PersonID.ToString();
             lblNationalNo.Text = _Person.NationalNo.ToString();
             lblName.Text = _Person.FullName;
-            
-            if(_Person.Gender == 0)
-            {
-                pbGender.Image = Resources.Man_32;
-                lblGender.Text = "Male";
-            }
-            else
-            {
-                pbGender.Image = Resources.Woman_32;
-                lblGender.Text = "Female";
-            }
-            lblEmail.Text = _Person.Email;
-            lblPhone.Text = _Person.Phone;
-            lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
-            lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
-            lblAddress.Text = _Person.Address;
+			lblEmail.Text = _Person.Email;
+            lblGender.Text = _Person.Gender == 0 ? "Male" : "Female";
+			lblPhone.Text = _Person.Phone;
+			lblDateOfBirth.Text = _Person.DateOfBirth.ToShortDateString();
+			lblCountry.Text = clsCountry.Find(_Person.NationalityCountryID).CountryName;
+			lblAddress.Text = _Person.Address;
 
-            if (_Person.Gender == 0)
-                pbPersonalImage.Image = Resources.Male_512;
-            else
-                pbPersonalImage.Image = Resources.Female_512;
-
-            if (_Person.ImagePath != "")
-                if (File.Exists(_Person.ImagePath))
-                    pbPersonalImage.Load(_Person.ImagePath);
-                else
-                    MessageBox.Show("Could not find this image: " + _Person.ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
-
-
+            _LoadPersonImage();
         }
 
         private void llEditPerson_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             frmAddEditPerson addEditPerson = new frmAddEditPerson(_PersonID);
             addEditPerson.ShowDialog();
+            LoadPersonInfo(_PersonID);
         }
     }
 }

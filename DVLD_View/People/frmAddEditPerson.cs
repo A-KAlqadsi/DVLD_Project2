@@ -191,7 +191,6 @@ namespace DVLD_View
 			return true;
 		}
 
-
 		private void btnSave_Click(object sender, EventArgs e)
         {
 			if (!this.ValidateChildren())
@@ -259,7 +258,7 @@ namespace DVLD_View
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string selectedFilePath = openFileDialog1.FileName;
-                pbPersonalImage.Load(selectedFilePath);
+                pbPersonalImage.ImageLocation = selectedFilePath;
                 llRemoveImage.Visible = true;
             }
         }
