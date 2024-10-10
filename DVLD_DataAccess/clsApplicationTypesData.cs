@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
+using System.Security.Policy;
 
 
 namespace DVLD_DataAccess
@@ -9,196 +11,146 @@ namespace DVLD_DataAccess
     {
         public static bool GetApplicationTypeByID(int appTypeID ,ref string appTypeTitle,ref float appFees)
         {
-            bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			bool isFound = false;
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
+				using (SqlCommand command = new SqlCommand("SP_GetApplicationType", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@ApplicationTypeID", appTypeID);
 
-            string query = "SELECT * From ApplicationTypes WHERE ApplicationTypeID=@ApplicationTypeID;";
+					try
+					{
+						connection.Open();
 
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@ApplicationTypeID", appTypeID);
+						using (SqlDataReader reader = command.ExecuteReader())
+						{
+							if (reader.Read())
+							{
+                                appTypeTitle = (string)reader["ApplicationTypeTitle"];
+                                appFees = Convert.ToSingle(reader["ApplicationFees"]);
+								isFound = true;
+							}
 
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if(reader.Read())
-                {
-                    isFound = true;
-                    appTypeTitle = reader["ApplicationTypeTitle"].ToString();
-                    appFees = Convert.ToSingle(reader["ApplicationFees"]);
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+						}
 
-            return isFound;
-        }
+					}
+					catch (Exception ex)
+					{
+						isFound = false;
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
+					}
+
+				}
+
+			}
+
+			return isFound;
+		}
 
         public static int AddNewApplicationType(string appTypeTitle, float appFees)
         {
-            int appTypeID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			int Id = -1;
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
+				using (SqlCommand command = new SqlCommand("SP_AddNewApplicationType", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
 
-            string query = "INSERT INTO ApplicationTypes(ApplicationTypeTitle,ApplicationFees) " +
-                "Values (@AppTypeTitle,@AppFees); " +
-                "SELECT SCOPE_IDENTITY(); ";
+					command.Parameters.AddWithValue("@Title", appTypeTitle);
+					command.Parameters.AddWithValue("@Fees", appFees);
 
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@AppTypeTitle", appTypeTitle);
-            command.Parameters.AddWithValue("@AppFees", appFees);
+					var outPutIdParm = new SqlParameter("@NewTypeId", SqlDbType.Int)
+					{
+						Direction = ParameterDirection.Output
+					};
+					command.Parameters.Add(outPutIdParm);
 
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if(result != null && int.TryParse(result.ToString(),out appTypeID))
-                {
+					try
+					{
+						connection.Open();
+						command.ExecuteNonQuery();
+						Id = (int)outPutIdParm.Value;
 
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+					}
+					catch (Exception ex)
+					{
 
-            return appTypeID;
-        }
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
+					}
+
+				}
+
+			}
+
+			return Id;
+		}
 
         public static bool UpdateApplicationType(int appTypeID,string appTypeTitle, float appFees)
         {
            int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
+				using (SqlCommand command = new SqlCommand("SP_UpdateApplicationType", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
 
-            string query = "Update ApplicationTypes " +
-                "SET ApplicationTypeTitle=@AppTypeTitle, ApplicationFees=@AppFees " +
-                "WHERE ApplicationTypeID=@AppTypeID; ";
+					command.Parameters.AddWithValue("@Id", appTypeID);
+					command.Parameters.AddWithValue("@Title", appTypeTitle);
+					command.Parameters.AddWithValue("@Fees", appFees);
 
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@AppTypeID", appTypeID);
-            command.Parameters.AddWithValue("@AppTypeTitle", appTypeTitle);
-            command.Parameters.AddWithValue("@AppFees", appFees);
+					try
+					{
+						connection.Open();
+						rowsAffected = (int)command.ExecuteScalar();
+						
+					}
+					catch (Exception ex)
+					{
 
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
+					}
 
-            try
-            {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+				}
 
-            return rowsAffected>0;
-        }
-
-        public static bool DeleteApplicationType(int appTypeID)
-        {
-            int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "DELETE From ApplicationTypes WHERE ApplicationTypeID=@AppTypeID;";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@AppTypeID", appTypeID);
-
-            try
-            {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                rowsAffected = 0;
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return rowsAffected > 0;
+			}
+			return rowsAffected>0;
         }
 
         public static DataTable GetAllApplicationTypes()
         {
-            DataTable table = new DataTable();
+			DataTable table = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
 
-            string query = "SELECT * From ApplicationTypes;";
+				using (SqlCommand command = new SqlCommand("SP_GetAllApplicationTypes", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
 
-            SqlCommand command = new SqlCommand(query, connection);
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                    table.Load(reader);
-                reader.Close();
+					try
+					{
+						connection.Open();
+						using (SqlDataReader reader = command.ExecuteReader())
+						{
+							if (reader.HasRows)
+								table.Load(reader);
+						}
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"ApplicationTypesData Error: {ex.Message}");
+					}
 
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return table;
+				}
+			}
+			return table;
 
-        }
-
-        public static bool IsApplicationTypeExist(int appTypeID)
-        {
-            bool isExist = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT TOP(1) Found=1 From ApplicationTypes WHERE ApplicationTypeID=@AppTypeID";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@AppTypeID", appTypeID);
-
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int found))
-                    isExist = true;
-
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"ApplicationTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isExist;
-        }
+		}
 
     }
 }

@@ -59,19 +59,10 @@ namespace DVLD_Business
                 return null;
         }
 
-        public static bool Delete(int testTypeId)
-        {
-            return clsTestTypesData.DeleteTestType(testTypeId);
-        }
-
+      
         public static DataTable GetAll()
         {
             return clsTestTypesData.GetAllTestTypes();
-        }
-
-        public static bool IsTestTypeExist(int testTypeId)
-        {
-            return clsTestTypesData.IsTestTypeExist(testTypeId);
         }
 
         public bool Save()

@@ -12,200 +12,147 @@ namespace DVLD_DataAccess
     {
         public static bool GetTestTypeByID(int testTypeID,ref string testTypeTitle,ref string testTypeDescription,ref float testTypeFees)
         {
-            bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			bool isFound = false;
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
+				using (SqlCommand command = new SqlCommand("SP_GetTestType", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@TestTypeID", testTypeID);
 
-            string query = "SELECT * From TestTypes WHERE TestTypeID=@TestTypeID;";
+					try
+					{
+						connection.Open();
 
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TestTypeID", testTypeID);
+						using (SqlDataReader reader = command.ExecuteReader())
+						{
+							if (reader.Read())
+							{
+								testTypeTitle = (string)reader["TestTypeTitle"];
+								testTypeDescription = (string)reader["TestTypeDescription"];
+								testTypeFees = Convert.ToSingle(reader["TestTypeFees"]);
+								isFound = true;
+							}
 
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    isFound = true;
-                    testTypeTitle = reader["TestTypeTitle"].ToString();
-                    testTypeDescription = reader["TestTypeDescription"].ToString();
-                    testTypeFees = Convert.ToSingle(reader["TestTypeFees"]);
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+						}
 
-            return isFound;
+					}
+					catch (Exception ex)
+					{
+						isFound = false;
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"TestTypeData Error: {ex.Message}");
+					}
 
-        }
+				}
+			}
+
+			return isFound;
+		}
 
         public static int AddNewTestType(string testTypeTitle,string testTypeDescription , float testTypeFees)
         {
-            int testTypeID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			int Id = -1;
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
+				using (SqlCommand command = new SqlCommand("SP_AddNewTestType", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
 
-            string query = "INSERT INTO TestTypes(TestTypeTitle,TestTypeDescription,TestTypeFees) " +
-                "Values (@TestTypeTitle,@TestTypeDescription,@TestTypeFees); " +
-                "SELECT SCOPE_IDENTITY(); ";
+					command.Parameters.AddWithValue("@Title", testTypeTitle);
+					command.Parameters.AddWithValue("@Description", testTypeDescription);
 
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TestTypeTitle", testTypeTitle);
-            command.Parameters.AddWithValue("@TestTypeDescription", testTypeDescription);
-            command.Parameters.AddWithValue("@TestTypeFees", testTypeFees);
+					command.Parameters.AddWithValue("@Fees", testTypeFees);
 
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out testTypeID))
-                {
+					var outPutIdParm = new SqlParameter("@NewTypeId", SqlDbType.Int)
+					{
+						Direction = ParameterDirection.Output
+					};
+					command.Parameters.Add(outPutIdParm);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+					try
+					{
+						connection.Open();
+						command.ExecuteNonQuery();
+						Id = (int)outPutIdParm.Value;
 
-            return testTypeID;
-        }
+					}
+					catch (Exception ex)
+					{
+
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"TestTypeData Error: {ex.Message}");
+					}
+				}
+			}
+			return Id;
+		}
 
         public static bool UpdateTestType(int testTypeID,string testTypeTitle, string testTypeDescription, float testTypeFees)
         {
-            int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			int rowsAffected = 0;
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
+				using (SqlCommand command = new SqlCommand("SP_UpdateApplicationType", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
 
-            string query = "Update TestTypes " +
-                "SET TestTypeTitle=@TestTypeTitle, TestTypeFees=@TestTypeFees, TestTypeDescription=@TestTypeDescription " +
-                "WHERE TestTypeID=@TestTypeID; ";
+					command.Parameters.AddWithValue("@Id", testTypeID);
+					command.Parameters.AddWithValue("@Description", testTypeDescription);
+					command.Parameters.AddWithValue("@Title", testTypeTitle);
+					command.Parameters.AddWithValue("@Fees", testTypeFees);
 
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TestTypeID", testTypeID);
-            command.Parameters.AddWithValue("@TestTypeTitle", testTypeTitle);
-            command.Parameters.AddWithValue("@TestTypeDescription", testTypeDescription);
-            command.Parameters.AddWithValue("@TestTypeFees", testTypeFees);
+					try
+					{
+						connection.Open();
+						rowsAffected = (int)command.ExecuteScalar();
 
-            try
-            {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+					}
+					catch (Exception ex)
+					{
 
-            return rowsAffected > 0;
-        }
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"TestTypeData Error: {ex.Message}");
+					}
 
-        public static bool DeleteTestType(int testTypeID)
-        {
-            int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+				}
 
-            string query = "DELETE From TestTypes WHERE TestTypeID=@TestTypeID;";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TestTypeID", testTypeID);
-
-            try
-            {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                rowsAffected = 0;
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return rowsAffected > 0;
-        }
+			}
+			return rowsAffected > 0;
+		}
 
         public static DataTable GetAllTestTypes()
         {
-            DataTable table = new DataTable();
+			DataTable table = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
 
-            string query = "SELECT * From TestTypes;";
+				using (SqlCommand command = new SqlCommand("SP_GetAllTestTypes", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
 
-            SqlCommand command = new SqlCommand(query, connection);
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                    table.Load(reader);
-                reader.Close();
+					try
+					{
+						connection.Open();
+						using (SqlDataReader reader = command.ExecuteReader())
+						{
+							if (reader.HasRows)
+								table.Load(reader);
+						}
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"TestTypesData Error: {ex.Message}");
+					}
 
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return table;
+				}
+			}
+			return table;
 
-        }
+		}
 
-        public static bool IsTestTypeExist(int testTypeID)
-        {
-            bool isExist = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT TOP(1) Found=1 From TestTypes WHERE TestTypeID=@TestTypeID";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TestTypeID", testTypeID);
-
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int found))
-                    isExist = true;
-
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestTypeData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isExist;
-        }
 
     }
 }
