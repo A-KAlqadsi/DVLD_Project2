@@ -14,26 +14,29 @@ namespace DVLD_View
 {
     public partial class frmManageApplicationTypes : Form
     {
+        DataTable _dtApplicationTypes;
         public frmManageApplicationTypes()
         {
             InitializeComponent();
         }
 
-        private void _RefreshApplicationTypes()
-        {
-            dgvListApplicationTypes.Rows.Clear();
-            DataTable dt = clsApplicationType.GetAll();
-            int counter = dt.Rows.Count;
-            foreach (DataRow dr in dt.Rows)
-            {
-                dgvListApplicationTypes.Rows.Add(dr["ApplicationTypeID"], dr["ApplicationTypeTitle"], dr["ApplicationFees"]);
-            }
-            lblRecordsCount.Text = counter.ToString();
-        }
-
         private void frmManageApplicationTypes_Load(object sender, EventArgs e)
         {
-            _RefreshApplicationTypes();
+            _dtApplicationTypes = clsApplicationType.GetAll();
+            dgvListApplicationTypes.DataSource = _dtApplicationTypes;
+            lblRecordsCount.Text = dgvListApplicationTypes.Rows.Count.ToString();   
+            if(dgvListApplicationTypes.Rows.Count>0)
+            {
+				dgvListApplicationTypes.Columns[0].HeaderText = "ID";
+				dgvListApplicationTypes.Columns[0].Width = 100;
+
+				dgvListApplicationTypes.Columns[1].HeaderText = "Title";
+				dgvListApplicationTypes.Columns[1].Width = 400;
+
+				dgvListApplicationTypes.Columns[2].HeaderText = "Fees";
+				dgvListApplicationTypes.Columns[2].Width = 100;
+			}
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -43,10 +46,10 @@ namespace DVLD_View
 
         private void tsmiEditApplicationTypeInfo_Click(object sender, EventArgs e)
         {
-            int id = (int)dgvListApplicationTypes.CurrentRow.Cells[0].Value;
-            frmAddEditAplicationType addEdit = new frmAddEditAplicationType(id);
+
+            frmAddEditAplicationType addEdit = new frmAddEditAplicationType((int)dgvListApplicationTypes.CurrentRow.Cells[0].Value);
             addEdit.ShowDialog();
-            _RefreshApplicationTypes();
+            frmManageApplicationTypes_Load(null, null);
         }
     }
 }

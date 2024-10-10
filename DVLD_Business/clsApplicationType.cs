@@ -13,7 +13,7 @@ namespace DVLD_Business
         enum enMode { AddNew = 1, Update = 2 }
         enMode _Mode;
 
-        public int ApplicationTypeID { get; }
+        public int ApplicationTypeID { get; set; }
         public string ApplicationTitle;
         public float ApplicationFees;
 
@@ -35,8 +35,8 @@ namespace DVLD_Business
 
         private bool _AddNewApplicationType()
         {
-            int applicationTypeID = clsApplicationTypesData.AddNewApplicationType( ApplicationTitle, ApplicationFees);
-            return applicationTypeID != -1;
+            this.ApplicationTypeID = clsApplicationTypesData.AddNewApplicationType( ApplicationTitle, ApplicationFees);
+            return this.ApplicationTypeID != -1;
         }
 
         private bool _UpdateApplicationType()
@@ -64,17 +64,18 @@ namespace DVLD_Business
             return clsApplicationTypesData.GetAllApplicationTypes();
         }
 
-       
         public bool Save()
         {
             switch (_Mode)
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
                         if (_AddNewApplicationType())
-                            return true;
-                        else
+                        {
+							_Mode = enMode.Update;
+							return true;
+						}
+						else
                             return false;
                     }
                 case enMode.Update:
