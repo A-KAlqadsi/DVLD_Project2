@@ -63,7 +63,7 @@
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.label1.Location = new System.Drawing.Point(348, 135);
+			this.label1.Location = new System.Drawing.Point(406, 137);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(208, 36);
 			this.label1.TabIndex = 3;
@@ -216,12 +216,13 @@
 			this.cbIsActiveFilter.FormattingEnabled = true;
 			this.cbIsActiveFilter.Items.AddRange(new object[] {
             "All",
-            "Active",
-            "Not Active"});
+            "Yes",
+            "No"});
 			this.cbIsActiveFilter.Location = new System.Drawing.Point(280, 205);
 			this.cbIsActiveFilter.Name = "cbIsActiveFilter";
 			this.cbIsActiveFilter.Size = new System.Drawing.Size(155, 33);
 			this.cbIsActiveFilter.TabIndex = 16;
+			this.cbIsActiveFilter.Visible = false;
 			this.cbIsActiveFilter.SelectedIndexChanged += new System.EventHandler(this.cbIsActiveFilter_SelectedIndexChanged);
 			// 
 			// txtFilter
@@ -231,6 +232,7 @@
 			this.txtFilter.Name = "txtFilter";
 			this.txtFilter.Size = new System.Drawing.Size(225, 30);
 			this.txtFilter.TabIndex = 15;
+			this.txtFilter.Visible = false;
 			this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
 			this.txtFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilter_KeyPress);
 			// 
@@ -241,7 +243,7 @@
 			this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnClose.Image = global::DVLD_View.Properties.Resources.Close_32;
 			this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.btnClose.Location = new System.Drawing.Point(730, 522);
+			this.btnClose.Location = new System.Drawing.Point(847, 520);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(138, 47);
 			this.btnClose.TabIndex = 12;
@@ -255,7 +257,7 @@
 			this.btnAddNew.BackgroundImage = global::DVLD_View.Properties.Resources.Add_New_User_72;
 			this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnAddNew.Location = new System.Drawing.Point(788, 180);
+			this.btnAddNew.Location = new System.Drawing.Point(905, 180);
 			this.btnAddNew.Name = "btnAddNew";
 			this.btnAddNew.Size = new System.Drawing.Size(79, 58);
 			this.btnAddNew.TabIndex = 9;
@@ -266,7 +268,7 @@
 			// 
 			this.pbManagePeople.BackColor = System.Drawing.Color.Transparent;
 			this.pbManagePeople.Image = ((System.Drawing.Image)(resources.GetObject("pbManagePeople.Image")));
-			this.pbManagePeople.Location = new System.Drawing.Point(318, -2);
+			this.pbManagePeople.Location = new System.Drawing.Point(376, 0);
 			this.pbManagePeople.Name = "pbManagePeople";
 			this.pbManagePeople.Size = new System.Drawing.Size(243, 134);
 			this.pbManagePeople.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -287,7 +289,7 @@
 			this.dgvListUsers.ReadOnly = true;
 			this.dgvListUsers.RowHeadersWidth = 51;
 			this.dgvListUsers.RowTemplate.Height = 24;
-			this.dgvListUsers.Size = new System.Drawing.Size(856, 276);
+			this.dgvListUsers.Size = new System.Drawing.Size(972, 276);
 			this.dgvListUsers.TabIndex = 10;
 			this.dgvListUsers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvListUsers_MouseDoubleClick);
 			// 
@@ -297,7 +299,7 @@
 			this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.panel1.Location = new System.Drawing.Point(12, 243);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(856, 276);
+			this.panel1.Size = new System.Drawing.Size(972, 276);
 			this.panel1.TabIndex = 17;
 			// 
 			// frmManageUsers
@@ -305,7 +307,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(874, 578);
+			this.ClientSize = new System.Drawing.Size(996, 578);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.cbFilterUsers);
 			this.Controls.Add(this.cbIsActiveFilter);

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_Business;
+using DVLD_View.User;
 
 namespace DVLD_View
 {
@@ -26,23 +27,24 @@ namespace DVLD_View
         {
             _dtUsers = clsUser.GetAll();
             dgvListUsers.DataSource = _dtUsers;
+			cbFilterUsers.SelectedIndex = 0;
             lblRecordsCount.Text = dgvListUsers.Rows.Count.ToString();
             if(dgvListUsers.Rows.Count > 0 )
             {
 				dgvListUsers.Columns[0].HeaderText = "User ID";
-				dgvListUsers.Columns[0].Width = 90;
+				dgvListUsers.Columns[0].Width = 110;
 
 				dgvListUsers.Columns[1].HeaderText = "Person ID";
-                dgvListUsers.Columns[1].Width = 90; 
+                dgvListUsers.Columns[1].Width = 130; 
 
 				dgvListUsers.Columns[2].HeaderText = "Full Name";
-				dgvListUsers.Columns[2].Width = 250;
+				dgvListUsers.Columns[2].Width = 400;
 
 				dgvListUsers.Columns[3].HeaderText = "UserName";
-				dgvListUsers.Columns[3].Width = 120;
+				dgvListUsers.Columns[3].Width = 150;
 
 				dgvListUsers.Columns[4].HeaderText = "Is Active";
-				dgvListUsers.Columns[4].Width = 90;
+				dgvListUsers.Columns[4].Width = 120;
 			}
 
         }
@@ -148,21 +150,21 @@ namespace DVLD_View
 
         private void tsmiAddNewUser_Click(object sender, EventArgs e)
         {
-            frmAddEditUser addEdit = new frmAddEditUser();
+			frmAddUpdateUser addEdit = new frmAddUpdateUser();
             addEdit.ShowDialog();
             frmManageUsers_Load(null, null);
         }
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            frmAddEditUser addEdit = new frmAddEditUser();
+            frmAddUpdateUser addEdit = new frmAddUpdateUser();
             addEdit.ShowDialog();
 			frmManageUsers_Load(null, null);
 		}
 
 		private void tsmiEdit_Click(object sender, EventArgs e)
         {
-            
-            frmAddEditUser addEdit = new frmAddEditUser((int)dgvListUsers.CurrentRow.Cells[0].Value);
+
+			frmAddUpdateUser addEdit = new frmAddUpdateUser((int)dgvListUsers.CurrentRow.Cells[0].Value);
             addEdit.ShowDialog();
 			frmManageUsers_Load(null, null);
 		}

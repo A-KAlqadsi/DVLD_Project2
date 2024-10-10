@@ -146,17 +146,17 @@
     <Compile Include="Tests\Test Types\frmAddEditTestType.Designer.cs">
       <DependentUpon>frmAddEditTestType.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\frmAddEditUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User\frmAddEditUser.Designer.cs">
-      <DependentUpon>frmAddEditUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Applications\Internation Licenses\frmAddNewInternationalLicenseApp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Applications\Internation Licenses\frmAddNewInternationalLicenseApp.Designer.cs">
       <DependentUpon>frmAddNewInternationalLicenseApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\frmAddUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmAddUpdateUser.Designer.cs">
+      <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="User\frmChangePassword.cs">
       <SubType>Form</SubType>
@@ -367,11 +367,11 @@
     <EmbeddedResource Include="Tests\Test Types\frmAddEditTestType.resx">
       <DependentUpon>frmAddEditTestType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\frmAddEditUser.resx">
-      <DependentUpon>frmAddEditUser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Applications\Internation Licenses\frmAddNewInternationalLicenseApp.resx">
       <DependentUpon>frmAddNewInternationalLicenseApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\frmAddUpdateUser.resx">
+      <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
@@ -505,6 +505,8 @@
   <ItemGroup>
     <None Include="Resources\Close 32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Password 32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
