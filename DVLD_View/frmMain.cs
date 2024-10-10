@@ -13,12 +13,11 @@ namespace DVLD_View
 {
     public partial class frmMain : Form
     {
-       
-        public frmMain(string username)
+        frmLoginScreen _LoginScreen;
+        public frmMain(frmLoginScreen frm)
         {
             InitializeComponent();
-            clsLoginUser.LoginUser = username;
-
+            _LoginScreen = frm;
         }
 
         private void _CenterPictureBox()
@@ -68,6 +67,8 @@ namespace DVLD_View
 
         private void tsmiSignOut_Click(object sender, EventArgs e)
         {
+             Globals.Global.CurrentUser = null;
+            _LoginScreen.Show();
             this.Close();
         }
 

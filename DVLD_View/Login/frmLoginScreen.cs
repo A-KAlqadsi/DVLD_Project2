@@ -9,12 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_Business;
+using DVLD_View.Globals;
 
 namespace DVLD_View
 {
     public partial class frmLoginScreen : Form
     {
-        private bool _isEmpty = false;
         public frmLoginScreen()
         {
             InitializeComponent();
@@ -25,55 +25,47 @@ namespace DVLD_View
             this.Close();
         }
 
-        private bool _IsEmpty()
-        {
-            epLoginValidate.Clear();
-            if (txtUsername.Text.Trim() == "")
-            {
-                _isEmpty = true;
-                epLoginValidate.SetError(txtUsername, "Username is required!");
-            }
-            if (txtPassword.Text.Trim() == "")
-            {
-                _isEmpty = true;
-                epLoginValidate.SetError(txtPassword, "Password is required!");
-            }
-            return _isEmpty;
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (_IsEmpty())
-            {
-                _isEmpty = false;
-                MessageBox.Show("Username/Password is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            clsUser user = clsUser.FindByUserNameAndPassword(txtUsername.Text.Trim(), txtPassword.Text.Trim());
 
-            if (clsUser.IsUsernameAndPasswordTrue(txtUsername.Text, txtPassword.Text))
+            if (user != null)
             {                
-                if (clsUser.IsUserActive(txtUsername.Text))
-                {
-                    frmMain main = new frmMain(txtUsername.Text);
-                    main.ShowDialog();
-                }
+                if(chkRememberMe.Checked)
+                    Global.RememberUsernameAndPassword(txtUsername.Text.Trim(), txtPassword.Text.Trim());
                 else
-                {
-                    //epLoginValidate.SetError(txtUsername, "Username is not active,contact your admin!");
-                    MessageBox.Show("Username is not active contact your Admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+					Global.RememberUsernameAndPassword("", "");
 
+                if(!user.IsActive)
+                {
+					txtUsername.Focus();
+					MessageBox.Show("Your account is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+
+                Global.CurrentUser = user;
+                this.Hide();
+                frmMain frm = new frmMain(this);
+                frm.ShowDialog();
             }
-            else
+			else
             {
-               // epLoginValidate.SetError(txtUsername, "Username/Password is not true!,try again!");
-                MessageBox.Show("Username/Password is wrong!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Username/Password is wrong!", "Invalid Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
-       
-    
-    
-    }
+		private void frmLoginScreen_Load(object sender, EventArgs e)
+		{
+            string userName = "", password = "";
+            if (Global.GetStoredCredential(ref userName, ref password))
+            {
+                txtUsername.Text = userName;
+                txtPassword.Text = password;
+                chkRememberMe.Checked = true;
+            }
+            else
+                chkRememberMe.Checked = false;
+		}
+	}
 }
