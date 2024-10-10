@@ -51,7 +51,7 @@ namespace DVLD_View
             lblUserID.Text = "????";
             lblUsername.Text = "????";
             lblIsActive.Text = "????";
-
+            
         }
         
         private void _FillUserInfo()
