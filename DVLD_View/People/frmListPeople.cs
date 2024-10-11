@@ -43,34 +43,34 @@ namespace DVLD_View
 
 
 				dgvListPeople.Columns[2].HeaderText = "First Name";
-				dgvListPeople.Columns[2].Width = 120;
+				dgvListPeople.Columns[2].Width = 140;
 
 				dgvListPeople.Columns[3].HeaderText = "Second Name";
-				dgvListPeople.Columns[3].Width = 120;
+				dgvListPeople.Columns[3].Width = 170;
 
 
 				dgvListPeople.Columns[4].HeaderText = "Third Name";
-				dgvListPeople.Columns[4].Width = 110;
+				dgvListPeople.Columns[4].Width = 140;
 
 				dgvListPeople.Columns[5].HeaderText = "Last Name";
-				dgvListPeople.Columns[5].Width = 120;
+				dgvListPeople.Columns[5].Width = 140;
 
 				dgvListPeople.Columns[6].HeaderText = "Gender";
 				dgvListPeople.Columns[6].Width = 100;
 
 				dgvListPeople.Columns[7].HeaderText = "Date Of Birth";
-				dgvListPeople.Columns[7].Width = 150;
+				dgvListPeople.Columns[7].Width = 200;
 
 				dgvListPeople.Columns[8].HeaderText = "Nationality";
 				dgvListPeople.Columns[8].Width = 100;
 
 
 				dgvListPeople.Columns[9].HeaderText = "Phone";
-				dgvListPeople.Columns[9].Width = 100;
+				dgvListPeople.Columns[9].Width = 130;
 
 
 				dgvListPeople.Columns[10].HeaderText = "Email";
-				dgvListPeople.Columns[10].Width = 160;
+				dgvListPeople.Columns[10].Width = 200;
 			}
 
 			     
@@ -210,16 +210,10 @@ namespace DVLD_View
 
         }
 
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("this button is not work");            
-        }
-
 
 		private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
-
+			MessageBox.Show("This button dosn't work!");
         }
 
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
@@ -233,6 +227,7 @@ namespace DVLD_View
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+
 			this.Close();
 		}
 

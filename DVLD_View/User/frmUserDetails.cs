@@ -20,13 +20,7 @@ namespace DVLD_View
             _UserID = userID;
         }
 
-        public frmUserDetails(string userName)
-        {
-            InitializeComponent();
-
-            _UserID = clsUser.Find(userName).UserID;
-        }
-
+        
         private void frmUserDetails_Load(object sender, EventArgs e)
         {
             ctrlUserPersonCard1.LoadUserInfo(_UserID);

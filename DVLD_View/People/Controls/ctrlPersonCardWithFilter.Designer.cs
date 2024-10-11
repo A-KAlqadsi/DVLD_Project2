@@ -90,7 +90,6 @@
 			this.txtSearch.TabIndex = 4;
 			this.txtSearch.WordWrap = false;
 			this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
-			this.txtSearch.Validating += new System.ComponentModel.CancelEventHandler(this.txtSearch_Validating);
 			// 
 			// btnFind
 			// 

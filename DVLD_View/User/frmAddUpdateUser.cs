@@ -107,7 +107,7 @@ namespace DVLD_View.User
 			else
 			{
 				errorProvider1.SetError(txtUserName, null);
-			}
+			};
 
 			if (txtUserName.Text.Trim() != _User.Username && clsUser.IsUserExist(txtUserName.Text.Trim()))
 			{
@@ -117,7 +117,7 @@ namespace DVLD_View.User
 			else
 			{
 				errorProvider1.SetError(txtUserName, null);
-			}
+			};
 		}
 
 		private void txtPassword_Validating(object sender, CancelEventArgs e)

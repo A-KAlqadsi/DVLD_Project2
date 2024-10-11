@@ -17,7 +17,7 @@ namespace DVLD_DataAccess
 			bool isFound = false;
 			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
 			{
-				using (SqlCommand command = new SqlCommand("SP_GetUserByUserId", connection))
+				using (SqlCommand command = new SqlCommand("SP_GetUserById", connection))
 				{
 					command.CommandType = CommandType.StoredProcedure;
 					command.Parameters.AddWithValue("@UserId", userID);

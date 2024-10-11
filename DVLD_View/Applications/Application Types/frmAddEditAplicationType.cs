@@ -83,6 +83,7 @@ namespace DVLD_View
 			{
 				e.Cancel = true;
 				epValidateInput.SetError(txtFees, "Fees is required!");
+                return;
 			}
 			else
 				epValidateInput.SetError(txtFees, null);

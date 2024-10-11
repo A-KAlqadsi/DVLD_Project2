@@ -14,26 +14,10 @@ namespace DVLD_View
 {
     public partial class frmManageTestTypes : Form
     {
+        DataTable _dtTestTypes;
         public frmManageTestTypes()
         {
             InitializeComponent();
-        }
-
-        private void _RefreshTestTypes()
-        {
-            dgvListTestTypes.Rows.Clear();
-            int counter = 0;
-            DataTable dt = clsTestType.GetAll();
-
-            if(dt!= null)
-                counter = dt.Rows.Count;
-            foreach (DataRow row in dt.Rows)
-            {
-                dgvListTestTypes.Rows.Add(row["TestTypeID"], row["TestTypeTitle"], row["TestTypeDescription"], row["TestTypeFees"]);
-            }
-
-            lblRecordsCount.Text = counter.ToString();
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -43,15 +27,34 @@ namespace DVLD_View
 
         private void frmManageTestTypes_Load(object sender, EventArgs e)
         {
-            _RefreshTestTypes();
+            _dtTestTypes = clsTestType.GetAll();
+            dgvListTestTypes.DataSource = _dtTestTypes;
+            lblRecordsCount.Text = dgvListTestTypes.Rows.Count.ToString();
+
+            if(dgvListTestTypes.Rows.Count > 0)
+            {
+                dgvListTestTypes.Columns[0].HeaderText = "Id";
+                dgvListTestTypes.Columns[0].Width = 90;
+
+				dgvListTestTypes.Columns[1].HeaderText = "Title";
+				dgvListTestTypes.Columns[1].Width = 200;
+
+				dgvListTestTypes.Columns[2].HeaderText = "Description";
+				dgvListTestTypes.Columns[2].Width = 400;
+
+				dgvListTestTypes.Columns[3].HeaderText = "Fees";
+				dgvListTestTypes.Columns[3].Width = 90;
+
+			}
+
+            
         }
 
         private void tsmiEditApplicationTypeInfo_Click(object sender, EventArgs e)
         {
-            int iD = (int)dgvListTestTypes.CurrentRow.Cells[0].Value;
-            frmAddEditTestType testType = new frmAddEditTestType(iD);
+            frmAddEditTestType testType = new frmAddEditTestType((int)dgvListTestTypes.CurrentRow.Cells[0].Value);
             testType.ShowDialog();
-            _RefreshTestTypes();
+            frmManageTestTypes_Load(null, null);
         }
     }
 }

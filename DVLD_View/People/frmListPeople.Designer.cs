@@ -47,7 +47,6 @@
 			this.lblRecordsCount = new System.Windows.Forms.Label();
 			this.txtFilter = new System.Windows.Forms.TextBox();
 			this.btnClose = new System.Windows.Forms.Button();
-			this.btnAddNew = new System.Windows.Forms.Button();
 			this.pbManagePeople = new System.Windows.Forms.PictureBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
@@ -73,7 +72,7 @@
 			this.dgvListPeople.ReadOnly = true;
 			this.dgvListPeople.RowHeadersWidth = 51;
 			this.dgvListPeople.RowTemplate.Height = 24;
-			this.dgvListPeople.Size = new System.Drawing.Size(1360, 336);
+			this.dgvListPeople.Size = new System.Drawing.Size(1588, 336);
 			this.dgvListPeople.TabIndex = 0;
 			// 
 			// contextMenuStrip1
@@ -160,7 +159,7 @@
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			this.label1.Location = new System.Drawing.Point(615, 149);
+			this.label1.Location = new System.Drawing.Point(695, 149);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(223, 36);
 			this.label1.TabIndex = 2;
@@ -206,7 +205,7 @@
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.label3.ForeColor = System.Drawing.Color.Black;
-			this.label3.Location = new System.Drawing.Point(21, 560);
+			this.label3.Location = new System.Drawing.Point(11, 560);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(82, 16);
 			this.label3.TabIndex = 7;
@@ -217,7 +216,7 @@
 			this.lblRecordsCount.AutoSize = true;
 			this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblRecordsCount.ForeColor = System.Drawing.Color.Black;
-			this.lblRecordsCount.Location = new System.Drawing.Point(89, 560);
+			this.lblRecordsCount.Location = new System.Drawing.Point(94, 560);
 			this.lblRecordsCount.Name = "lblRecordsCount";
 			this.lblRecordsCount.Size = new System.Drawing.Size(15, 16);
 			this.lblRecordsCount.TabIndex = 8;
@@ -250,25 +249,11 @@
 			this.btnClose.UseVisualStyleBackColor = false;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
-			// btnAddNew
-			// 
-			this.btnAddNew.BackColor = System.Drawing.Color.White;
-			this.btnAddNew.BackgroundImage = global::DVLD_View.Properties.Resources.Add_Person_40;
-			this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-			this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnAddNew.Location = new System.Drawing.Point(1602, 164);
-			this.btnAddNew.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.btnAddNew.Name = "btnAddNew";
-			this.btnAddNew.Size = new System.Drawing.Size(100, 66);
-			this.btnAddNew.TabIndex = 4;
-			this.btnAddNew.UseVisualStyleBackColor = false;
-			this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
-			// 
 			// pbManagePeople
 			// 
 			this.pbManagePeople.BackColor = System.Drawing.Color.Transparent;
 			this.pbManagePeople.Image = ((System.Drawing.Image)(resources.GetObject("pbManagePeople.Image")));
-			this.pbManagePeople.Location = new System.Drawing.Point(598, 6);
+			this.pbManagePeople.Location = new System.Drawing.Point(678, 6);
 			this.pbManagePeople.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.pbManagePeople.Name = "pbManagePeople";
 			this.pbManagePeople.Size = new System.Drawing.Size(248, 136);
@@ -281,10 +266,10 @@
 			this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.button1.Location = new System.Drawing.Point(1284, 560);
+			this.button1.Location = new System.Drawing.Point(1478, 556);
 			this.button1.Margin = new System.Windows.Forms.Padding(2);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(101, 29);
+			this.button1.Size = new System.Drawing.Size(122, 43);
 			this.button1.TabIndex = 93;
 			this.button1.Text = "Close";
 			this.button1.UseVisualStyleBackColor = true;
@@ -294,16 +279,16 @@
 			// 
 			this.panel1.Controls.Add(this.dgvListPeople);
 			this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.panel1.Location = new System.Drawing.Point(24, 219);
+			this.panel1.Location = new System.Drawing.Point(12, 219);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1360, 336);
+			this.panel1.Size = new System.Drawing.Size(1588, 336);
 			this.panel1.TabIndex = 94;
 			// 
 			// btnAddPerson
 			// 
 			this.btnAddPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAddPerson.Image = global::DVLD_View.Properties.Resources.Add_Person_40;
-			this.btnAddPerson.Location = new System.Drawing.Point(1296, 159);
+			this.btnAddPerson.Location = new System.Drawing.Point(1511, 159);
 			this.btnAddPerson.Name = "btnAddPerson";
 			this.btnAddPerson.Size = new System.Drawing.Size(88, 55);
 			this.btnAddPerson.TabIndex = 95;
@@ -315,7 +300,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(1396, 595);
+			this.ClientSize = new System.Drawing.Size(1611, 613);
 			this.Controls.Add(this.btnAddPerson);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.button1);
@@ -324,7 +309,6 @@
 			this.Controls.Add(this.lblRecordsCount);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.btnAddNew);
 			this.Controls.Add(this.cbFilterPeople);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.pbManagePeople);
@@ -350,7 +334,6 @@
         private System.Windows.Forms.PictureBox pbManagePeople;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbFilterPeople;
-        private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblRecordsCount;

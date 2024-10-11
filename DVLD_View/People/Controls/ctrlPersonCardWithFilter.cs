@@ -77,8 +77,8 @@ namespace DVLD_View
 
         public void LoadPersonInfo(int personId)
         {
-            txtSearch.Text = personId.ToString();
-            cbPersonFilters.SelectedIndex = 0;
+			cbPersonFilters.SelectedIndex = 0;
+			txtSearch.Text = personId.ToString();
             FindNow();
         }
 
@@ -141,18 +141,10 @@ namespace DVLD_View
 
 		private void txtSearch_Validating(object sender, CancelEventArgs e)
 		{
-            if(string.IsNullOrEmpty(txtSearch.Text.Trim()))
-            {
-                e.Cancel = true;
-                epFilterValidating.SetError(txtSearch, "Field is required!");
-            }
-            else
-            {
-                epFilterValidating.SetError(txtSearch, null);
-            }
+
 		}
 
-        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+		private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)
             {
