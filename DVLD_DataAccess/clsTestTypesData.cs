@@ -93,7 +93,7 @@ namespace DVLD_DataAccess
 			int rowsAffected = 0;
 			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
 			{
-				using (SqlCommand command = new SqlCommand("SP_UpdateApplicationType", connection))
+				using (SqlCommand command = new SqlCommand("SP_UpdateTestType", connection))
 				{
 					command.CommandType = CommandType.StoredProcedure;
 
