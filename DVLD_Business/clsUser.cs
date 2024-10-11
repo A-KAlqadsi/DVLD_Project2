@@ -88,7 +88,6 @@ namespace DVLD_Business
 			int userID = -1;
             int personId = -1;
 			bool isActive = false;
-
 			if (clsUserData.GetUserByUsernameAndPassword(userName, password, ref userID,ref personId, ref isActive))
 			{
 				return new clsUser( userID, personId, userName, password, isActive);

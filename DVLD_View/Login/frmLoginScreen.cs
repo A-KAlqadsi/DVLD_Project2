@@ -15,6 +15,7 @@ namespace DVLD_View
 {
     public partial class frmLoginScreen : Form
     {
+        private bool _IsCredentialsSaved = false;
         public frmLoginScreen()
         {
             InitializeComponent();
@@ -27,12 +28,19 @@ namespace DVLD_View
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            clsUser user = clsUser.FindByUserNameAndPassword(txtUsername.Text.Trim(), txtPassword.Text.Trim());
+            string hashPassword;
+
+            if (_IsCredentialsSaved)
+                hashPassword = txtPassword.Text.Trim();
+            else
+                hashPassword = Global.ComputeHash(txtPassword.Text.Trim());
+            
+            clsUser user = clsUser.FindByUserNameAndPassword(txtUsername.Text.Trim(), hashPassword);
 
             if (user != null)
             {                
                 if(chkRememberMe.Checked)
-                    Global.RememberUsernameAndPassword(txtUsername.Text.Trim(), txtPassword.Text.Trim());
+                    Global.RememberUsernameAndPassword(txtUsername.Text.Trim(), hashPassword);
                 else
 					Global.RememberUsernameAndPassword("", "");
 
@@ -63,9 +71,13 @@ namespace DVLD_View
                 txtUsername.Text = userName;
                 txtPassword.Text = password;
                 chkRememberMe.Checked = true;
+                _IsCredentialsSaved = true;
             }
             else
+            {
+                _IsCredentialsSaved = false;
                 chkRememberMe.Checked = false;
+            }
 		}
 	}
 }

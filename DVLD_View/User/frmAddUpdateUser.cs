@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD_View.Globals;
 
 namespace DVLD_View.User
 {
@@ -156,7 +157,8 @@ namespace DVLD_View.User
 			}
 
 			_User.Username = txtUserName.Text.Trim();
-			_User.Password = txtPassword.Text.Trim();
+			//_User.Password = txtPassword.Text.Trim();
+			_User.Password = Global.ComputeHash(txtPassword.Text.Trim());
 			_User.IsActive = chkIsActive.Checked;
 			_User.PersonID = ctrlPersonCardWithFilter1.PersonID;
 

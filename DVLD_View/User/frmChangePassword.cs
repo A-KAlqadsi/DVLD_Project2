@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DVLD_Business;
+using DVLD_View.Globals;
 
 namespace DVLD_View
 {
@@ -39,7 +40,7 @@ namespace DVLD_View
 				return;
 			}
 
-			_User.Password= txtNewPassword.Text;
+			_User.Password= Global.ComputeHash(txtNewPassword.Text.Trim());
 
             if (_User.Save())
             {
