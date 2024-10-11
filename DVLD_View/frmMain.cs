@@ -46,9 +46,8 @@ namespace DVLD_View
 
         private void tsmiCurrentUserInfo_Click(object sender, EventArgs e)
         {
-            int userID = clsUser.Find(clsLoginUser.LoginUser).UserID;
-
-            frmUserDetails userDetails  = new frmUserDetails(userID);
+            
+            frmUserDetails userDetails  = new frmUserDetails(Globals.Global.CurrentUser.UserID);
             userDetails.ShowDialog();
         }
 

@@ -131,7 +131,7 @@ namespace DVLD_View
         private void _SetDefaults()
         {
             clsLocalDrivingLicenseApp localLicense = clsLocalDrivingLicenseApp.Find(_LDLAppID);
-            clsTestType testType = clsTestType.Find(_TestTypeID);
+            clsTestType testType = clsTestType.Find((clsTestType.enTestType)_TestTypeID);
             
             if (localLicense != null)
             {

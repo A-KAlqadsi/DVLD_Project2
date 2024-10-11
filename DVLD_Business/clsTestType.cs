@@ -15,23 +15,24 @@ namespace DVLD_Business
     {
         enum enMode { AddNew =1,Update=2 }
         enMode _Mode=enMode.AddNew;
-        
-        public int TestTypeID { get; }
+        public enum enTestType { VisionTest = 1, WrittenTest =2, StreetTest =3}
+       
+        public clsTestType.enTestType ID;
         public string TestTypeTitle;
         public string TestTypeDescription;
         public float TestTypeFees;
         public clsTestType()
         {
-            TestTypeID = -1;
+            this.ID = enTestType.VisionTest;
             TestTypeTitle= string.Empty;
             TestTypeDescription= string.Empty;
             TestTypeFees= 0;
             _Mode= enMode.AddNew;   
         }
 
-        private clsTestType(int testTypeID,string title,string description,float fees)
+        private clsTestType(enTestType ID,string title,string description,float fees)
         {
-            TestTypeID= testTypeID;
+            this.ID = ID;
             TestTypeTitle= title;
             TestTypeDescription= description;
             TestTypeFees= fees;
@@ -40,21 +41,21 @@ namespace DVLD_Business
 
         private bool _AddNew()
         {
-            int testTypeID = clsTestTypesData.AddNewTestType(TestTypeTitle, TestTypeDescription,TestTypeFees);
-            return testTypeID != -1;
+            this.ID  =(clsTestType.enTestType)clsTestTypesData.AddNewTestType(TestTypeTitle, TestTypeDescription,TestTypeFees);
+            return this.TestTypeTitle != "";
         }
 
         private bool _Update()
         {
-            return clsTestTypesData.UpdateTestType(TestTypeID, TestTypeTitle, TestTypeDescription, TestTypeFees);
+            return clsTestTypesData.UpdateTestType((int)this.ID, TestTypeTitle, TestTypeDescription, TestTypeFees);
         }
 
-        public static clsTestType Find(int testTypeId)
+        public static clsTestType Find(enTestType ID)
         {
             string title="", description="";
             float fees = 0;
-            if(clsTestTypesData.GetTestTypeByID(testTypeId,ref title,ref description,ref fees))
-                return new clsTestType(testTypeId,title,description,fees);
+            if(clsTestTypesData.GetTestTypeByID((int)ID,ref title,ref description,ref fees))
+                return new clsTestType(ID,title,description,fees);
             else 
                 return null;
         }

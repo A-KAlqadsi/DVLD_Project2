@@ -91,7 +91,7 @@ namespace DVLD_Business
 
 			if (clsUserData.GetUserByUsernameAndPassword(userName, password, ref userID,ref personId, ref isActive))
 			{
-				return new clsUser(personId, userID, userName, password, isActive);
+				return new clsUser( userID, personId, userName, password, isActive);
 			}
 			else
 				return null;

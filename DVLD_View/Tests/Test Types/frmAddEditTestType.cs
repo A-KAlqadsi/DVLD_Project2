@@ -15,11 +15,11 @@ namespace DVLD_View
     public partial class frmAddEditTestType : Form
     {
       
-        private int _TestTypeID;
+        private clsTestType.enTestType _TestTypeID = clsTestType.enTestType.VisionTest;
         private clsTestType _TestType;
         
 
-        public frmAddEditTestType(int testTypeID)
+        public frmAddEditTestType(clsTestType.enTestType testTypeID)
         {
             InitializeComponent();
             _TestTypeID = testTypeID;          
@@ -40,7 +40,7 @@ namespace DVLD_View
 			lblMode.Text = "Update Test Type";
 			this.Text = "Update Test Type";
 
-			lblTestTypeID.Text = _TestType.TestTypeID.ToString();
+			lblTestTypeID.Text = ((int)_TestTypeID).ToString();
 			txtTitle.Text = _TestType.TestTypeTitle;
 			txtDescription.Text = _TestType.TestTypeDescription;
 			txtFees.Text = _TestType.TestTypeFees.ToString();

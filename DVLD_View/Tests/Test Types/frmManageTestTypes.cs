@@ -52,7 +52,7 @@ namespace DVLD_View
 
         private void tsmiEditApplicationTypeInfo_Click(object sender, EventArgs e)
         {
-            frmAddEditTestType testType = new frmAddEditTestType((int)dgvListTestTypes.CurrentRow.Cells[0].Value);
+            frmAddEditTestType testType = new frmAddEditTestType((clsTestType.enTestType)dgvListTestTypes.CurrentRow.Cells[0].Value);
             testType.ShowDialog();
             frmManageTestTypes_Load(null, null);
         }
