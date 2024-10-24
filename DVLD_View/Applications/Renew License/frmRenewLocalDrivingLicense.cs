@@ -95,10 +95,10 @@ namespace DVLD_View
             _Application.ApplicationDate = Convert.ToDateTime(ctrlRenewLicenseApplicationInfo1.lblApplicationDate.Text);
             _Application.ApplicationTypeID = ctrlRenewLicenseApplicationInfo1.AppTypeID;
             _Application.UserID = userID;
-            _Application.ApplicantApplicationID = _PersonID;
+            _Application.ApplicantPersonID = _PersonID;
             _Application.PaidFees = Convert.ToSingle(ctrlRenewLicenseApplicationInfo1.lblAppFees.Text);
             _Application.LastStatusDate = DateTime.Now;
-            _Application.ApplicationStatus = 1;
+            _Application.ApplicationStatus = clsApplication.enApplicationStatus.New;
 
             // local license ID;
             _LocalLicense.IssueDate =Convert.ToDateTime(ctrlRenewLicenseApplicationInfo1.lblIssueDate.Text);

@@ -102,10 +102,10 @@ namespace DVLD_View
             _Application.ApplicationDate = Convert.ToDateTime(ctrlInternationalApplicationInfo1.lblApplicationDate.Text);
             _Application.ApplicationTypeID = ctrlInternationalApplicationInfo1.AppTypeID;
             _Application.UserID = userID;
-            _Application.ApplicantApplicationID = _PersonID;
+            _Application.ApplicantPersonID = _PersonID;
             _Application.PaidFees = Convert.ToSingle(ctrlInternationalApplicationInfo1.lblAppFees.Text);
             _Application.LastStatusDate = DateTime.Now;
-            _Application.ApplicationStatus = 1;
+            _Application.ApplicationStatus = clsApplication.enApplicationStatus.New;
 
             // international license data
             _InterLicense.DriverID = driverID;

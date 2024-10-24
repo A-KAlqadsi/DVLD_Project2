@@ -116,11 +116,6 @@ namespace DVLD_Business
         {
             return clsUserData.GetAllUsers();
         }
-
-        public static DataTable GetAllMaster()
-        {
-            return clsUserData.GetAllUsersMaster();
-        }
         
         public static bool Delete(int userID)
         {
@@ -141,26 +136,6 @@ namespace DVLD_Business
 		{
 			return clsUserData.IsUserExistForPersonId(personID);
 		}
-
-		public static bool IsUserConnectedToService(int userID)
-        {
-            return clsUserData.IsUserMatchedApplication(userID);
-        }
-        
-        public static bool IsUserActive(string userName)
-        {
-            return clsUserData.IsUserActive(userName);
-        }
-
-        public static bool IsUsernameAndPasswordTrue(string userName,string password)
-        {
-            return clsUserData.IsUsernameAndPasswordTrue(userName,password);
-        }
-        
-        public static bool IsPersonUserExist(int personID)
-        {
-            return clsUserData.IsPersonUserExist(personID);
-        }
 
         public bool Save()
         {

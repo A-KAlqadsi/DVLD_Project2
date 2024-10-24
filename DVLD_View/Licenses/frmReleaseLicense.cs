@@ -120,10 +120,10 @@ namespace DVLD_View
             _Application.ApplicationDate = DateTime.Now;
             _Application.ApplicationTypeID = _ApplicationType;
             _Application.UserID = userID;
-            _Application.ApplicantApplicationID = _PersonID;
+            _Application.ApplicantPersonID = _PersonID;
             _Application.PaidFees = _AppFees;
             _Application.LastStatusDate = DateTime.Now;
-            _Application.ApplicationStatus = 1;
+            _Application.ApplicationStatus = clsApplication.enApplicationStatus.New;
 
             // local license ID;
             _ReleaseLicense.ReleaseDate = DateTime.Now;

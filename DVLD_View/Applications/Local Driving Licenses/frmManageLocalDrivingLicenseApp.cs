@@ -442,7 +442,7 @@ namespace DVLD_View
         {
             int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
             int applicationID = clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID;
-            int personId = clsApplication.Find(applicationID).ApplicantApplicationID;
+            int personId = clsApplication.FindBaseApplication(applicationID).ApplicantPersonID;
             //int driverID = clsDriver.FindByPersonID(applicationID).DriverID;
             frmLicenseHistory licenesHistory = new frmLicenseHistory(personId);
             licenesHistory.ShowDialog();

@@ -40,7 +40,7 @@ namespace DVLD_View
             _LocalDrivingLicenseApp = clsLocalDrivingLicenseApp.Find(_LocalDrivingLicenseAppID);
             if(_LocalDrivingLicenseApp != null )
             {
-                _Application = clsApplication.Find(_LocalDrivingLicenseApp.ApplicationID);
+                _Application = clsApplication.FindBaseApplication(_LocalDrivingLicenseApp.ApplicationID);
                 if (_Application != null)
                 {
                     _FillApplicationCardInfo();
@@ -83,9 +83,9 @@ namespace DVLD_View
             lblAppID.Text = _Application.ApplicationID.ToString();
             lblAppDate.Text = _Application.ApplicationDate.ToShortDateString();
             lblAppFees.Text = _Application.PaidFees.ToString();
-            lblApplicant.Text = clsPerson.Find(_Application.ApplicantApplicationID).FullName;
-            _PersonID =_Application.ApplicantApplicationID;
-            lblAppStatus.Text = (_Application.ApplicationStatus == 1)? "New" : (_Application.ApplicationStatus == 2)?"Cancelled":"Completed";
+            lblApplicant.Text = clsPerson.Find(_Application.ApplicantPersonID).FullName;
+            _PersonID =_Application.ApplicantPersonID;
+            lblAppStatus.Text = (_Application.ApplicationStatus == clsApplication.enApplicationStatus.New)? "New" : (_Application.ApplicationStatus == clsApplication.enApplicationStatus.Cancelled)?"Cancelled":"Completed";
             lblAppType.Text = clsApplicationType.Find(_Application.ApplicationTypeID).ApplicationTitle;
             lblLastStatusDate.Text = _Application.LastStatusDate.ToShortDateString();
             lblUsername.Text = clsUser.Find(_Application.UserID).Username;

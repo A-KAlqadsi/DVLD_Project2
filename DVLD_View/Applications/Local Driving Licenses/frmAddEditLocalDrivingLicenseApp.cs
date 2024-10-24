@@ -85,13 +85,13 @@ namespace DVLD_View
                 this.Close();
                 return;
             }
-            _Application = clsApplication.Find(_LocalDrivingLicenseApp.ApplicationID);
+            _Application = clsApplication.FindBaseApplication(_LocalDrivingLicenseApp.ApplicationID);
 
             lblMode.Text = "Edit Local Driving License Application";
             ctrlPersonCardWithFilter1.gbFilter.Enabled = false;
-            _PersonID = _Application.ApplicantApplicationID;
-            ctrlPersonCardWithFilter1.txtSearch.Text = clsPerson.Find(_Application.ApplicantApplicationID).NationalNo;
-            ctrlPersonCardWithFilter1.ctrlPersonCard1.LoadPersonInfo(_Application.ApplicantApplicationID);
+            _PersonID = _Application.ApplicantPersonID;
+            ctrlPersonCardWithFilter1.txtSearch.Text = clsPerson.Find(_Application.ApplicantPersonID).NationalNo;
+            ctrlPersonCardWithFilter1.ctrlPersonCard1.LoadPersonInfo(_Application.ApplicantPersonID);
             lblUsername.Text = clsUser.Find(_Application.UserID).Username;
             _UserID = clsUser.Find(clsLoginUser.LoginUser).UserID;
             lblDLApplicationID.Text = _LocalLicenseAppID.ToString();
@@ -99,7 +99,7 @@ namespace DVLD_View
             lblApplicationDate.Text = _Application.ApplicationDate.ToShortDateString();
             cbLicenseClasses.SelectedIndex = _LocalDrivingLicenseApp.LicenseClassID - 1;
             _ClassID = _LocalDrivingLicenseApp.LicenseClassID;
-            _AppStatus = _Application.ApplicationStatus;
+            _AppStatus = (short)_Application.ApplicationStatus;
 
 
         }
@@ -126,12 +126,12 @@ namespace DVLD_View
                 return;
             }
 
-            _Application.ApplicantApplicationID = _PersonID;
+            _Application.ApplicantPersonID = _PersonID;
             _Application.ApplicationTypeID= _AppTypeID;
             _Application.ApplicationDate = Convert.ToDateTime(lblApplicationDate.Text);
             _Application.LastStatusDate = DateTime.Now;
             _Application.PaidFees = _AppFees;
-            _Application.ApplicationStatus = _AppStatus;
+            _Application.ApplicationStatus =(clsApplication.enApplicationStatus) _AppStatus;
             _Application.UserID = _UserID;
 
             if (_Application.Save())

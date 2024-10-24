@@ -110,10 +110,10 @@ namespace DVLD_View
             if(clsTest.IsTestPassed(_LDLAppID,_TestTypeID,false))
             {
                 _ReTakeTestApplication = new clsApplication();
-                _ReTakeTestApplication.ApplicantApplicationID = _ApplicantID;
+                _ReTakeTestApplication.ApplicantPersonID = _ApplicantID;
                 _ReTakeTestApplication.ApplicationTypeID = _RetakeTestAppID;
                 _ReTakeTestApplication.PaidFees = clsApplicationType.Find(_RetakeTestAppID).ApplicationFees;
-                _ReTakeTestApplication.ApplicationStatus = 1;
+                _ReTakeTestApplication.ApplicationStatus = clsApplication.enApplicationStatus.New;
                 _ReTakeTestApplication.ApplicationDate = DateTime.Now;
                 _ReTakeTestApplication.UserID = clsUser.Find(clsLoginUser.LoginUser).UserID;
                 _ReTakeTestApplication.LastStatusDate = DateTime.Now;
@@ -135,15 +135,15 @@ namespace DVLD_View
             
             if (localLicense != null)
             {
-                clsApplication application = clsApplication.Find(localLicense.ApplicationID);
+                clsApplication application = clsApplication.FindBaseApplication(localLicense.ApplicationID);
                 clsLicenseClass licenseClass = clsLicenseClass.Find(localLicense.LicenseClassID);
                 lblDLAppID.Text = localLicense.LocalDrivingLicenseAppID.ToString();
                 lblClassName.Text = licenseClass.ClassName;
-                lblApplicant.Text = clsPerson.Find(application.ApplicantApplicationID).FullName;
+                lblApplicant.Text = clsPerson.Find(application.ApplicantPersonID).FullName;
                 lblAppFees.Text = testType.TestTypeFees.ToString();
                 _TestTypeFees = testType.TestTypeFees;
                 lblTrial.Text = "0";// In progress
-                _ApplicantID = application.ApplicantApplicationID;
+                _ApplicantID = application.ApplicantPersonID;
             }
 
 

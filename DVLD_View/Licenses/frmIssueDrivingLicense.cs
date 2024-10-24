@@ -54,7 +54,7 @@ namespace DVLD_View
         private void btnIssue_Click(object sender, EventArgs e)
         {
             int userId = clsUser.Find(clsLoginUser.LoginUser).UserID;
-            int personId = clsApplication.Find(_ApplicationID).ApplicantApplicationID;
+            int personId = clsApplication.FindBaseApplication(_ApplicationID).ApplicantPersonID;
             _License.ApplicationId = _ApplicationID;
             _License.IssueDate = DateTime.Now;
             _License.ExpirationDate = DateTime.Now.AddYears(_LicenseClass.ValidityLength);
