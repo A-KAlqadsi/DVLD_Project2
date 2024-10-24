@@ -68,7 +68,7 @@ namespace DVLD_Business
 
         public static DataTable GetAll()
         {
-            return clsLocalDrivingLicenseAppData.GetAllLocalDrivingLicenseApps_Master();
+            return clsLocalDrivingLicenseAppData.GetAllLocalDrivingLicenseApplications();
         }
         public bool Save()
         {
