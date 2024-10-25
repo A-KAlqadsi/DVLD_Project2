@@ -335,36 +335,6 @@ namespace DVLD_DataAccess
 
 		// will be removed soon
 
-		public static bool IsLocalDrivingLicenseAppExist(int localLiceseID)
-        {
-            bool isExist = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT TOP(1) Found=1 From LocalDrivingLicenseApplications WHERE LocalDrivingLicenseApplicationID=@localLicenseID";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@localLicenseID", localLiceseID);
-
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int found))
-                    isExist = true;
-
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"LocalDrivingLicenseAppData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isExist;
-        }
-
         public static bool IsPersonHasSameLicenseClass(int personID, int classID,string appStatus="1, 3")
         {
             int licenseCount = 0;
