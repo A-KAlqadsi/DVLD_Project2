@@ -36,7 +36,7 @@ namespace DVLD_View
             _Driver = new clsDriver();
             _LicenseClassID = ctrlApplicationCard1.LicenseClassID;
             _LicenseClass = clsLicenseClass.Find(_LicenseClassID);
-            _ApplicationID = Convert.ToInt32(ctrlApplicationCard1.lblAppID.Text.ToString().Trim());
+            _ApplicationID = ctrlApplicationCard1.ApplicationId;
 
             if(_LicenseClass != null)
             {

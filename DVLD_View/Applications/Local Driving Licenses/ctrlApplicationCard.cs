@@ -16,18 +16,23 @@ namespace DVLD_View
     public partial class ctrlApplicationCard : UserControl
     {
 
-        private clsApplication _Application;
+        
         private clsLocalDrivingLicenseApp _LocalDrivingLicenseApp;
         private int _LocalDrivingLicenseAppID = -1;
-        private int _PersonID = -1;
-        public int LicenseClassID { get; private set; }
-        public int LocalDrivingLicenseAppID
+		public int LocalDrivingLicenseAppID
+		{
+			get
+			{
+				return _LocalDrivingLicenseAppID;
+			}
+		}
+		public int ApplicationId
         {
-            get
-            {
-                return _LocalDrivingLicenseAppID;
-            }
+            get { return ctrlApplicationBasicInfo1.ApplicationID; }
         }
+        
+        public int LicenseClassID { get; private set; }
+        
 
         public ctrlApplicationCard()
         {
@@ -36,21 +41,13 @@ namespace DVLD_View
 
         public void LoadApplicationInfo(int localDrivingLicenseAppID)
         {
-            _LocalDrivingLicenseAppID = localDrivingLicenseAppID;
-            _LocalDrivingLicenseApp = clsLocalDrivingLicenseApp.Find(_LocalDrivingLicenseAppID);
+             
+            _LocalDrivingLicenseApp = clsLocalDrivingLicenseApp.Find(localDrivingLicenseAppID);
             if(_LocalDrivingLicenseApp != null )
             {
-                _Application = clsApplication.FindBaseApplication(_LocalDrivingLicenseApp.ApplicationID);
-                if (_Application != null)
-                {
-                    _FillApplicationCardInfo();
-                }
-                else
-                {
-                    _ResetApplicationCardInfo();
-                    MessageBox.Show("No Application with ID = " + _LocalDrivingLicenseApp.ApplicationID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+                ctrlApplicationBasicInfo1.LoadApplicationInfo(_LocalDrivingLicenseApp.ApplicationID);
+                _FillLocalDrivingLicenseApplicationInfo();
+			}
             else
             {
                 _ResetApplicationCardInfo();
@@ -58,43 +55,46 @@ namespace DVLD_View
             }
         }
 
-        private void _ResetApplicationCardInfo()
+		public void LoadApplicationInfoByApplicationId(int applicationId)
+		{
+
+			_LocalDrivingLicenseApp = clsLocalDrivingLicenseApp.FindByApplicationId(applicationId);
+			if (_LocalDrivingLicenseApp != null)
+			{
+				ctrlApplicationBasicInfo1.LoadApplicationInfo(_LocalDrivingLicenseApp.ApplicationID);
+				_FillLocalDrivingLicenseApplicationInfo();
+			}
+			else
+			{
+				_ResetApplicationCardInfo();
+				MessageBox.Show("No Local Driving License Application with ID = " + applicationId.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void _ResetApplicationCardInfo()
         {
-            lblDLAppID.Text = "[????]";
-            lblAppDate.Text = "[????]";
-            lblAppFees.Text = "[????]";
-            lblAppID.Text = "[????]";
-            lblApplicant.Text = "[????]";
-            lblAppStatus.Text = "[????]";
-            lblAppType.Text = "[????]";
+            _LocalDrivingLicenseAppID = -1;
+            lblDLAppID.Text = "[????]";            
             lblClassName.Text = "[????]";
-            lblLastStatusDate.Text = "[????]";
             lblPassedTests.Text = "[????]";
-            lblUsername.Text = "[????]";
         }
 
-        private void _FillApplicationCardInfo()
+        private void _FillLocalDrivingLicenseApplicationInfo()
         {
-            lblDLAppID.Text = _LocalDrivingLicenseApp.LocalDrivingLicenseAppID.ToString();
+            llShowLicenseInfo.Enabled = _LocalDrivingLicenseApp.GetActiveLicenseId() != -1;
+
+            _LocalDrivingLicenseAppID = _LocalDrivingLicenseApp.LocalDrivingLicenseAppID;
+			lblDLAppID.Text = _LocalDrivingLicenseApp.LocalDrivingLicenseAppID.ToString();
             LicenseClassID = _LocalDrivingLicenseApp.LicenseClassID;
             lblClassName.Text = clsLicenseClass.Find(_LocalDrivingLicenseApp.LicenseClassID).ClassName;
             lblPassedTests.Text = $"{clsTest.CountPassedTest(_LocalDrivingLicenseAppID)}/3";
 
-            lblAppID.Text = _Application.ApplicationID.ToString();
-            lblAppDate.Text = _Application.ApplicationDate.ToShortDateString();
-            lblAppFees.Text = _Application.PaidFees.ToString();
-            lblApplicant.Text = clsPerson.Find(_Application.ApplicantPersonID).FullName;
-            _PersonID =_Application.ApplicantPersonID;
-            lblAppStatus.Text = (_Application.ApplicationStatus == clsApplication.enApplicationStatus.New)? "New" : (_Application.ApplicationStatus == clsApplication.enApplicationStatus.Cancelled)?"Cancelled":"Completed";
-            lblAppType.Text = clsApplicationType.Find(_Application.ApplicationTypeID).ApplicationTitle;
-            lblLastStatusDate.Text = _Application.LastStatusDate.ToShortDateString();
-            lblUsername.Text = clsUser.Find(_Application.UserID).Username;
         }
 
-        private void llViewPersonInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            frmPersonDetails personDetails = new frmPersonDetails(_PersonID);
-            personDetails.ShowDialog();
+		private void llShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+            frmShowLicenseCard license = new frmShowLicenseCard(_LocalDrivingLicenseApp.GetActiveLicenseId());
+            license.ShowDialog();
         }
-    }
+	}
 }

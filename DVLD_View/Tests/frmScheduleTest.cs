@@ -111,7 +111,7 @@ namespace DVLD_View
             {
                 _ReTakeTestApplication = new clsApplication();
                 _ReTakeTestApplication.ApplicantPersonID = _ApplicantID;
-                _ReTakeTestApplication.ApplicationTypeID = _RetakeTestAppID;
+                _ReTakeTestApplication.ApplicationTypeID = (clsApplication.enApplicationType)_RetakeTestAppID;
                 _ReTakeTestApplication.PaidFees = clsApplicationType.Find(_RetakeTestAppID).ApplicationFees;
                 _ReTakeTestApplication.ApplicationStatus = clsApplication.enApplicationStatus.New;
                 _ReTakeTestApplication.ApplicationDate = DateTime.Now;

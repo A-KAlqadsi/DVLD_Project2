@@ -93,7 +93,7 @@ namespace DVLD_View
             // application data
 
             _Application.ApplicationDate = Convert.ToDateTime(ctrlRenewLicenseApplicationInfo1.lblApplicationDate.Text);
-            _Application.ApplicationTypeID = ctrlRenewLicenseApplicationInfo1.AppTypeID;
+            _Application.ApplicationTypeID = (clsApplication.enApplicationType)ctrlRenewLicenseApplicationInfo1.AppTypeID;
             _Application.UserID = userID;
             _Application.ApplicantPersonID = _PersonID;
             _Application.PaidFees = Convert.ToSingle(ctrlRenewLicenseApplicationInfo1.lblAppFees.Text);

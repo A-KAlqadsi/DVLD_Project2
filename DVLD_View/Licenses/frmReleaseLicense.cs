@@ -118,7 +118,7 @@ namespace DVLD_View
 
             // application data
             _Application.ApplicationDate = DateTime.Now;
-            _Application.ApplicationTypeID = _ApplicationType;
+            _Application.ApplicationTypeID = (clsApplication.enApplicationType)_ApplicationType;
             _Application.UserID = userID;
             _Application.ApplicantPersonID = _PersonID;
             _Application.PaidFees = _AppFees;

@@ -166,7 +166,7 @@ namespace DVLD_View
             // application data
 
             _Application.ApplicationDate = Convert.ToDateTime(ctrlAppInfoForLicenseReplacement1.lblApplicationDate.Text);
-            _Application.ApplicationTypeID = _AppTypeID;
+            _Application.ApplicationTypeID = (clsApplication.enApplicationType)_AppTypeID;
             _Application.UserID = userID;
             _Application.ApplicantPersonID = _PersonID;
             _Application.PaidFees = Convert.ToSingle(ctrlAppInfoForLicenseReplacement1.lblAppFees.Text);

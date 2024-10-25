@@ -189,6 +189,7 @@ namespace DVLD_Business
         {
             return clsLicenseData.GetActiveLicenseIDByPersonID(personID, licenseClassId);
         }
+        
         public static bool IsLicenseExistByPersonId (int personID, int licenseClassId)
         {
             return clsLicenseData.GetActiveLicenseIDByPersonID(personID, licenseClassId) != -1;

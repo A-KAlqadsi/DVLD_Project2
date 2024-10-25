@@ -100,7 +100,7 @@ namespace DVLD_View
             // application data
 
             _Application.ApplicationDate = Convert.ToDateTime(ctrlInternationalApplicationInfo1.lblApplicationDate.Text);
-            _Application.ApplicationTypeID = ctrlInternationalApplicationInfo1.AppTypeID;
+            _Application.ApplicationTypeID =(clsApplication.enApplicationType) ctrlInternationalApplicationInfo1.AppTypeID;
             _Application.UserID = userID;
             _Application.ApplicantPersonID = _PersonID;
             _Application.PaidFees = Convert.ToSingle(ctrlInternationalApplicationInfo1.lblAppFees.Text);
