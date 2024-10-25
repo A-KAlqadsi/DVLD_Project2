@@ -141,7 +141,8 @@
             this.toolStripMenuItem5,
             this.tsmiShowPersonLicenseHistory});
 			this.cmsManageLocalDrivingLicenseApp.Name = "cmsManageLocalDrivingLicenseApp";
-			this.cmsManageLocalDrivingLicenseApp.Size = new System.Drawing.Size(342, 344);
+			this.cmsManageLocalDrivingLicenseApp.Size = new System.Drawing.Size(342, 372);
+			this.cmsManageLocalDrivingLicenseApp.Opening += new System.ComponentModel.CancelEventHandler(this.cmsManageLocalDrivingLicenseApp_Opening);
 			// 
 			// tsmiShowAppDetails
 			// 

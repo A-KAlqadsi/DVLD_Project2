@@ -210,6 +210,7 @@ namespace DVLD_DataAccess
 			{
 				using (SqlCommand command = new SqlCommand("SP_DoesPassedTestType", connection))
 				{
+					command.CommandType = CommandType.StoredProcedure;
 					command.Parameters.AddWithValue("@LocalDrivingLicenseAppId", LocalDrivingLicenseApplicationID);
 					command.Parameters.AddWithValue("@TestTypeId", TestTypeID);
 
@@ -244,6 +245,8 @@ namespace DVLD_DataAccess
 			{
 				using (SqlCommand command = new SqlCommand("SP_DoesAttendTestType", connection))
 				{
+					command.CommandType = CommandType.StoredProcedure;
+
 					command.Parameters.AddWithValue("@LocalDrivingLicenseAppId", LocalDrivingLicenseApplicationID);
 					command.Parameters.AddWithValue("@TestTypeId", TestTypeID);
 
@@ -272,12 +275,15 @@ namespace DVLD_DataAccess
 		public static bool IsThereAnActiveScheduleTest(int LocalDrivingLicenseApplicationID, int TestTypeID)
 
 		{
+
 			bool Result = false;
 
 			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
 			{
 				using (SqlCommand command = new SqlCommand("SP_IsThereAnActiveScheduleTest", connection))
 				{
+					command.CommandType = CommandType.StoredProcedure;
+
 					command.Parameters.AddWithValue("@LocalDrivingLicenseAppId", LocalDrivingLicenseApplicationID);
 					command.Parameters.AddWithValue("@TestTypeId", TestTypeID);
 
@@ -312,6 +318,8 @@ namespace DVLD_DataAccess
 			{
 				using (SqlCommand command = new SqlCommand("SP_TotalTrialsPerTest", connection))
 				{
+					command.CommandType = CommandType.StoredProcedure;
+					
 					command.Parameters.AddWithValue("@LocalDrivingLicenseAppId", LocalDrivingLicenseApplicationID);
 					command.Parameters.AddWithValue("@TestTypeId", TestTypeID);
 

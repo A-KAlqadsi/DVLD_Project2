@@ -133,8 +133,8 @@ namespace DVLD_View
 
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cbFilterLocalDrivingLicenseApps.SelectedIndex == 1 ||
-                    cbFilterLocalDrivingLicenseApps.SelectedIndex == 5)
+            if (cbFilterLocalDrivingLicenseApps.Text == "L.D.L AppID" ||
+                    cbFilterLocalDrivingLicenseApps.Text == "PassedTests")
 
                 e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
 		}
@@ -303,25 +303,23 @@ namespace DVLD_View
 
 		private void tsmiCancelApplication_Click(object sender, EventArgs e)
         {
-            int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
-            int applicationID = clsLocalDrivingLicenseApp.Find(lDLAppID).ApplicationID;
+            if (MessageBox.Show("Are you sure you want to cancel this application", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                return;
+
+            clsLocalDrivingLicenseApp application = 
+                clsLocalDrivingLicenseApp.Find((int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value);
             
-            if (MessageBox.Show("Are you sure you want to cancel this application","Confirm",MessageBoxButtons.OKCancel,MessageBoxIcon.Question) == DialogResult.OK)
+            if (application != null)
             {
-                if(clsApplication.UpdateApplicationStatus(applicationID, 2))
+                if (application.Cancel())
                 {
-                    tsmiCancelApplication.Enabled = false;
-                    tsmiEditApplication.Enabled = false;
-                    tsmiScheduleTests.Enabled = false;
-                    tsmiShowLicense.Enabled = false;
-                    tsmiDeleteApplication.Enabled = true;
+                    MessageBox.Show("Application Cancelled Successfully.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmManageLocalDrivingLicenseApp_Load(null, null);
+
                 }
-
-
-
-				frmManageLocalDrivingLicenseApp_Load(null, null);
-			}
-
+                else
+                    MessageBox.Show("Couldn't cancel this application", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}   
 		}
 
         private void tsmiDeleteApplication_Click(object sender, EventArgs e)
@@ -356,6 +354,8 @@ namespace DVLD_View
 
             frmShowApplicationInfo showAppInfo = new frmShowApplicationInfo(lDLAppID);
             showAppInfo.ShowDialog();
+            // refresh
+            frmManageLocalDrivingLicenseApp_Load(null, null);
         }
 
         private void tsmiShowPersonLicenseHistory_Click(object sender, EventArgs e)
@@ -369,5 +369,41 @@ namespace DVLD_View
 
             //MessageBox.Show("Person license history will be here!");
         }
-    }
+
+		private void cmsManageLocalDrivingLicenseApp_Opening(object sender, CancelEventArgs e)
+		{
+            int localDrivingLicenseId = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
+
+            clsLocalDrivingLicenseApp localLicenseApp = clsLocalDrivingLicenseApp.Find(localDrivingLicenseId);
+
+            int totalPassedTests = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[5].Value;
+
+            bool LicenseExists = localLicenseApp.IsLicenseIssued();
+
+
+            // enable only if the tests passed 3 and license not Exists
+            tsmiIssueDrivingLicense.Enabled = (totalPassedTests == 3) && !LicenseExists;
+
+			tsmiShowLicense.Enabled = LicenseExists;
+			tsmiEditApplication.Enabled = !LicenseExists && localLicenseApp.ApplicationStatus == clsApplication.enApplicationStatus.New;
+            tsmiCancelApplication.Enabled = ( localLicenseApp.ApplicationStatus == clsApplication.enApplicationStatus.New);
+            tsmiScheduleTests.Enabled = !LicenseExists;
+
+            tsmiDeleteApplication.Enabled = (localLicenseApp.ApplicationStatus == clsApplication.enApplicationStatus.New);
+
+			bool passedVisionTest = localLicenseApp.DoesPassTestType(clsTestType.enTestType.VisionTest);
+			bool passedWrittenTest = localLicenseApp.DoesPassTestType(clsTestType.enTestType.WrittenTest);
+			bool passedStreetTest = localLicenseApp.DoesPassTestType(clsTestType.enTestType.StreetTest);
+
+            tsmiScheduleTests.Enabled = (!passedVisionTest || !passedWrittenTest || !passedStreetTest)
+                && (localLicenseApp.ApplicationStatus == clsApplication.enApplicationStatus.New);
+            if(tsmiScheduleTests.Enabled)
+            {
+                tsmiScheduleVisionTest.Enabled = !passedVisionTest;
+                tsmiScheduleWrittenTest.Enabled = passedVisionTest && !passedWrittenTest;
+                tsmiScheduleStreetTest.Enabled = passedVisionTest && passedWrittenTest && !passedStreetTest;
+            }
+
+		}
+	}
 }

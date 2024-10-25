@@ -170,6 +170,11 @@ namespace DVLD_Business
 			return clsLocalDrivingLicenseAppData.TotalTrialsPerTest(this.LocalDrivingLicenseAppID, (int)TestTypeID);
 		}
 
+        public bool IsLicenseIssued()
+        {
+            return GetActiveLicenseId() != -1;
+        }
+
         public int GetActiveLicenseId()
         {
             return clsLicense.GetActiveLicenseByPersonId(this.ApplicantPersonID, this.LicenseClassID);
