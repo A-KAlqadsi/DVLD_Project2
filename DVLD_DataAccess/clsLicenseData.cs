@@ -101,7 +101,7 @@ namespace DVLD_DataAccess
             DataTable table = new DataTable();
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "SELECT * From DriverLicenses_View WHERE LicenseID=@LicenseID";
+            string query = "Select * from LicenseInfo_View";
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@LicenseID", licenseID);
