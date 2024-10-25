@@ -68,7 +68,22 @@ namespace DVLD_Business
 
         }
 
-        public static DataTable GetAll()
+		public static clsLicenseClass FindByClassName(string className)
+		{
+            int classID = -1;
+            string description = "";
+			short minimumAllowedAge = 0;
+			short validityLength = 0;
+			float classFees = 0;
+			if (clsLicenseClassData.GetLicenseClassByName(className, ref classID, ref description,
+				ref minimumAllowedAge, ref validityLength, ref classFees))
+				return new clsLicenseClass(classID, className, description, minimumAllowedAge, validityLength, classFees);
+			else
+				return null;
+
+		}
+
+		public static DataTable GetAll()
         {
             return clsLicenseClassData.GetAllLicenseClasses();
         }

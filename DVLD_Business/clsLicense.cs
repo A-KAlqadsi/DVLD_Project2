@@ -185,5 +185,15 @@ namespace DVLD_Business
             return clsLicenseData.UpdateLicenseActivity(licenseID, newActivity);
         }
 
+        public static int GetActiveLicenseByPersonId(int personID, int licenseClassId)
+        {
+            return clsLicenseData.GetActiveLicenseIDByPersonID(personID, licenseClassId);
+        }
+        public static bool IsLicenseExistByPersonId (int personID, int licenseClassId)
+        {
+            return clsLicenseData.GetActiveLicenseIDByPersonID(personID, licenseClassId) != -1;
+        }
+
+
     }
 }

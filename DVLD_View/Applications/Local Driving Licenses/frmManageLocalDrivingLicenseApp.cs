@@ -70,7 +70,7 @@ namespace DVLD_View
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            frmAddEditLocalDrivingLicenseApp addEdit = new frmAddEditLocalDrivingLicenseApp(-1);
+            frmAddEditLocalDrivingLicenseApp addEdit = new frmAddEditLocalDrivingLicenseApp();
             addEdit.ShowDialog();
             _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
 

@@ -44,7 +44,47 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
-        public static int AddNewLicenseClass( string className,  string classDescription,
+		public static bool GetLicenseClassByName(string className, ref int licenseClassID, ref string classDescription,
+	ref short minAllowedAge, ref short defaultValidityLength, ref float classFees)
+		{
+			bool isFound = false;
+			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+			string query = "SELECT * From LicenseClasses WHERE ClassName=@ClassName;";
+
+			SqlCommand command = new SqlCommand(query, connection);
+			command.Parameters.AddWithValue("@ClassName", className);
+
+			try
+			{
+				connection.Open();
+				SqlDataReader reader = command.ExecuteReader();
+				if (reader.Read())
+				{
+					isFound = true;
+					licenseClassID =(int)reader["LicenseClassID"];
+					classDescription = reader["ClassDescription"].ToString();
+					minAllowedAge = Convert.ToInt16(reader["MinimumAllowedAge"]);
+					defaultValidityLength = Convert.ToInt16(reader["DefaultValidityLength"]);
+					classFees = Convert.ToSingle(reader["ClassFees"]);
+				}
+				reader.Close();
+			}
+			catch (Exception ex)
+			{
+				Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+				eventLogger.Log($"LicenseClassData Error: {ex.Message}");
+			}
+			finally
+			{
+				connection.Close();
+			}
+			return isFound;
+		}
+
+
+
+		public static int AddNewLicenseClass( string className,  string classDescription,
              short minAllowedAge,  short defaultValidityLength,  float classFees)
         {
             int licenseClassID = -1;

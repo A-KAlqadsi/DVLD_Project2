@@ -169,11 +169,5 @@ namespace DVLD_Business
 			return clsLocalDrivingLicenseAppData.TotalTrialsPerTest(this.LocalDrivingLicenseAppID, (int)TestTypeID);
 		}
 
-		[Obsolete("This will be deleted in the next version so don't use it")]
-        public static bool IsPersonHasSameLicenseClass(int personID, int classID)
-        {
-            return clsLocalDrivingLicenseAppData.IsPersonHasSameLicenseClass(personID, classID);
-        }
-
     }
 }
