@@ -182,7 +182,7 @@ namespace DVLD_View
             
             _TestAppointment.LocalDrivingLicenseAppID = _LDLAppID;
             _TestAppointment.AppointmentDate = dtpTestDate.Value;
-            _TestAppointment.TestTypeID = _TestTypeID;
+            _TestAppointment.TestTypeID = (clsTestType.enTestType)_TestTypeID;
             _TestAppointment.PaidFees = Convert.ToSingle(lblAppFees.Text);
             _TestAppointment.UserID =clsUser.Find(clsLoginUser.LoginUser).UserID;
             _TestAppointment.IsLocked = false;
