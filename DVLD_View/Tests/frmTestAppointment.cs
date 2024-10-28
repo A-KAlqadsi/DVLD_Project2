@@ -96,7 +96,7 @@ namespace DVLD_View
 				return;
 			}
 
-            
+            // here still have code logic will be added soon
 
             if(clsTest.IsTestPassed(_LDLAppId,(int)_TestTypeID))
             {
@@ -104,8 +104,6 @@ namespace DVLD_View
                 return;
             }
 
-            
-            
             frmScheduleTest scheduleTest = new frmScheduleTest(_LDLAppId,(clsTestType.enTestType)_TestTypeID,-1);
             scheduleTest.ShowDialog();
             frmVisionTestAppointment_Load(null, null);
@@ -120,7 +118,7 @@ namespace DVLD_View
         private void tsmiEditTestAppointment_Click(object sender, EventArgs e)
         {
             int iD = (int)dgvListAllTestAppointments.CurrentRow.Cells[0].Value;
-            frmScheduleTest scheduleTest = new frmScheduleTest(_LDLAppId, (clsTestType.enTestType)_TestTypeID, iD);
+            frmScheduleTest scheduleTest = new frmScheduleTest(_LDLAppId, _TestTypeID, iD);
             scheduleTest.ShowDialog();
 
 			frmVisionTestAppointment_Load(null, null);
@@ -129,7 +127,7 @@ namespace DVLD_View
 		private void tsmiTakeTest_Click(object sender, EventArgs e)
         {
             int iD = (int)dgvListAllTestAppointments.CurrentRow.Cells[0].Value;
-            frmTakeTest takeTest = new frmTakeTest(iD,(int) _TestTypeID);
+            frmTakeTest takeTest = new frmTakeTest(iD, _TestTypeID);
             takeTest.ShowDialog();
 			frmVisionTestAppointment_Load(null, null);
 		}
