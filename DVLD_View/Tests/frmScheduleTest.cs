@@ -13,200 +13,27 @@ namespace DVLD_View
 {
     public partial class frmScheduleTest : Form
     {
-        private string _ImagePath = @"C:\Users\Abdulkarim\source\Abu-Hadhoud\19 DVLD\DVLD_View\Icons\";
+        private int _LocalDrivingLicenseId = -1;
+        private int _TestAppointmentId = -1;
+        private clsTestType.enTestType _TestTypeId = clsTestType.enTestType.VisionTest;
 
-        enum enTestType { Vision = 1, Written=2,Street=3}
-        enum enMode { AddNew =1, Update =2}
-        enMode _Mode;
-        enTestType _TestType;
-        int _TestTypeID;
-        int _LDLAppID;
-        clsTestAppointment _TestAppointment;
-        clsApplication _ReTakeTestApplication;
-        int _ApplicantID;
-        const int _RetakeTestAppID = 7;
-        float _TestTypeFees = 0;
-        float _RetakeTestFees = 0;
-        int _TestAppointmentID;
-        public frmScheduleTest(int lDLAppId, int testTypeID, int appointmentID)
+        public frmScheduleTest(int localDrivingLicenseId, clsTestType.enTestType testTypeID, int testAppointmentID =-1)
         {
             InitializeComponent();
-            _TestTypeID = testTypeID;
-            _TestAppointmentID = appointmentID;
-            _LDLAppID = lDLAppId;
-
-            if(_TestAppointmentID == -1)
-                _Mode = enMode.AddNew;
-            else 
-                _Mode = enMode.Update;
-
-            if (_TestTypeID == 1)
-                _TestType = enTestType.Vision;
-            else if (_TestTypeID == 2)
-                _TestType = enTestType.Written;
-            else 
-                _TestType = enTestType.Street;
-            
-        }
-
-        private void _MakeDateInFuture()
-        {
-            dtpTestDate.MinDate=DateTime.Now;
-        }
-
-        private void _InitilizeTestTypeDefaults()
-        {
-            _SetDefaults();
-            if (_TestType == enTestType.Vision)
-            {
-                gbTestType.Text = "Vision Test";
-
-            }
-            else if (_TestType == enTestType.Written)
-            {
-                gbTestType.Text = "Written Test";
-                pbTestType.ImageLocation = _ImagePath + "Written Test 512.png";
-
-            }
-            else
-            {
-                gbTestType.Text = "Street Test";
-                pbTestType.ImageLocation = _ImagePath + "driving-test 512.png";
-
-            }
-        }
-
-        private void _LoadData()
-        {
-            _MakeDateInFuture();
-            _InitilizeTestTypeDefaults();
-            _CheckTestAppointmentStatus();
-            _RetakeTestInfo();
-            
-                
-            lblTotalFees.Text = (_RetakeTestFees + _TestTypeFees).ToString();
-
-            if(_Mode == enMode.AddNew)
-            {
-                _TestAppointment = new clsTestAppointment();
-                return;
-            }
-
-            _TestAppointment = clsTestAppointment.Find(_TestAppointmentID);
-            if (_TestAppointment == null)
-            {
-                MessageBox.Show($"This form will be closed because no Test appointment wiht ID = {_TestAppointmentID}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
-                return;
-            }
-            lblRTestAppID.Text = _TestAppointmentID.ToString();
-            
-            dtpTestDate.Value = _TestAppointment.AppointmentDate;
-
-        }
-
-        private void  _RetakeTestInfo()
-        {
-            if(clsTest.IsTestPassed(_LDLAppID,_TestTypeID,false))
-            {
-                _ReTakeTestApplication = new clsApplication();
-                _ReTakeTestApplication.ApplicantPersonID = _ApplicantID;
-                _ReTakeTestApplication.ApplicationTypeID = (clsApplication.enApplicationType)_RetakeTestAppID;
-                _ReTakeTestApplication.PaidFees = clsApplicationType.Find(_RetakeTestAppID).ApplicationFees;
-                _ReTakeTestApplication.ApplicationStatus = clsApplication.enApplicationStatus.New;
-                _ReTakeTestApplication.ApplicationDate = DateTime.Now;
-                _ReTakeTestApplication.UserID = clsUser.Find(clsLoginUser.LoginUser).UserID;
-                _ReTakeTestApplication.LastStatusDate = DateTime.Now;
-                lblRTestAppFees.Text = _ReTakeTestApplication.PaidFees.ToString();
-                _RetakeTestFees = _ReTakeTestApplication.PaidFees;
-                gbRetakeTestInfo.Enabled = true;
-            }
-            else 
-            {
-                gbRetakeTestInfo.Enabled = false;
-
-            }
-        }
-
-        private void _SetDefaults()
-        {
-            clsLocalDrivingLicenseApp localLicense = clsLocalDrivingLicenseApp.Find(_LDLAppID);
-            clsTestType testType = clsTestType.Find((clsTestType.enTestType)_TestTypeID);
-            
-            if (localLicense != null)
-            {
-                clsApplication application = clsApplication.FindBaseApplication(localLicense.ApplicationID);
-                clsLicenseClass licenseClass = clsLicenseClass.Find(localLicense.LicenseClassID);
-                lblDLAppID.Text = localLicense.LocalDrivingLicenseAppID.ToString();
-                lblClassName.Text = licenseClass.ClassName;
-                lblApplicant.Text = clsPerson.Find(application.ApplicantPersonID).FullName;
-                lblAppFees.Text = testType.TestTypeFees.ToString();
-                _TestTypeFees = testType.TestTypeFees;
-                lblTrial.Text = "0";// In progress
-                _ApplicantID = application.ApplicantPersonID;
-            }
-
-
+            _LocalDrivingLicenseId = localDrivingLicenseId;
+            _TestAppointmentId = testAppointmentID;
+            _TestTypeId = testTypeID;
         }
 
         private void frmScheduleTest_Load(object sender, EventArgs e)
         {
-
-            _LoadData();
-        }
-
-        private void _CheckTestAppointmentStatus()
-        {
-            int testStatus = clsTestAppointment.IsTestAppointmentPassed(_TestAppointmentID);
-            if (testStatus == 2)
-                return;
-            if (testStatus == 0)
-            {
-                lblMode.Text = "Schedule Retake Test";
-                lblStatus.Visible = true;
-                lblStatus.Text = "Person already sat for the test, appointment locked.";
-                dtpTestDate.Enabled = false;
-                btnSave.Enabled = false;
-            }
-            if (testStatus == 1)
-            {
-                lblStatus.Visible = true;
-                lblStatus.Text = "Person already pass for the test, appointment locked";
-                dtpTestDate.Enabled = false;
-                btnSave.Enabled = false;
-            }
-        }
-        
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            
-            _TestAppointment.LocalDrivingLicenseAppID = _LDLAppID;
-            _TestAppointment.AppointmentDate = dtpTestDate.Value;
-            _TestAppointment.TestTypeID = (clsTestType.enTestType)_TestTypeID;
-            _TestAppointment.PaidFees = Convert.ToSingle(lblAppFees.Text);
-            _TestAppointment.UserID =clsUser.Find(clsLoginUser.LoginUser).UserID;
-            _TestAppointment.IsLocked = false;
-            
-            if(gbRetakeTestInfo.Enabled)
-            {
-                _ReTakeTestApplication.Save();
-                    
-            }
-
-            if (_TestAppointment.Save())
-            {
-                MessageBox.Show("Test appointment added successfully!", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-            }
-            else
-                MessageBox.Show("Test appointment save failed!", "Ooops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
+            ctrlScheduleTest1.TestTypeId = _TestTypeId;
+            ctrlScheduleTest1.LoadInfo(_LocalDrivingLicenseId, _TestAppointmentId);          
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-    }
+	}
 }

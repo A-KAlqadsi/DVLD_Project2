@@ -1,4 +1,5 @@
 ﻿using DVLD_Business;
+using DVLD_View.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,92 +14,101 @@ namespace DVLD_View
 {
     public partial class frmTestAppointment : Form
     {
-        enum enTestType { Vision = 1, Written = 2, Street = 3 }
-        enTestType _TestType;
-        int _TestTypeID;
+        clsTestType.enTestType _TestTypeID = clsTestType.enTestType.VisionTest;
+                
         int _LDLAppId;
-        private string _ImagePath = @"C:\Users\Abdulkarim\source\Abu-Hadhoud\19 DVLD\DVLD_View\Icons\";
+        DataTable _dtTestAppointments;
 
-        public frmTestAppointment(int lDLAppId, int testTypeID)
+        public frmTestAppointment(int lDLAppId, clsTestType.enTestType testTypeID)
         {
             InitializeComponent();
             _LDLAppId = lDLAppId;
             _TestTypeID = testTypeID;
-            if (_TestTypeID == 1)
-                _TestType = enTestType.Vision;
-            else if (_TestTypeID == 2)
-                _TestType = enTestType.Written;
-            else
-                _TestType = enTestType.Street;
+            
         }
 
-        private void _InitializeTestAppointmentTypes()
+        private void _LoadTestAppointmentTitle()
         {
-            if (_TestType == enTestType.Vision)
+           switch(_TestTypeID)
             {
-                lblMode.Text = "Vision Test Appointment";
-                this.Text = "Vision Test Appointment";
-
-            }
-            else if (_TestType == enTestType.Written)
-            {
-                lblMode.Text = "Written Test Appointment";
-                this.Text = "Written Test Appointment";
-                pbTestAppointment.ImageLocation = _ImagePath + "Written Test 512.png";
-
-            }
-            else
-            {
-                lblMode.Text = "Street Test Appointment";
-                this.Text =  "Street Test Appointment";
-                pbTestAppointment.ImageLocation = _ImagePath + "driving-test 512.png";
-
-            }
+                case clsTestType.enTestType.VisionTest:
+					lblMode.Text = "Vision Test Appointment";
+					this.Text = "Vision Test Appointment";
+                    pbTestAppointment.Image = Resources.Vision_512;
+                    break;
+                case clsTestType.enTestType.WrittenTest:
+                    {
+						lblMode.Text = "Written Test Appointment";
+						this.Text = "Written Test Appointment";
+                        pbTestAppointment.Image = Resources.Written_Test_512;
+					}
+                    break;
+                case clsTestType.enTestType.StreetTest:
+                    {
+						lblMode.Text = "Street Test Appointment";
+						this.Text = "Street Test Appointment";
+						pbTestAppointment.Image = Resources.driving_test_512;
+					}
+                    break;
+			}
+           
         }
 
         private void frmVisionTestAppointment_Load(object sender, EventArgs e)
         {
-            ctrlApplicationCard1.LoadApplicationInfo(_LDLAppId);
-            _InitializeTestAppointmentTypes();
-            _RefreshTestAppointments();
-        }
+			_LoadTestAppointmentTitle();
+			ctrlApplicationCard1.LoadApplicationInfo(_LDLAppId);
 
-        private void _RefreshTestAppointments()
-        {
-            dgvListAllTestAppointments.Rows.Clear();
-            DataView dv = clsTestAppointment.GetAll().DefaultView;
-            
-            dv.RowFilter = $"LocalDrivingLicenseApplicationID = {_LDLAppId} And TestTypeID={_TestTypeID}";
-            dv.Sort = "TestAppointmentID DESC";
-            dgvListAllTestAppointments.Visible = dv.Count > 0;
-            
-            for (int i = 0; i < dv.Count; i++)
+			_dtTestAppointments = clsTestAppointment.GetAllTestAppointmentPerTestType(_LDLAppId, _TestTypeID);
+
+            dgvListAllTestAppointments.DataSource = _dtTestAppointments;
+
+            lblRecordsCount.Text = dgvListAllTestAppointments.Rows.Count.ToString();
+            if(dgvListAllTestAppointments.Rows.Count >0)
             {
-                dgvListAllTestAppointments.Rows.Add(dv[i]["TestAppointmentID"], dv[i]["AppointmentDate"], dv[i]["PaidFees"], dv[i]["IsLocked"]);
-            }
+                dgvListAllTestAppointments.Columns[0].HeaderText = "Appointment Id";
+                dgvListAllTestAppointments.Columns[0].Width = 160;
 
-            
-            lblRecordsCount.Text = dv.Count.ToString();
-        }
+				dgvListAllTestAppointments.Columns[1].HeaderText = "Appointment Date";
+				dgvListAllTestAppointments.Columns[1].Width = 180;
+
+				dgvListAllTestAppointments.Columns[2].HeaderText = "Paid Fees";
+				dgvListAllTestAppointments.Columns[2].Width = 125;
+
+				dgvListAllTestAppointments.Columns[3].HeaderText = "Is Locked";
+				dgvListAllTestAppointments.Columns[3].Width = 100;
+				
+			}
+
+
+
+		}
+
 
         private void btnAddAppointment_Click(object sender, EventArgs e)
         {
-            if(clsTest.IsTestPassed(_LDLAppId,_TestTypeID))
+
+
+            clsLocalDrivingLicenseApp localDrivingLicenseApp = clsLocalDrivingLicenseApp.Find(_LDLAppId);
+            if(localDrivingLicenseApp.IsThereAnActiveScheduleTest(_TestTypeID))
+            {
+				MessageBox.Show($"Person Already has an active appointment for this test, you{Environment.NewLine}cannot add new appointment", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+            
+
+            if(clsTest.IsTestPassed(_LDLAppId,(int)_TestTypeID))
             {
                 MessageBox.Show($"This person already passed this test before, you can only {Environment.NewLine} add apointment for new or failed tests", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (clsTestAppointment.IsPersonHasActiveTestAppointment(_LDLAppId)) 
-            {
-                MessageBox.Show($"Person Already has an active appointment for this test, you{Environment.NewLine}cannot add new appointment", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             
-
-            frmScheduleTest scheduleTest = new frmScheduleTest(_LDLAppId, _TestTypeID,-1);
+            
+            frmScheduleTest scheduleTest = new frmScheduleTest(_LDLAppId,(clsTestType.enTestType)_TestTypeID,-1);
             scheduleTest.ShowDialog();
-            _RefreshTestAppointments();
+            frmVisionTestAppointment_Load(null, null);
             
         }
 
@@ -110,18 +120,18 @@ namespace DVLD_View
         private void tsmiEditTestAppointment_Click(object sender, EventArgs e)
         {
             int iD = (int)dgvListAllTestAppointments.CurrentRow.Cells[0].Value;
-            frmScheduleTest scheduleTest = new frmScheduleTest(_LDLAppId, _TestTypeID, iD);
+            frmScheduleTest scheduleTest = new frmScheduleTest(_LDLAppId, (clsTestType.enTestType)_TestTypeID, iD);
             scheduleTest.ShowDialog();
 
-            _RefreshTestAppointments();
-        }
+			frmVisionTestAppointment_Load(null, null);
+		}
 
-        private void tsmiTakeTest_Click(object sender, EventArgs e)
+		private void tsmiTakeTest_Click(object sender, EventArgs e)
         {
             int iD = (int)dgvListAllTestAppointments.CurrentRow.Cells[0].Value;
-            frmTakeTest takeTest = new frmTakeTest(iD, _TestTypeID);
+            frmTakeTest takeTest = new frmTakeTest(iD,(int) _TestTypeID);
             takeTest.ShowDialog();
-            _RefreshTestAppointments();
-        }
-    }
+			frmVisionTestAppointment_Load(null, null);
+		}
+	}
 }

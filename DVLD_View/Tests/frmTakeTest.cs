@@ -116,7 +116,7 @@ namespace DVLD_View
         private void btnSave_Click(object sender, EventArgs e)
         {
             _Test.TestAppointmentID = _TestAppointmentID;
-            _Test.UserID = clsUser.Find(clsLoginUser.LoginUser).UserID;
+            _Test.UserID = Globals.Global.CurrentUser.UserID;
             _Test.TestResult = _TestResult;
             _Test.Notes = txtNotes.Text.Trim();
             _TestAppointment.IsLocked = true;

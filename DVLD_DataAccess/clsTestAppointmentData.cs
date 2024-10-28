@@ -114,7 +114,7 @@ namespace DVLD_DataAccess
                 {
                     command.CommandType = CommandType.StoredProcedure;
 					command.Parameters.AddWithValue("@TestTypeID", testTypeID);
-					command.Parameters.AddWithValue("@localLicenseID", localDrivingLicenseAppID);
+					command.Parameters.AddWithValue("@LocalDrivingLicenseAppID", localDrivingLicenseAppID);
 					command.Parameters.AddWithValue("@AppointmentDate", appointmentDate);
 					command.Parameters.AddWithValue("@PaidFees", paidFees);
 					command.Parameters.AddWithValue("@UserID", createdByUserID);
@@ -160,7 +160,7 @@ namespace DVLD_DataAccess
                     command.CommandType = CommandType.StoredProcedure;
 					command.Parameters.AddWithValue("@TestAppointmentID", testAppointmentID);
 					command.Parameters.AddWithValue("@TestTypeID", testTypeID);
-					command.Parameters.AddWithValue("@localLicenseID", localDrivingLicenseAppID);
+					command.Parameters.AddWithValue("@LocalDrivingLicenseAppID", localDrivingLicenseAppID);
 					command.Parameters.AddWithValue("@AppointmentDate", appointmentDate);
 					command.Parameters.AddWithValue("@PaidFees", paidFees);
 					command.Parameters.AddWithValue("@UserID", createdByUserID);

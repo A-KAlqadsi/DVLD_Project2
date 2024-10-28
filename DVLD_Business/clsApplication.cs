@@ -46,6 +46,13 @@ namespace DVLD_Business
         public int ApplicationID { get; set; }
         public int ApplicantPersonID { get; set; }
         public clsPerson PersonInfo { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return PersonInfo.FullName;
+            }
+        }
         public DateTime ApplicationDate { get; set; }
         public enApplicationType ApplicationTypeID { get; set; }
 

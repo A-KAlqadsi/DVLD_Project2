@@ -19,11 +19,11 @@ namespace DVLD_Business
         public int LicenseClassID { get; set; }
         public clsLicenseClass LicenseClassInfo { get; set; }
 
-        public string PersonFullName
+        public string ApplicantFullName
         {
             get
             {
-                return base.PersonInfo.FullName;
+                return clsPerson.Find(ApplicantPersonID).FullName;
             }
         }
 

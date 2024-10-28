@@ -141,27 +141,26 @@ namespace DVLD_View
 
         private void tsmiScheduleVisionTest_Click(object sender, EventArgs e)
         {
-            int testTypeID = Convert.ToInt32(tsmiScheduleVisionTest.Tag);
             int lDLAppID = (int) dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
-            frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID,testTypeID);
+            frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID,clsTestType.enTestType.VisionTest);
             testAppointment.ShowDialog();
 			frmManageLocalDrivingLicenseApp_Load(null, null);
 		}
 
 		private void tsmiScheduleWrittenTest_Click(object sender, EventArgs e)
         {
-            int testTypeID = Convert.ToInt32(tsmiScheduleWrittenTest.Tag);
+            
             int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
-            frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID, testTypeID);
+            frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID, clsTestType.enTestType.WrittenTest);
             testAppointment.ShowDialog();
 
 			frmManageLocalDrivingLicenseApp_Load(null, null);
 		}
 		private void tsmiScheduleStreetTest_Click(object sender, EventArgs e)
         {
-            int testTypeID = Convert.ToInt32(tsmiScheduleStreetTest.Tag);
+            
             int lDLAppID = (int)dgvListLocalDrivingLicenseApps.CurrentRow.Cells[0].Value;
-            frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID, testTypeID);
+            frmTestAppointment testAppointment = new frmTestAppointment(lDLAppID, clsTestType.enTestType.StreetTest);
             testAppointment.ShowDialog();
 
             if (clsTest.CountPassedTest(lDLAppID) == 3)
