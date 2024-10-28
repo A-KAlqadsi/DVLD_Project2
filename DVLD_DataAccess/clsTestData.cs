@@ -10,42 +10,84 @@ namespace DVLD_DataAccess
             ref string notes, ref int createdByUserID)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT * From Tests WHERE TestID=@TestID;";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TestID", testID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+
+                using (SqlCommand command = new SqlCommand("SP_GetTestById", connection))
                 {
-                    isFound= true;
-                    testAppointmentID = (int)reader["TestAppointmentID"];
-                    testResult = Convert.ToBoolean(reader["TestResult"]);
-                    notes = (reader["Notes"] != DBNull.Value) ? reader["Notes"].ToString() : "";
-                    createdByUserID = (int)reader["CreatedByUserID"];
-                }
-                reader.Close();
+                    command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@TestID", testID);
 
-            }
-            catch(Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isFound;
+					try
+					{
+						connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+							if (reader.Read())
+							{
+								isFound = true;
+								testAppointmentID = (int)reader["TestAppointmentID"];
+								testResult = Convert.ToBoolean(reader["TestResult"]);
+								notes = (reader["Notes"] != DBNull.Value) ? reader["Notes"].ToString() : "";
+								createdByUserID = (int)reader["CreatedByUserID"];
+							}
+						}
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"TestData Error: {ex.Message}");
+					}	
+				}
+			}
+			return isFound;
         }
 
-        public static bool GetTestByAppointmentID(int testAppointmentID, ref int testID , ref bool testResult,
+
+		public static bool GetLastTestByPersonIdAndTestTypeAndLicenseClass(int personId, int testTypeId ,int licenseClassId ,ref int testID, ref int testAppointmentID, ref bool testResult,
+	    ref string notes, ref int createdByUserID)
+		{
+			bool isFound = false;
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
+
+				using (SqlCommand command = new SqlCommand("SP_GetLastTestByPersonAndTestTypeAndLicenseClass", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@PersonId", personId);
+					command.Parameters.AddWithValue("@TestType", testTypeId);
+					command.Parameters.AddWithValue("@LicenseClassId", licenseClassId);
+
+					try
+					{
+						connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+							if (reader.Read())
+							{
+								isFound = true;
+								testID = (int)reader["TestId"];
+								testAppointmentID = (int)reader["TestAppointmentID"];
+								testResult = Convert.ToBoolean(reader["TestResult"]);
+								notes = (reader["Notes"] != DBNull.Value) ? reader["Notes"].ToString() : "";
+								createdByUserID = (int)reader["CreatedByUserID"];
+							}
+						}
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"TestData Error: {ex.Message}");
+					}
+				}
+			}
+
+			return isFound;
+		}
+
+
+        [Obsolete("This will be deleted in the next version")]
+		public static bool GetTestByAppointmentID(int testAppointmentID, ref int testID , ref bool testResult,
             ref string notes, ref int createdByUserID)
         {
             bool isFound = false;
@@ -89,41 +131,40 @@ namespace DVLD_DataAccess
              string notes,int createdByUserID)
         {
             int testID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "INSERT INTO Tests(TestAppointmentID,TestResult,Notes,CreatedByUserID) " +
-                "Values(@TestAppointmentID,@TestResult,@Notes,@UserID); " +
-                "SELECT SCOPE_IDENTITY(); ";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TestAppointmentID", testAppointmentID);
-            command.Parameters.AddWithValue("@TestResult", testResult);
-            command.Parameters.AddWithValue("@UserID", createdByUserID);
-            if(string.IsNullOrEmpty(notes))
-                command.Parameters.AddWithValue("@Notes", DBNull.Value);
-            else
-                command.Parameters.AddWithValue("@Notes", notes);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if(result != null && int.TryParse(result.ToString(),out testID))
+
+                using (SqlCommand command = new SqlCommand("SP_AddNewTest", connection))
                 {
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@TestAppointmentID", testAppointmentID);
+					command.Parameters.AddWithValue("@TestResult", testResult);
+					command.Parameters.AddWithValue("@UserID", createdByUserID);
+					if (string.IsNullOrEmpty(notes))
+						command.Parameters.AddWithValue("@Notes", DBNull.Value);
+					else
+						command.Parameters.AddWithValue("@Notes", notes);
 
-                }
+                    var outputParamId = new SqlParameter("@NewTestId", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(outputParamId);
 
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
+					try
+					{
+						connection.Open();
+                        command.ExecuteNonQuery();
+                        testID = (int)outputParamId.Value;
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"TestData Error: {ex.Message}");
+					}
+				}
+                   
+			}
             return testID;
         }
 
@@ -131,38 +172,33 @@ namespace DVLD_DataAccess
             string notes, int createdByUserID)
         {
             int rowAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "Update Tests " +
-                "SET TestAppointmentID=@TestAppointmentID, TestResult=@TestResult, Notes=@Notes, CreatedByUserID=@UserID " +
-                " Where TestID=@TestID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@TestID", testID);
-            command.Parameters.AddWithValue("@TestAppointmentID", testAppointmentID);
-            command.Parameters.AddWithValue("@TestResult", testResult);
-            command.Parameters.AddWithValue("@UserID", createdByUserID);
-            if (string.IsNullOrEmpty(notes))
-                command.Parameters.AddWithValue("@Notes", DBNull.Value);
-            else
-                command.Parameters.AddWithValue("@Notes", notes);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                rowAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+                using (SqlCommand command = new SqlCommand("SP_UpdateTest", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@TestID", testID);
+					command.Parameters.AddWithValue("@TestAppointmentID", testAppointmentID);
+					command.Parameters.AddWithValue("@TestResult", testResult);
+					command.Parameters.AddWithValue("@UserID", createdByUserID);
+					if (string.IsNullOrEmpty(notes))
+						command.Parameters.AddWithValue("@Notes", DBNull.Value);
+					else
+						command.Parameters.AddWithValue("@Notes", notes);
 
-            return rowAffected>0;
+					try
+					{
+						connection.Open();
+						rowAffected =(int)command.ExecuteScalar();
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"TestData Error: {ex.Message}");
+					}
+				}
+			}
+			return rowAffected>0;
         }
 
         public static bool DeleteTest(int testID)
@@ -195,38 +231,38 @@ namespace DVLD_DataAccess
             return rowsAffected > 0;
         }
 
-        public static DataTable GetAllTests()
-        {
-            DataTable table = new DataTable();
+		public static DataTable GetAllTests()
+		{
+			DataTable table = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
 
-            string query = "SELECT * From Tests;";
+				using (SqlCommand command = new SqlCommand("SP_GetAllTests", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
 
-            SqlCommand command = new SqlCommand(query, connection);
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                    table.Load(reader);
-                reader.Close();
+					try
+					{
+						connection.Open();
+						using (SqlDataReader reader = command.ExecuteReader())
+						{
+							if (reader.HasRows)
+								table.Load(reader);
+						}
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"TestData Error: {ex.Message}");
+					}
 
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return table;
+				}
+			}
+			return table;
+		}
 
-        }
-
-        public static bool IsTestExist(int testID)
+		public static bool IsTestExist(int testID)
         {
             bool isExist = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -259,32 +295,25 @@ namespace DVLD_DataAccess
         public static int CountPassedTests(int localDrivingLicenseAppID)
         {
             int passedTests = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT COUNT(dbo.TestAppointments.TestTypeID) " +
-                "FROM dbo.Tests INNER JOIN " +
-                "dbo.TestAppointments ON (dbo.Tests.TestAppointmentID = dbo.TestAppointments.TestAppointmentID) " +
-                "WHERE (dbo.TestAppointments.LocalDrivingLicenseApplicationID = @localDrivingLicenseAppID) AND (dbo.Tests.TestResult = 1);";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@localDrivingLicenseAppID", localDrivingLicenseAppID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int tests))
-                    passedTests =tests;
+                using (SqlCommand command = new SqlCommand("SP_GetPassedTestCount", connection))
+                {
+					command.Parameters.AddWithValue("@localDrivingLicenseAppID", localDrivingLicenseAppID);
 
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"TestData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+					try
+					{
+						connection.Open();
+                        passedTests = (int)command.ExecuteScalar();
+
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"TestData Error: {ex.Message}");
+					}					
+				}
+			}
             return passedTests;
         }
 
@@ -322,8 +351,6 @@ namespace DVLD_DataAccess
             }
             return isPassed;
         }
-
-        
 
     }
 }
