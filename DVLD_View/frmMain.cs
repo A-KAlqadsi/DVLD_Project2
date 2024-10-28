@@ -79,7 +79,7 @@ namespace DVLD_View
 
         private void tsmiNewLocalLicense_Click(object sender, EventArgs e)
         {
-            frmAddEditLocalDrivingLicenseApp frm = new frmAddEditLocalDrivingLicenseApp(-1);
+            frmAddEditLocalDrivingLicenseApp frm = new frmAddEditLocalDrivingLicenseApp();
             frm.ShowDialog();
         }
 

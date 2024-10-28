@@ -77,10 +77,8 @@ namespace DVLD_View
 
 				dgvListAllTestAppointments.Columns[3].HeaderText = "Is Locked";
 				dgvListAllTestAppointments.Columns[3].Width = 100;
-				
+			    
 			}
-
-
 
 		}
 
@@ -90,6 +88,7 @@ namespace DVLD_View
 
 
             clsLocalDrivingLicenseApp localDrivingLicenseApp = clsLocalDrivingLicenseApp.Find(_LDLAppId);
+            
             if(localDrivingLicenseApp.IsThereAnActiveScheduleTest(_TestTypeID))
             {
 				MessageBox.Show($"Person Already has an active appointment for this test, you{Environment.NewLine}cannot add new appointment", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -98,14 +97,26 @@ namespace DVLD_View
 
             // here still have code logic will be added soon
 
-            if(clsTest.IsTestPassed(_LDLAppId,(int)_TestTypeID))
-            {
-                MessageBox.Show($"This person already passed this test before, you can only {Environment.NewLine} add apointment for new or failed tests", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            clsTest test = localDrivingLicenseApp.GetLastTestPerTestType(_TestTypeID);
 
-            frmScheduleTest scheduleTest = new frmScheduleTest(_LDLAppId,(clsTestType.enTestType)_TestTypeID,-1);
-            scheduleTest.ShowDialog();
+            if(test == null)
+            {
+				frmScheduleTest scheduleTest1 = new frmScheduleTest(_LDLAppId, _TestTypeID);
+				scheduleTest1.ShowDialog();
+				frmVisionTestAppointment_Load(null, null);
+                return;
+			}
+
+            if(test.TestResult)
+            {
+				MessageBox.Show("This person already passed this test before, you can only retake faild test", "Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+            
+
+            frmScheduleTest scheduleTest2 = new frmScheduleTest(_LDLAppId,(clsTestType.enTestType)_TestTypeID);
+            scheduleTest2.ShowDialog();
             frmVisionTestAppointment_Load(null, null);
             
         }

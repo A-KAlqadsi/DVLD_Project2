@@ -75,17 +75,6 @@ namespace DVLD_Business
 				return null;
 		}
 
-		public static clsTest FindTestByAppointmentID(int appointmentId)
-        {
-            int testID = 0, userID = -1;
-            bool testResult = false;
-            string notes = string.Empty;
-            if (clsTestData.GetTestByAppointmentID(appointmentId ,ref testID, ref testResult, ref notes, ref userID))
-                return new clsTest(testID, appointmentId, testResult, notes, userID);
-            else
-                return null;
-        }
-
         
         public static DataTable GetAll()
         {
@@ -93,14 +82,13 @@ namespace DVLD_Business
         }
 
        
-        public static int CountPassedTest(int localDrivingLicenseApplicationID)
+        public static byte CountPassedTest(int localDrivingLicenseApplicationID)
         {
             return clsTestData.CountPassedTests(localDrivingLicenseApplicationID);
         }
-
-        public static bool IsTestPassed(int localDrivingLicenseApplicationID, int testTypeID, bool testResult=true)
+        public static bool PassedAllTests(int localDrivingLicenseApplicationID)
         {
-            return clsTestData.IsTestPassed(localDrivingLicenseApplicationID,testTypeID,testResult);
+            return clsTestData.CountPassedTests(localDrivingLicenseApplicationID) == 3;
         }
 
         public bool Save()
