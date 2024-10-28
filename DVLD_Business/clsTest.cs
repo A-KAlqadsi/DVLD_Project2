@@ -14,11 +14,12 @@ namespace DVLD_Business
         enum enMode { AddNew = 1, Update = 2 }
         enMode _Mode = enMode.AddNew;
         
-        public int TestID { get; }
-        public int TestAppointmentID;
-        public bool TestResult;
-        public string Notes;
-        public int UserID;
+        public int TestID { get; set; }
+        public int TestAppointmentID { get; set; }
+        public clsTestAppointment TestAppointmentInfo { get; set; }
+        public bool TestResult { get; set; }
+        public string Notes { get; set; }
+        public int UserID { get; set; }
         
         public clsTest()
         {
@@ -33,6 +34,7 @@ namespace DVLD_Business
         {
             TestID=testID;
             TestAppointmentID=testAppointmentID;
+            TestAppointmentInfo = clsTestAppointment.Find(testAppointmentID);
             TestResult=testResult;
             Notes=notes;
             UserID=userID;
@@ -41,8 +43,8 @@ namespace DVLD_Business
 
         private bool _AddNew()
         {
-            int testID =clsTestData.AddNewTest(TestAppointmentID,TestResult,Notes,UserID);
-            return testID != -1;
+            this.TestID =clsTestData.AddNewTest(TestAppointmentID,TestResult,Notes,UserID);
+            return this.TestID != -1;
         }
 
         private bool _Update()
@@ -60,7 +62,20 @@ namespace DVLD_Business
             else 
                 return null;
         }
-        public static clsTest FindTestByAppointmentID(int appointmentId)
+
+		public static clsTest GetLastTestByPersonIdAndTestTypeAndLicenseClass(int personId, int testTypeId, int licenseClassId)
+		{
+			int appointmentID = 0, userID = -1;
+            int testId = -1;
+			bool testResult = false;
+			string notes = string.Empty;
+			if (clsTestData.GetLastTestByPersonIdAndTestTypeAndLicenseClass(personId,testTypeId,licenseClassId,ref testId, ref appointmentID, ref testResult, ref notes, ref userID))
+				return new clsTest(testId, appointmentID, testResult, notes, userID);
+			else
+				return null;
+		}
+
+		public static clsTest FindTestByAppointmentID(int appointmentId)
         {
             int testID = 0, userID = -1;
             bool testResult = false;
@@ -71,21 +86,13 @@ namespace DVLD_Business
                 return null;
         }
 
-        public static bool Delete(int testID)
-        {
-            return clsTestData.DeleteTest(testID);
-        }
         
         public static DataTable GetAll()
         {
             return clsTestData.GetAllTests();
         }
 
-        public static bool IsTestExist(int testID)
-        {
-            return clsTestData.IsTestExist(testID);
-        }
-
+       
         public static int CountPassedTest(int localDrivingLicenseApplicationID)
         {
             return clsTestData.CountPassedTests(localDrivingLicenseApplicationID);
@@ -102,10 +109,12 @@ namespace DVLD_Business
             {
                 case enMode.AddNew:
                     {
-                        _Mode = enMode.Update;
                         if (_AddNew())
-                            return true;
-                        else
+                        {
+							_Mode = enMode.Update;
+							return true;
+						}
+						else
                             return false;
                     }
                 case enMode.Update:
@@ -113,7 +122,6 @@ namespace DVLD_Business
             }
             return false;
         }
-
 
     }
 }
