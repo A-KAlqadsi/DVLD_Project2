@@ -41,7 +41,7 @@ namespace DVLD_View
 
         private void _LoadAllDrivers()
         {
-            _DataTable = clsDriver.GetAllMaster();
+            _DataTable = clsDriver.GetAll();
 
             _DataView = _DataTable.DefaultView;
             _DataView.Sort = "DriverID DESC"; // sorting inside the dataview

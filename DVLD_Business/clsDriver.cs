@@ -15,7 +15,9 @@ namespace DVLD_Business
 
         public int DriverID { get; set; }
         public int PersonID { get; set; }
-        public int UserID;
+        public clsPerson PersonInfo { get; set; }
+
+        public int UserID { get; set; }
         public DateTime CreateDate;
 
         public clsDriver()
@@ -31,6 +33,7 @@ namespace DVLD_Business
         {
             
             PersonID = personID;
+            PersonInfo = clsPerson.Find(personID);
             DriverID = driverID;
             UserID= userID;
             CreateDate = createDate;
@@ -83,20 +86,7 @@ namespace DVLD_Business
         {
             return clsDriverData.GetAllDrivers();
         }
-        public static DataTable GetAllMaster()
-        {
-            return clsDriverData.GetAllDriversMaster();
-        }
-        public static bool Delete(int driverID)
-        {
-            return clsDriverData.DeleteDriver(driverID);
-        }
-
-        public static bool IsDriverExist(int driverID)
-        {
-            return clsDriverData.IsDriverExist(driverID);
-        }
-
+        
         public static bool IsPersonADriver(int personID)
         {
             return clsDriverData.IsPersonADriver(personID);

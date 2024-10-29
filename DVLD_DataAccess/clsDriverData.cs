@@ -10,282 +10,173 @@ namespace DVLD_DataAccess
         public static bool GetDriverByDriverId(int driverID, ref int personID, ref int createdUserID ,ref DateTime createdDate)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT * From Drivers WHERE DriverID=@DriverID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@DriverID", driverID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("SP_GetDriverById", connection))
                 {
-                    isFound = true;
-                    personID = (int)reader["PersonID"];
-                    createdUserID = (int)reader["CreatedByUserID"];
-                    createdDate = Convert.ToDateTime(reader["CreatedDate"]);
+                    command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@DriverID", driverID);
 
-                }
-                reader.Close();
-
-            }
-            catch (Exception ex)
-            {
-                isFound = false;
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"DriverData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
+					try
+					{
+						connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+							if (reader.Read())
+							{
+								isFound = true;
+								personID = (int)reader["PersonID"];
+								createdUserID = (int)reader["CreatedByUserID"];
+								createdDate = Convert.ToDateTime(reader["CreatedDate"]);
+							}
+						}
+					}
+					catch (Exception ex)
+					{
+						isFound = false;
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"DriverData Error: {ex.Message}");
+					}
+				}
+			}
             return isFound;
         }
 
         public static bool GetDriverByPersonId( int personID,ref int driverID, ref int createdUserID, ref DateTime createdDate)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT * From Drivers WHERE PersonID=@PersonID;";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@PersonID", personID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("SP_GetDriverByPersonId", connection))
                 {
-                    isFound = true;
-                    driverID = (int)reader["DriverID"];
-                    createdUserID = (int)reader["CreatedByUserID"];
-                    createdDate = Convert.ToDateTime(reader["CreatedDate"]);
+                    command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@PersonID", personID);
 
-                }
-                reader.Close();
+					try
+					{
+						connection.Open();
 
-            }
-            catch (Exception ex)
-            {
-                isFound = false;
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"DriverData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+							if (reader.Read())
+							{
+								isFound = true;
+								driverID = (int)reader["DriverID"];
+								createdUserID = (int)reader["CreatedByUserID"];
+								createdDate = Convert.ToDateTime(reader["CreatedDate"]);
 
+							}
+						}
+					}
+					catch (Exception ex)
+					{
+						isFound = false;
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"DriverData Error: {ex.Message}");
+					}
+				}
+			}
             return isFound;
         }
 
         public static int AddNewDriver( int personID,  int createdUserID, DateTime createdDate)
         {
             int DriverId = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "INSERT INTO Drivers(PersonID,CreatedByUserID,CreatedDate) " +
-                "Values (@PersonID,@CreatedByUserID,@CreatedDate); " +
-                "SELECT SCOPE_IDENTITY(); ";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@PersonID", personID);
-            command.Parameters.AddWithValue("@CreatedByUserID", createdUserID);
-            command.Parameters.AddWithValue("@CreatedDate", createdDate);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-
-                object result = command.ExecuteScalar();
-
-                if (result != null && int.TryParse(result.ToString(), out DriverId))
+                using (SqlCommand command = new SqlCommand("SP_AddNewDriver", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@PersonID", personID);
+					command.Parameters.AddWithValue("@CreatedByUserID", createdUserID);
+					command.Parameters.AddWithValue("@CreatedDate", createdDate);
+                    var outputParamId = new SqlParameter("@NewDriverId", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output,
+                    };
+                    command.Parameters.Add(outputParamId);
 
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"DriverData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
+					try
+					{
+						connection.Open();
+                        command.ExecuteNonQuery();
+                        DriverId = (int)outputParamId.Value;
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"DriverData Error: {ex.Message}");
+					}
+				}
+                 
+			}
             return DriverId;
         }
 
         public static bool UpdateDriver(int driverID, int personID, int createdUserID, DateTime createdDate)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "Update Drivers " +
-                "SET PersonID=@PersonID, CreatedByUserID=@CreatedByUserID, CreatedDate=@CreatedDate " +
-                "WHERE DriverID=@DriverID; ";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@DriverID", driverID);
-            command.Parameters.AddWithValue("@PersonID", personID);
-            command.Parameters.AddWithValue("@CreatedByUserID", createdUserID);
-            command.Parameters.AddWithValue("@CreatedDate", createdDate);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
+                using (SqlCommand command = new SqlCommand("SP_UpdateDriver", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@DriverID", driverID);
+					command.Parameters.AddWithValue("@PersonID", personID);
+					command.Parameters.AddWithValue("@CreatedByUserID", createdUserID);
+					command.Parameters.AddWithValue("@CreatedDate", createdDate);
 
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                rowsAffected = 0;
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"DriverData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+					try
+					{
+						connection.Open();
 
+						rowsAffected =(int)command.ExecuteScalar();
+					}
+					catch (Exception ex)
+					{
+						rowsAffected = 0;
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"DriverData Error: {ex.Message}");
+					}
+				}
+			}
             return rowsAffected > 0;
         }
 
-        public static DataTable GetAllDrivers()
-        {
-            DataTable table = new DataTable();
+		public static DataTable GetAllDrivers()
+		{
+			DataTable table = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
 
-            string query = "SELECT * From Drivers";
+				using (SqlCommand command = new SqlCommand("SP_GetAllDrivers", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
 
-            SqlCommand command = new SqlCommand(query, connection);
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                    table.Load(reader);
+					try
+					{
+						connection.Open();
+						using (SqlDataReader reader = command.ExecuteReader())
+						{
+							if (reader.HasRows)
+								table.Load(reader);
+						}
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"DriverData Error: {ex.Message}");
+					}
 
-                reader.Close();
+				}
+			}
+			return table;
 
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"DriverData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return table;
+		}
 
-        }
-
-        public static DataTable GetAllDriversMaster()
-        {
-            DataTable table = new DataTable();
-
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT * from Drivers_View";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                    table.Load(reader);
-
-                reader.Close();
-
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"DriverData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return table;
-
-        }
-
-        public static bool DeleteDriver(int driverID)
-        {
-            int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "DELETE From Drivers WHERE DriverID=@DriverID;";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@DriverID", driverID);
-
-            try
-            {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                rowsAffected = 0;
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"DriverData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return rowsAffected > 0;
-        }
-
-        public static bool IsDriverExist(int driverID)
-        {
-            bool isExist = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT TOP(1) Found=1 From Drivers WHERE DriverID=@DriverID";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@DriverID", driverID);
-
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int found))
-                    isExist = true;
-
-            }
-            catch (Exception ex)
-            {
-                isExist = false;
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"DriverData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isExist;
-        }
-
+         
+        // will be kicked soon
         public static bool IsPersonADriver(int personID)
         {
             bool isExist = false;
