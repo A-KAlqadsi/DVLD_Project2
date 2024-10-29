@@ -88,16 +88,6 @@ namespace DVLD_Business
             return clsLicenseClassData.GetAllLicenseClasses();
         }
 
-        public static bool Delete(int classID)
-        {
-            return clsLicenseClassData.DeleteLicenseClass(classID);
-        }
-
-        public static bool IsLicenseClassExist(int classID)
-        {
-            return clsLicenseClassData.IsLicenseClassExist(classID);
-        }
-
         public bool Save()
         {
             switch (_Mode)

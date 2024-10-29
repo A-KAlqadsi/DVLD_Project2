@@ -10,117 +10,117 @@ namespace DVLD_DataAccess
             ref short minAllowedAge,ref short defaultValidityLength,ref float classFees)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT * From LicenseClasses WHERE LicenseClassID=@LicenseClassID;";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@LicenseClassID", licenseClassID);
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                using (SqlCommand command = new SqlCommand("SP_GetLicenseClassById", connection))
                 {
-                    isFound=true;
-                    className = reader["ClassName"].ToString();
-                    classDescription = reader["ClassDescription"].ToString();
-                    minAllowedAge = Convert.ToInt16(reader["MinimumAllowedAge"]);
-                    defaultValidityLength = Convert.ToInt16(reader["DefaultValidityLength"]);
-                    classFees = Convert.ToSingle(reader["ClassFees"]);
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"LicenseClassData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+                    command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@LicenseClassID", licenseClassID);
+
+					try
+					{
+						connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+							if (reader.Read())
+							{
+								isFound = true;
+								className = reader["ClassName"].ToString();
+								classDescription = reader["ClassDescription"].ToString();
+								minAllowedAge = Convert.ToInt16(reader["MinimumAllowedAge"]);
+								defaultValidityLength = Convert.ToInt16(reader["DefaultValidityLength"]);
+								classFees = Convert.ToSingle(reader["ClassFees"]);
+							}
+						}
+                            
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"LicenseClassData Error: {ex.Message}");
+					}
+				}
+			}
+            
             return isFound;
         }
 
 		public static bool GetLicenseClassByName(string className, ref int licenseClassID, ref string classDescription,
-	ref short minAllowedAge, ref short defaultValidityLength, ref float classFees)
+	    ref short minAllowedAge, ref short defaultValidityLength, ref float classFees)
 		{
 			bool isFound = false;
-			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-			string query = "SELECT * From LicenseClasses WHERE ClassName=@ClassName;";
-
-			SqlCommand command = new SqlCommand(query, connection);
-			command.Parameters.AddWithValue("@ClassName", className);
-
-			try
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
 			{
-				connection.Open();
-				SqlDataReader reader = command.ExecuteReader();
-				if (reader.Read())
+				using (SqlCommand command = new SqlCommand("SP_GetLicenseClassByName", connection))
 				{
-					isFound = true;
-					licenseClassID =(int)reader["LicenseClassID"];
-					classDescription = reader["ClassDescription"].ToString();
-					minAllowedAge = Convert.ToInt16(reader["MinimumAllowedAge"]);
-					defaultValidityLength = Convert.ToInt16(reader["DefaultValidityLength"]);
-					classFees = Convert.ToSingle(reader["ClassFees"]);
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@ClassName", className);
+
+					try
+					{
+						connection.Open();
+						using (SqlDataReader reader = command.ExecuteReader())
+						{
+							if (reader.Read())
+							{
+								isFound = true;
+								licenseClassID = (int)reader["LicenseClassId"];
+								classDescription = reader["ClassDescription"].ToString();
+								minAllowedAge = Convert.ToInt16(reader["MinimumAllowedAge"]);
+								defaultValidityLength = Convert.ToInt16(reader["DefaultValidityLength"]);
+								classFees = Convert.ToSingle(reader["ClassFees"]);
+							}
+						}
+
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"LicenseClassData Error: {ex.Message}");
+					}
 				}
-				reader.Close();
 			}
-			catch (Exception ex)
-			{
-				Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-				eventLogger.Log($"LicenseClassData Error: {ex.Message}");
-			}
-			finally
-			{
-				connection.Close();
-			}
+
 			return isFound;
 		}
-
-
 
 		public static int AddNewLicenseClass( string className,  string classDescription,
              short minAllowedAge,  short defaultValidityLength,  float classFees)
         {
             int licenseClassID = -1;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "INSERT INTO LicenseClasses (ClassName,ClassDescription,MinimumAllowdAge," +
-                "DefaultValidityLength,ClassFees) " +
-                "Values(@ClassName,@ClassDescription,@MinAge,@ValidityLength,@ClassFees); " +
-                "SELECT SCOPE_IDENTITY(); ";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@ClassName", className);
-            command.Parameters.AddWithValue("@ClassDescription", classDescription) ;
-            command.Parameters.AddWithValue("@MinAge", minAllowedAge);
-            command.Parameters.AddWithValue("@ValidityLength", defaultValidityLength);
-            command.Parameters.AddWithValue("@ClassFees", classFees);
-
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if(result != null && int.TryParse(result.ToString(),out licenseClassID))
+
+                using (SqlCommand command = new SqlCommand("SP_AddNewLicenseClass", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@ClassName", className);
+					command.Parameters.AddWithValue("@ClassDescription", classDescription);
+					command.Parameters.AddWithValue("@MinAge", minAllowedAge);
+					command.Parameters.AddWithValue("@ValidityLength", defaultValidityLength);
+					command.Parameters.AddWithValue("@ClassFees", classFees);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"LicenseClassData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+                    var outputParamId = new SqlParameter("@NewLicenseClassId", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(outputParamId);
+
+					try
+					{
+						connection.Open();
+                        command.ExecuteNonQuery();
+                        licenseClassID = (int)outputParamId.Value;
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"LicenseClassData Error: {ex.Message}");
+					}
+					
+				}
+			}
+
             return licenseClassID;
         }
 
@@ -128,128 +128,69 @@ namespace DVLD_DataAccess
             short minAllowedAge, short defaultValidityLength, float classFees)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "Update LicenseClasses " +
-                "SET ClassName=@ClassName, ClassDescription=@ClassDescription,MinimumAllowedAge=@MinAge," +
-                "DefaultValidityLength=@ValidityLength, ClassFees=@ClassFees " +
-                " Where LicenseClassID=@LicenseClassID;";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@LicenseClassID", licenseClassID);
-            command.Parameters.AddWithValue("@ClassName", className);
-            command.Parameters.AddWithValue("@ClassDescription", classDescription);
-            command.Parameters.AddWithValue("@MinAge", minAllowedAge);
-            command.Parameters.AddWithValue("@ValidityLength", defaultValidityLength);
-            command.Parameters.AddWithValue("@ClassFees", classFees);
-
-
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
-                connection.Open();
-                rowsAffected =command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"LicenseClassData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+                using (SqlCommand command = new SqlCommand("SP_UpdateLicenseClass", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@LicenseClassId", licenseClassID);
+					command.Parameters.AddWithValue("@ClassName", className);
+					command.Parameters.AddWithValue("@ClassDescription", classDescription);
+					command.Parameters.AddWithValue("@MinAge", minAllowedAge);
+					command.Parameters.AddWithValue("@ValidityLength", defaultValidityLength);
+					command.Parameters.AddWithValue("@ClassFees", classFees);
+
+
+					try
+					{
+						connection.Open();
+						rowsAffected =(int) command.ExecuteScalar();
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"LicenseClassData Error: {ex.Message}");
+					}
+				}
+                 
+			}
+
             return rowsAffected>0;
         }
 
-        public static bool DeleteLicenseClass(int licenseClassID)
-        {
-            int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string query = "DELETE From LicenseClasses WHERE LicenseClassID=@LicenseClassID;";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@LicenseClassID", licenseClassID);
+		public static DataTable GetAllLicenseClasses()
+		{
+			DataTable table = new DataTable();
 
-            try
-            {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
 
-            }
-            catch (Exception ex)
-            {
-                rowsAffected = 0;
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"LicenseClassData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
+				using (SqlCommand command = new SqlCommand("SP_GetAllLicenseClasses", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
 
-            return rowsAffected > 0;
-        }
+					try
+					{
+						connection.Open();
+						using (SqlDataReader reader = command.ExecuteReader())
+						{
+							if (reader.HasRows)
+								table.Load(reader);
+						}
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"LicenseClassData Error: {ex.Message}");
+					}
 
-        public static DataTable GetAllLicenseClasses()
-        {
-            DataTable table = new DataTable();
+				}
+			}
+			return table;
 
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+		}
 
-            string query = "SELECT * From LicenseClasses;";
-
-            SqlCommand command = new SqlCommand(query, connection);
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                    table.Load(reader);
-                reader.Close();
-
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"LicenseClassData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return table;
-
-        }
-
-        public static bool IsLicenseClassExist(int licenseClassID)
-        {
-            bool isExist = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-            string query = "SELECT TOP(1) Found=1 From LicenseClasses WHERE LicenseClassID=@LicenseClassID";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@LicenseClassID", licenseClassID);
-
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int found))
-                    isExist = true;
-
-            }
-            catch (Exception ex)
-            {
-                Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-                eventLogger.Log($"LicenseClassData Error: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isExist;
-        }
 
 
     }
