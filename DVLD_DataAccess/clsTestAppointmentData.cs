@@ -271,7 +271,10 @@ namespace DVLD_DataAccess
 					try
 					{
 						connection.Open();
-						testId = (int) command.ExecuteScalar();
+						object result =  command.ExecuteScalar();
+
+                        if (result != null && int.TryParse(result.ToString(), out int Id))
+                            testId = Id;
 
 					}
 					catch (Exception ex)
