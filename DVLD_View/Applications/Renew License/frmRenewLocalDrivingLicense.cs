@@ -148,7 +148,7 @@ namespace DVLD_View
                 MessageBox.Show($"New license issued successfully with ID={_LocalLicense.LicenseID}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 clsApplication.UpdateApplicationStatus(applicationID, 3);
                 _NewLicenseID = _LocalLicense.LicenseID;
-                clsLicense.UpdateLicenseActivity(_LocalLicenseID,false);
+                clsLicense.DeactivateLicense(_LocalLicenseID,false);
 
                 llShowLicense.Enabled = true;
             }

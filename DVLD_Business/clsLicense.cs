@@ -180,9 +180,9 @@ namespace DVLD_Business
             return false;
         }
 
-        public static bool UpdateLicenseActivity(int licenseID, bool newActivity)
+        public static bool DeactivateLicense(int licenseID, bool newActivity)
         {
-            return clsLicenseData.UpdateLicenseActivity(licenseID, newActivity);
+            return clsLicenseData.DeactivateLicense(licenseID, newActivity);
         }
 
         public static int GetActiveLicenseByPersonId(int personID, int licenseClassId)
