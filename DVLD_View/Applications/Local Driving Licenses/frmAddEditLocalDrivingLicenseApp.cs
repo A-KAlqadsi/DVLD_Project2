@@ -127,7 +127,7 @@ namespace DVLD_View
             _LocalDrivingLicenseApp.LastStatusDate = DateTime.Now;
             _LocalDrivingLicenseApp.LicenseClassID = licenseClassId;
             _LocalDrivingLicenseApp.PaidFees = Convert.ToSingle(lblApplicationFees.TabIndex);
-
+            _LocalDrivingLicenseApp.UserID = Globals.Global.CurrentUser.UserID;
             if(_LocalDrivingLicenseApp.Save())
             {
                 lblDLApplicationID.Text = _LocalDrivingLicenseApp.LocalDrivingLicenseAppID.ToString();

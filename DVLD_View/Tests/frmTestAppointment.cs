@@ -64,23 +64,23 @@ namespace DVLD_View
             dgvListAllTestAppointments.DataSource = _dtTestAppointments;
 
             lblRecordsCount.Text = dgvListAllTestAppointments.Rows.Count.ToString();
-            if(dgvListAllTestAppointments.Rows.Count >0)
+            if (dgvListAllTestAppointments.Rows.Count > 0)
             {
                 dgvListAllTestAppointments.Columns[0].HeaderText = "Appointment Id";
-                dgvListAllTestAppointments.Columns[0].Width = 160;
+                dgvListAllTestAppointments.Columns[0].Width = 150;
 
-				dgvListAllTestAppointments.Columns[1].HeaderText = "Appointment Date";
-				dgvListAllTestAppointments.Columns[1].Width = 180;
+                dgvListAllTestAppointments.Columns[1].HeaderText = "Appointment Date";
+                dgvListAllTestAppointments.Columns[1].Width = 200;
 
-				dgvListAllTestAppointments.Columns[2].HeaderText = "Paid Fees";
-				dgvListAllTestAppointments.Columns[2].Width = 125;
+                dgvListAllTestAppointments.Columns[2].HeaderText = "Paid Fees";
+                dgvListAllTestAppointments.Columns[2].Width = 150;
 
-				dgvListAllTestAppointments.Columns[3].HeaderText = "Is Locked";
-				dgvListAllTestAppointments.Columns[3].Width = 100;
-			    
-			}
+                dgvListAllTestAppointments.Columns[3].HeaderText = "Is Locked";
+                dgvListAllTestAppointments.Columns[3].Width = 100;
 
-		}
+            }
+
+        }
 
 
         private void btnAddAppointment_Click(object sender, EventArgs e)

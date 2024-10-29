@@ -77,7 +77,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(16, 597);
+			this.label2.Location = new System.Drawing.Point(20, 592);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(151, 25);
 			this.label2.TabIndex = 10;
@@ -85,12 +85,13 @@
 			// 
 			// panel1
 			// 
+			this.panel1.BackColor = System.Drawing.Color.Transparent;
 			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panel1.Controls.Add(this.dgvListAllTestAppointments);
 			this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.panel1.Location = new System.Drawing.Point(16, 640);
+			this.panel1.Location = new System.Drawing.Point(18, 627);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1027, 156);
+			this.panel1.Size = new System.Drawing.Size(1027, 166);
 			this.panel1.TabIndex = 11;
 			// 
 			// dgvListAllTestAppointments
@@ -107,9 +108,8 @@
 			this.dgvListAllTestAppointments.ReadOnly = true;
 			this.dgvListAllTestAppointments.RowHeadersWidth = 51;
 			this.dgvListAllTestAppointments.RowTemplate.Height = 24;
-			this.dgvListAllTestAppointments.Size = new System.Drawing.Size(1025, 154);
+			this.dgvListAllTestAppointments.Size = new System.Drawing.Size(1025, 164);
 			this.dgvListAllTestAppointments.TabIndex = 0;
-			this.dgvListAllTestAppointments.Visible = false;
 			// 
 			// cmsManageTestAppointment
 			// 
@@ -146,7 +146,7 @@
 			this.btnAddAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnAddAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnAddAppointment.Image = ((System.Drawing.Image)(resources.GetObject("btnAddAppointment.Image")));
-			this.btnAddAppointment.Location = new System.Drawing.Point(986, 590);
+			this.btnAddAppointment.Location = new System.Drawing.Point(986, 577);
 			this.btnAddAppointment.Name = "btnAddAppointment";
 			this.btnAddAppointment.Size = new System.Drawing.Size(58, 46);
 			this.btnAddAppointment.TabIndex = 18;
@@ -243,5 +243,5 @@
         private System.Windows.Forms.ContextMenuStrip cmsManageTestAppointment;
         private System.Windows.Forms.ToolStripMenuItem tsmiEditTestAppointment;
         private System.Windows.Forms.ToolStripMenuItem tsmiTakeTest;
-    }
+	}
 }
