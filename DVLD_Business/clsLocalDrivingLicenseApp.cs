@@ -102,7 +102,7 @@ namespace DVLD_Business
 				return null;
 		}
 
-
+        
 		public bool Delete()
         {
             // we first delete the local application then the base application
@@ -113,7 +113,7 @@ namespace DVLD_Business
 
             if (!isLocalDeleted)
                 return false;
-
+            
             isBaseDeleted = base.Delete();
             return isBaseDeleted;
         }
@@ -195,6 +195,50 @@ namespace DVLD_Business
             return clsTest.PassedAllTests(this.LocalDrivingLicenseAppID);
         }
 
+        public int IssueDrivingLicenseForFirstTime(string notes, int createdByUserId)
+        {
+            clsDriver driver = clsDriver.FindByPersonID(this.ApplicantPersonID);
+            int driverId=-1;
+            if(driver == null)
+            {
+                driver = new clsDriver();
+                driver.PersonID = this.ApplicantPersonID;
+                driver.UserID = createdByUserId;
+                driver.CreateDate = DateTime.Now;
+                if (!driver.Save())
+                    return -1;
+
+                driverId = driver.DriverID;
+            }
+            else 
+                driverId = driver.DriverID;
+
+            // now we issue the license 
+            clsLicense newLicense = new clsLicense();
+
+            newLicense.DriverID = driverId;
+            newLicense.ApplicationId = this.ApplicationID;
+            newLicense.LicenseClassID = this.LicenseClassID;
+            newLicense.PaidFees = this.LicenseClassInfo.ClassFees;
+            newLicense.IssueDate = DateTime.Now;
+            newLicense.ExpirationDate = DateTime.Now.AddYears(this.LicenseClassInfo.ValidityLength);
+            newLicense.Notes = notes;
+            newLicense.IsActive = true;
+            newLicense.UserID = createdByUserId;
+            newLicense.IssueReason = clsLicense.enIssueReason.FirstTime;
+
+            if (newLicense.Save())
+            {
+                this.SetComplete();
+
+				return newLicense.LicenseID;
+
+			}
+			else 
+                return -1;
+        }
+
+       
 
 	}
 }
