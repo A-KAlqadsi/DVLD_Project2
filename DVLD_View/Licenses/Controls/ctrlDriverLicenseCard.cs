@@ -17,13 +17,7 @@ namespace DVLD_View
     public partial class ctrlDriverLicenseCard : UserControl
     {
 
-        // will be kicked soon
-        public bool IsFound = false;
-        public bool IsDetained = false;
-        public bool IsClass3 = false;
-        public int LocalLicenseID = -1;
-        public bool IsActive = false;
-        // 
+        
 
         private clsLicense _License;
         private int _LicenseID;
