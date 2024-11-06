@@ -125,7 +125,6 @@
             this.ctrlDriverLicenseCardWithFilter1.Name = "ctrlDriverLicenseCardWithFilter1";
             this.ctrlDriverLicenseCardWithFilter1.Size = new System.Drawing.Size(1021, 442);
             this.ctrlDriverLicenseCardWithFilter1.TabIndex = 9;
-            this.ctrlDriverLicenseCardWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseCardWithFilter1_OnLicenseSelected);
             // 
             // frmRenewLocalDrivingLicense
             // 

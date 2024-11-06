@@ -14,19 +14,29 @@ namespace DVLD_View
     public partial class ctrlDriverLicenseCardWithFilter : UserControl
     {
 
-        // define a custom event handler delegate with paramters
-        public event Action<int> OnLicenseSelected;
-        
-        protected virtual void LicenseSelected(int licenseID)
+        public class OnLicenseSelectedEventArgs:EventArgs
         {
-            Action<int> handler = OnLicenseSelected;
-            if (handler != null)
-            {
-                handler(licenseID);
-            }
-        }
+            public int LicenseID { get; set; }
+			public OnLicenseSelectedEventArgs(int licenseId)
+			{
+                LicenseID = licenseId;
+			}
+		}
 
-        public bool IsFound ;
+		public event EventHandler<OnLicenseSelectedEventArgs> OnLicenseSelected;
+
+		public void RaiseOnLicenseSelected(int licenseId)
+		{
+			RaiseOnLicenseSelected(new OnLicenseSelectedEventArgs(licenseId));
+		}
+
+		protected virtual void RaiseOnLicenseSelected(OnLicenseSelectedEventArgs e)
+		{
+			OnLicenseSelected?.Invoke(this, e);
+		}
+
+
+		public bool IsFound ;
         public bool IsDetained;
         public bool IsClass3;
         public int LocalLicenseID;
@@ -38,43 +48,89 @@ namespace DVLD_View
             InitializeComponent();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private bool _FilterEnabled;
+        public bool FilterEnabled
         {
-            epFindLicenseValidate.Clear();
-            if (txtSearchLicenseID.Text.Trim() == "")
+            get { return _FilterEnabled; }
+            set
             {
-                epFindLicenseValidate.SetError(txtSearchLicenseID, "Please enter license ID");
-                return;
+                _FilterEnabled = value;
+                gbFilter.Enabled = _FilterEnabled;
             }
-            int licenseId = Convert.ToInt32(txtSearchLicenseID.Text);
-            ctrlDriverLicenseCard1.LocalLicenseInfoBack += CtrlDriverLicenseCard1_LocalLicenseInfoBack;
-            ctrlDriverLicenseCard1.LoadLicenseCardInfo(licenseId);
+        }
 
-            if (OnLicenseSelected != null)
-                OnLicenseSelected(ctrlDriverLicenseCard1.LocalLicenseID);
-
+        private int _LicenseId;
+        public int LicenseID
+        {
+            get { return ctrlDriverLicenseCard1.LicenseID; }
             
         }
-
-        private void CtrlDriverLicenseCard1_LocalLicenseInfoBack(object sender, int localLicenseID, bool isFound, bool isActive, bool isClass3, bool isDetained)
+        
+        public clsLicense SelectedLicenseInfo
         {
-            IsFound = isFound;
-            IsActive = isActive;
-            IsClass3 = isClass3;
-            LocalLicenseID = localLicenseID;
-            IsDetained = isDetained;
-
+            get { return ctrlDriverLicenseCard1.SelectedLicenseInfo; }
         }
+
+        public void LoadLicenseInfo(int licenseId)
+        {
+            txtSearchLicenseID.Text = licenseId.ToString();
+			ctrlDriverLicenseCard1.LoadLicenseCardInfo(LicenseID);
+			_LicenseId = ctrlDriverLicenseCard1.LicenseID;
+			if (OnLicenseSelected != null && FilterEnabled)
+				// Raise the event with a parameter
+				RaiseOnLicenseSelected(_LicenseId);
+
+		}
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if(!this.ValidateChildren())
+            {
+				//Here we dont continue becuase the form is not valid
+				MessageBox.Show("Some fields are not valid!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				txtSearchLicenseID.Focus();
+				return;
+			}
+
+            _LicenseId = int.Parse(txtSearchLicenseID.Text.Trim());
+            LoadLicenseInfo(_LicenseId);
+		}
+
 
         private void txtSearchLicenseID_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                e.Handled = true;
-        }
+            
+            e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
+
+			// Check if the pressed key is Enter (character code 13)
+			if (e.KeyChar == (char)13)
+			{
+				btnSearch.PerformClick();
+			}
+		}
 
         private void ctrlDriverLicenseCardWithFilter_Load(object sender, EventArgs e)
         {
-            txtSearchLicenseID.Focus();
+            txtLicenseIDFocus();
         }
-    }
+
+		public void txtLicenseIDFocus()
+		{
+			txtSearchLicenseID.Focus();
+		}
+
+
+		private void txtSearchLicenseID_Validating(object sender, CancelEventArgs e)
+		{
+            if(string.IsNullOrEmpty(txtSearchLicenseID.Text.Trim()))
+            {
+                e.Cancel = true;
+                epFindLicenseValidate.SetError(txtSearchLicenseID, "license Id is required!");
+            }
+            else
+            {
+                epFindLicenseValidate.SetError(txtSearchLicenseID, null);
+            }
+		}
+	}
 }

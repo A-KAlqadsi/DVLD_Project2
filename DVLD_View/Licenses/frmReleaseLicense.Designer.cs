@@ -402,7 +402,6 @@
             this.ctrlDriverLicenseCardWithFilter1.Name = "ctrlDriverLicenseCardWithFilter1";
             this.ctrlDriverLicenseCardWithFilter1.Size = new System.Drawing.Size(1021, 444);
             this.ctrlDriverLicenseCardWithFilter1.TabIndex = 120;
-            this.ctrlDriverLicenseCardWithFilter1.OnLicenseSelected += new System.Action<int>(this.ctrlDriverLicenseCardWithFilter1_OnLicenseSelected);
             // 
             // lblMode
             // 
