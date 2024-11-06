@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace DVLD_Business
 {
-	internal class DetainedLicense
+	public class DetainedLicense
 	{
 		public enum enMode { AddNew = 0, Update = 1 };
 		public enMode Mode = enMode.AddNew;

@@ -259,6 +259,41 @@ namespace DVLD_DataAccess
 			return LicenseID;
 		}
 
+		public static bool DeactivateLicense(int licenseID)
+		{
+			int rowsAffected = 0;
+			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+			{
+				using (SqlCommand command = new SqlCommand("SP_DeactivateLicense", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@LicenseID", licenseID);
+
+					try
+					{
+						connection.Open();
+						rowsAffected = (int)command.ExecuteScalar();
+
+					}
+					catch (Exception ex)
+					{
+						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
+						eventLogger.Log($"LicenseData Error: {ex.Message}");
+					}
+
+				}
+
+			}
+			return rowsAffected > 0;
+		}
+
+
+
+
+		// will be kicked soon 
+
+		// will be kicked soon
+
 		public static bool DeactivateLicense(int licenseID, bool isActive)
 		{
 			int rowsAffected = 0;
@@ -268,11 +303,11 @@ namespace DVLD_DataAccess
 				{
 					command.CommandType = CommandType.StoredProcedure;
 					command.Parameters.AddWithValue("@LicenseID", licenseID);
-					
+
 					try
 					{
 						connection.Open();
-						rowsAffected =(int)command.ExecuteScalar();
+						rowsAffected = (int)command.ExecuteScalar();
 
 					}
 					catch (Exception ex)
@@ -280,17 +315,14 @@ namespace DVLD_DataAccess
 						Logger eventLogger = new Logger(LoggingMethods.EventLogger);
 						eventLogger.Log($"LicenseData Error: {ex.Message}");
 					}
-					
+
 				}
-					
+
 			}
 			return rowsAffected > 0;
 		}
 
 
-		// will be kicked soon 
-
-		// will be kicked soon
 		public static DataTable GetLicenseByIdMaster(int licenseID)
 		{
 			DataTable table = new DataTable();
@@ -419,36 +451,6 @@ namespace DVLD_DataAccess
             return detainID;
         }
 
-		public static bool IsLicenseExist(int licenseID)
-		{
-			bool isExist = false;
-			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-			string query = "SELECT TOP(1) Found=1 From Licenses WHERE LicenseID=@LicenseID";
-			SqlCommand command = new SqlCommand(query, connection);
-			command.Parameters.AddWithValue("@LicenseID", licenseID);
-
-			try
-			{
-				connection.Open();
-				object result = command.ExecuteScalar();
-				if (result != null && int.TryParse(result.ToString(), out int found))
-					isExist = true;
-
-			}
-			catch (Exception ex)
-			{
-				Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-				eventLogger.Log($"LicenseData Error: {ex.Message}");
-			}
-			finally
-			{
-				connection.Close();
-			}
-
-			return isExist;
-		}
-
 
 		public static bool IsApplicationHasLicense(int applicationID)
         {
@@ -554,34 +556,6 @@ namespace DVLD_DataAccess
 		}
 
 		// will be kicked soon
-		public static bool DeleteLicense(int licenseID)
-		{
-			int rowsAffected = 0;
-			SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-
-			string query = "DELETE From Licenses WHERE LicenseID=@LicenseID;";
-			SqlCommand command = new SqlCommand(query, connection);
-			command.Parameters.AddWithValue("@LicenseID", licenseID);
-
-			try
-			{
-				connection.Open();
-				rowsAffected = command.ExecuteNonQuery();
-
-			}
-			catch (Exception ex)
-			{
-				rowsAffected = 0;
-				Logger eventLogger = new Logger(LoggingMethods.EventLogger);
-				eventLogger.Log($"LicenseData Error: {ex.Message}");
-			}
-			finally
-			{
-				connection.Close();
-			}
-
-			return rowsAffected > 0;
-		}
 
 
 

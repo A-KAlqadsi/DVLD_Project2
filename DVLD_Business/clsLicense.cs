@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +42,14 @@ namespace DVLD_Business
 			}
 		}
 
+        public DetainedLicense DetainedLicenseInfo { get; set; }
+
+
+		public  bool IsDetained
+        {
+            get { return DetainedLicense.IsLicenseDetained(this.LicenseID); }
+        }
+
 
 		public clsLicense()
         {
@@ -73,6 +84,7 @@ namespace DVLD_Business
             IssueReason=issueReason;
             UserID=userID;
             _Mode = enMode.Update;
+            this.DetainedLicenseInfo = DetainedLicense.FindByLicenseID(this.LicenseID);
         }
 
         private string _GetIssueReasonText(enIssueReason issueReason)
@@ -119,81 +131,37 @@ namespace DVLD_Business
             byte issueReason = 0;
             int userID = -1;
 
-            if (clsLicenseData.GetLicenseByID(licenseID, ref applicationId, ref driverID, ref licenseClassID, ref issueDate, ref expirationDate, ref notes, ref paidFees, ref isActive, ref issueReason, ref userID))
+            bool isFound = clsLicenseData.GetLicenseByID(licenseID, ref applicationId,
+                ref driverID, ref licenseClassID, ref issueDate, ref expirationDate,
+                ref notes, ref paidFees, ref isActive, ref issueReason, ref userID);
+
+			if (isFound)
             {
-                return new clsLicense(licenseID,applicationId,driverID,licenseClassID,issueDate,expirationDate,notes,paidFees,isActive,(enIssueReason)issueReason,userID);
+                return new clsLicense(licenseID,applicationId,driverID,licenseClassID,
+                    issueDate,expirationDate,notes,paidFees,isActive,
+                    (enIssueReason)issueReason,userID);
             }
             else
                 return null;
 
         }
 
-        public static clsLicense FindByApplicationID(int applicationId)
-        {
-
-            int licenseID = -1;
-            int driverID = -1;
-            int licenseClassID = -1;
-            DateTime issueDate = DateTime.Now;
-            DateTime expirationDate = DateTime.Now;
-            string notes = string.Empty;
-            float paidFees = 0;
-            bool isActive = false;
-            byte issueReason = 0;
-            int userID = -1;
-
-            if (clsLicenseData.GetLicenseByApplicationID(applicationId, ref licenseID , ref driverID, ref licenseClassID, ref issueDate, ref expirationDate, ref notes, ref paidFees, ref isActive, ref issueReason, ref userID))
-            {
-                return new clsLicense(licenseID, applicationId, driverID, licenseClassID, issueDate, expirationDate, notes, paidFees, isActive, (enIssueReason)issueReason, userID);
-            }
-            else
-                return null;
-
-        }
-        public static DataTable FindMaster(int licenseID)
-        {
-            return clsLicenseData.GetLicenseByIdMaster(licenseID);
-        }
+       
         public static DataTable GetAll()
         {
             return clsLicenseData.GetAllLicenses();
         }
+
         public static DataTable GetAllDriverLicenses(int driverId)
         {
             return clsLicenseData.GetAllDriverLicenses(driverId);
         }
-        public static bool Delete(int licenseID)
+       
+        public bool IsLicenseExpired()
         {
-            return clsLicenseData.DeleteLicense(licenseID);
+            return this.ExpirationDate < DateTime.Now;
         }
-
-        public static bool IsLicenseExist(int licenseID)
-        {
-            return clsLicenseData.IsLicenseExist(licenseID);
-        }
-        public static bool IsLicenseActive(int licenseID)
-        {
-            return clsLicenseData.IsLicenseActive(licenseID);
-        }
-        public static int IsLicenseDetained(int licenseID)
-        {
-            return clsLicenseData.IsLicenseDetainedAndNotReleased(licenseID);
-        }
-
-        public static bool IsLicenseExpired(int licenseID)
-        {
-            return clsLicenseData.IsLicenseExpired(licenseID);
-        }
-
-        public static int IsLicenseInternational(int licenseID)
-        {
-            return clsLicenseData.IsLicenseInternational(licenseID);
-        }
-        
-        public static bool IsApplicationHasLicense(int applicationID)
-        {
-            return clsLicenseData.IsApplicationHasLicense(applicationID);
-        }
+      
         public bool Save()
         {
             switch (_Mode)
@@ -215,11 +183,6 @@ namespace DVLD_Business
             return false;
         }
 
-        public static bool DeactivateLicense(int licenseID, bool newActivity)
-        {
-            return clsLicenseData.DeactivateLicense(licenseID, newActivity);
-        }
-
         public static int GetActiveLicenseByPersonId(int personID, int licenseClassId)
         {
             return clsLicenseData.GetActiveLicenseIDByPersonID(personID, licenseClassId);
@@ -230,6 +193,109 @@ namespace DVLD_Business
             return clsLicenseData.GetActiveLicenseIDByPersonID(personID, licenseClassId) != -1;
         }
 
+		public bool DeactivateCurrentLicense()
+		{
+			return clsLicenseData.DeactivateLicense(this.LicenseID);
+		}
 
-    }
+
+
+        public int Detain(float fineFees , int createdByUserId)
+        {
+            DetainedLicense detainedLicense = new DetainedLicense();
+            detainedLicense.CreatedByUserID =createdByUserId;
+            detainedLicense.LicenseID = this.LicenseID;
+            detainedLicense.FineFees = fineFees;
+
+            if (detainedLicense.Save())
+                return detainedLicense.DetainID;
+            else
+                return -1;
+
+        }
+        
+        public bool ReleaseDetainedLicense(int releaseByUserId, ref int applicationId)
+        {
+            clsApplication application = new clsApplication();
+            application.ApplicationDate = DateTime.Now;
+            application.ApplicationTypeID = clsApplication.enApplicationType.ReleaseDetainedDrivingLicense;
+            application.PaidFees = clsApplicationType.Find((int)application.ApplicationTypeID).ApplicationFees;
+            application.ApplicantPersonID = DriverInfo.PersonID;
+            application.ApplicationStatus = clsApplication.enApplicationStatus.Completed;
+            application.LastStatusDate = DateTime.Now;
+            application.UserID = releaseByUserId;
+
+            if(!application.Save())
+            {
+                applicationId = -1;
+                return false;
+            }
+            applicationId = application.ApplicationID;
+
+            return this.DetainedLicenseInfo.ReleaseDetainedLicense(releaseByUserId,applicationId);
+        }
+
+
+
+		// will be kicked soon
+		public static int IsLicenseInternational(int licenseID)
+		{
+			return clsLicenseData.IsLicenseInternational(licenseID);
+		}
+		// will be kicked soon
+		public static bool IsApplicationHasLicense(int applicationID)
+		{
+			return clsLicenseData.IsApplicationHasLicense(applicationID);
+		}
+
+		// will be kicked soon
+		public static clsLicense FindByApplicationID(int applicationId)
+		{
+
+			int licenseID = -1;
+			int driverID = -1;
+			int licenseClassID = -1;
+			DateTime issueDate = DateTime.Now;
+			DateTime expirationDate = DateTime.Now;
+			string notes = string.Empty;
+			float paidFees = 0;
+			bool isActive = false;
+			byte issueReason = 0;
+			int userID = -1;
+
+			if (clsLicenseData.GetLicenseByApplicationID(applicationId, ref licenseID, ref driverID, ref licenseClassID, ref issueDate, ref expirationDate, ref notes, ref paidFees, ref isActive, ref issueReason, ref userID))
+			{
+				return new clsLicense(licenseID, applicationId, driverID, licenseClassID, issueDate, expirationDate, notes, paidFees, isActive, (enIssueReason)issueReason, userID);
+			}
+			else
+				return null;
+
+		}
+		public static DataTable FindMaster(int licenseID)
+		{
+			return clsLicenseData.GetLicenseByIdMaster(licenseID);
+		}
+		// will be kicked soon
+		public static bool IsLicenseExpired(int licenseID)
+		{
+			return clsLicenseData.IsLicenseExpired(licenseID);
+		}
+		public static bool DeactivateLicense(int licenseID, bool newActivity)
+		{
+			return clsLicenseData.DeactivateLicense(licenseID, newActivity);
+
+		}
+
+		public static bool IsLicenseActive(int licenseID)
+		{
+			return clsLicenseData.IsLicenseActive(licenseID);
+		}
+
+		public static int IsLicenseDetained(int licenseID)
+		{
+			return clsLicenseData.IsLicenseDetainedAndNotReleased(licenseID);
+		}
+
+
+	}
 }
