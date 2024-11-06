@@ -18,147 +18,127 @@ namespace DVLD_View
             InitializeComponent();
         }
 
-        private DataView _DataView;
-        private DataTable _DataTable;
 
-        private void _RefreshDrivers(DataView dv)
-        {
-            dgvListDrivers.Rows.Clear();
-            int counter = 0;
-            
-            if (dv != null)
-                counter = dv.Count;
-
-            for (int i = 0; i < dv.Count; i++)
-            {  
-                dgvListDrivers.Rows.Add(dv[i]["DriverID"],dv[i]["PersonID"], dv[i]["NationalNo"],dv[i]["FullName"], dv[i]["CreatedDate"] , dv[i]["NumberOfActiveLicenses"]);
-            }
-
-
-            lblRecordsCount.Text = counter.ToString();
-
-        }
-
-        private void _LoadAllDrivers()
-        {
-            _DataTable = clsDriver.GetAll();
-
-            _DataView = _DataTable.DefaultView;
-            _DataView.Sort = "DriverID DESC"; // sorting inside the dataview
-
-            _RefreshDrivers(_DataView);
-        }
-
-        private void _ResetFilter()
-        {
-            _LoadAllDrivers();
-
-            cbFilterDrivers.SelectedIndex = 0;            
-            txtFilter.Clear();
-            txtFilter.Visible = false;
-            
-        }
-
+        private DataTable _dtAllDrivers;
 
         private void frmListDrivers_Load(object sender, EventArgs e)
         {
-            _ResetFilter();
-        }
+            cbFilterDrivers.SelectedIndex = 0;
+            _dtAllDrivers = clsDriver.GetAll();
+            dgvListDrivers.DataSource = _dtAllDrivers;
+			lblRecordsCount.Text = dgvListDrivers.Rows.Count.ToString();
+			if (dgvListDrivers.Rows.Count > 0)
+			{
+				dgvListDrivers.Columns[0].HeaderText = "Driver ID";
+				dgvListDrivers.Columns[0].Width = 125;
 
-        private void cbFilterDrivers_SelectedIndexChanged(object sender, EventArgs e)
+				dgvListDrivers.Columns[1].HeaderText = "Person ID";
+				dgvListDrivers.Columns[1].Width = 125;
+
+				dgvListDrivers.Columns[2].HeaderText = "National No.";
+				dgvListDrivers.Columns[2].Width = 160;
+
+				dgvListDrivers.Columns[3].HeaderText = "Full Name";
+				dgvListDrivers.Columns[3].Width = 400;
+
+				dgvListDrivers.Columns[4].HeaderText = "Date";
+				dgvListDrivers.Columns[4].Width = 200;
+
+				dgvListDrivers.Columns[5].HeaderText = "Active Licenses";
+				dgvListDrivers.Columns[5].Width = 200;
+			}
+
+
+		}
+
+		private void cbFilterDrivers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbFilterDrivers.SelectedItem == "None")
-            {
-                _ResetFilter();
-            }
-           
-            else
-            {
-                txtFilter.Visible = true;
-                txtFilter.Focus();
-                
-            }
-        }
+			txtFilter.Visible = (cbFilterDrivers.Text != "None");
+
+
+			if (cbFilterDrivers.Text == "None")
+			{
+				txtFilter.Enabled = false;
+			}
+			else
+				txtFilter.Enabled = true;
+
+			txtFilter.Text = "";
+			txtFilter.Focus();
+		}
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
-            switch (cbFilterDrivers.SelectedIndex)
-            {
-                case 1:
-                    {
 
-                        if (txtFilter.Text == "")
-                        {
-                            _LoadAllDrivers();
-                            return;
-                        }
+			string FilterColumn = "";
+			//Map Selected Filter to real Column name 
+			switch (cbFilterDrivers.Text)
+			{
+				case "Driver ID":
+					FilterColumn = "DriverID";
+					break;
 
-                        if (int.TryParse(txtFilter.Text.ToString(), out int driverID))
-                            _FilterByID("DriverID", driverID);
+				case "Person ID":
+					FilterColumn = "PersonID";
+					break;
 
-                    }
-                    break;
-                case 2:
-                    if (txtFilter.Text == "")
-                    {
-                        _LoadAllDrivers();
-                        return;
-                    }
+				case "National No.":
+					FilterColumn = "NationalNo";
+					break;
 
-                    if (int.TryParse(txtFilter.Text.ToString(), out int personID))
-                        _FilterByID("PersonID", personID);
-                    break;
-                case 3:
-                    _FilterByString("NationalNo",txtFilter.Text);
-                    break;
-                case 4:
-                    _FilterByString("FullName", txtFilter.Text);
-                    break;
-                case 5:
-                    if (txtFilter.Text == "")
-                    {
-                        _LoadAllDrivers();
-                        return;
-                    }
 
-                    if (int.TryParse(txtFilter.Text.ToString(), out int activeLicenses))
-                        _FilterByID("NumberOfActiveLicenses", activeLicenses);
-                    break;
-                
-            }
-            
+				case "Full Name":
+					FilterColumn = "FullName";
+					break;
 
-        }
+				default:
+					FilterColumn = "None";
+					break;
 
-        private void _FilterByID(string colName ,int personID)
-        {
-            _DataView.RowFilter = $"{colName} ={personID}";
-            _RefreshDrivers(_DataView);
-            _DataView = _DataTable.DefaultView;
-        }
+			}
 
-        private void _FilterByString(string colName ,string nationalNo)
-        {
-            _DataView.RowFilter = $"{colName} LIKE '{nationalNo}%'";
-            _RefreshDrivers(_DataView);
-        }
+			//Reset the filters in case nothing selected or filter value conains nothing.
+			if (txtFilter.Text.Trim() == "" || FilterColumn == "None")
+			{
+				_dtAllDrivers.DefaultView.RowFilter = "";
+				lblRecordsCount.Text = dgvListDrivers.Rows.Count.ToString();
+				return;
+			}
 
+
+			if (FilterColumn != "FullName" && FilterColumn != "NationalNo")
+				//in this case we deal with numbers not string.
+				_dtAllDrivers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilter.Text.Trim());
+			else
+				_dtAllDrivers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilter.Text.Trim());
+
+			lblRecordsCount.Text = _dtAllDrivers.Rows.Count.ToString();
+
+
+		}
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
         {
-            _FilterValidate(e);
-        }
-        private void _FilterValidate(KeyPressEventArgs e)
-        {
-            if (cbFilterDrivers.SelectedIndex == 1 || cbFilterDrivers.SelectedIndex == 2 || cbFilterDrivers.SelectedIndex == 5)
-            {
-                if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-                    e.Handled = true;
-            }
-        }
+			if (cbFilterDrivers.SelectedIndex == 1 || cbFilterDrivers.SelectedIndex == 2 || cbFilterDrivers.SelectedIndex == 5)
+			{
+				e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+			}
+		}
+       
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-    }
+
+		private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			frmPersonDetails frm = new frmPersonDetails((int)dgvListDrivers.CurrentRow.Cells[1].Value);
+			frm.ShowDialog();
+		}
+
+		private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("This is not implemented yet");
+		}
+	}
 }
