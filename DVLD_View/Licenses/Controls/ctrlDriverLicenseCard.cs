@@ -1,4 +1,6 @@
 ﻿using DVLD_Business;
+using DVLD_View.Globals;
+using DVLD_View.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,19 +17,31 @@ namespace DVLD_View
     public partial class ctrlDriverLicenseCard : UserControl
     {
 
-        // Declare a delegate
-        public delegate void DataBackEventHandler(object sender, int localLicenseID, bool isFound, bool isActive, bool isClass3, bool isDetained);
-
-        // Declare an event using the delegate
-        public event DataBackEventHandler LocalLicenseInfoBack;
-
+        // will be kicked soon
         public bool IsFound = false;
         public bool IsDetained = false;
         public bool IsClass3 = false;
         public int LocalLicenseID = -1;
         public bool IsActive = false;
-        DataTable _LicenseInfo;
-        private string _ImagePath = @"C:\Users\Abdulkarim\source\Abu-Hadhoud\19 DVLD\DVLD_View\Icons\";
+        // 
+
+        private clsLicense _License;
+        private int _LicenseID;
+
+        public int LicenseID
+        {
+            get
+            {
+                return _LicenseID;
+            }
+        }
+        public clsLicense SelectedLicenseInfo
+        {
+            get
+            {
+                return _License;
+            }
+        }
 
         public ctrlDriverLicenseCard()
         {
@@ -36,111 +50,62 @@ namespace DVLD_View
 
         public void LoadLicenseCardInfo(int licenseID)
         {
-            _LicenseInfo = clsLicense.FindMaster(licenseID);
+            
+            _License = clsLicense.Find(licenseID);
 
-            if (_LicenseInfo.Rows.Count == 0)
+            if(_License == null)
             {
-                _ResetLicenseCard();
-                MessageBox.Show($"No license with ID={licenseID}", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show($"No license with ID={licenseID}", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _LicenseID = -1;
                 return;
-            }
-            else
-            {
-                LocalLicenseID = licenseID;
-                _FillLicenseCard();
-            }
-        }
+			}
+            _LicenseID = _License.LicenseID;
 
-        private void _FillLicenseCard()
-        {
-            clsLicense license;
+            lblClassName.Text = _License.LicenseClassInfo.ClassName;
+			lblDateOfBirth.Text = Globals.Format.DateToShort(_License.DriverInfo.PersonInfo.DateOfBirth);
+
+            lblDriverID.Text = _License.DriverID.ToString();
+			lblExpirationDate.Text = Format.DateToShort(_License.ExpirationDate);
+
+			lblGender.Text = _License.DriverInfo.PersonInfo.Gender == 0 ? "Male": "Female";
+			lblIsActive.Text = _License.IsActive ? "Yes":"No";
+			lblIsDetained.Text = _License.IsDetained ? "Yes" : "No";
+			lblIssueDate.Text = Format.DateToShort(_License.IssueDate);
+            lblIssueReason.Text = _License.IssueReasonText;
+			lblLicenseID.Text = _License.LicenseID.ToString();
+			lblName.Text = _License.DriverInfo.PersonInfo.FullName;
+			lblNationalNo.Text = _License.DriverInfo.PersonInfo.NationalNo;
+            lblNotes.Text = _License.Notes == "" ? "No Notes" : _License.Notes;
             
-            bool gender = false;
-            string imagePath = "";
-            
-            foreach (DataRow row in _LicenseInfo.Rows)
-            {
-                IsFound = true;
-                //LocalLicenseID = Convert.ToInt32(row["LicenseID"]);
-                license = clsLicense.Find(LocalLicenseID);
+            _LoadImage();
 
-                if (license != null)
-                {
-                    LocalLicenseID = license.LicenseID;
-                    if (license.LicenseClassID == 3)
-                        IsClass3 = true;
-                    else
-                        IsClass3 = false;
-                }
-                else
-                {
-                    IsFound = false;
-                    return;
-                }
+		}
 
-                lblClassName.Text = row["ClassName"].ToString();
-                lblDateOfBirth.Text =Convert.ToDateTime(row["DateOfBirth"]).ToShortDateString();
-                lblDriverID.Text = row["DriverID"].ToString();
-                lblExpirationDate.Text = Convert.ToDateTime(row["ExpirationDate"]).ToShortDateString();
-                lblGender.Text = row["GenderTitle"].ToString();
-                IsActive = Convert.ToBoolean(row["IsActive"]);
-                lblIsActive.Text = Convert.ToBoolean(row["IsActive"]) ==true ? "Yes" : "No";
-                lblIsDetained.Text = row["IsDetained"] == DBNull.Value ? "No" : "Yes";
-                lblIssueDate.Text = Convert.ToDateTime(row["IssueDate"]).ToShortDateString();
-                lblIssueReason.Text = row["IssueReasonTitle"].ToString();
-                lblLicenseID.Text = row["LicenseID"].ToString();                 
-                lblName.Text = row["FullName"].ToString();
-                lblNationalNo.Text = row["NationalNo"].ToString();
-                lblNotes.Text = row["Notes"] != DBNull.Value ? row["Notes"].ToString() : "No Notes";
 
-                if (lblIsDetained.Text == "Yes")
-                    IsDetained = true;
-                else
-                    IsDetained = false;
-
-                gender = lblGender.Text == "Male"?false:true;
-                imagePath = row["ImagePath"] != DBNull.Value ? row["ImagePath"].ToString() : "";
-                
-                if (gender)
-                    pbGender.ImageLocation = _ImagePath + "Woman 32.png";
-                else
-                    pbGender.ImageLocation = _ImagePath + "Man 32.png";
-                _SetPersonalImage(imagePath, gender);
-                // fire the event
-                LocalLicenseInfoBack?.Invoke(this,LocalLicenseID, IsFound, IsActive, IsClass3, IsDetained);
-            }
-        }
-
-        private void _SetPersonalImage(string imagePath, bool gender)
+        private void _LoadImage()
         {
-            if (File.Exists(imagePath))
-                pbPersonalImage.ImageLocation = imagePath;
-            else
+
+            if (_License.DriverInfo.PersonInfo.Gender == 0)
             {
-                if (gender)
-                    pbPersonalImage.ImageLocation = _ImagePath + "Female 512.png";
-                else
-                    pbPersonalImage.ImageLocation = _ImagePath + "Male 512.png";
-            }
-        }
+				pbPersonalImage.Image = Resources.Male_512;
+                pbGender.Image = Resources.Man_32;
+			}
+			else
+            {
+				pbPersonalImage.Image = Resources.Female_512;
+                pbGender.Image = Resources.Woman_32;
+			}
 
-        private void _ResetLicenseCard()
-        {
-            lblClassName.Text = "[????]";
-            lblDateOfBirth.Text = "[????]";
-            lblDriverID.Text = "[????]";
-            lblExpirationDate.Text = "[????]";
-            lblGender.Text = "[????]";
-            lblIsDetained.Text = "[????]";
-            lblIsActive.Text = "[????]";
-            lblIssueDate.Text = "[????]";
-            lblIssueReason.Text = "[????]";
-            lblLicenseID.Text = "[????]";
-            lblName.Text = "[????]";
-            lblNationalNo.Text = "[????]";
-            lblNotes.Text = "[????]";
-            _SetPersonalImage("",false);
-        }
+			string ImagePath = _License.DriverInfo.PersonInfo.ImagePath;
 
-    }
+			if (ImagePath != "")
+				if (File.Exists(ImagePath))
+					pbPersonalImage.Load(ImagePath);
+				else
+					MessageBox.Show("Could not find this image: = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+		}
+
+
+	}
 }
