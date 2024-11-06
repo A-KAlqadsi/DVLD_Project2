@@ -134,12 +134,6 @@
     <Compile Include="Applications\Internation Licenses\ctrlInternationalApplicationInfo.Designer.cs">
       <DependentUpon>ctrlInternationalApplicationInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\Renew License\ctrlRenewLicenseApplicationInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Applications\Renew License\ctrlRenewLicenseApplicationInfo.Designer.cs">
-      <DependentUpon>ctrlRenewLicenseApplicationInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Applications\Application Types\frmAddEditAplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -378,9 +372,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Internation Licenses\ctrlInternationalApplicationInfo.resx">
       <DependentUpon>ctrlInternationalApplicationInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Applications\Renew License\ctrlRenewLicenseApplicationInfo.resx">
-      <DependentUpon>ctrlRenewLicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Application Types\frmAddEditAplicationType.resx">
       <DependentUpon>frmAddEditAplicationType.cs</DependentUpon>
