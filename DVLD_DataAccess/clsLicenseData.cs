@@ -9,7 +9,7 @@ namespace DVLD_DataAccess
     {
         public static bool GetLicenseByID(int licenseID,ref int applicationId,ref int driverID,
             ref int licenseClass,ref DateTime issueDate,ref DateTime expirationDate,ref string notes,
-            ref float paidFees,ref bool isActive ,ref short issueReason,ref int createdByUserID)
+            ref float paidFees,ref bool isActive ,ref byte issueReason,ref int createdByUserID)
         {
             bool isFound = false;
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
@@ -35,7 +35,7 @@ namespace DVLD_DataAccess
 								notes = (reader["Notes"] != DBNull.Value) ? reader["Notes"].ToString() : "";
 								paidFees = Convert.ToSingle(reader["PaidFees"]);
 								isActive = Convert.ToBoolean(reader["IsActive"]);
-								issueReason = Convert.ToInt16(reader["IssueReason"]);
+								issueReason = Convert.ToByte(reader["IssueReason"]);
 								createdByUserID = (int)reader["CreatedByUserID"];
 							}
 						}
@@ -54,7 +54,7 @@ namespace DVLD_DataAccess
         // will be kicked soon
         public static bool GetLicenseByApplicationID(int applicationId,ref int licenseID, ref int driverID,
         ref int licenseClass, ref DateTime issueDate, ref DateTime expirationDate, ref string notes,
-        ref float paidFees, ref bool isActive, ref short issueReason, ref int createdByUserID)
+        ref float paidFees, ref bool isActive, ref byte issueReason, ref int createdByUserID)
         {
             bool isFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
@@ -80,7 +80,7 @@ namespace DVLD_DataAccess
                     notes = (reader["Notes"] != DBNull.Value) ? reader["Notes"].ToString() : "";
                     paidFees = Convert.ToSingle(reader["PaidFees"]);
                     isActive = Convert.ToBoolean(reader["IsActive"]);
-                    issueReason = Convert.ToInt16(reader["IssueReason"]);
+                    issueReason = Convert.ToByte(reader["IssueReason"]);
                     createdByUserID = (int)reader["CreatedByUserID"];
                 }
                 reader.Close();
