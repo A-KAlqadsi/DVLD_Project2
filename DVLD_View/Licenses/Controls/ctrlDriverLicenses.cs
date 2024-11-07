@@ -14,97 +14,121 @@ namespace DVLD_View
 {
     public partial class ctrlDriverLicenses : UserControl
     {
+        private DataTable _dtDriverLocalLicensesHistory;
+        private DataTable _dtDriverInternationalLicensesHistory;
+        private clsDriver _Driver;
+        private int _DriverId;
         
         public ctrlDriverLicenses()
         {
             InitializeComponent();
         }
-        
-        public void LoadLocalLicenseHistory(int driverId)
+
+		private void _LoadLocalLicenseInfo()
+		{
+			_dtDriverLocalLicensesHistory = _Driver.GetDriverLicense();
+			dgvListLocalLicenses.DataSource = _dtDriverLocalLicensesHistory;
+
+			lblLocalLicenseCount.Text = dgvListLocalLicenses.Rows.Count.ToString();
+			if (dgvListLocalLicenses.Rows.Count > 0)
+			{
+				dgvListLocalLicenses.Columns[0].HeaderText = "Lic.ID";
+				dgvListLocalLicenses.Columns[0].Width = 90;
+
+				dgvListLocalLicenses.Columns[1].HeaderText = "App.ID";
+				dgvListLocalLicenses.Columns[1].Width = 90;
+
+				dgvListLocalLicenses.Columns[2].HeaderText = "Class Name";
+				dgvListLocalLicenses.Columns[2].Width = 250;
+
+				dgvListLocalLicenses.Columns[3].HeaderText = "Issue Date";
+				dgvListLocalLicenses.Columns[3].Width = 140;
+
+				dgvListLocalLicenses.Columns[4].HeaderText = "Expiration Date";
+				dgvListLocalLicenses.Columns[4].Width = 140;
+
+				dgvListLocalLicenses.Columns[5].HeaderText = "Is Active";
+				dgvListLocalLicenses.Columns[5].Width = 110;
+
+			}
+		}
+
+		private void _LoadInternationalLicenseInfo()
+		{
+			_dtDriverInternationalLicensesHistory = _Driver.GetDriverInternationalLicenses();
+
+			dgvListInternationalLicenses.DataSource = _dtDriverInternationalLicensesHistory;
+			lblInternationalLicensesCount.Text = _dtDriverInternationalLicensesHistory.Rows.Count.ToString();
+
+			if (_dtDriverInternationalLicensesHistory.Rows.Count > 0)
+			{
+				dgvListInternationalLicenses.Columns[0].HeaderText = "Int.License ID";
+				dgvListInternationalLicenses.Columns[0].Width = 130;
+
+				dgvListInternationalLicenses.Columns[1].HeaderText = "Application ID";
+				dgvListInternationalLicenses.Columns[1].Width = 130;
+
+				dgvListInternationalLicenses.Columns[2].HeaderText = "L.License ID";
+				dgvListInternationalLicenses.Columns[2].Width = 130;
+
+				dgvListInternationalLicenses.Columns[3].HeaderText = "Issue Date";
+				dgvListInternationalLicenses.Columns[3].Width = 140;
+
+				dgvListInternationalLicenses.Columns[4].HeaderText = "Expiration Date";
+				dgvListInternationalLicenses.Columns[4].Width = 140;
+
+				dgvListInternationalLicenses.Columns[5].HeaderText = "Is Active";
+				dgvListInternationalLicenses.Columns[5].Width = 120;
+			}
+
+		}
+
+		public void LoadInfo(int driverId)
         {
-            dgvListLocalLicenses.Rows.Clear();
-            DataTable driverLicenses = clsLicense.GetAllDriverLicenses(driverId);
-            DataView licensesView = driverLicenses.DefaultView;
-            licensesView.Sort = "LicenseID DESC";
-           
-            string issueDate;
-            string expirDate;
-            bool isActive;
-
-            if (licensesView.Count > 0)
-                lblLocalLicenseCount.Text = licensesView.Count.ToString();
-
-
-            for (int i = 0;i<licensesView.Count;i++)
+            _Driver = clsDriver.Find(driverId);
+            if(_Driver == null)
             {
-                issueDate = Convert.ToDateTime(licensesView[i]["IssueDate"]).ToShortDateString();
-                expirDate = Convert.ToDateTime(licensesView[i]["ExpirationDate"]).ToShortDateString();
-                isActive = Convert.ToBoolean(licensesView[i]["IsActive"]);
-                dgvListLocalLicenses.Rows.Add(licensesView[i]["LicenseID"], licensesView[i]["ApplicationID"], licensesView[i]["ClassName"], issueDate, expirDate, isActive);
+                MessageBox.Show($"There is no Driver with Id= {driverId}", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-        
+			_DriverId = _Driver.DriverID;
 
-            //if (driverLicenses.Rows.Count > 0)
-            //    lblLocalLicenseCount.Text = driverLicenses.Rows.Count.ToString();
-            //foreach(DataRow row in driverLicenses.Rows)
-            //{
-            //    issueDate = Convert.ToDateTime(row["IssueDate"]).ToShortDateString();
-            //    expirDate = Convert.ToDateTime(row["ExpirationDate"]).ToShortDateString();
-            //    isActive = Convert.ToBoolean(row["IsActive"]);
-            //    dgvListLocalLicenses.Rows.Add(row["LicenseID"], row["ApplicationID"], row["ClassName"], issueDate,expirDate,isActive);
-            //}
+            _LoadLocalLicenseInfo();
+            _LoadInternationalLicenseInfo();
 
-        }
+		}
 
-        public void LoadInternatioalLicenseHistory(int driverId)
+		public void LoadInfoByPersonId(int personId)
         {
-            dgvListInternationalLicenses.Rows.Clear();
-            DataTable driverLicenses = clsInternationalLicense.GetAllDriverLicenses(driverId);
-            string issueDate;
-            string expirDate;
-            bool isActive;
+			_Driver = clsDriver.FindByPersonID(personId);
+			if (_Driver == null)
+			{
+				MessageBox.Show($"There is no Driver linked with Person Id= {personId}", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+			_DriverId = _Driver.DriverID;
 
-            DataView licensesView = driverLicenses.DefaultView;
-            licensesView.Sort = "InternationalLicenseID DESC";
+			_LoadLocalLicenseInfo();
+			_LoadInternationalLicenseInfo();
 
-            
-            if (licensesView.Count > 0)
-                lblInternationalLicensesCount.Text = licensesView.Count.ToString();
-
-
-            for (int i = 0; i < licensesView.Count; i++)
-            {
-                issueDate = Convert.ToDateTime(licensesView[i]["IssueDate"]).ToShortDateString();
-                expirDate = Convert.ToDateTime(licensesView[i]["ExpirationDate"]).ToShortDateString();
-                isActive = Convert.ToBoolean(licensesView[i]["IsActive"]);
-                dgvListInternationalLicenses.Rows.Add(licensesView[i]["InternationalLicenseID"], licensesView[i]["ApplicationID"], licensesView[i]["IssuedUsingLocalLicenseID"], issueDate, expirDate, isActive);
-            }
-
-
-            //if (driverLicenses.Rows.Count > 0)
-            //    lblInternationalLicensesCount.Text = driverLicenses.Rows.Count.ToString();
-            //foreach (DataRow row in driverLicenses.Rows)
-            //{
-            //    issueDate = Convert.ToDateTime(row["IssueDate"]).ToShortDateString();
-            //    expirDate = Convert.ToDateTime(row["ExpirationDate"]).ToShortDateString();
-            //    isActive = Convert.ToBoolean(row["IsActive"]);
-            //    dgvListInternationalLicenses.Rows.Add(row["InternationalLicenseID"], row["ApplicationID"], row["IssuedUsingLocalLicenseID"], issueDate, expirDate, isActive);
-            //}
-
-        }
+		}
 
         private void tsmiShowLocalLicenseInfo_Click(object sender, EventArgs e)
         {
-            int licenseId = (int)dgvListLocalLicenses.CurrentRow.Cells[0].Value;
-            frmShowLicenseCard card = new frmShowLicenseCard(licenseId);
+            frmShowLicenseCard card = new frmShowLicenseCard((int)dgvListLocalLicenses.CurrentRow.Cells[0].Value);
             card.ShowDialog();
         }
 
+		public void Clear()
+		{
+			dgvListInternationalLicenses.Rows.Clear();
+			dgvListLocalLicenses.Rows.Clear();
+		}
+
         private void tsmiShowInterLicenseInfo_Click(object sender, EventArgs e)
         {
-            int licenseId = (int)dgvListInternationalLicenses.CurrentRow.Cells[0].Value;
-            frmShowInternationalLicenseCard card = new frmShowInternationalLicenseCard(licenseId);
+            frmShowInternationalLicenseCard card = new frmShowInternationalLicenseCard((int)dgvListInternationalLicenses.CurrentRow.Cells[0].Value);
             card.ShowDialog();
         }
-    }
+	}
 }

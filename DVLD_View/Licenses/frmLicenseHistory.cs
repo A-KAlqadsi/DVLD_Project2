@@ -15,23 +15,33 @@ namespace DVLD_View
     public partial class frmLicenseHistory : Form
     {
         private int _PersonID;
-        private int _DriverID;
-
+        
         public frmLicenseHistory(int personId)
         {
             InitializeComponent();
             _PersonID = personId;
         }
 
-        private void frmLicenseHistory_Load(object sender, EventArgs e)
+		public frmLicenseHistory()
+		{
+			InitializeComponent();
+			
+		}
+
+		private void frmLicenseHistory_Load(object sender, EventArgs e)
         {
-            _DriverID = clsDriver.FindByPersonID(_PersonID).DriverID;
-            ctrlDriverLicenses1.LoadLocalLicenseHistory(_DriverID);
-            ctrlDriverLicenses1.LoadInternatioalLicenseHistory(_DriverID);
-            ctrlPersonCardWithFilter1.cbPersonFilters.SelectedIndex = 0;
-            ctrlPersonCardWithFilter1.txtSearch.Text = _PersonID.ToString();
-            ctrlPersonCardWithFilter1.gbFilter.Enabled = false;
-            ctrlPersonCardWithFilter1.ctrlPersonCard1.LoadPersonInfo(_PersonID);
+           if(_PersonID != -1)
+            {
+				ctrlPersonCardWithFilter1.LoadPersonInfo(_PersonID);
+				ctrlPersonCardWithFilter1.FilterEnabled = false;
+				ctrlDriverLicenses1.LoadInfoByPersonId(_PersonID);
+			}
+           else
+            {
+                ctrlPersonCardWithFilter1.Enabled = true;
+                ctrlPersonCardWithFilter1.FilterFocus();
+
+			}
             
         }
 
@@ -39,5 +49,16 @@ namespace DVLD_View
         {
             this.Close();
         }
-    }
+
+		private void ctrlPersonCardWithFilter1_OnPersonSelected(object sender, People.Controls.Events.OnPersonSelectedEventArgs e)
+		{
+            _PersonID = e.PersonId;
+            if (_PersonID == -1)
+            {
+                ctrlDriverLicenses1.Clear();
+            }
+            else
+                ctrlDriverLicenses1.LoadInfoByPersonId(_PersonID);
+		}
+	}
 }

@@ -112,5 +112,16 @@ namespace DVLD_Business
             return false;
         }
 
+        public  DataTable GetDriverLicense()
+        {
+            return clsLicense.GetAllDriverLicenses(this.DriverID);
+        }
+
+        public DataTable GetDriverInternationalLicenses()
+        {
+            return clsInternationalLicense.GetAllDriverLicenses(this.DriverID);
+        }
+
+
     }
 }

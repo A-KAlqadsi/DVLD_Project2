@@ -138,7 +138,8 @@ namespace DVLD_View
 
 		private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("This is not implemented yet");
+			frmLicenseHistory frm = new frmLicenseHistory((int)dgvListDrivers.CurrentRow.Cells[1].Value);
+			frm.ShowDialog();
 		}
 	}
 }
