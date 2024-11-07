@@ -122,12 +122,6 @@
     <Compile Include="Licenses\Controls\ctrlDriverLicenses.Designer.cs">
       <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\Internation Licenses\ctrlInternationalApplicationInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Applications\Internation Licenses\ctrlInternationalApplicationInfo.Designer.cs">
-      <DependentUpon>ctrlInternationalApplicationInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Applications\Application Types\frmAddEditAplicationType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -360,9 +354,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Licenses\Controls\ctrlDriverLicenses.resx">
       <DependentUpon>ctrlDriverLicenses.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Applications\Internation Licenses\ctrlInternationalApplicationInfo.resx">
-      <DependentUpon>ctrlInternationalApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\Application Types\frmAddEditAplicationType.resx">
       <DependentUpon>frmAddEditAplicationType.cs</DependentUpon>
