@@ -35,13 +35,7 @@ namespace DVLD_View
 			OnLicenseSelected?.Invoke(this, e);
 		}
 
-
-		public bool IsFound ;
-        public bool IsDetained;
-        public bool IsClass3;
-        public int LocalLicenseID;
-        public bool IsActive;
-
+		
 
         public ctrlDriverLicenseCardWithFilter()
         {
