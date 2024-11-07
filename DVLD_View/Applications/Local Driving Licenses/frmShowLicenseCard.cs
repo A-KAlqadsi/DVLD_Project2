@@ -21,7 +21,7 @@ namespace DVLD_View
 
         private void frmShowLicenseCard_Load(object sender, EventArgs e)
         {
-            ctrlDriverLicenseCard1.LoadLicenseCardInfo(_LicenseID);
+            ctrlDriverLicenseCard1.LoadInfo(_LicenseID);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

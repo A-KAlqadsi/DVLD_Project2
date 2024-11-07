@@ -13,15 +13,15 @@ namespace DVLD_View
     public partial class frmShowInternationalLicenseCard : Form
     {
         int _InternationalLicenseID = -1;
-        public frmShowInternationalLicenseCard(int internationLicenseID)
+        public frmShowInternationalLicenseCard(int internationalLicenseID)
         {
             InitializeComponent();
-            _InternationalLicenseID = internationLicenseID;
+            _InternationalLicenseID = internationalLicenseID;
         }
 
         private void frmShowInternationalLicenseCard_Load(object sender, EventArgs e)
         {
-            ctrlDriverInternationalLicenseCard1.LoadLicenseCardInfo(_InternationalLicenseID);
+            ctrlDriverInternationalLicenseCard1.LoadInfo(_InternationalLicenseID);
         }
     }
 }

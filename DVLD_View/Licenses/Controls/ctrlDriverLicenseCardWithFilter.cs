@@ -68,7 +68,7 @@ namespace DVLD_View
         public void LoadLicenseInfo(int licenseId)
         {
             txtSearchLicenseID.Text = licenseId.ToString();
-			ctrlDriverLicenseCard1.LoadLicenseCardInfo(licenseId);
+			ctrlDriverLicenseCard1.LoadInfo(licenseId);
 			_LicenseId = ctrlDriverLicenseCard1.LicenseID;
 			if (OnLicenseSelected != null && FilterEnabled)
 				// Raise the event with a parameter

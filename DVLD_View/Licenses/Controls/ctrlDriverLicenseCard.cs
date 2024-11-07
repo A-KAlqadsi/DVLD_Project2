@@ -42,7 +42,7 @@ namespace DVLD_View
             InitializeComponent();          
         }
 
-        public void LoadLicenseCardInfo(int licenseID)
+        public void LoadInfo(int licenseID)
         {
             
             _License = clsLicense.Find(licenseID);

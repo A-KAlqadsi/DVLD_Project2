@@ -1,4 +1,6 @@
 ﻿using DVLD_Business;
+using DVLD_View.Globals;
+using DVLD_View.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,91 +16,63 @@ namespace DVLD_View
 {
     public partial class ctrlDriverInternationalLicenseCard : UserControl
     {
-        DataTable _InterLicense;
-        private string _ImagePath = @"C:\Users\Abdulkarim\source\Abu-Hadhoud\19 DVLD\DVLD_View\Icons\";
-
-        public ctrlDriverInternationalLicenseCard()
+		private int _InternationalLicenseID;
+		private clsInternationalLicense _InternationalLicense;
+		public ctrlDriverInternationalLicenseCard()
         {
             InitializeComponent();
         }
 
-        public void LoadLicenseCardInfo(int interLicenseID)
+		public int InternationalLicenseID
+		{
+			get { return _InternationalLicenseID; }
+		}
+
+		private void _LoadPersonImage()
+		{
+			if (_InternationalLicense.DriverInfo.PersonInfo.Gender == 0)
+				pbPersonalImage.Image = Resources.Male_512;
+			else
+				pbPersonalImage.Image = Resources.Female_512;
+
+			string ImagePath = _InternationalLicense.DriverInfo.PersonInfo.ImagePath;
+
+			if (ImagePath != "")
+				if (File.Exists(ImagePath))
+					pbPersonalImage.Load(ImagePath);
+				else
+					MessageBox.Show("Could not find this image: = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+		}
+
+		public void LoadInfo(int interLicenseID)
         {
-            _InterLicense = clsInternationalLicense.FindMaster(interLicenseID);
+			_InternationalLicenseID = InternationalLicenseID;
+			_InternationalLicense = clsInternationalLicense.Find(_InternationalLicenseID);
+			if (_InternationalLicense == null)
+			{
+				MessageBox.Show("Could not find International License ID = " + _InternationalLicenseID.ToString(),
+					"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				_InternationalLicenseID = -1;
+				return;
+			}
 
-            if (_InterLicense.Rows.Count == 0)
-            {
-                _ResetLicenseCard();
-                return;
-            }
-            else
-                _FillLicenseCard();
-        }
+			lblIntLicenseID.Text = _InternationalLicense.InternationalLicenseID.ToString();
+			lblAppID.Text = _InternationalLicense.ApplicationID.ToString();
+			lblIsActive.Text = _InternationalLicense.IsActive ? "Yes" : "No";
+			lblLicenseID.Text = _InternationalLicense.IssuedUsingLocalLicenseID.ToString();
+			lblName.Text = _InternationalLicense.DriverInfo.PersonInfo.FullName;
+			lblNationalNo.Text = _InternationalLicense.DriverInfo.PersonInfo.NationalNo;
+			lblGender.Text = _InternationalLicense.DriverInfo.PersonInfo.Gender == 0 ? "Male" : "Female";
+			lblDateOfBirth.Text = Format.DateToShort(_InternationalLicense.DriverInfo.PersonInfo.DateOfBirth);
 
-        private void _FillLicenseCard()
-        {
-           
-            bool gender = false;
-            string imagePath = "";
-            foreach (DataRow row in _InterLicense.Rows)
-            {
+			lblDriverID.Text = _InternationalLicense.DriverID.ToString();
+			lblIssueDate.Text = Format.DateToShort(_InternationalLicense.IssueDate);
+			lblExpirationDate.Text = Format.DateToShort(_InternationalLicense.ExpirationDate);
 
-                lblIntLicenseID.Text = row["InternationalLicenseID"].ToString();
-                lblAppID.Text = row["ApplicationID"].ToString();
-                lblDateOfBirth.Text = Convert.ToDateTime(row["DateOfBirth"]).ToShortDateString();
-                lblDriverID.Text = row["DriverID"].ToString();
-                lblExpirationDate.Text = Convert.ToDateTime(row["ExpirationDate"]).ToShortDateString();
-                lblGender.Text = row["GenderTitle"].ToString();
-                lblIsActive.Text = Convert.ToBoolean(row["IsActive"]) == true ? "Yes" : "No";
-                lblIssueDate.Text = Convert.ToDateTime(row["IssueDate"]).ToShortDateString();
-                lblLicenseID.Text = row["LicenseID"].ToString();
-                lblName.Text = row["FullName"].ToString();
-                lblNationalNo.Text = row["NationalNo"].ToString();
+			_LoadPersonImage();
 
-               
-
-                gender = lblGender.Text == "Male" ? false : true;
-                imagePath = row["ImagePath"] != DBNull.Value ? row["ImagePath"].ToString() : "";
-
-                if (gender)
-                    pbGender.ImageLocation = _ImagePath + "Woman 32.png";
-                else
-                    pbGender.ImageLocation = _ImagePath + "Man 32.png";
-                _SetPersonalImage(imagePath, gender);
-                
-                
-            }
-        }
-
-        private void _SetPersonalImage(string imagePath, bool gender)
-        {
-            if (File.Exists(imagePath))
-                pbPersonalImage.ImageLocation = imagePath;
-            else
-            {
-                if (gender)
-                    pbPersonalImage.ImageLocation = _ImagePath + "Female 512.png";
-                else
-                    pbPersonalImage.ImageLocation = _ImagePath + "Male 512.png";
-            }
-        }
-
-        private void _ResetLicenseCard()
-        {
-            
-            lblDateOfBirth.Text = "[????]";
-            lblDriverID.Text = "[????]";
-            lblExpirationDate.Text = "[????]";
-            lblGender.Text = "[????]";
-            lblIsActive.Text = "[????]";
-            lblIssueDate.Text = "[????]";      
-            lblLicenseID.Text = "[????]";
-            lblName.Text = "[????]";
-            lblNationalNo.Text = "[????]";
-           
-            _SetPersonalImage("", false);
-        }
-
+		}
 
 
     }
