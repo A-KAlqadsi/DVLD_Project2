@@ -26,6 +26,7 @@ namespace DVLD_View
 		public frmReleaseLicense()
 		{
 			InitializeComponent();
+
 		}
 
 		private void ctrlDriverLicenseCardWithFilter1_OnLicenseSelected(object sender, ctrlDriverLicenseCardWithFilter.OnLicenseSelectedEventArgs e)
@@ -78,6 +79,7 @@ namespace DVLD_View
             btnRelease.Enabled = false;
             llShowLicense.Enabled =true;
             ctrlDriverLicenseCardWithFilter1.FilterEnabled = false;
+			ctrlDriverLicenseCardWithFilter1.LoadLicenseInfo(_LocalLicenseID);
 
 		}
 

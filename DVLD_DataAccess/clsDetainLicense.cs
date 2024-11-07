@@ -277,7 +277,7 @@ namespace DVLD_DataAccess
 			int rowsAffected = 0;
 			using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
 			{
-				using (SqlCommand command = new SqlCommand("SP_ReleaseDetainedLicense", connection))
+				using (SqlCommand command = new SqlCommand("SP_ReleaseDetainLicense", connection))
 				{
 					command.CommandType = CommandType.StoredProcedure;
 					command.Parameters.AddWithValue("@DetainID", DetainID);
@@ -308,7 +308,8 @@ namespace DVLD_DataAccess
 			{
 				using (SqlCommand command = new SqlCommand("SP_IsLicenseDetained", connection))
 				{
-					command.Parameters.AddWithValue("@LicenseID", LicenseID);
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@LicenseId", LicenseID);
 
 					SqlParameter returnValue = new SqlParameter();
 					returnValue.Direction = ParameterDirection.ReturnValue;

@@ -42,7 +42,7 @@ namespace DVLD_View
             InitializeComponent();
         }
 
-        private bool _FilterEnabled;
+        private bool _FilterEnabled = true;
         public bool FilterEnabled
         {
             get { return _FilterEnabled; }
@@ -68,7 +68,7 @@ namespace DVLD_View
         public void LoadLicenseInfo(int licenseId)
         {
             txtSearchLicenseID.Text = licenseId.ToString();
-			ctrlDriverLicenseCard1.LoadLicenseCardInfo(LicenseID);
+			ctrlDriverLicenseCard1.LoadLicenseCardInfo(licenseId);
 			_LicenseId = ctrlDriverLicenseCard1.LicenseID;
 			if (OnLicenseSelected != null && FilterEnabled)
 				// Raise the event with a parameter

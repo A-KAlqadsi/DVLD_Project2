@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetainLicense));
 			this.lblMode = new System.Windows.Forms.Label();
 			this.llShowLicense = new System.Windows.Forms.LinkLabel();
@@ -51,12 +52,14 @@
 			this.btnClose = new System.Windows.Forms.Button();
 			this.btnDetain = new System.Windows.Forms.Button();
 			this.ctrlDriverLicenseCardWithFilter1 = new DVLD_View.ctrlDriverLicenseCardWithFilter();
+			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
 			this.gbDetainInfo.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbFees)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbDateOfBirth)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbLicenseID)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// lblMode
@@ -128,6 +131,7 @@
 			this.txtFineFees.Name = "txtFineFees";
 			this.txtFineFees.Size = new System.Drawing.Size(172, 30);
 			this.txtFineFees.TabIndex = 130;
+			this.txtFineFees.Validating += new System.ComponentModel.CancelEventHandler(this.txtFineFees_Validating);
 			// 
 			// pbUser
 			// 
@@ -320,12 +324,16 @@
 			// ctrlDriverLicenseCardWithFilter1
 			// 
 			this.ctrlDriverLicenseCardWithFilter1.BackColor = System.Drawing.Color.White;
-			this.ctrlDriverLicenseCardWithFilter1.FilterEnabled = false;
+			this.ctrlDriverLicenseCardWithFilter1.FilterEnabled = true;
 			this.ctrlDriverLicenseCardWithFilter1.Location = new System.Drawing.Point(12, 45);
 			this.ctrlDriverLicenseCardWithFilter1.Name = "ctrlDriverLicenseCardWithFilter1";
 			this.ctrlDriverLicenseCardWithFilter1.Size = new System.Drawing.Size(1021, 458);
 			this.ctrlDriverLicenseCardWithFilter1.TabIndex = 11;
 			this.ctrlDriverLicenseCardWithFilter1.OnLicenseSelected += new System.EventHandler<DVLD_View.ctrlDriverLicenseCardWithFilter.OnLicenseSelectedEventArgs>(this.ctrlDriverLicenseCardWithFilter1_OnLicenseSelected);
+			// 
+			// errorProvider1
+			// 
+			this.errorProvider1.ContainerControl = this;
 			// 
 			// frmDetainLicense
 			// 
@@ -352,6 +360,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbDateOfBirth)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbLicenseID)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -381,5 +390,6 @@
         public System.Windows.Forms.Label lblLicenseID;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtFineFees;
-    }
+		private System.Windows.Forms.ErrorProvider errorProvider1;
+	}
 }

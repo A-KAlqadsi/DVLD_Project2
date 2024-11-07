@@ -18,66 +18,22 @@ namespace DVLD_View
             InitializeComponent();
         }
 
-
-
-        private DataView _DataView;
-
-        private DataView _LoadAllDetainedLicensesIntoView()
-        {
-            DataView _DataView;
-            DataTable _DataTable;
-            _DataTable = clsDetainedLicense.GetAllMaster();
-            _DataView = _DataTable.DefaultView;
-            _DataView.Sort = "DetainID DESC";
-            return _DataView;
-        }
-
-        private void _ResetFilter()
-        {
-            cbFilterDetainedLicenses.SelectedIndex = 0;
-            cbIsReleaseFilter.SelectedIndex = 0;
-            txtFilter.Clear();
-            txtFilter.Visible = false;
-            cbIsReleaseFilter.Visible = false;
-        }
-
-
-
-        private void _RefreshDetainedLicenses(DataView dv)
-        {
-
-            int count = 0;
-            dgvListDetainedLicenses.Rows.Clear();
-            bool isRelease = false;
-            if (dv != null)
-                count = dv.Count;
-
-            foreach (DataRowView drv in dv)
-            {
-                isRelease = Convert.ToBoolean(drv[3]);
-                dgvListDetainedLicenses.Rows.Add(drv[0], drv[1], drv[2], isRelease,
-                    drv[4], drv[5], drv[6], drv[7], drv[8]);
-            }
-
-            lblRecordsCount.Text = count.ToString();
-
-        }
-
+        DataTable _dtDetainedLicenses;
 
 
         private void btnDetainLicense_Click(object sender, EventArgs e)
         {
             frmDetainLicense detainLicense = new frmDetainLicense();
             detainLicense.ShowDialog();
-            _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
+            frmManageDetainedLicenses_Load(null,null);
 
         }
 
         private void btnReleaseDetainedLicense_Click(object sender, EventArgs e)
         {
-            frmReleaseLicense releaseLicnse = new frmReleaseLicense(-1);
+            frmReleaseLicense releaseLicnse = new frmReleaseLicense();
             releaseLicnse.ShowDialog();
-            _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
+            frmManageDetainedLicenses_Load(null,null);
 
         }
 
@@ -88,142 +44,166 @@ namespace DVLD_View
 
         private void frmManageDetainedLicenses_Load(object sender, EventArgs e)
         {
-            _ResetFilter();
-            _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
-        }
+			cbFilterDetainedLicenses.SelectedIndex = 0;
+
+			_dtDetainedLicenses = DetainedLicense.GetAllDetainedLicenses();
+
+			dgvListDetainedLicenses.DataSource = _dtDetainedLicenses;
+			lblRecordsCount.Text = dgvListDetainedLicenses.Rows.Count.ToString();
+
+			if (dgvListDetainedLicenses.Rows.Count > 0)
+			{
+				dgvListDetainedLicenses.Columns[0].HeaderText = "D.ID";
+				dgvListDetainedLicenses.Columns[0].Width = 90;
+
+				dgvListDetainedLicenses.Columns[1].HeaderText = "L.ID";
+				dgvListDetainedLicenses.Columns[1].Width = 90;
+
+				dgvListDetainedLicenses.Columns[2].HeaderText = "D.Date";
+				dgvListDetainedLicenses.Columns[2].Width = 160;
+
+				dgvListDetainedLicenses.Columns[3].HeaderText = "Is Released";
+				dgvListDetainedLicenses.Columns[3].Width = 110;
+
+				dgvListDetainedLicenses.Columns[4].HeaderText = "Fine Fees";
+				dgvListDetainedLicenses.Columns[4].Width = 110;
+
+				dgvListDetainedLicenses.Columns[5].HeaderText = "Release Date";
+				dgvListDetainedLicenses.Columns[5].Width = 160;
+
+				dgvListDetainedLicenses.Columns[6].HeaderText = "N.No.";
+				dgvListDetainedLicenses.Columns[6].Width = 90;
+
+				dgvListDetainedLicenses.Columns[7].HeaderText = "Full Name";
+				dgvListDetainedLicenses.Columns[7].Width = 330;
+
+				dgvListDetainedLicenses.Columns[8].HeaderText = "Release App.ID";
+				dgvListDetainedLicenses.Columns[8].Width = 150;
+
+			}
+		}
 
         private void cbFilterDetainedLicenses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbFilterDetainedLicenses.SelectedIndex == 0)
-            {
-                _ResetFilter();
-            }
-            else if (cbFilterDetainedLicenses.SelectedIndex == 3)
-            {
-                _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
-                txtFilter.Visible = false;
-                cbIsReleaseFilter.Visible = true;
-            }
-            else
-            {
-                cbIsReleaseFilter.SelectedIndex = 0;
-                cbIsReleaseFilter.Visible = false;
-                txtFilter.Visible = true;
-                txtFilter.Focus();
-            }
-        }
+			if (cbFilterDetainedLicenses.Text == "Is Released")
+			{
+				txtFilter.Visible = false;
+				cbIsReleaseFilter.Visible = true;
+				cbIsReleaseFilter.Focus();
+				cbIsReleaseFilter.SelectedIndex = 0;
+			}
+
+			else
+
+			{
+
+				txtFilter.Visible = (cbFilterDetainedLicenses.Text != "None");
+				cbIsReleaseFilter.Visible = false;
+
+				if (cbFilterDetainedLicenses.Text == "None")
+				{
+					txtFilter.Enabled = false;
+					
+				}
+				else
+					txtFilter.Enabled = true;
+
+				txtFilter.Text = "";
+				txtFilter.Focus();
+			}
+		}
 
         private void cbIsReleaseFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cbIsReleaseFilter.SelectedIndex)
-            {
-                case 0:
-                    _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
-                    break;
-                case 1:
-                    _FilterByIsReales(1);
-                    break;
-                case 2:
-                    _FilterByIsReales(0);
-                    break;
-                
+			string FilterColumn = "IsReleased";
+			string FilterValue = cbIsReleaseFilter.Text;
 
-            }
-        }
+			switch (FilterValue)
+			{
+				case "All":
+					break;
+				case "Yes":
+					FilterValue = "1";
+					break;
+				case "No":
+					FilterValue = "0";
+					break;
+			}
 
-        private void txtFilter_TextChanged(object sender, EventArgs e)
+
+			if (FilterValue == "All")
+				_dtDetainedLicenses.DefaultView.RowFilter = "";
+			else
+				//in this case we deal with numbers not string.
+				_dtDetainedLicenses.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, FilterValue);
+
+			lblRecordsCount.Text = _dtDetainedLicenses.Rows.Count.ToString();
+
+		}
+
+		private void txtFilter_TextChanged(object sender, EventArgs e)
         {
-            int value;
-            switch (cbFilterDetainedLicenses.SelectedIndex)
-            {
-                case 1:
-                    {
-                        if (txtFilter.Text.Trim() == "")
-                        {
-                            _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
-                            return;
-                        }
-                        if (int.TryParse(txtFilter.Text.Trim(), out value))
-                            _FilterByID("DetainID",value);
-                    }
-                    break;
-                case 2:
-                    if (txtFilter.Text.Trim() == "")
-                    {
-                        _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
-                        return;
-                    }
-                    if (int.TryParse(txtFilter.Text.Trim(), out value))
-                        _FilterByID("LicenseID", value);
-                    break;
-                case 4:
-                    if (txtFilter.Text.Trim() == "")
-                    {
-                        _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
-                        return;
-                    }
-                    if (float.TryParse(txtFilter.Text.Trim(), out float fees))
-                        _FilterByFineFees(fees);
-                    break;
-                case 5:
-                    _FilterByText("NationalNo", txtFilter.Text.Trim());
-                    break;
-                case 6:
-                    _FilterByText("FullName", txtFilter.Text.Trim());
-                    break;
-                case 7:
-                    if (txtFilter.Text.Trim() == "")
-                    {
-                        _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
-                        return;
-                    }
-                    if (int.TryParse(txtFilter.Text.Trim(), out value))
-                        _FilterByID("ApplicationID", value);
-                    break;
-            }
-        }
-        private void _FilterByIsReales(int isRelease)
-        {
-            _DataView = _LoadAllDetainedLicensesIntoView();
-            _DataView.RowFilter = $"IsReleased = '{isRelease}'";
-            _RefreshDetainedLicenses(_DataView);
-        }
-        private void _FilterByID(string columnName, int iD)
-        {
-            _DataView = _LoadAllDetainedLicensesIntoView();
-            _DataView.RowFilter = $"{columnName} = {iD}";
-            _RefreshDetainedLicenses(_DataView);
-        }
 
-        private void _FilterByFineFees(float fineFees)
-        {
-            _DataView = _LoadAllDetainedLicensesIntoView();
-            _DataView.RowFilter = $"FineFees = {fineFees}";
-            _RefreshDetainedLicenses(_DataView);
-        }
+			string FilterColumn = "";
+			//Map Selected Filter to real Column name 
+			switch (cbFilterDetainedLicenses.Text)
+			{
+				case "Detain ID":
+					FilterColumn = "DetainID";
+					break;
+				case "Is Released":
+					{
+						FilterColumn = "IsReleased";
+						break;
+					};
+
+				case "National No.":
+					FilterColumn = "NationalNo";
+					break;
 
 
-        private void _FilterByText(string columnName,  string nationalNo)
-        {
-            _DataView = _LoadAllDetainedLicensesIntoView();
-            _DataView.RowFilter = $"{columnName} Like '{nationalNo}%'";
-            _RefreshDetainedLicenses(_DataView);
-        }
+				case "Full Name":
+					FilterColumn = "FullName";
+					break;
 
+				case "Release Application ID":
+					FilterColumn = "ReleaseApplicationID";
+					break;
+
+				default:
+					FilterColumn = "None";
+					break;
+			}
+
+
+			//Reset the filters in case nothing selected or filter value conains nothing.
+			if (txtFilter.Text.Trim() == "" || FilterColumn == "None")
+			{
+				_dtDetainedLicenses.DefaultView.RowFilter = "";
+				lblRecordsCount.Text = dgvListDetainedLicenses.Rows.Count.ToString();
+				return;
+			}
+
+
+			if (FilterColumn == "DetainID" || FilterColumn == "ReleaseApplicationID")
+				//in this case we deal with numbers not string.
+				_dtDetainedLicenses.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilter.Text.Trim());
+			else
+				_dtDetainedLicenses.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilter.Text.Trim());
+
+			lblRecordsCount.Text = _dtDetainedLicenses.Rows.Count.ToString();
+
+		}
+		
         private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
         {
-            _FilterValidate(e);
-        }
+			int selectedIndex = cbFilterDetainedLicenses.SelectedIndex;
+			if (selectedIndex == 1 || selectedIndex == 2 || selectedIndex == 5 || selectedIndex == 7)
+			{
 
-        private void _FilterValidate(KeyPressEventArgs e)
-        {
-            int selectedIndex = cbFilterDetainedLicenses.SelectedIndex;
-            if (selectedIndex == 1 ||selectedIndex==2 || selectedIndex == 5 || selectedIndex==7)
-            {
-                if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-                    e.Handled = true;
-            }
-        }
+				e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+			}
+		}
 
         private void tsmiShowPersonDetails_Click(object sender, EventArgs e)
         {
@@ -235,8 +215,8 @@ namespace DVLD_View
 
         private void tsmiShowLicenseDetails_Click(object sender, EventArgs e)
         {
-            int licenseID = (int)dgvListDetainedLicenses.CurrentRow.Cells[1].Value;
-            frmShowLicenseCard license = new frmShowLicenseCard(licenseID);
+           
+            frmShowLicenseCard license = new frmShowLicenseCard((int)dgvListDetainedLicenses.CurrentRow.Cells[1].Value);
             license.ShowDialog();
         }
 
@@ -250,12 +230,10 @@ namespace DVLD_View
 
         private void tsmiReleaseDetainedLicense_Click(object sender, EventArgs e)
         {
-            int licenseID = (int)dgvListDetainedLicenses.CurrentRow.Cells[1].Value;
-
-
-            frmReleaseLicense releaseLicnse = new frmReleaseLicense(licenseID);
+            
+            frmReleaseLicense releaseLicnse = new frmReleaseLicense((int)dgvListDetainedLicenses.CurrentRow.Cells[1].Value);
             releaseLicnse.ShowDialog();
-            _RefreshDetainedLicenses(_LoadAllDetainedLicensesIntoView());
+            frmManageDetainedLicenses_Load(null,null);
         }
 
         private void dgvListDetainedLicenses_SelectionChanged(object sender, EventArgs e)
@@ -268,9 +246,10 @@ namespace DVLD_View
 
         }
 
+		private void cmsManageDetainedLicense_Opening(object sender, CancelEventArgs e)
+		{
+			tsmiReleaseDetainedLicense.Enabled = !(bool)dgvListDetainedLicenses.CurrentRow.Cells[3].Value;
 
-        // Filter part
-
-
-    }
+		}
+	}
 }

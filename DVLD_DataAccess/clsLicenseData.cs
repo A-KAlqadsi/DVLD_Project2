@@ -17,7 +17,7 @@ namespace DVLD_DataAccess
                 using (SqlCommand command = new SqlCommand("SP_GetLicenseById", connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-					command.Parameters.AddWithValue("@LicenseID", licenseID);
+					command.Parameters.AddWithValue("@LicenseId", licenseID);
 
 					try
 					{

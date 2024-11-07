@@ -398,7 +398,7 @@
 			// ctrlDriverLicenseCardWithFilter1
 			// 
 			this.ctrlDriverLicenseCardWithFilter1.BackColor = System.Drawing.Color.White;
-			this.ctrlDriverLicenseCardWithFilter1.FilterEnabled = false;
+			this.ctrlDriverLicenseCardWithFilter1.FilterEnabled = true;
 			this.ctrlDriverLicenseCardWithFilter1.Location = new System.Drawing.Point(11, 53);
 			this.ctrlDriverLicenseCardWithFilter1.Name = "ctrlDriverLicenseCardWithFilter1";
 			this.ctrlDriverLicenseCardWithFilter1.Size = new System.Drawing.Size(1021, 444);

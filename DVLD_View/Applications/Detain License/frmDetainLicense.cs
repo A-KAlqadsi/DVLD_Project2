@@ -49,8 +49,10 @@ namespace DVLD_View
 			
             lblDetainID.Text = _DetainID.ToString();
             txtFineFees.Enabled =false;
-            ctrlDriverLicenseCardWithFilter1.FilterEnabled = false;
-            btnDetain.Enabled = false;
+			ctrlDriverLicenseCardWithFilter1.FilterEnabled = false;
+			ctrlDriverLicenseCardWithFilter1.LoadLicenseInfo(_LocalLicenseID);
+
+			btnDetain.Enabled = false;
             llShowLicense.Enabled =true;
 
         }
@@ -90,6 +92,27 @@ namespace DVLD_View
 
 			txtFineFees.Focus();
 			btnDetain.Enabled = true;
+
+		}
+
+		private void txtFineFees_Validating(object sender, CancelEventArgs e)
+		{
+            if (string.IsNullOrEmpty(txtFineFees.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtFineFees, "This field is required");
+                return;
+            }
+            else
+                errorProvider1.SetError(txtFineFees, null);
+
+            if (!Globals.Validation.IsNumber(txtFineFees.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtFineFees, "Fees must be digit");
+            }
+            else
+                errorProvider1.SetError(txtFineFees, null);
 
 		}
 	}
