@@ -18,54 +18,41 @@ namespace DVLD_View
             InitializeComponent();
         }
 
-
-        private DataView _DataView;
-
-        private DataView _LoadAllLocalDrivingLicenseApplicationIntoView()
-        {
-            DataView _DataView;
-            DataTable _DataTable;
-            _DataTable = clsInternationalLicense.GetAll();
-            _DataView = _DataTable.DefaultView;
-            _DataView.Sort = "InternationalLicenseID DESC";
-            return _DataView;
-        }
-
-        private void _ResetFilter()
-        {
-            cbFilterInterLicenseApps.SelectedIndex = 0;
-            cbActivityFilter.SelectedIndex = 0;
-            txtFilter.Clear();
-            txtFilter.Visible = false;
-            cbActivityFilter.Visible = false;
-        }
-
-        private void _RefreshLDLApplications(DataView dv)
-        {
-
-            int count = 0;
-            dgvListInternationalLicenses.Rows.Clear();
-
-            if (dv != null)
-                count = dv.Count;
-
-            foreach (DataRowView drv in dv)
-            {
-                dgvListInternationalLicenses.Rows.Add(drv[0], drv[1], drv[2], drv[3],
-                    drv[4], drv[5], drv[6]);
-            }
-
-            lblRecordsCount.Text = count.ToString();
-
-        }
-
+		private DataTable _dtInternationalLicenseApplications;
 
         private void frmManageInternationalLicenseApp_Load(object sender, EventArgs e)
         {
-            _ResetFilter();
-            _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+			_dtInternationalLicenseApplications = clsInternationalLicense.GetAll();
+			cbFilterInterLicenseApps.SelectedIndex = 0;
 
-        }
+			dgvListInternationalLicenses.DataSource = _dtInternationalLicenseApplications;
+			lblRecordsCount.Text = dgvListInternationalLicenses.Rows.Count.ToString();
+
+			if (dgvListInternationalLicenses.Rows.Count > 0)
+			{
+				dgvListInternationalLicenses.Columns[0].HeaderText = "Int.License ID";
+				dgvListInternationalLicenses.Columns[0].Width = 160;
+
+				dgvListInternationalLicenses.Columns[1].HeaderText = "Application ID";
+				dgvListInternationalLicenses.Columns[1].Width = 150;
+
+				dgvListInternationalLicenses.Columns[2].HeaderText = "Driver ID";
+				dgvListInternationalLicenses.Columns[2].Width = 130;
+
+				dgvListInternationalLicenses.Columns[3].HeaderText = "L.License ID";
+				dgvListInternationalLicenses.Columns[3].Width = 130;
+
+				dgvListInternationalLicenses.Columns[4].HeaderText = "Issue Date";
+				dgvListInternationalLicenses.Columns[4].Width = 180;
+
+				dgvListInternationalLicenses.Columns[5].HeaderText = "Expiration Date";
+				dgvListInternationalLicenses.Columns[5].Width = 180;
+
+				dgvListInternationalLicenses.Columns[6].HeaderText = "Is Active";
+				dgvListInternationalLicenses.Columns[6].Width = 120;
+
+			}
+		}
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -76,124 +63,125 @@ namespace DVLD_View
         {
             frmAddNewInternationalLicenseApp addEdit = new frmAddNewInternationalLicenseApp();
             addEdit.ShowDialog();
-            _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
+            frmManageInternationalLicenseApp_Load(null,null);
 
         }
 
         private void cbFilterInterLicenseApps_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbFilterInterLicenseApps.SelectedIndex == 0)
-            {
-                _ResetFilter();
-            }
-            else if (cbFilterInterLicenseApps.SelectedIndex == 5)
-            {
-                _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
-                txtFilter.Visible = false;
-                cbActivityFilter.Visible = true;
-            }
-            else
-            {
-                cbActivityFilter.SelectedIndex = 0;
-                cbActivityFilter.Visible = false;
-                txtFilter.Visible = true;
-                txtFilter.Focus();
-            }
-        }
+			if (cbFilterInterLicenseApps.Text == "Is Active")
+			{
+				txtFilter.Visible = false;
+				cbActivityFilter.Visible = true;
+				cbActivityFilter.Focus();
+				cbActivityFilter.SelectedIndex = 0;
+			}
+
+			else
+
+			{
+
+				txtFilter.Visible = (cbFilterInterLicenseApps.Text != "None");
+				cbActivityFilter.Visible = false;
+
+				if (cbActivityFilter.Text == "None")
+				{
+					txtFilter.Enabled = false;
+					//_dtDetainedLicenses.DefaultView.RowFilter = "";
+					//lblTotalRecords.Text = dgvDetainedLicenses.Rows.Count.ToString();
+
+				}
+				else
+					txtFilter.Enabled = true;
+
+				txtFilter.Text = "";
+				txtFilter.Focus();
+			}
+		}
 
         private void cbActivityFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cbActivityFilter.SelectedIndex)
-            {
-                case 0:
-                    _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
-                    break;
-                case 1:
-                    _FilterInterLicenseByActivity(true);
-                    break;
-                case 2:
-                    _FilterInterLicenseByActivity(false);
-                    break;
-                
+			string FilterColumn = "IsActive";
+			string FilterValue = cbActivityFilter.Text;
 
-            }
-        }
+			switch (FilterValue)
+			{
+				case "All":
+					break;
+				case "Yes":
+					FilterValue = "1";
+					break;
+				case "No":
+					FilterValue = "0";
+					break;
+			}
 
-        private void _FilterInterLicenseByActivity(bool activity)
+
+			if (FilterValue == "All")
+				_dtInternationalLicenseApplications.DefaultView.RowFilter = "";
+			else
+				//in this case we deal with numbers not string.
+				_dtInternationalLicenseApplications.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, FilterValue);
+
+			lblRecordsCount.Text = _dtInternationalLicenseApplications.Rows.Count.ToString();
+
+		}
+
+		private void txtFilter_TextChanged(object sender, EventArgs e)
         {
-            _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
-            _DataView.RowFilter = $"IsActive = '{activity}'";
-            _RefreshLDLApplications(_DataView);
-        }
 
-        private void txtFilter_TextChanged(object sender, EventArgs e)
-        {
-            int value;
-            switch (cbFilterInterLicenseApps.SelectedIndex)
-            {
-                case 1:
-                    {
-                        if (txtFilter.Text.Trim() == "")
-                        {
-                            _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
-                            return;
-                        }
-                        if (int.TryParse(txtFilter.Text.Trim(), out value))
-                            _FilterByIDs("InternationalLicenseID",value);
-                    }
-                    break;
-                case 2:
-                    if (txtFilter.Text.Trim() == "")
-                    {
-                        _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
-                        return;
-                    }
-                    if (int.TryParse(txtFilter.Text.Trim(), out value))
-                        _FilterByIDs("ApplicationID", value);
-                    break;
-                case 3:
-                    if (txtFilter.Text.Trim() == "")
-                    {
-                        _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
-                        return;
-                    }
-                    if (int.TryParse(txtFilter.Text.Trim(), out value))
-                        _FilterByIDs("DriverID", value);
-                    break;
-                case 4:
-                    if (txtFilter.Text.Trim() == "")
-                    {
-                        _RefreshLDLApplications(_LoadAllLocalDrivingLicenseApplicationIntoView());
-                        return;
-                    }
-                    if (int.TryParse(txtFilter.Text.Trim(), out value))
-                        _FilterByIDs("IssuedUsingLocalLicenseID", value);
-                    break;
-                    
+			string FilterColumn = "";
+			//Map Selected Filter to real Column name 
+			switch (cbFilterInterLicenseApps.Text)
+			{
+				case "International License ID":
+					FilterColumn = "InternationalLicenseID";
+					break;
+				case "Application ID":
+					{
+						FilterColumn = "ApplicationID";
+						break;
+					};
 
-            }
-        }
-        private void _FilterByIDs(string columnName,int iD)
-        {
-            _DataView = _LoadAllLocalDrivingLicenseApplicationIntoView();
-            _DataView.RowFilter = $"{columnName} = {iD}";
-            _RefreshLDLApplications(_DataView);
-        }
+				case "Driver ID":
+					FilterColumn = "DriverID";
+					break;
 
-        private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _FilterValidate(e);
-        }
-        private void _FilterValidate(KeyPressEventArgs e)
-        {
-            if (cbFilterInterLicenseApps.SelectedIndex != 5)
-            {
-                if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-                    e.Handled = true;
-            }
-        }
+				case "Local License ID":
+					FilterColumn = "IssuedUsingLocalLicenseID";
+					break;
 
-        private void tsmiShowPersonDetails_Click(object sender, EventArgs e)
+				case "Is Active":
+					FilterColumn = "IsActive";
+					break;
+
+
+				default:
+					FilterColumn = "None";
+					break;
+			}
+
+
+			//Reset the filters in case nothing selected or filter value conains nothing.
+			if (txtFilter.Text.Trim() == "" || FilterColumn == "None")
+			{
+				_dtInternationalLicenseApplications.DefaultView.RowFilter = "";
+				lblRecordsCount.Text = dgvListInternationalLicenses.Rows.Count.ToString();
+				return;
+			}
+
+			_dtInternationalLicenseApplications.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilter.Text.Trim());
+
+			lblRecordsCount.Text = _dtInternationalLicenseApplications.Rows.Count.ToString();
+
+		}
+
+		private void txtFilter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+			e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+		}
+		
+		private void tsmiShowPersonDetails_Click(object sender, EventArgs e)
         {
             int driverID = (int)dgvListInternationalLicenses.CurrentRow.Cells[2].Value;
             int personId = clsDriver.Find(driverID).PersonID;
@@ -213,7 +201,6 @@ namespace DVLD_View
         {
             int driverID = (int)dgvListInternationalLicenses.CurrentRow.Cells[2].Value;
             int personId = clsDriver.Find(driverID).PersonID;
-            //int driverID = clsDriver.FindByPersonID(applicationID).DriverID;
             frmLicenseHistory licenesHistory = new frmLicenseHistory(personId);
             licenesHistory.ShowDialog();
         }
