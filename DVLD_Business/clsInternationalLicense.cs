@@ -55,13 +55,13 @@ namespace DVLD_Business
 
         private bool _AddNewLicense()
         {
-            this.InternationalLicenseID = clsInternationalLicenseData.AddNewInternationaLicense(ApplicationId, DriverID, LicenseID, IssueDate, ExpirationDate, IsActive, UserID);
+            this.InternationalLicenseID = clsInternationalLicenseData.AddNewInternationalLicense(ApplicationId, DriverID, LicenseID, IssueDate, ExpirationDate, IsActive, UserID);
             return this.InternationalLicenseID != -1;
         }
 
         private bool _UpdateLicense()
         {
-            return clsInternationalLicenseData.UpdateInternationaLicense(InternationalLicenseID, ApplicationId, DriverID, LicenseID, IssueDate, ExpirationDate, IsActive, UserID);
+            return clsInternationalLicenseData.UpdateInternationalLicense(InternationalLicenseID, ApplicationId, DriverID, LicenseID, IssueDate, ExpirationDate, IsActive, UserID);
         }
 
         public static clsInternationalLicense Find(int internationalLicenseID)
@@ -75,7 +75,7 @@ namespace DVLD_Business
             bool isActive = false;
             int userID = -1;
 
-            if (clsInternationalLicenseData.GetLicenseByID(internationalLicenseID, ref applicationId, ref driverID, ref licenseID, ref issueDate, ref expirationDate, ref isActive, ref userID))
+            if (clsInternationalLicenseData.GetInternationalLicenseInfoByID(internationalLicenseID, ref applicationId, ref driverID, ref licenseID, ref issueDate, ref expirationDate, ref isActive, ref userID))
             {
                 return new clsInternationalLicense(internationalLicenseID,applicationId,driverID, licenseID,issueDate,expirationDate,isActive,userID);
             }
