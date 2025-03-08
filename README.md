@@ -43,23 +43,16 @@ Ensure your system meets the following requirements before proceeding:
 ### 🔹 2. Clone the Project
 - Open **Command Prompt** or **Git Bash** and run:
   ```sh
-  git clone <your-github-repository-url>
+  git clone https://github.com/A-KAlqadsi/DVLD_Project2.git
 
 ## Usage Instructions
 - resotre the database into MS Sql Server (Database exist in the repo folder)
 - change the connection string(to your machine) in the appsetting.json file
-- run the project from Visual Studio 2022 and Enter **UserName**: **Admin** , Password: **12345678**
-- Explore and enjoy the program it is easy to follow    
+- run the project from Visual Studio 2022 and Enter **UserName**: **Admin** , **Password**: **12345678**
+- Explore and enjoy the program it is easy to follow.   
 
 ## Future Enhancements
 - Add Vehicles management department(to manage the types of cars) 
-
-## Contributing
-Contributions are welcome! If you wish to contribute to the **DVLD** project, please review our contribution guidelines:
-
-
-## License
-- [LABEL: Specify the project’s license or state if it’s proprietary]  
 
 ## Contact Information
 For any questions or further information, please reach out:
