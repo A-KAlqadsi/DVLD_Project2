@@ -47,7 +47,7 @@ Ensure your system meets the following requirements before proceeding:
 
 ## Usage Instructions
 - resotre the database into MS Sql Server (Database exist in the repo folder)
-- change the connection string(to your machine) in the appsetting.json file
+- change the connection string(to your machine) in the **App.config** file
 - run the project from Visual Studio 2022 and Enter **UserName**: **Admin** , **Password**: **12345678**
 - Explore and enjoy the program it is easy to follow.   
 
