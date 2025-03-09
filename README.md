@@ -7,8 +7,8 @@ The project utilizes **ADO.NET** for database connectivity with **MS SQL Server*
 
 ## 🚀 Key Features
 - 🔹 **Person & User Management** – Add and manage personal details and user credentials.  
-- 🔹 **License Reservation** – Apply for **local** or **global** driving licenses.  
-- 🔹 **Appointment Scheduling** – Book **vision, writing, and driving** tests.  
+- 🔹 **License Service Reservation** – Apply for **local** or **global** driving licenses.  
+- 🔹 **Appointment and Test Scheduling** – Book **vision, writing, and driving** tests.  
 - 🔹 **License Issuance** – Issue licenses after successful test completion.  
 
 ## 🏗️ Architecture & Technologies
@@ -46,9 +46,9 @@ Ensure your system meets the following requirements before proceeding:
   git clone https://github.com/A-KAlqadsi/DVLD_Project2.git
 
 ## Usage Instructions
-- resotre the database into MS Sql Server (Database exist in the repo folder)
-- change the connection string(to your machine) in the **App.config** file
-- run the project from Visual Studio 2022 and Enter **UserName**: **Admin** , **Password**: **12345678**
+- Resotre the database **DVLD_Database.bak** into MS Sql Server (Database exist in the repo folder)
+- Change the connection string(to your machine) in the **App.config** file
+- Run the project from Visual Studio 2022 and Enter **UserName**: **Admin** , **Password**: **12345678**
 - Explore and enjoy the program it is easy to follow.   
 
 ## Future Enhancements
